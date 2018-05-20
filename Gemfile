@@ -12,6 +12,7 @@ end
 gem 'activevalidators', '~> 4.1'
 gem 'devise', '~> 4.4'
 gem 'jbuilder', '~> 2.5'
+gem 'http_accept_language', '~> 2.1.1'
 gem 'kaminari'
 gem 'mailgun-ruby', '~>1.1.6'
 gem 'omniauth-linkedin-oauth2'

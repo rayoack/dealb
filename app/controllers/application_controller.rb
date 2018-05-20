@@ -2,7 +2,8 @@
 
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: %i[index show]
-  before_action :set_language
+
+  before_action :set_language, if: :change_language?
 
   protect_from_forgery with: :exception
 
@@ -21,6 +22,12 @@ class ApplicationController < ActionController::Base
   end
 
   def set_language
-    I18n.locale = params[:language] if params[:language]
+    LanguageService.new(params, session, http_accept_language).set_language
+  end
+
+  def change_language?
+    return true if session[:language] && params[:language]
+
+    session[:language].nil? && (params[:language] || params[:language].nil?)
   end
 end

@@ -53,19 +53,27 @@
                 <li><a href="sign-up" class="btn-join-now"><%= t('header.join_us') %></a></li>
                 <div class="language">
 		    <button type="button" class="btn-idioma">
-                        <img src="/img/language.svg" class="flag" alt="">
-                        <img src="/img/arrow-down.svg" class="arrow-down" alt="">
+			<img src="/img/<%= language_flag %>" alt="">
+			<img src="/img/arrow-down.svg" class="arrow-down" alt="">
 		    </button>
 		    <div class="change-language">
-                        <a href="/?language=pt-br">
-			    <img src="/img/idioma-ptbr.svg" class="flag">
-                        </a>
-                        <a href="/?language=en">
-			    <img src="/img/idioma-eua.svg" class="flag">
-                        </a>
-                        <a href="/?language=es">
-			    <img src="/img/idioma-esp.svg" class="flag">
-                        </a>
+			<% if language_flag != 'flag-pt-br.svg' %>
+			    <a href="/?language=pt-br">
+				<img src="/img/flag-pt-br.svg" class="flag" alt="">
+			    </a>
+			<% end %>
+
+			<% if language_flag != 'flag-en.svg' %>
+			    <a href="/?language=en">
+				<img src="/img/flag-en.svg" alt="" class="flag">
+			    </a>
+			<% end %>
+
+			<% if language_flag != 'flag-es.svg' %>
+			    <a href="/?language=es">
+				<img src="/img/flag-es.svg" alt="" class="flag">
+			    </a>
+			<% end %>
 		    </div>
                 </div>
 	    </ul>
