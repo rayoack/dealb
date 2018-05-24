@@ -2,7 +2,10 @@
 
 class CompaniesController < ApplicationController
   def index
-    @companies = SearchService.new(Company, filter_params).fetch.order(:name)
+    @companies = SearchService
+      .new(Company, filter_params, domain_country_context)
+      .fetch
+      .order(:name)
 
     @companies_paginated = @companies.page(params[:page])
   end

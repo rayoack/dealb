@@ -2,21 +2,24 @@
 
 class DealsController < ApplicationController
   def index
-    @deals = SearchService.new(Deal, filter_params).fetch.order(:close_date)
+    @deals = SearchService
+      .new(Deal, filter_params, domain_country_context)
+      .fetch
+      .order(:close_date)
 
     @deals_paginated = @deals.page(params[:page])
   end
 
   def new
-    @companies = Company.all
-    @investors = Investor.all
+    @companies = Company.where(domain_country_context: domain_country_context)
+    @investors = Investor.where(domain_country_context: domain_country_context)
 
     @deal = Deal.new
   end
 
   def create
-    @companies = Company.all
-    @investors = Investor.all
+    @companies = Company.where(domain_country_context: domain_country_context)
+    @investors = Investor.where(domain_country_context: domain_country_context)
 
     @deal = Deal.new(deal_params)
 

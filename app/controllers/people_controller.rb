@@ -2,7 +2,9 @@
 
 class PeopleController < ApplicationController
   def index
-    @people = SearchService.new(Person, filter_params).fetch
+    @people = SearchService
+      .new(Person, filter_params, domain_country_context)
+      .fetch
 
     @people_paginated = @people.page(params[:page])
   end
@@ -14,13 +16,13 @@ class PeopleController < ApplicationController
   end
 
   def new
-    @companies = Company.all
+    @companies = Company.where(domain_country_context: domain_country_context)
 
     @person = Person.new
   end
 
   def create
-    @companies = Company.all
+    @companies = Company.where(domain_country_context: domain_country_context)
 
     @person = Person.new(person_params)
 
@@ -34,13 +36,13 @@ class PeopleController < ApplicationController
   end
 
   def edit
-    @companies = Company.all
+    @companies = Company.where(domain_country_context: domain_country_context)
 
     @person = Person.find_by!(permalink: params[:id])
   end
 
   def update
-    @companies = Company.all
+    @companies = Company.where(domain_country_context: domain_country_context)
 
     @person = Person.find_by!(permalink: params[:id])
 

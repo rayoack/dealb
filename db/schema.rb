@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20180222160416) do
     t.string "twitter_url"
     t.string "google_plus_url"
     t.string "status", default: "active", null: false
+    t.string "domain_country_context", default: "br", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_companies_on_name"
@@ -65,6 +66,7 @@ ActiveRecord::Schema.define(version: 20180222160416) do
     t.string "pre_valuation_currency"
     t.bigint "pre_valuation_cents"
     t.string "source_url"
+    t.string "domain_country_context", default: "br", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category"], name: "index_deals_on_category"
@@ -79,6 +81,7 @@ ActiveRecord::Schema.define(version: 20180222160416) do
     t.string "status", default: "active", null: false
     t.string "category"
     t.string "stage"
+    t.string "domain_country_context", default: "br", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["investable_type", "investable_id"], name: "index_investors_on_investable_type_and_investable_id"
@@ -126,6 +129,7 @@ ActiveRecord::Schema.define(version: 20180222160416) do
     t.string "twitter_url"
     t.string "google_plus_url"
     t.string "linkedin_url"
+    t.string "domain_country_context", default: "br", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["first_name"], name: "index_people_on_first_name"

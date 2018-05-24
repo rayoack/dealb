@@ -9,6 +9,10 @@ class CreateInvestors < ActiveRecord::Migration[5.1]
       t.string :category
       t.string :stage
 
+      # This field allow us to make the switch of platform based on
+      # domains like 'uk.dealbook.co' or 'br.dealbook.co'
+      t.string :domain_country_context, null: false, default: 'br'
+
       t.timestamps null: false
     end
   end

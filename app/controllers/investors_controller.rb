@@ -2,7 +2,9 @@
 
 class InvestorsController < ApplicationController
   def index
-    @investors = SearchService.new(Investor, filter_params).fetch
+    @investors = SearchService
+      .new(Investor, filter_params, domain_country_context)
+      .fetch
 
     @investors_paginated = @investors.page(params[:page])
   end

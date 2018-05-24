@@ -20,6 +20,10 @@ class CreatePerson < ActiveRecord::Migration[5.1]
       t.string :google_plus_url
       t.string :linkedin_url
 
+      # This field allow us to make the switch of platform based on
+      # domains like 'uk.dealbook.co' or 'br.dealbook.co'
+      t.string :domain_country_context, null: false, default: 'br'
+
       t.timestamps null: false
     end
   end

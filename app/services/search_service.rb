@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class SearchService
-  def initialize(model, filter_params)
-    @base_query = model.all
+  def initialize(model, filter_params, domain_country_context)
+    @base_query = model.where(domain_country_context: domain_country_context)
     @filter_params = filter_params
   end
 
