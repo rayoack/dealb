@@ -25,6 +25,7 @@
                 <li><a href="/investors"><%= t('header.investors') %></a></li>
 
 		<% if user_signed_in? && user_admin? %>
+		    <li><a href="/markets"><%= t('header.markets') %></a></li>
                     <li><a href="/users"><%= t('header.users') %></a></li>
 		<% end %>
 

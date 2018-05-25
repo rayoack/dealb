@@ -1,0 +1,25 @@
+<%= render partial: 'shared/header' %>
+
+<section class="form-create">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <a href="/markets" class="btn-back"><img src="/img/seta-esq-cinza.svg" alt=""> <%= t('markets.form.back') %></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <h1 class="title"><%= t('markets.form.edit') %></h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-5">
+		<%= form_for @market, url: { action: 'update' , id: @market.id }, method: :put do |f| %>
+		    <%= render partial: 'form', locals: { f: f } %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%= render partial: 'shared/footer' %>

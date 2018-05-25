@@ -1,0 +1,13 @@
+<% if @market.errors.any? %>
+    <% @market.errors.full_messages.each do |error| %>
+	<div class="alert alert-danger" role="alert"><%= error %></div>
+    <% end %>
+<% end %>
+
+<div class="form-group">
+    <%= f.text_field :name, placeholder: t('markets.form.name') %>
+</div>
+
+<div class="form-group">
+    <%= f.submit t('markets.form.send') %>
+</div>

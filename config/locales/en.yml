@@ -169,6 +169,18 @@ en:
       phone_number: 'Phone +00 (00) 00000 - 0000'
       email: 'Email'
       send: 'Send'
+  markets:
+    index:
+      markets: 'Markets'
+      new: 'Create new'
+      column_name: 'Name'
+    form:
+      new: 'Create new market'
+      edit: 'Edit market'
+      back: 'back'
+      name: 'Name'
+      email: 'Email'
+      send: 'Send'
   investor:
     index:
       investors: 'Investors'

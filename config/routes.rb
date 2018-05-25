@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     get 'become_admin', action: 'become_admin'
     get 'become_moderator', action: 'become_moderator'
   end
+  resources :markets, only: %i[index new create edit update]
 
   get :search, to: 'search#index'
   get :contact, to: 'contacts#index'

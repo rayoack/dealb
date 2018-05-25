@@ -1,0 +1,58 @@
+<%= render partial: 'shared/header' %>
+
+<section class="s-title-page" style="padding: 53px 0px 40px 0px">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-7">
+                <h1><%= t('markets.index.markets') %></h1>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-5">
+                <h2><%= @markets.count %> <%= t('markets.index.markets') %></h2>
+		<a href="/markets/new"><%= t('markets.index.new') %></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="s-table-results">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <p class="results"><%= page_entries_info @markets_paginated %></p>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+		<%= render partial: 'shared/flash_messages' %>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Created at</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+			    <% @markets_paginated.each do |market| %>
+				<tr>
+                                    <td><%= market.name %></td>
+                                    <td><%= I18n.l(market.created_at, format: :short) %></td>
+                                    <td>
+					<a class="btn btn-default" href="/markets/<%= market.id %>/edit">Edit</a>
+				    </td>
+				</tr>
+			    <% end %>
+                        </tbody>
+                    </table>
+                </div>
+
+                <%= paginate @markets_paginated %>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%= render partial: 'shared/footer' %>
