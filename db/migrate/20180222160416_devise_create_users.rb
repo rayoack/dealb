@@ -27,6 +27,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
 
       t.string :role, null: false, index: true, default: 'user'
 
+      t.string :status, null: false, index: true, default: 'active'
+
       t.timestamps null: false
     end
 

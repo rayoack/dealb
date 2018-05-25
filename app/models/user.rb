@@ -7,9 +7,12 @@ class User < ApplicationRecord
     ADMIN = 'admin'
   ].freeze
 
+  STATUSES = [ACTIVE = 'active', BLOCKED = 'blocked'].freeze
+
   validates :email, :role, presence: true
   validates :email, uniqueness: true
   validates :role, inclusion: { in: ROLES }
+  validates :status, inclusion: { in: STATUSES }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
