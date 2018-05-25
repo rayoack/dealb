@@ -42,6 +42,10 @@
                                 <th><%= t('deals.index.column_deal_type') %> </th>
                                 <th><%= t('deals.index.column_investors') %> </th>
                                 <th><%= t('deals.index.column_amount') %> </th>
+
+				<% if user_admin? || user_moderator? %>
+				    <th></th>
+				<% end %>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,6 +56,9 @@
                                     <td><%= deal.category %></td>
                                     <td><%= deal.deal_investors.map(&:investor).map(&:name).join(', ') %></td>
                                     <td><%= number_to_currency(deal.amount, unit: "#{deal.amount_currency} ") %></td>
+				    <% if user_admin? || user_moderator? %>
+					<td><a href="/deals/<%= deal.id %>/edit" class="btn btn-default">Edit</a></td>
+				    <% end %>
 				</tr>
 			    <% end %>
                         </tbody>

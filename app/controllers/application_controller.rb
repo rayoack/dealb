@@ -50,6 +50,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :user_admin?
 
+  def user_moderator?
+    current_user&.role == User::MODERATOR
+  end
+  helper_method :user_moderator?
+
   def after_sign_in_path_for(resource)
     if current_user.status == User::BLOCKED
       '/logout'
