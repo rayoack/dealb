@@ -23,6 +23,11 @@
                 <li><a href="/deals"><%= t('header.deals') %></a></li>
                 <li><a href="/people"><%= t('header.people') %></a></li>
                 <li><a href="/investors"><%= t('header.investors') %></a></li>
+
+		<% if user_signed_in? && user_admin? %>
+                    <li><a href="/users"><%= t('header.users') %></a></li>
+		<% end %>
+
                 <li><a href="#" class="btn-involved"><%= t('header.get_involved') %> <img src="/img/seta.svg" alt=""></a></li>
                 <div class="popup-involved">
 		    <a href="/embassador"><%= t('header.embassador_program') %></a>

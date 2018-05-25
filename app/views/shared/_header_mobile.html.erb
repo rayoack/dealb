@@ -45,12 +45,23 @@
                 <li><a href="/people"><%= t('header.people') %></a></li>
                 <li><a href="/investors"><%= t('header.investors') %></a></li>
                 <li><a href="" class="btn-involved"><%= t('header.get_involved') %> <img src="/img/seta.svg" alt=""></a></li>
+
+		<% if user_signed_in? && user_admin? %>
+                    <li><a href="/users"><%= t('header.users') %></a></li>
+		<% end %>
+
                 <div class="popup-involved">
 		    <a href="/embassador"><%= t('header.embassador_program') %></a>
 		    <a href="/developer"><%= t('header.developer_program') %></a>
 		    <a href="/about"><%= t('header.about_us') %></a>
                 </div>
-                <li><a href="sign-up" class="btn-join-now"><%= t('header.join_us') %></a></li>
+
+		<% if user_signed_in? %>
+		    <a href="/logout" type="button" class="btn-join"><%= t('header.logout') %></a>
+		<% else %>
+		    <a href="/signup" type="button" class="btn-join"><%= t('header.join_us') %></a>
+		<% end %>
+
                 <div class="language">
 		    <button type="button" class="btn-idioma">
 			<img src="/img/<%= language_flag %>" alt="">

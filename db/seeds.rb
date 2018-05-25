@@ -8,6 +8,22 @@ _user = FactoryBot.create(
   password_confirmation: 'test1020'
 )
 
+_admin = FactoryBot.create(
+  :user,
+  email: 'admin@admin.com',
+  password: 'test1020',
+  password_confirmation: 'test1020',
+  role: User::ADMIN
+)
+
+_moderator = FactoryBot.create(
+  :user,
+  email: 'moderator@moderator.com',
+  password: 'test1020',
+  password_confirmation: 'test1020',
+  role: User::MODERATOR
+)
+
 ## COMPANIES
 company1 = FactoryBot.create(:company)
 location1 = FactoryBot.create(:location)

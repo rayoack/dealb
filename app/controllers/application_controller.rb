@@ -44,4 +44,17 @@ class ApplicationController < ActionController::Base
         DOMAINS_SWITCH_AVAILABLE.fetch(domain, 'br')
       end
   end
+
+  def user_admin?
+    current_user&.role == User::ADMIN
+  end
+  helper_method :user_admin?
+
+  def after_sign_in_path_for(resource)
+    if current_user.status == User::BLOCKED
+      '/logout'
+    else
+      super
+    end
+  end
 end

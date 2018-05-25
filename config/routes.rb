@@ -23,6 +23,14 @@ Rails.application.routes.draw do
   resources :deals, only: %i[index new create]
   resources :people, only: %i[index new create show edit update]
   resources :investors, only: %i[index show]
+  resources :users, only: %i[index] do
+    get 'block', action: 'block'
+    get 'unblock', action: 'unblock'
+
+    get 'become_user', action: 'become_user'
+    get 'become_admin', action: 'become_admin'
+    get 'become_moderator', action: 'become_moderator'
+  end
 
   get :search, to: 'search#index'
   get :contact, to: 'contacts#index'
