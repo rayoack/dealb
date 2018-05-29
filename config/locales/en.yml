@@ -87,6 +87,13 @@ en:
       add_linkedin: 'add linkedin'
       send: 'Send'
   deals:
+    model:
+      categories:
+        raised_funds_from: 'Raised funds from'
+        incubated_by: 'Incubated by'
+        merged_with: 'Merged with'
+        was_acquired_by: 'Acquired'
+        shutdown: 'shutdown'
     index:
       deals: 'Deals'
       new: 'Create Deal'

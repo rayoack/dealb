@@ -53,7 +53,7 @@
 				<tr>
                                     <td><img src="/img/logo-investors.png" alt=""> <%= deal.company.name %></td>
                                     <td><%= deal.close_date %></td>
-                                    <td><%= deal.category %></td>
+                                    <td><%= I18n.t("deals.model.categories.#{deal.category}") %></td>
                                     <td><%= deal.deal_investors.map(&:investor).map(&:name).join(', ') %></td>
                                     <td><%= number_to_currency(deal.amount, unit: "#{deal.amount_currency} ") %></td>
 				    <% if user_admin? || user_moderator? %>
