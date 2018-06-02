@@ -51,7 +51,7 @@
                                     <td><img src="/img/logo-company.png" alt=""> <%= company.name %></td>
                                     <td class="status-active"><span class="circulo"></span> <%= company.status %></td>
                                     <td><%= company.locations.pluck(:city, :country).join(', ') %></td>
-                                    <td><%= company.deals.map(&:category).uniq.join(', ') %></td>
+                                    <td><%= company.deals.map(&:category).uniq.map { |category| I18n.t("deals.model.categories.#{category}") }.join(', ') %></td>
                                     <td><a href="/companies/<%= company.permalink %>"><img src="/img/seta-dir.svg" alt=""></a></td>
 				</tr>
 			    <% end %>
