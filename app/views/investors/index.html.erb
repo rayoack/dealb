@@ -40,7 +40,6 @@
                             <tr>
                                 <th><%= t('investor.index.column_name') %> </th>
                                 <th><%= t('investor.index.column_number_of_investments') %> </th>
-                                <th><%= t('investor.index.column_number_of_exited_companies') %> </th>
                                 <th colspan="2"><%= t('investor.index.column_location') %> </th>
                             </tr>
                         </thead>
@@ -49,7 +48,6 @@
 				<tr>
                                     <td><img src="/img/logo-investors.png" alt=""> <%= investor.investable.name %></td>
                                     <td><%= investor.deals.count %></td>
-                                    <td>134</td>
                                     <td><%= investor.investable.locations.pluck(:city, :country).join(', ') %></td>
                                     <td><a href="/investors/<%= investor.permalink %>"><img src="/img/seta-dir.svg" alt=""></a></td>
 				</tr>
