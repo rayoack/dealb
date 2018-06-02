@@ -5,9 +5,9 @@ module PeopleHelper
     current_person_company = person_companies.detect(&:current?)
 
     if current_person_company
-      company_link(current_person_company.company)
+      deal_company_link(current_person_company.company)
     elsif person_companies.last
-      company_link(person_companies.last.company)
+      deal_company_link(person_companies.last.company)
     else
       'Unknown'
     end
@@ -21,7 +21,7 @@ module PeopleHelper
 
   private
 
-  def company_link(company)
+  def deal_company_link(company)
     link = (
       company.website_url || company.linkedin_url || company.facebook_url
     )
