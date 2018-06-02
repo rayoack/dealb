@@ -19,6 +19,6 @@ module DealsHelper
       link ? link_to(investable.name, link) : investable.name
     end
 
-    deal.deal_investors.map(&:investor).map(&to_link).join(', ').html_safe
+    deal.deal_investors.map(&:investor).uniq.map(&to_link).join(', ').html_safe
   end
 end
