@@ -5,9 +5,9 @@ module PeopleHelper
     current_person_company = person_companies.detect(&:current?)
 
     if current_person_company
-      current_person_company.company.name
+      company_link(current_person_company.company)
     elsif person_companies.last
-      person_companies.last.company.name
+      company_link(person_companies.last.company)
     else
       'Unknown'
     end
@@ -17,5 +17,15 @@ module PeopleHelper
     return unless person.investor
 
     person.investor.category
+  end
+
+  private
+
+  def company_link(company)
+    link = (
+      company.website_url || company.linkedin_url || company.facebook_url
+    )
+
+    link ? link_to(company.name, link) : company.name
   end
 end
