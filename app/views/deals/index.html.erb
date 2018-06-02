@@ -51,10 +51,10 @@
                         <tbody>
 			    <% @deals_paginated.each do |deal| %>
 				<tr>
-                                    <td><img src="/img/logo-investors.png" alt=""> <%= deal.company.name %></td>
+                                    <td><img src="/img/logo-investors.png" alt=""> <%= company_link(deal) %></td>
                                     <td><%= deal.close_date %></td>
                                     <td><%= I18n.t("deals.model.categories.#{deal.category}") %></td>
-                                    <td><%= deal.deal_investors.map(&:investor).map(&:name).join(', ') %></td>
+                                    <td><%= investors_link(deal) %></td>
                                     <td><%= number_to_currency(deal.amount, unit: "#{deal.amount_currency} ") %></td>
 				    <% if user_admin? || user_moderator? %>
 					<td><a href="/deals/<%= deal.id %>/edit" class="btn btn-default">Edit</a></td>
