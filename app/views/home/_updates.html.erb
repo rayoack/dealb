@@ -1,17 +1,17 @@
 <section class="s-updates">
     <div class="container-updates">
 	<h1><%= t('home.updates.get_all_recent_news') %></h1>
-	<a href="#" class="view-all"><%= t('home.updates.view_all') %> <span class="linha"></span></a>
+	<a href="/deals" class="view-all"><%= t('home.updates.view_all') %> <span class="linha"></span></a>
 	<div class="swiper-updates">
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
 		<!-- Slides -->
 		<% latest_updates.each do |deal| %>
 		    <div class="swiper-slide">
-			<a>
+			<a href="/deals/<%= deal[:id] %>">
 			    <div class="box-update">
 				<p><%= deal[:description] %></p>
-				<span class="date"><%= deal[:date] %></span>
+				<span class="date"><%= I18n.l(deal[:date], format: :short) %></span>
 			    </div>
 			</a>
 		    </div>

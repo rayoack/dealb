@@ -9,7 +9,7 @@ module HomeHelper
         "#{number_to_currency(deal.amount, unit: deal.amount_currency)} " \
         "from #{deal.investors.map(&:name).join(', ')}"
 
-      { description: description, date: deal.close_date }
+      { id: deal.id, description: description, date: deal.close_date }
     end
   end
 end
