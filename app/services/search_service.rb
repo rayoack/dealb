@@ -37,10 +37,24 @@ class SearchService
   def value_of_query(index)
     return "%#{values[index]}%" if operators[index] == 'alike'
 
-    values[index]
+    is_number = lambda do |string|
+      formatted_str = string.tr('.', '').tr(',', '')
+
+      formatted_str.to_i.to_s == formatted_str
+    end
+
+    result = if is_number[values[index]]
+      values[index].tr('.', '').tr(',', '') # remove characters from string
+    else
+      values[index]
+    end
+
+    result
   end
 
   def field_of_query(field)
+    return 'amount_cents' if field == 'Amount'
+
     field.downcase.tr(' ', '_')
   end
 

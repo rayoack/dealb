@@ -94,7 +94,6 @@ $(".last-level-filter ul li a").click(function(event) {
 
 
 $(".sub-category li a").click(function(event) {
-  console.log('aqui1');
   var item_filter = '<div class="item-filter"><ul><li class="primary-nivel-filter"><button>' + $(this).text() + '</button></li><li class="second-nivel-filter"><select class="selectpicker"><option>input option 01</option><option>input option 02</option><option>input option 03</option></select></li><li class="last-nivel-filter"><input type="text" placeholder="Value"></li></ul><div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div></div>';
   if ($(this).find("i").length == 0) {
     $("#modalFilter").modal("hide");
@@ -115,7 +114,6 @@ $(".last-sub-category li a").click(function(event) {
     $(".controls .arrow-left").removeClass('disabled');
   }
 
-  console.log('aqui2');
   var item_filter = '<div class="item-filter"><ul><li class="primary-nivel-filter"><button>' + $(this).text() + '</button></li><li class="second-nivel-filter"><select class="selectpicker"><option>input option 01</option><option>input option 02</option><option>input option 03</option></select></li><li class="last-nivel-filter"><input type="text" placeholder="Value"></li></ul><div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div></div>';
   if ($(this).find("i").length == 0) {
     $("#modalFilter").modal("hide");
@@ -128,7 +126,6 @@ $(".last-sub-category li a").click(function(event) {
 });
 
 $(".last-level-filter li a").click(function(event) {
-  console.log('aqui3');
   var item_filter = '<div class="item-filter"><ul><li class="primary-nivel-filter"><button>' + $(".sub-category ul li.active a").text() + '</button></li><li class="primary-nivel-filter-secondary"><button>' + $(".last-sub-category ul li.active a").text() + '</button></li><li class="second-nivel-filter"><select class="selectpicker"><option>' + $(".last-level-filter ul li.active").text() + '</option></select></li><li class="last-nivel-filter"><input type="text" placeholder="Value"></li></ul><div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div></div>';
   if ($(this).find("i").length == 0) {
     $("#modalFilter").modal("hide");
