@@ -15,6 +15,8 @@ class ImportOldDatabaseService
       nil => nil
     }.freeze
 
+    ACCESS_KEY = ENV['FIXER_IO_API_KEY']
+
     def run
       ImportOldDatabaseService::Entities::Deal.find_each do |deal|
         printf('.')
@@ -65,14 +67,18 @@ class ImportOldDatabaseService
 
     def amount_cents(deal)
       if deal.currency.blank? || deal.amount.nil? # nil ou ""
-        @amount_value_cents = nil # nao mexe
+        @amount_value_cents = nil # don't touch
 
       elsif deal.currency == 'BRL'
-        # TODO: preciso ver o que fazer nesse caso aqui com o Diego
-        dolar_quote = 3.5
+        # TODO: for while we will keep this option disabled, while
+        # fixer.io account is not bought
+        if false
+          convert_to_usd(deal)
+        else
+          dolar_quote = 3.5
 
-        ((deal.amount * dolar_quote) * 100).to_i
-
+          ((deal.amount * dolar_quote) * 100).to_i
+        end
       elsif deal.currency == 'USD'
         (deal.amount * 100).to_i
       else
@@ -112,6 +118,19 @@ class ImportOldDatabaseService
       else
         nil
       end
+    end
+
+    def convert_to_usd(deal)
+      date = deal.close_date.strftime("%Y%m%d")
+
+      http = Net::HTTP.new('https://data.fixer.io', 443)
+      http.use_ssl = true
+
+      rate = http.get(
+        "/api/#{date}?access_key=#{ACCESS_KEY}&base=USD&symbols=USD"
+      ).fetch('rates').fetch('USD')
+
+      ((deal.amount * dolar_rate) * 100).to_i
     end
   end
 end
