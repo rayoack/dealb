@@ -70,15 +70,8 @@ class ImportOldDatabaseService
         @amount_value_cents = nil # don't touch
 
       elsif deal.currency == 'BRL'
-        # TODO: for while we will keep this option disabled, while
-        # fixer.io account is not bought
-        if false
-          convert_to_usd(deal)
-        else
-          dolar_quote = 3.5
+        convert_to_usd(deal)
 
-          ((deal.amount * dolar_quote) * 100).to_i
-        end
       elsif deal.currency == 'USD'
         (deal.amount * 100).to_i
       else
