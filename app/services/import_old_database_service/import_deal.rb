@@ -116,9 +116,11 @@ class ImportOldDatabaseService
     def convert_to_usd(deal)
       date = deal.close_date.strftime("%Y-%m-%d")
 
-      dolar_rate = Faraday.get(
-        "https://exchangeratesapi.io/api/#{date}?&base=USD&symbols=USD"
-      ).body.fetch('rates').fetch('USD')
+      dolar_rate = JSON.parse(
+        Faraday.get(
+          "https://exchangeratesapi.io/api/#{date}?&base=USD&symbols=USD"
+        ).body
+      ).fetch('rates').fetch('USD')
 
       ((deal.amount * dolar_rate) * 100).to_i
     end
