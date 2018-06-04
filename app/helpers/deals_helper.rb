@@ -1,12 +1,6 @@
 # frozen_string_literal: true
 
 module DealsHelper
-  def company_link(deal, company = deal.company)
-    link = (company.website_url || company.linkedin_url || company.facebook_url)
-
-    link ? link_to(company.name, link) : company.name
-  end
-
   def investors_link(deal)
     to_link = lambda do |investor|
       investable = investor.investable

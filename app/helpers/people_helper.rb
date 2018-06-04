@@ -5,9 +5,13 @@ module PeopleHelper
     current_person_company = person_companies.detect(&:current?)
 
     if current_person_company
-      deal_company_link(current_person_company.company)
+      company = current_person_company.company
+
+      link_to(company.name, company_path(company.permalink))
     elsif person_companies.last
-      deal_company_link(person_companies.last.company)
+      company = person_companies.last.company.name
+
+      link_to(company.name, company_path(company.permalink))
     else
       'Unknown'
     end
@@ -17,15 +21,5 @@ module PeopleHelper
     return unless person.investor
 
     person.investor.category
-  end
-
-  private
-
-  def deal_company_link(company)
-    link = (
-      company.website_url || company.linkedin_url || company.facebook_url
-    )
-
-    link ? link_to(company.name, link) : company.name
   end
 end

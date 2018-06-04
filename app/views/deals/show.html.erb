@@ -1,0 +1,53 @@
+<%= render partial: 'shared/header' %>
+
+<section class="top-section-detail-investor">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <a href="/deals" class="btn-back"><img src="/img/seta-esq-cinza.svg" alt=""> back </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="detail-investor-geral">
+                    <div class="status-name">
+                        <div class="status <%= @deal.status == 'verified' ? 'active' : '' %>">
+                            <span class="circle"></span> <%= @deal.status %>
+                        </div>
+                        <h1> <%= @deal.company.name %></h1>
+                        <h2 class="category">
+                            <img src="/img/clock.svg" alt="">
+                            Category: <%= I18n.t("deals.model.categories.#{@deal.category}") %>
+                        </h2>
+			<h2 class="category">
+                            <img src="/img/description.svg" alt="">
+                            Round: <%= I18n.t("deals.form.rounds.#{@deal.round}") %>
+                        </h2>
+			<h2 class="category">
+                            <img src="/img/description.svg" alt="">
+                            Pre valuation: <%= number_to_currency(@deal.pre_valuation) %>
+                        </h2>
+
+			<h2 class="category">
+                            <img src="/img/description.svg" alt="">
+                            Source URL: <%= link_to @deal.source_url, @deal.source_url %>
+                        </h2>
+                    </div>
+                    <div class="info-geral">
+                        <div class="item">
+                            <h3><%= number_to_currency(@deal.amount) %></h3>
+                            <span>Amount</span>
+                        </div>
+                        <div class="item">
+                            <h3><%= I18n.l @deal.close_date, format: :short %></h3>
+                            <span>Close date</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%= render partial: 'shared/footer' %>

@@ -40,6 +40,10 @@ class DealsController < ApplicationController
     @deal = Deal.find(params[:id])
   end
 
+  def show
+    @deal = Deal.find(params[:id])
+  end
+
   def update
     @companies = Company.where(domain_country_context: domain_country_context)
     @investors = Investor.where(domain_country_context: domain_country_context)
