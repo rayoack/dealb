@@ -114,9 +114,9 @@ class ImportOldDatabaseService
     end
 
     def convert_to_usd(deal)
-      date = deal.close_date.strftime("%Y%m%d")
+      date = deal.close_date.strftime("%Y-%m-%d")
 
-      http = Net::HTTP.new('https://data.fixer.io')
+      http = Net::HTTP.new('https://exchangeratesapi.io', 443)
       http.use_ssl = true
 
       rate = http.get(
