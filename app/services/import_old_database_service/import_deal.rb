@@ -116,12 +116,9 @@ class ImportOldDatabaseService
     def convert_to_usd(deal)
       date = deal.close_date.strftime("%Y-%m-%d")
 
-      http = Net::HTTP.new('https://exchangeratesapi.io', 443)
-      http.use_ssl = true
-
-      rate = http.get(
-        "/api/#{date}?access_key=#{ACCESS_KEY}&base=USD&symbols=USD"
-      ).fetch('rates').fetch('USD')
+      dolar_rate = Faraday.get(
+        "https://exchangeratesapi.io/api/#{date}?&base=USD&symbols=USD"
+      ).body.fetch('rates').fetch('USD')
 
       ((deal.amount * dolar_rate) * 100).to_i
     end
