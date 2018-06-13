@@ -7,10 +7,10 @@
 	<div class="container">
             <div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
-                    <a href="index.html">
+                    <a href="/">
 			<img src="/img/logo.svg" class="logo-footer" alt="">
                     </a>
-                    <p><%= t('footer.explanation') %></p>
+                    <p><%= t('footer.explanation_html') %></p>
 		</div>
 		<div class="col-xs-12 col-sm-12 col-md-offset-0 col-md-5 col-lg-offset-1 col-lg-4">
                     <nav>
@@ -19,13 +19,12 @@
                             <li><a href="/deals"><%= t('footer.deals') %></a></li>
                             <li><a href="/people"><%= t('footer.people') %></a></li>
                             <li><a href="/investors"><%= t('footer.investors') %></a></li>
-                            <li><a href=""><%= t('footer.help') %></a></li>
 			</ul>
 			<ul>
-                            <li><a href="/contact"><%= t('footer.contact') %></a></li>
-                            <li><a href=""><%= t('footer.dealbook_api') %></a></li>
-                            <li><a href=""><%= t('footer.roadmap') %></a></li>
-                            <li><a href="/developer"><%= t('footer.github') %></a></li>
+                            <li><a href="mailto:diego@saasholic.com"><%= t('footer.contact') %></a></li>
+                            <li><a href="https://github.com/lucianot/dealbook/wiki/Dealbook-API"><%= t('footer.dealbook_api') %></a></li>
+                            <li><a href="https://github.com/lucianot/dealbook/projects/1"><%= t('footer.roadmap') %></a></li>
+                            <li><a href="https://github.com/lucianot/dealbook/"><%= t('footer.github') %></a></li>
                             <li><a href="/faq"><%= t('footer.faq') %></a></li>
 			</ul>
                     </nav>
@@ -45,7 +44,10 @@
                             </li>
 			</ul>
                     </div>
-                    <a href="/signup" class="btn-join"><%= t('footer.join_now') %></a>
+
+		    <% unless user_signed_in? %>
+			<a href="/signup" class="btn-join"><%= t('footer.join_now') %></a>
+		    <% end %>
 		</div>
             </div>
 	</div>
