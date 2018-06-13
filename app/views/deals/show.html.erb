@@ -7,6 +7,7 @@
                 <a href="/deals" class="btn-back"><img src="/img/seta-esq-cinza.svg" alt=""> back </a>
             </div>
         </div>
+
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="detail-investor-geral">
@@ -32,6 +33,10 @@
                             <img src="/img/description.svg" alt="">
                             Source URL: <%= link_to @deal.source_url, @deal.source_url %>
                         </h2>
+
+			<% if user_admin? || user_moderator? %>
+			    <a href="/deals/<%= @deal.id %>/edit" class="btn btn-default">Edit</a>
+			<% end %>
                     </div>
                     <div class="info-geral">
                         <div class="item">
@@ -42,7 +47,6 @@
                             <h3><%= I18n.l @deal.close_date, format: :default %></h3>
                             <span>Close date</span>
                         </div>
-
                     </div>
                 </div>
             </div>
