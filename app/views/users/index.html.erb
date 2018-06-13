@@ -42,7 +42,7 @@
                                     <td><%= user.email %> <%= user.status == User::BLOCKED ? "[BLOCKED]" : nil %></td>
                                     <td><%= user.provider || 'Through signup' %></td>
                                     <td><%= user.role %></td>
-                                    <td><%= I18n.l(user.created_at, format: :short) %></td>
+                                    <td><%= I18n.l(user.created_at, format: :default) %></td>
                                     <td>
 					<% if user.role == User::MODERATOR %>
 					    <a href="/users/<%= user.id %>/become_user" class="btn btn-default">Set as user</a>

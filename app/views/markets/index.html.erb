@@ -39,7 +39,7 @@
 			    <% @markets_paginated.each do |market| %>
 				<tr>
                                     <td><%= market.name %></td>
-                                    <td><%= I18n.l(market.created_at, format: :short) %></td>
+                                    <td><%= I18n.l(market.created_at, format: :default) %></td>
                                     <td>
 					<a class="btn btn-default" href="/markets/<%= market.id %>/edit">Edit</a>
 				    </td>
