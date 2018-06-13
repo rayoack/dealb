@@ -38,10 +38,14 @@ class CompaniesController < ApplicationController
   end
 
   def edit
+    @markets = Market.all
+
     @company = Company.find_by!(permalink: params[:id])
   end
 
   def update
+    @markets = Market.all
+
     @company = Company.find_by!(permalink: params[:id])
 
     if @company.update(company_params)
