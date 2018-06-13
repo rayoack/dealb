@@ -53,7 +53,7 @@
 			    <% @deals_paginated.each do |deal| %>
 				<tr>
                                     <td><img src="/img/logo-investors.png" alt=""> <%= link_to(deal.company.name, company_path(deal.company.permalink)) %></td>
-                                    <td><%= deal.close_date %></td>
+                                    <td><%= I18n.l(deal.close_date, format: :short) %></td>
                                     <td><%= I18n.t("deals.model.categories.#{deal.category}") %></td>
                                     <td><%= investors_link(deal) %></td>
                                     <td><%= number_to_currency(deal.amount, unit: "#{deal.amount_currency} ") %></td>
