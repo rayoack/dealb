@@ -59,7 +59,7 @@ class ApplicationController < ActionController::Base
     if current_user.status == User::BLOCKED
       '/logout'
     else
-      super
+      deals_path
     end
   end
 end
