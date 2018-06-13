@@ -8,10 +8,9 @@
                     <img src="/img/seta-esq-back.svg" alt="">
                     back
                 </a>
-                <a href="/people/<%= @person.permalink %>/edit" class="btn-edit-page">
-                    <img src="/img/edit.svg" alt="">
-                    Edit page
-                </a>
+		<% if user_signed_in? %>
+                    <a href="/people/<%= @person.permalink %>/edit" class="btn-edit-page"> <img src="/img/edit.svg" alt=""> Edit page </a>
+		<% end %>
             </div>
         </div>
     </div>

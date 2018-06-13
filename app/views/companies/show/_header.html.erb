@@ -32,7 +32,10 @@
                         </ul>
                     </div>
 		    <% end %>
-                    <a href="/companies/<%= @company.permalink %>/edit" class="btn-edit"><img src="/img/edit.svg" alt="">Edit Page</a>
+
+		    <% if user_signed_in? %>
+			<a href="/companies/<%= @company.permalink %>/edit" class="btn-edit"><img src="/img/edit.svg" alt="">Edit Page</a>
+		    <% end %>
                 </div>
             </div>
         </div>
