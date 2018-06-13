@@ -12,7 +12,11 @@
 		<tbody>
 		    <% @investors.each do |investor| %>
 			<tr>
-			    <td><img src="/img/logo-investors02.png" alt=""><strong> <%= investor.name %></strong></td>
+			    <td>
+				<strong>
+				    <a href="/investors/<%= investor.permalink %>" style="float: none;"><%= investor.name %></a>
+				</strong>
+			    </td>
 			    <td><%= investor.stage %></td>
 			    <td><a href="/investors/<%= investor.permalink %>">View profile</a></td>
 			</tr>

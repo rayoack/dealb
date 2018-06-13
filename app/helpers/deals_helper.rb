@@ -2,17 +2,12 @@
 
 module DealsHelper
   def investors_link(deal)
-    to_link = lambda do |investor|
-      investable = investor.investable
-      link = (
-        investable.website_url ||
-        investable.linkedin_url ||
-        investable.facebook_url
-      )
-
-      link ? link_to(investable.name, link) : investable.name
-    end
-
-    deal.deal_investors.map(&:investor).uniq.map(&to_link).join(', ').html_safe
+    deal.investors.map do |investor|
+      if investor.investable_type == 'Company'
+        link_to(investor.name, "/companies/#{investor.investable.permalink}")
+      elsif investor.investable_type == 'Person'
+        link_to(investor.name, "/people/#{investor.investable.permalink}")
+      end
+    end.join('/ ').html_safe
   end
 end
