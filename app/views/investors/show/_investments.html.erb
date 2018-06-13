@@ -15,12 +15,13 @@
             <tbody>
 		<% @investor.deals.each do |deal| %>
                     <tr>
-			<td><strong><%= deal.close_date %></strong></td>
-			<td><%= deal.company.name %></td>
-			<td><%= deal.category %></td>
-			<td><%= deal.round %></td>
+			<td><strong><%= I18n.l(deal.close_date) %></strong></td>
+			<td><a href="/companies/<%= deal.company.permalink %>" style="float: none;"><%= deal.company.name %></a></td>
+			<td><%= I18n.t("deals.model.categories.#{deal.category}") %></td>
+			<td><%= deal.round ? I18n.t("deals.form.rounds.#{deal.round}") : '' %></td>
 			<td><%= number_to_currency(deal.amount, unit: "#{deal.amount_currency} ") %></td>
 			<td><%= number_to_currency(deal.pre_valuation, unit: "#{deal.pre_valuation_currency} ") %></td>
+			<td><a href="/deals/<%= deal.id %>"><img src="/img/seta-dir.svg" alt=""></a></td>
                     </tr>
 		<% end %>
             </tbody>
