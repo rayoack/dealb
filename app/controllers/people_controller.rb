@@ -5,6 +5,7 @@ class PeopleController < ApplicationController
     @people = SearchService
       .new(Person, filter_params, domain_country_context)
       .fetch
+      .order(created_at: :desc)
 
     @people_paginated = @people.page(params[:page])
   end

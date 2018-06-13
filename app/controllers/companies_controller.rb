@@ -5,7 +5,7 @@ class CompaniesController < ApplicationController
     @companies = SearchService
       .new(Company, filter_params, domain_country_context)
       .fetch
-      .order(:name)
+      .order(created_at: :desc)
 
     @companies_paginated = @companies.page(params[:page])
   end

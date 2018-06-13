@@ -5,6 +5,7 @@ class InvestorsController < ApplicationController
     @investors = SearchService
       .new(Investor, filter_params, domain_country_context)
       .fetch
+      .order(created_at: :desc)
 
     @investors_paginated = @investors.page(params[:page])
   end

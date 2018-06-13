@@ -8,7 +8,7 @@ class DealsController < ApplicationController
     @deals = SearchService
       .new(Deal, filter_params, domain_country_context)
       .fetch
-      .order(:close_date)
+      .order(close_date: :desc)
 
     @deals_paginated = @deals.page(params[:page])
   end
