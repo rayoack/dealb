@@ -1,16 +1,60 @@
-<h2>Forgot your password?</h2>
+<section class="s-signup">
+    <div class="s-left">
+        <img src="/img/logo.svg" class="logo" alt="">
+        <img src="/img/img-featured-signup.png" class="img-featured" alt="">
+        <div class="text">
+            <h2 class="subtitle">100% crowdsourced</h2>
+            <h1>The ultimate resource for<br>tech deals in Brazil</h1>
+            <ul>
+                <li>
+                    <img src="/img/cadeado.svg" alt="">
+                    <h2>Open<br>Source</h2>
+                </li>
+                <li>
+                    <img src="/img/maos.svg" alt="">
+                    <h2>Voluntary<br>Work </h2>
+                </li>
+                <li>
+                    <img src="/img/alvo.svg" alt="">
+                    <h2>Advanced<br>Search</h2>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+    <div class="s-right">
+        <a href="/" class="btn-back">back to home <img src="/img/close.svg" alt=""></a>
+        <p class="text-information">
+            Already have an account? <a href="/login"><strong>Sign in</strong></a>
+        </p>
+        <div class="container-signup">
+            <div class="top">
+                <span class="number">-</span>
+                <h1>Forgot your password</h1>
+            </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+	    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+		<%= devise_error_messages! %>
+		<%= render partial: 'shared/flash_messages' %>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+		<div class="form-group">
+		    <%= f.text_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email' %>
+		</div>
 
-<%= render "devise/shared/links" %>
+		<div class="form-group">
+		    <input type="submit"
+			   style="width: 100%;
+				 background: #32d6cc;
+				 color: #fff;
+				 border: none;
+				 border-radius: 4px;
+				 line-height: 48px;
+				 font-size: 16px;
+				 outline: none;
+				 border: 2px solid #32d6cc;"
+			   value="Send me reset password instructions">
+                </div>
+            <% end %>
+        </div>
+    </div>
+</section>

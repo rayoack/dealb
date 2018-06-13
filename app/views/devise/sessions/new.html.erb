@@ -41,6 +41,8 @@
 
 		<%= devise_error_messages! %>
 
+		<%= render partial: 'shared/flash_messages' %>
+
                 <div class="form-group">
 		    <%= f.text_field :email, autofocus: true, autocomplete: "Email", placeholder: 'Email' %>
                 </div>
