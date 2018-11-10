@@ -27,7 +27,7 @@ class SearchService
 
   SIGNALS = {
     equal: '=',
-    alike: 'ILIKE',
+    contains: 'ILIKE',
     greater_than: '>=',
     less_than: '<='
   }.freeze
@@ -35,7 +35,7 @@ class SearchService
 
   # Adds or no the %% SQL operator in the query
   def value_of_query(index)
-    return "%#{values[index]}%" if operators[index] == 'alike'
+    return "%#{values[index]}%" if operators[index] == 'contains'
 
     is_number = lambda do |string|
       formatted_str = string.tr('.', '').tr(',', '')
