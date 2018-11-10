@@ -9,6 +9,8 @@ if Rails.env.production?
 end
 
 require 'rspec/rails'
+require 'capybara/rails'
+require 'capybara/rspec'
 
 ActiveRecord::Migration.maintain_test_schema!
 

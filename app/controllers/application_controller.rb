@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  rescue_from(
+    ActionController::RoutingError,
+    ActiveRecord::RecordNotFound,
+    with: :not_found
+  )
+
   DOMAINS_SWITCH_AVAILABLE = {
     'br.dealbook.co' => 'br',
     'uk.dealbook.co' => 'uk'
@@ -61,5 +67,9 @@ class ApplicationController < ActionController::Base
     else
       deals_path
     end
+  end
+
+  def not_found
+    render(file: 'public/404', status: 404, formats: [:html])
   end
 end
