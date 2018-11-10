@@ -26,7 +26,7 @@
                         </h2>
 			<h2 class="category">
                             <img src="/img/description.svg" alt="">
-                            Pre valuation: <%= number_to_currency(@deal.pre_valuation) %>
+                            Pre valuation: <%= format_amount(@deal.pre_valuation, @deal.pre_valuation_currency) %>
                         </h2>
 
 			<h2 class="category">
@@ -40,7 +40,7 @@
                     </div>
                     <div class="info-geral">
                         <div class="item">
-                            <h3><%= number_to_currency(@deal.amount) %></h3>
+                            <h3><%= format_amount(@deal.amount, @deal.amount_currency) %></h3>
                             <span>Amount</span>
                         </div>
                         <div class="item">

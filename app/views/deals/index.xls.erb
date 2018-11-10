@@ -19,7 +19,7 @@
 		    <Cell><Data ss:Type="String"><%= deal.close_date %></Data></Cell>
 		    <Cell><Data ss:Type="String"><%= deal.category %></Data></Cell>
 		    <Cell><Data ss:Type="String"><%= deal.deal_investors.map(&:investor).map(&:name).join(', ') %></Data></Cell>
-		    <Cell><Data ss:Type="String"><%= number_to_currency(deal.amount, unit: "#{deal.amount_currency} ") %></Data></Cell>
+		    <Cell><Data ss:Type="String"><%= format_amount(deal.amount, deal.amount_currency) %></Data></Cell>
 		</Row>
 	    <% end %>
 	</Table>
