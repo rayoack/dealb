@@ -30,7 +30,7 @@
                             <span>Companies</span>
                         </div>
                         <div class="item">
-                            <h3><%= number_to_currency(@investor.deals.map(&:amount).compact.sum) %></h3>
+                            <h3><%= format_amount(@investor.deals.map(&:amount).compact.sum) %></h3>
                             <span>Funds Raised</span>
                         </div>
                     </div>

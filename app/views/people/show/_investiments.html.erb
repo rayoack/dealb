@@ -19,8 +19,8 @@
                         <td><a href="/companies/<%= deal.company.permalink %>" style="float: none;"><%= deal.company.name %></a></td>
                         <td><%= I18n.t("deals.model.categories.#{deal.category}") %></td>
                         <td><%= deal.round ? I18n.t("deals.form.rounds.#{deal.round}") : '' %></td>
-                        <td><%= number_to_currency(deal.amount, unit: "#{deal.amount_currency} ") %></td>
-                        <td><%= number_to_currency(deal.pre_valuation, unit: "#{deal.pre_valuation_currency} ") %></td>
+                        <td><%= format_amount(deal.amount, deal.amount_currency) %></td>
+                        <td><%= format_amount(deal.pre_valuation, deal.pre_valuation_currency) %></td>
 			<td><a href="/deals/<%= deal.id %>"><img src="/img/seta-dir.svg" alt=""></a></td>
 		    </tr>
 		<% end %>

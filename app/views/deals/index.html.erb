@@ -56,7 +56,7 @@
                                     <td><%= I18n.l(deal.close_date, format: :default) %></td>
                                     <td><%= I18n.t("deals.model.categories.#{deal.category}") %></td>
                                     <td><%= investors_link(deal) %></td>
-                                    <td><%= number_to_currency(deal.amount, unit: "#{deal.amount_currency} ") %></td>
+                                    <td><%= format_amount(deal.amount, deal.amount_currency) %></td>
 				    <td>
 					<a href="/deals/<%= deal.id %>">
 					    <img src="/img/seta-dir.svg" alt="">
