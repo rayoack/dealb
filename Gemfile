@@ -34,6 +34,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.6'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 3.1', require: false
+  gem 'execjs'
+  gem 'therubyracer'
 end
 
 group :development do
@@ -42,5 +44,3 @@ group :development do
   gem 'rubocop'
   gem 'web-console', '>= 3.3.0'
 end
-
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
