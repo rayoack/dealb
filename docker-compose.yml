@@ -1,0 +1,50 @@
+version: '3.3'
+services:
+  dealbook:
+    image: ruby:2.5.0
+    container_name: dealbook_web
+    volumes:
+    - .:/code
+    - /etc/group:/etc/group:ro   # host user
+    - /etc/passwd:/etc/passwd:ro # host user
+    - /etc/shadow:/etc/shadow:ro # host user
+    working_dir: /code
+    environment:
+    # host user
+    - HOME=/tmp
+    # database
+    - DEALBOOK_DATABASE_HOST=postgres
+    - DEALBOOK_DATABASE_USER=postgres
+    - DEALBOOK_DATABASE_PASSWORD=postgres
+    - DEALBOOK_DATABASE_NAME=dealbook_development
+    # bundler
+    - BUNDLE_PATH=vendor/bundle
+    - BUNDLE_DISABLE_SHARED_GEMS=1
+    ports:
+    - target: 80
+      published: 3000
+      protocol: tcp
+      mode: host
+    networks:
+    - public
+    - private
+    depends_on:
+    - postgres
+    command: bundle exec rails s webrick -p 80 -b 0.0.0.0
+    tty: true
+    stdin_open: true
+  postgres:
+    image: postgres:11.1
+    container_name: dealbook_postgres
+    environment:
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=postgres
+    volumes:
+    - /var/lib/postgresql/data
+    networks:
+    - private
+networks:
+  public:
+    external: true
+  private:
+    external: false
