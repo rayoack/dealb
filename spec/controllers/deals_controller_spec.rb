@@ -10,7 +10,7 @@ describe DealsController do
 
       index
 
-      expect(assigns(:deals)).to eq([deal2, deal1])
+      expect(assigns(:deals).map(&:id).sort).to eq([deal1.id, deal2.id])
     end
 
     it 'returns paginated' do

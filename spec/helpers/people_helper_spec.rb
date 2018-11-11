@@ -4,7 +4,7 @@ describe PeopleHelper do
   describe '#latest_company' do
     let(:person) { create(:person) }
 
-    subject(:latest_company) { helper.latest_company(person) }
+    subject(:latest_company) { helper.latest_company(person).html_safe }
 
     it 'returns the company name of current company' do
       company = create(:company)
@@ -12,7 +12,8 @@ describe PeopleHelper do
         :person_company, :current, person: person, company: company
       )
 
-      expect(latest_company).to eq(company.name)
+      expect(latest_company).to match(company.name)
+      expect(latest_company).to match(company.permalink)
     end
 
     it 'returns the last company name' do
@@ -21,7 +22,8 @@ describe PeopleHelper do
         :person_company, person: person, company: company
       )
 
-      expect(latest_company).to eq(company.name)
+      expect(latest_company).to match(company.name)
+      expect(latest_company).to match(company.permalink)
     end
 
     it 'returns the last company name' do

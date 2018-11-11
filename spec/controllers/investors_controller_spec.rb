@@ -10,7 +10,9 @@ describe InvestorsController do
 
       index
 
-      expect(assigns(:investors)).to eq([investor1, investor2])
+      expect(assigns(:investors).map(&:id).sort).to match(
+        [investor1.id, investor2.id]
+      )
     end
 
     it 'returns investors paginated' do

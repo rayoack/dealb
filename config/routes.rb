@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   )
 
   resources :companies, only: %i[index new create show edit update]
-  resources :deals, only: %i[index new show update edit]
+  resources :deals, only: %i[index new create show edit update]
   resources :people, only: %i[index new create show edit update]
   resources :investors, only: %i[index show]
   resources :users, only: %i[index] do
