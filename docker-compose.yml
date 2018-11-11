@@ -16,7 +16,6 @@ services:
     - DEALBOOK_DATABASE_HOST=postgres
     - DEALBOOK_DATABASE_USER=postgres
     - DEALBOOK_DATABASE_PASSWORD=postgres
-    - DEALBOOK_DATABASE_NAME=dealbook_development
     # bundler
     - BUNDLE_PATH=vendor/bundle
     - BUNDLE_DISABLE_SHARED_GEMS=1

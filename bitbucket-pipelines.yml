@@ -1,0 +1,21 @@
+image: ruby:2.5.0
+pipelines:
+  default:
+    - step:
+        script:
+          - export DATABASE_HOST=localhost
+          - export DATABASE_USER=dealbook
+          - export DATABASE_PASSWORD=dealbook
+          - bundle install
+          - RAILS_ENV=test bin/setup
+          - bundle exec rspec spec
+        services:
+          - postgres
+definitions:
+  services:
+    postgres:
+      image: postgres
+      environment:
+        POSTGRES_DB: dealbook_test
+        POSTGRES_USER: dealbook
+        POSTGRES_PASSWORD: dealbook

@@ -9,7 +9,7 @@ module PeopleHelper
 
       link_to(company.name, company_path(company.permalink))
     elsif person_companies.last
-      company = person_companies.last.company.name
+      company = person_companies.last.company
 
       link_to(company.name, company_path(company.permalink))
     else
