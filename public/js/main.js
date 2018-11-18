@@ -150,7 +150,7 @@ $(".last-level-filter li a").click(function(event) {
           var origin = $('[data-autocomplete-category="' + subcategory + '"]');
 
           if (origin) {
-            var data = origin.data();
+            var data = origin.data() || {};
 
             if(data['autocompleteData']) {
               var result = data['autocompleteData'].filter(function(el, i) {
@@ -159,7 +159,20 @@ $(".last-level-filter li a").click(function(event) {
 
               response(result)
             } else if(data['autocompleteSource']) {
-              // TODO: get data via API
+              $.ajax({
+                dataType: "json",
+                url: data['autocompleteSource'],
+                data: {
+                  term: request.term
+                },
+                success: function(result) {
+                  cache[request.term] = result;
+                  response(result);
+                },
+                error: function(_, status, error) {
+                  console.log(status, error)
+                }
+              });
             }
           }
         }
