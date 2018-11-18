@@ -19,7 +19,11 @@ Rails.application.routes.draw do
     }
   )
 
-  resources :companies, only: %i[index new create show edit update]
+  resources :companies, only: %i[index new create show edit update] do
+    collection do
+      get :names, action: :names
+    end
+  end
   resources :deals, only: %i[index new create show edit update]
   resources :people, only: %i[index new create show edit update]
   resources :investors, only: %i[index show]

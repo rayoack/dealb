@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CompaniesController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[names]
+
   def index
     @companies = SearchService
       .new(Company, filter_params, domain_country_context)
@@ -55,6 +57,10 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def names
+    render(json: autocomplete(:name), status: :ok)
+  end
+
   private
 
   COMPANY_PARAMS = %i[
@@ -62,6 +68,13 @@ class CompaniesController < ApplicationController
     facebook_url linkedin_url twitter_url google_plus_url phone_number
   ].freeze
   private_constant :COMPANY_PARAMS
+
+  def autocomplete(key)
+    Company
+      .where("#{key} ILIKE ?", "%#{params[:term]}%")
+      .limit(20)
+      .pluck(key)
+  end
 
   def alloweds
     params.require(:company).permit(
