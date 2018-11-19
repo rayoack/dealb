@@ -125,17 +125,79 @@ $(".last-sub-category li a").click(function(event) {
   return false;
 });
 
-$(".last-level-filter li a").click(function(event) {
-  var item_filter = '<div class="item-filter"><ul><li class="primary-nivel-filter"><button>' + $(".sub-category ul li.active a").text() + '</button></li><li class="primary-nivel-filter-secondary"><button>' + $(".last-sub-category ul li.active a").text() + '</button></li><li class="second-nivel-filter"><select class="selectpicker"><option>' + $(".last-level-filter ul li.active").text() + '</option></select></li><li class="last-nivel-filter"><input type="text" placeholder="Value"></li></ul><div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div></div>';
-  if ($(this).find("i").length == 0) {
-    $("#modalFilter").modal("hide");
-    $(".filter-result").show();
-    $(".filter-empty").hide();
-    $(".filter-complete").append(item_filter);
-    $('.selectpicker').selectpicker();
+$(document).ready(function() {
+  function autoComplete(input) {
+    var subcategory = input.data()['subcategory'];
+    var cache = {};
+
+    input.autocomplete({
+      minLength: 0,
+      source: function(request, response) {
+        if (request.term in cache) {
+          response(cache[request.term])
+        } else {
+          var origin = $('[data-autocomplete-category="' + subcategory + '"]');
+
+          if (origin) {
+            var data = origin.data() || {};
+
+            if(data['autocompleteData']) {
+              var result = data['autocompleteData'].filter(function(el, i) {
+                return el.includes(request.term);
+              });
+
+              response(result)
+            } else if(data['autocompleteSource']) {
+              $.ajax({
+                dataType: "json",
+                url: data['autocompleteSource'],
+                data: {
+                  term: request.term
+                },
+                success: function(result) {
+                  cache[request.term] = result;
+                  response(result);
+                },
+                error: function(_, status, error) {
+                  console.log(status, error)
+                }
+              });
+            }
+          }
+        }
+      }
+    });
   }
-  return false;
-});
+
+  $(".last-level-filter li a").click(function(event) {
+    var category = $(".sub-category ul li.active a").text().trim();
+    var subcategory = $(".last-sub-category ul li.active a").text().trim();
+    var type = $(".last-level-filter ul li.active").text().trim();
+    var item_filter = '<div class="item-filter"><ul><li class="primary-nivel-filter"><button>' + category + '</button></li><li class="primary-nivel-filter-secondary"><button>' + subcategory + '</button></li><li class="second-nivel-filter"><select class="selectpicker"><option>' + type + '</option></select></li><li class="last-nivel-filter"><input data-category="' + category + '" data-subcategory="' + subcategory + '" data-type="' + type + '" type="text" placeholder="Value"></li></ul><div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div></div>';
+
+    if ($(this).find("i").length == 0) {
+      $("#modalFilter").modal("hide");
+      $(".filter-result").show();
+      $(".filter-empty").hide();
+      $(".filter-complete").append(item_filter);
+      $('.selectpicker').selectpicker();
+
+      var input = $('input[data-subcategory="' + subcategory + '"]');
+
+      autoComplete(input);
+      input.focus().keydown();
+    }
+
+    return false;
+  });
+
+  $('input[data-type="equal"]').on('focus', function(e) {
+    var input = $(e.target);
+
+    autoComplete(input);
+    input.keydown();
+  })
+})
 
 $('.btn-app-filter').click(function(event) {
   event.preventDefault();

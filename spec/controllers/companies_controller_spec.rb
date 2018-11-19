@@ -64,4 +64,23 @@ describe CompaniesController do
       }.from([0, 0]).to([1, 1])
     end
   end
+
+  describe '#names' do
+    it "returns companies' names" do
+      create(:company, name: "Pucca's Network Solutions")
+      create(:company, name: "Bahia's Artificial Intelligence")
+
+      filter_value = 'artifi'
+      model = Company
+      params = {
+        term: filter_value
+      }
+
+      get(:names, params: params)
+      result = JSON.parse(response.body)
+
+      expect(result.count).to eq(1)
+      expect(result.first).to eq("Bahia's Artificial Intelligence")
+    end
+  end
 end

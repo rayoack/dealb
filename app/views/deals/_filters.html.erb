@@ -104,9 +104,9 @@
                     </div>
                     <div class="level-filter last-sub-category">
                         <ul>
-                            <li><a href="">Status <i class="glyphicon glyphicon-chevron-right"></i></a></li>
-                            <li><a href="">Category <i class="glyphicon glyphicon-chevron-right"></i></a></li>
-                            <li><a href="">Round <i class="glyphicon glyphicon-chevron-right"></i></a></li>
+                            <li><a href="" data-autocomplete-category="Status" data-autocomplete-data=<%= Deal::STATUSES.to_json %>>Status <i class="glyphicon glyphicon-chevron-right"></i></a></li>
+                            <li><a href="" data-autocomplete-category="Category" data-autocomplete-data=<%= Deal::CATEGORIES.to_json %>>Category <i class="glyphicon glyphicon-chevron-right"></i></a></li>
+                            <li><a href="" data-autocomplete-category="Round" data-autocomplete-data=<%= Deal::ROUNDS.to_json %>>Round <i class="glyphicon glyphicon-chevron-right"></i></a></li>
                             <li><a href="">Amount <i class="glyphicon glyphicon-chevron-right"></i></a></li>
                         </ul>
                     </div>
