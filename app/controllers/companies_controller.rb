@@ -4,10 +4,10 @@ class CompaniesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[names]
 
   def index
-    @companies = SearchService
-      .new(Company, filter_params, domain_country_context)
-      .fetch
-      .order(created_at: :desc)
+    @companies = CompanySearcher.new(
+      filter_params,
+      domain_country_context
+    ).call
 
     @companies_paginated = @companies.page(params[:page])
   end
@@ -87,7 +87,7 @@ class CompaniesController < ApplicationController
   def filter_params
     return {} unless params[:filter]
 
-    params.require(:filter).permit(:fields, :operators, :values)
+    params.require(:filter).permit!
   end
 
   def create_company_markets
