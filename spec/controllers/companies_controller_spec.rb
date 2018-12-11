@@ -83,4 +83,42 @@ describe CompaniesController do
       expect(result.first).to eq("Bahia's Artificial Intelligence")
     end
   end
+
+  describe '#locations' do
+    it 'filters by country name' do
+      matching_location = create(:localizable)
+      non_matching_location = create(:localizable)
+
+      filter_value = matching_location.location.country
+
+      params = {
+        term: filter_value
+      }
+
+      get(:locations, params: params)
+      result = JSON.parse(response.body)
+
+      expect(result.count).to eq(1)
+      expect(result.first).to match(matching_location.location.country)
+      expect(result.first).not_to match(non_matching_location.location.country)
+    end
+
+    it 'filters by city name' do
+      matching_location = create(:localizable)
+      non_matching_location = create(:localizable)
+
+      filter_value = matching_location.location.city
+
+      params = {
+        term: filter_value
+      }
+
+      get(:locations, params: params)
+      result = JSON.parse(response.body)
+
+      expect(result.count).to eq(1)
+      expect(result.first).to match(matching_location.location.city)
+      expect(result.first).not_to match(non_matching_location.location.city)
+    end
+  end
 end

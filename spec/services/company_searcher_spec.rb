@@ -75,6 +75,44 @@ describe CompanySearcher do
     expect(result.pluck(:id)).to eq([matching_company.id])
   end
 
+  it 'filters by location city' do
+    matching_location = create(:localizable)
+    _non_matching_location = create(:localizable)
+    filter_params = {
+      '0' => {
+        'type' => 'location',
+        'operator' => 'equal',
+        'value' => matching_location.location.city
+      }
+    }
+
+    result = described_class.new(
+      filter_params,
+      matching_location.localizable.domain_country_context
+    ).call
+
+    expect(result.pluck(:id)).to eq([matching_location.localizable.id])
+  end
+
+  it 'filters by location country' do
+    matching_location = create(:localizable)
+    _non_matching_location = create(:localizable)
+    filter_params = {
+      '0' => {
+        'type' => 'location',
+        'operator' => 'equal',
+        'value' => matching_location.location.country
+      }
+    }
+
+    result = described_class.new(
+      filter_params,
+      matching_location.localizable.domain_country_context
+    ).call
+
+    expect(result.pluck(:id)).to eq([matching_location.localizable.id])
+  end
+
   it 'filters by multiple filters' do
     matching_company_1 = create(
       :company,
