@@ -5,10 +5,10 @@ class DealsController < ApplicationController
   before_action :only_admin_or_moderator!, only: %i[edit update]
 
   def index
-    @deals = SearchService
-      .new(Deal, filter_params, domain_country_context)
-      .fetch
-      .order(close_date: :desc)
+    @deals = DealSearcher.new(
+      filter_params,
+      domain_country_context
+    ).call
 
     @deals_paginated = @deals.page(params[:page])
   end
@@ -68,7 +68,7 @@ class DealsController < ApplicationController
   def filter_params
     return {} unless params[:filter]
 
-    params.require(:filter).permit(:fields, :operators, :values)
+    params.require(:filter).permit!
   end
 
   def alloweds
