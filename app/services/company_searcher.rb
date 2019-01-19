@@ -30,6 +30,7 @@ class CompanySearcher
     description: :filter_by_column,
     status: :filter_by_column,
     employees_count: :filter_by_number,
+    location: :filter_by_location
   }.with_indifferent_access.freeze
 
   def filter_by_domain_country_context
@@ -56,6 +57,14 @@ class CompanySearcher
 
   def filter_by_number(name, operator, value)
     filter_by_column(name, operator, value.gsub(/[^\d]+/, '').to_i)
+  end
+
+  def filter_by_location(_name, operator, value)
+    @filter = @filter.joins(:locations).where(
+      "locations.city #{operator} :value OR " \
+      "locations.country #{operator} :value",
+      value: format(operator, value)
+    )
   end
 
   def bypass(name, _operator, _value)

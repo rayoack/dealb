@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CompaniesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[names]
+  skip_before_action :authenticate_user!, only: %i[names locations]
 
   def index
     @companies = CompanySearcher.new(
@@ -59,6 +59,23 @@ class CompaniesController < ApplicationController
 
   def names
     render(json: autocomplete(:name), status: :ok)
+  end
+
+  def locations
+    location = "CONCAT(locations.country, ' - ', locations.city) AS location"
+    location_names = begin
+      Company
+        .joins(:locations)
+        .select(location)
+        .where(
+          'locations.city ILIKE :term OR locations.country ILIKE :term',
+          term: "%#{params[:term]}%"
+        )
+        .limit(20)
+        .pluck(location)
+    end
+
+    render(json: location_names, status: :ok)
   end
 
   private
