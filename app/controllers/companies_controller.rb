@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 class CompaniesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[names]
+  skip_before_action :authenticate_user!, only: %i[names locations]
 
   def index
-    @companies = SearchService
-      .new(Company, filter_params, domain_country_context)
-      .fetch
-      .order(created_at: :desc)
+    @companies = CompanySearcher.new(
+      filter_params,
+      domain_country_context
+    ).call
 
     @companies_paginated = @companies.page(params[:page])
   end
@@ -61,6 +61,23 @@ class CompaniesController < ApplicationController
     render(json: autocomplete(:name), status: :ok)
   end
 
+  def locations
+    location = "CONCAT(locations.country, ' - ', locations.city) AS location"
+    location_names = begin
+      Company
+        .joins(:locations)
+        .select(location)
+        .where(
+          'locations.city ILIKE :term OR locations.country ILIKE :term',
+          term: "%#{params[:term]}%"
+        )
+        .limit(20)
+        .pluck(location)
+    end
+
+    render(json: location_names, status: :ok)
+  end
+
   private
 
   COMPANY_PARAMS = %i[
@@ -87,7 +104,7 @@ class CompaniesController < ApplicationController
   def filter_params
     return {} unless params[:filter]
 
-    params.require(:filter).permit(:fields, :operators, :values)
+    params.require(:filter).permit!
   end
 
   def create_company_markets

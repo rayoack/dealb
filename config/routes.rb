@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :companies, only: %i[index new create show edit update] do
     collection do
       get :names, action: :names
+      get :locations, action: :locations
     end
   end
   resources :deals, only: %i[index new create show edit update]

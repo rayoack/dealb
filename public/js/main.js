@@ -98,7 +98,6 @@ $(".sub-category li a").click(function(event) {
   if ($(this).find("i").length == 0) {
     $("#modalFilter").modal("hide");
     $(".filter-result").show();
-    $(".filter-empty").hide();
     $(".filter-complete").append(item_filter);
     $('.selectpicker').selectpicker();
   }
@@ -118,7 +117,6 @@ $(".last-sub-category li a").click(function(event) {
   if ($(this).find("i").length == 0) {
     $("#modalFilter").modal("hide");
     $(".filter-result").show();
-    $(".filter-empty").hide();
     $(".filter-complete").append(item_filter);
     $('.selectpicker').selectpicker();
   }
@@ -173,12 +171,16 @@ $(document).ready(function() {
     var category = $(".sub-category ul li.active a").text().trim();
     var subcategory = $(".last-sub-category ul li.active a").text().trim();
     var type = $(".last-level-filter ul li.active").text().trim();
-    var item_filter = '<div class="item-filter"><ul><li class="primary-nivel-filter"><button>' + category + '</button></li><li class="primary-nivel-filter-secondary"><button>' + subcategory + '</button></li><li class="second-nivel-filter"><select class="selectpicker"><option>' + type + '</option></select></li><li class="last-nivel-filter"><input data-category="' + category + '" data-subcategory="' + subcategory + '" data-type="' + type + '" type="text" placeholder="Value"></li></ul><div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div></div>';
+    var index = $('.item-filter').length;
+    var field_input = '<input type="hidden" name="filter['+index+'][type]" value="'+subcategory+'" />';
+    var operator_input = '<input type="hidden" name="filter['+index+'][operator]" value="'+type+'" />';
+    var value_input = '<input type="text" name="filter['+index+'][value]" data-category="'+category+'" data-subcategory="'+subcategory+'" data-type="'+type+'" placeholder="Value">'
+    var inputs = field_input + operator_input + value_input;
+    var item_filter = '<div class="item-filter"><ul><li class="primary-nivel-filter"><button>' + category + '</button></li><li class="primary-nivel-filter-secondary"><button>' + subcategory + '</button></li><li class="second-nivel-filter"><select class="selectpicker"><option>' + type + '</option></select></li><li class="last-nivel-filter">'+inputs+'</li></ul><div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div></div>';
 
     if ($(this).find("i").length == 0) {
       $("#modalFilter").modal("hide");
       $(".filter-result").show();
-      $(".filter-empty").hide();
       $(".filter-complete").append(item_filter);
       $('.selectpicker').selectpicker();
 
@@ -199,35 +201,8 @@ $(document).ready(function() {
   })
 })
 
-$('.btn-app-filter').click(function(event) {
-  event.preventDefault();
-
-  let operator = $('.filter-option').map(function() {
-    return $(this).text();
-  }).get();
-
-  let fields = $('.primary-nivel-filter-secondary').find('button').map(function() {
-    return $(this).text();
-  } ).get();
-
-  let values = $('.last-nivel-filter input').map(function() {
-    return $(this).val();
-  }).get();
-
-  $('#filter-operators').val(operator);
-  $('#filter-fields').val(fields);
-  $('#filter-values').val(values);
-
-  $('#filter-form').submit();
-});
-
 $(document).on("click", ".btn-remove-filter", function() {
   $(this).parents(".item-filter").remove();
-
-  if ($(".item-filter").length == 0) {
-    $(".filter-result").hide();
-    $(".filter-empty").show();
-  }
 });
 
 $(".add-new-filter").click(function(event) {

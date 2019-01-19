@@ -1706,9 +1706,9 @@ footer .copyright p a {
 .filter-block .container-filter .filter-empty {
   float: left;
   width: 100%;
+  margin-top: 20px;
 }
 .filter-block .container-filter .filter-result {
-  display: none;
   float: left;
   width: 1110px;
 }
@@ -1839,7 +1839,7 @@ footer .copyright p a {
   font-weight: bold;
   font-size: 15px;
   color: #fff;
-  display: block;
+  display: inline-block;
   background: #32d6cc;
   border: 2px solid #32d6cc;
   box-shadow: 0px 15px 50px 0px #e3e8f3;
@@ -1847,6 +1847,7 @@ footer .copyright p a {
   height: 65px;
   padding: 21px 30px;
   border-radius: 5px;
+  margin-left: 10px;
 }
 .filter-block .container-filter .filter-result .btn-app-filter:hover {
   background: transparent;
@@ -1856,7 +1857,7 @@ footer .copyright p a {
   font-weight: bold;
   font-size: 15px;
   color: #596276;
-  display: block;
+  display: inline-block;
   box-shadow: 0px 15px 50px 0px #e3e8f3;
   width: 230px;
   height: 65px;
