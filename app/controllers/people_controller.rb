@@ -2,10 +2,9 @@
 
 class PeopleController < ApplicationController
   def index
-    @people = SearchService
-      .new(Person, filter_params, domain_country_context)
-      .fetch
-      .order(created_at: :desc)
+    @people = PersonSearcher
+      .new(filter_params, domain_country_context)
+      .call
 
     @people_paginated = @people.page(params[:page])
   end
@@ -84,7 +83,7 @@ class PeopleController < ApplicationController
   def filter_params
     return {} unless params[:filter]
 
-    params.require(:filter).permit(:fields, :operators, :values)
+    params.require(:filter).permit!
   end
 
   def person_params
