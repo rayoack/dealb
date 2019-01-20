@@ -28,7 +28,7 @@ class DealSearcher
   FILTERS = {
     status: :filter_by_column,
     category: :filter_by_column,
-    round: :filter_by_column,
+    funding_type: :filter_by_funding_type,
     amount: :filter_by_amount,
     date: :filter_by_date
   }.with_indifferent_access.freeze
@@ -61,6 +61,10 @@ class DealSearcher
 
   def filter_by_amount(_name, operator, value)
     filter_by_column(:amount_cents, operator, value)
+  end
+
+  def filter_by_funding_type(_name, operator, value)
+    filter_by_column(:round, operator, value)
   end
 
   def filter_by_date(_name, operator, value)

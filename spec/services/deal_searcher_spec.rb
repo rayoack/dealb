@@ -42,7 +42,7 @@ describe DealSearcher do
     _non_matching_deal = create(:deal, round: Deal::SERIES_A)
     filter_params = {
       '0' => {
-        'type' => 'round',
+        'type' => 'funding_type',
         'operator' => 'equal',
         'value' => matching_deal.round
       }
@@ -150,7 +150,7 @@ describe DealSearcher do
         'value' => Deal::INCUBATED_BY
       },
       '2' => {
-        'type' => 'round',
+        'type' => 'funding_type',
         'operator' => 'equal',
         'value' => Deal::ACCELERATION
       }
