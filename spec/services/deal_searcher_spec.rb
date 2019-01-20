@@ -75,6 +75,44 @@ describe DealSearcher do
     expect(result.pluck(:id)).to eq([matching_deal.id])
   end
 
+  it 'filters by date' do
+    matching_deal = create(:deal, close_date: '2019-01-01')
+    _non_matching_deal = create(:deal, close_date: '2019-01-02')
+    filter_params = {
+      '0' => {
+        'type' => 'date',
+        'operator' => 'equal',
+        'value' => matching_deal.close_date.to_s(:db)
+      }
+    }
+
+    result = described_class.new(
+      filter_params,
+      matching_deal.domain_country_context
+    ).call
+
+    expect(result.pluck(:id)).to eq([matching_deal.id])
+  end
+
+  it 'filters by partial date' do
+    matching_deal = create(:deal, close_date: '2019-01-01')
+    _non_matching_deal = create(:deal, close_date: '2018-01-01')
+    filter_params = {
+      '0' => {
+        'type' => 'date',
+        'operator' => 'contains',
+        'value' => '2019-01'
+      }
+    }
+
+    result = described_class.new(
+      filter_params,
+      matching_deal.domain_country_context
+    ).call
+
+    expect(result.pluck(:id)).to eq([matching_deal.id])
+  end
+
   it 'filters by multiple criteria' do
     matching_deal1 = create(
       :deal,

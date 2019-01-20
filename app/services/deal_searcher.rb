@@ -29,7 +29,8 @@ class DealSearcher
     status: :filter_by_column,
     category: :filter_by_column,
     round: :filter_by_column,
-    amount: :filter_by_amount
+    amount: :filter_by_amount,
+    date: :filter_by_date
   }.with_indifferent_access.freeze
 
   def filter_by_domain_country_context
@@ -60,6 +61,10 @@ class DealSearcher
 
   def filter_by_amount(_name, operator, value)
     filter_by_column(:amount_cents, operator, value)
+  end
+
+  def filter_by_date(_name, operator, value)
+    filter_by_column('CAST(close_date AS VARCHAR)', operator, value)
   end
 
   def bypass(name, _operator, _value)
