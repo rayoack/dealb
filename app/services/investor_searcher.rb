@@ -29,7 +29,8 @@ class InvestorSearcher
     status: :filter_by_column,
     category: :filter_by_column,
     stage: :filter_by_column,
-    number_of_deals: :filter_by_number_of_deals
+    number_of_deals: :filter_by_number_of_deals,
+    total_funds_invested: :filter_by_total_funds_invested
   }.with_indifferent_access.freeze
 
   def filter_by_domain_country_context
@@ -58,8 +59,18 @@ class InvestorSearcher
   def filter_by_number_of_deals(_name, operator, value)
     @filter = @filter
       .joins(:deal_investors)
-      .group('investors.id, deal_investors.investor_id')
+      .group('investors.id')
       .having("COUNT(investor_id) #{operator} ?", format(operator, value))
+  end
+
+  def filter_by_total_funds_invested(_name, operator, value)
+    @filter = @filter
+      .joins(:deals)
+      .group('investors.id')
+      .having(
+        "SUM(amount_cents) #{operator} ?",
+        format(operator, value.gsub(/[^\d]+/, '').to_i)
+      )
   end
 
   def bypass(name, _operator, _value)

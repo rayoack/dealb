@@ -61,7 +61,7 @@ class DealSearcher
   end
 
   def filter_by_amount(_name, operator, value)
-    filter_by_column(:amount_cents, operator, value)
+    filter_by_number(:amount_cents, operator, value)
   end
 
   def filter_by_funding_type(_name, operator, value)
