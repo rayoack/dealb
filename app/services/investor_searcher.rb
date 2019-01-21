@@ -28,7 +28,8 @@ class InvestorSearcher
   FILTERS = {
     status: :filter_by_column,
     category: :filter_by_column,
-    stage: :filter_by_column
+    stage: :filter_by_column,
+    number_of_deals: :filter_by_number_of_deals
   }.with_indifferent_access.freeze
 
   def filter_by_domain_country_context
@@ -37,8 +38,9 @@ class InvestorSearcher
 
   def filter_by_params
     Hash(filter_params).each_value do |filter|
-      type, operator, value = filter.values
-      name = type.downcase.tr(' ', '_')
+      name = filter.values[0].downcase.tr(' ', '_')
+      operator = filter.values[1].downcase.tr(' ', '_')
+      value = filter.values[2]
       filter_name = FILTERS.fetch(name, 'bypass')
 
       method(filter_name)
@@ -51,6 +53,13 @@ class InvestorSearcher
       "#{name} #{operator} ?",
       format(operator, value)
     )
+  end
+
+  def filter_by_number_of_deals(_name, operator, value)
+    @filter = @filter
+      .joins(:deal_investors)
+      .group('investors.id, deal_investors.investor_id')
+      .having("COUNT(investor_id) #{operator} ?", format(operator, value))
   end
 
   def bypass(name, _operator, _value)
