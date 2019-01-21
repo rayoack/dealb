@@ -6,18 +6,13 @@
                     <h3><img src="/img/seta-baixo.svg" alt=""> <%= t('investor.index.filter') %></h3>
                     <div class="filter-result">
 			<form id="filter-form" action="/investors">
-			    <input type="hidden" name="filter[fields]" id="filter-fields" />
-			    <input type="hidden" name="filter[operators]" id="filter-operators" />
-			    <input type="hidden" name="filter[values]" id="filter-values" />
-			</form>
-
                         <div class="filter-complete">
 			    <% if params[:filter] %>
-				<% params[:filter][:fields].split(',').size.times.each_with_index do |index, _| %>
+				<% params[:filter].values.each_with_index do |filter, index| %>
 				    <div class="item-filter">
 					<ul>
 					    <li class="primary-nivel-filter"><button></button></li>
-					    <li class="primary-nivel-filter-secondary"><button><%= params[:filter][:fields].split(',')[index] %> </button></li>
+					    <li class="primary-nivel-filter-secondary"><button><%= filter[:type] %> </button></li>
 					    <li class="second-nivel-filter">
 						<div class="btn-group bootstrap-select">
 						    <button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" role="button" title="equal">
@@ -28,7 +23,7 @@
 							<ul class="dropdown-menu inner" role="listbox" aria-expanded="false">
 							    <li data-original-index="0" class="selected">
 								<a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="true">
-								    <span class="text"><%= params[:filter][:operators].split(',')[index] %></span>
+								    <span class="text"><%= filter[:operator] %></span>
 								    <span class="glyphicon glyphicon-ok check-mark"></span>
 								</a>
 							    </li>
@@ -36,25 +31,22 @@
 						    </div>
 						</div>
 					    </li>
-					    <li class="last-nivel-filter"><input type="text" placeholder="<%= params[:filter][:values].split(',')[index] %>" value="<%= params[:filter][:values].split(',')[index] %>"></li>
+					    <li class="last-nivel-filter">
+    					      <input type="hidden" name="filter[<%= index %>][type]" value="<%= filter[:type] %>" />
+					      <input type="hidden" name="filter[<%= index %>][operator]" value="<%= filter[:operator] %>" />
+					      <input type="text" name="filter[<%= index %>][value]" data-subcategory="<%= filter[:type] %>" data-type="<%= filter[:operator] %>" value="<%= filter[:value] %>">
+                                            </li>
 					</ul>
 					<div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div>
 				    </div>
 				<% end %>
-				<script>
-				 window.onload = function() {
-				     $(".filter-result").show();
-				 };
-				</script>
 			    <% end %>
 			</div>
-                        <button class="add-new-filter"><img src="/img/img-new-filter.svg" alt="" data-toggle="modal" data-target="#modalFilter"></button>
-                        <button class="btn-app-filter"><%= t('investor.index.apply') %></button>
-                    </div>
-                    <div class="filter-empty">
-			<% unless params[:filter] %>
+                        <div class="filter-empty">
                             <a href="#" class="btn-add-filter-modal" data-toggle="modal" data-target="#modalFilter"><img src="/img/add.svg" alt=""> <%= t('investor.index.add_filter') %></a>
-			<% end %>
+                            <button class="btn-app-filter"><%= t('investor.index.apply') %></button>
+                        </div>
+			</form>
                     </div>
                 </div>
             </div>
@@ -102,6 +94,8 @@
                             <li><a href="" data-autocomplete-category="Status" data-autocomplete-data=<%= Investor::STATUSES.to_json %>>Status <i class="glyphicon glyphicon-chevron-right"></i></a></li>
                             <li><a href="" data-autocomplete-category="Category" data-autocomplete-data=<%= Investor::CATEGORIES.to_json %>>Category <i class="glyphicon glyphicon-chevron-right"></i></a></li>
                             <li><a href="" data-autocomplete-category="Stage" data-autocomplete-data=<%= Investor::STAGES.to_json %>>Stage <i class="glyphicon glyphicon-chevron-right"></i></a></li>
+                            <li><a href="">Number of deals <i class="glyphicon glyphicon-chevron-right"></i></a></li>
+                            <li><a href="">Total funds invested <i class="glyphicon glyphicon-chevron-right"></i></a></li>
                         </ul>
                     </div>
                     <div class="level-filter last-level-filter">

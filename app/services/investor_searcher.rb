@@ -1,14 +1,14 @@
-class DealSearcher
+class InvestorSearcher
   def initialize(filter_params, domain_country_context)
     @filter_params = filter_params
     @domain_country_context = domain_country_context
-    @filter = Deal
+    @filter = Investor
   end
 
   def call
     filter_by_domain_country_context
     filter_by_params
-    sort_by_close_date
+    sort_by_creation_date
 
     @filter
   end
@@ -28,9 +28,9 @@ class DealSearcher
   FILTERS = {
     status: :filter_by_column,
     category: :filter_by_column,
-    funding_type: :filter_by_funding_type,
-    amount: :filter_by_amount,
-    date: :filter_by_date
+    stage: :filter_by_column,
+    number_of_deals: :filter_by_number_of_deals,
+    total_funds_invested: :filter_by_total_funds_invested
   }.with_indifferent_access.freeze
 
   def filter_by_domain_country_context
@@ -56,20 +56,21 @@ class DealSearcher
     )
   end
 
-  def filter_by_number(name, operator, value)
-    filter_by_column(name, operator, value.gsub(/[^\d]+/, '').to_i)
+  def filter_by_number_of_deals(_name, operator, value)
+    @filter = @filter
+      .joins(:deal_investors)
+      .group('investors.id')
+      .having("COUNT(investor_id) #{operator} ?", format(operator, value))
   end
 
-  def filter_by_amount(_name, operator, value)
-    filter_by_number(:amount_cents, operator, value)
-  end
-
-  def filter_by_funding_type(_name, operator, value)
-    filter_by_column(:round, operator, value)
-  end
-
-  def filter_by_date(_name, operator, value)
-    filter_by_column('CAST(close_date AS VARCHAR)', operator, value)
+  def filter_by_total_funds_invested(_name, operator, value)
+    @filter = @filter
+      .joins(:deals)
+      .group('investors.id')
+      .having(
+        "SUM(amount_cents) #{operator} ?",
+        format(operator, value.gsub(/[^\d]+/, '').to_i)
+      )
   end
 
   def bypass(name, _operator, _value)
@@ -82,7 +83,7 @@ class DealSearcher
     value
   end
 
-  def sort_by_close_date
-    @filter = @filter.order(close_date: :desc)
+  def sort_by_creation_date
+    @filter = @filter.order(created_at: :asc)
   end
 end

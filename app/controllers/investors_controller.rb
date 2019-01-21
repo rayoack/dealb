@@ -2,10 +2,9 @@
 
 class InvestorsController < ApplicationController
   def index
-    @investors = SearchService
-      .new(Investor, filter_params, domain_country_context)
-      .fetch
-      .order(created_at: :desc)
+    @investors = InvestorSearcher
+      .new(filter_params, domain_country_context)
+      .call
 
     @investors_paginated = @investors.page(params[:page])
   end
@@ -22,6 +21,6 @@ class InvestorsController < ApplicationController
   def filter_params
     return {} unless params[:filter]
 
-    params.require(:filter).permit(:fields, :operators, :values)
+    params.require(:filter).permit!
   end
 end
