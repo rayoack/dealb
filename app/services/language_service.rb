@@ -1,41 +1,26 @@
 # frozen_string_literal: true
 
 class LanguageService
-  def initialize(params, session, http_accept_language)
+  def initialize(params, cache, http_accept_language)
     @params = params
-    @session = session
+    @cache = cache
     @http_accept_language = http_accept_language
   end
 
   def set_language
-    if params[:language]
-      define_language
-    else
-      define_language_from_browser
-    end
+    language = params[:language] || cache['language'] || browser_language
 
-    log_language && true
+    I18n.locale = language
+    cache['language'] = language
   end
 
   private
 
-  attr_reader :params, :session, :http_accept_language
+  attr_reader :params, :cache, :http_accept_language
 
-  def define_language
-    session[:language] = params[:language]
-    I18n.locale = params[:language]
-  end
-
-  def define_language_from_browser
-    language = http_accept_language.compatible_language_from(
+  def browser_language
+    http_accept_language.compatible_language_from(
       I18n.available_locales
     )
-
-    session[:language] = language
-    I18n.locale = language
-  end
-
-  def log_language
-    Rails.logger.debug("* Language set to '#{I18n.locale}'")
   end
 end
