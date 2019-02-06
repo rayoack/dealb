@@ -37,7 +37,11 @@ Rails/TimeZone:
 
 AllCops:
   Exclude:
-    - db/schema.rb
+    - "db/**/*"
+    - "Gemfile"
+    - "vendor/**/*"
+    - "tmp/**/*"
+    - "config/**/*"
 
 Rails:
   Enabled: true
