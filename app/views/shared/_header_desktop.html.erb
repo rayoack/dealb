@@ -83,19 +83,19 @@
             </button>
             <div class="change-language">
 		<% if language_flag != 'flag-pt-br.svg' %>
-                    <a href="/?language=pt-br">
+                    <a href="<%= request.path %>?language=pt-br">
 			<img src="/img/flag-pt-br.svg" class="flag" alt="">
                     </a>
 		<% end %>
 
 		<% if language_flag != 'flag-en.svg' %>
-                    <a href="/?language=en">
+                    <a href="<%= request.path %>?language=en">
 			<img src="/img/flag-en.svg" alt="" class="flag">
                     </a>
 		<% end %>
 
 		<!-- <% if language_flag != 'flag-es.svg' %> -->
-                <!--     <a href="/?language=es"> -->
+                <!--     <a href="<%= request.path %>?language=es"> -->
 		<!-- 	<img src="/img/flag-es.svg" alt="" class="flag"> -->
                 <!--     </a> -->
 		<!-- <% end %> -->
