@@ -10,8 +10,12 @@ default: &default
 development:
   <<: *default
 
+  database: dealbook_development
+
 test:
   <<: *default
+
+  database: dealbook_test
 
 production:
   <<: *default
