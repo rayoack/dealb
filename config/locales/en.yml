@@ -4,7 +4,8 @@ en:
     companies: 'Companies'
     deals: 'Deals'
     people: 'People'
-    investor: 'Investors'
+    investors: 'Investor'
+    investors: 'Investors'
     get_involved: 'Get involved'
     embassador_program: 'Embassador program'
     developer_program: 'Developer program'
@@ -30,10 +31,11 @@ en:
     faq: 'FAQ'
     join_now: 'join now'
   home:
+    join_now: 'join now'
     section_featured:
       title: '100% crowdsourced'
       subtitle_html: 'The ultimate resource for<br>tech deals in Brazil'
-      subtitle2: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.'
+      subtitle2: 'A community driven database about startups, deals, investors, entrepreneurs, etc'
       button: 'join now'
     about_us:
       about_us: 'About Us'
@@ -72,8 +74,8 @@ en:
     form:
       back: 'back'
       create_company: ''
-      featured_title: 'Lorem ipsum dolor sit'
-      featured_subtitle: 'Lorem ipsum dolor sit'
+      featured_title: ''
+      featured_subtitle: ''
       name: 'Name'
       date_founded: 'Date founded'
       city: 'City'
