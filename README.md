@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/BossaBox/dealbook.svg?branch=master)](https://travis-ci.com/BossaBox/dealbook)
+===================
 Welcome to Dealbook
 ===================
 

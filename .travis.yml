@@ -1,1 +1,27 @@
 language: ruby
+dist: trusty
+
+# Current .ruby-version
+rvm:
+- 2.5.0
+
+bundler_args: --jobs=2
+
+test:
+  adapter: postgresql
+  database: dealbook_test
+
+# Runs default jobs
+jobs:
+  include:
+    - stage: Style Guide 💅
+      script: bundle exec rubocop
+    - stage: Rspec ⚔️
+      script: 
+        - bundle exec rake db:create db:schema:load db:migrate
+        - bundle exec rspec
+
+cache:
+  directories:
+    - /home/travis/.rvm/
+    - vendor/bundler
