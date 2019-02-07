@@ -16,6 +16,8 @@ class InvestorsController < ApplicationController
     @investor = company_investor || person_investor
   end
 
+  def ranking; end
+
   private
 
   def filter_params

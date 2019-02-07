@@ -25,9 +25,17 @@ Rails.application.routes.draw do
       get :locations, action: :locations
     end
   end
+
   resources :deals, only: %i[index new create show edit update]
+
   resources :people, only: %i[index new create show edit update]
-  resources :investors, only: %i[index show]
+
+  resources :investors, only: %i[index show] do
+    collection do
+      get :ranking, action: :ranking
+    end
+  end
+
   resources :users, only: %i[index] do
     get 'block', action: 'block'
     get 'unblock', action: 'unblock'
@@ -36,6 +44,7 @@ Rails.application.routes.draw do
     get 'become_admin', action: 'become_admin'
     get 'become_moderator', action: 'become_moderator'
   end
+
   resources :markets, only: %i[index new create edit update]
 
   get :search, to: 'search#index'
