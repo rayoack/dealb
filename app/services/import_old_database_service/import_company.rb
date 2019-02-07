@@ -27,9 +27,7 @@ class ImportOldDatabaseService
 
       warn "\nImported company - final statistics"
       warn "count: #{::Company.count} companies"
-    rescue => e
-      require 'pry'; binding.pry
-
+    rescue StandardError
       'oi'
     end
 

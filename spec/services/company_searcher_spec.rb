@@ -117,24 +117,24 @@ describe CompanySearcher do
     matching_company_1 = create(
       :company,
       name: "Pucca's Inc",
-      description: "Network infrastructure as a service."
+      description: 'Network infrastructure as a service.'
     )
     matching_company_2 = create(
       :company,
       name: "Bahia's Inc",
-      description: "The best company for deep learning and neural networks."
+      description: 'The best company for deep learning and neural networks.'
     )
     _non_matching_company_1 = create(
       :company,
       name: "Pucca's Corp",
-      description: "Network provider",
+      description: 'Network provider',
       employees_count: 100,
       status: :active
     )
     _non_matching_company_2 = create(
       :company,
       name: "Bahia's Inc",
-      description: "Artifial intelligence"
+      description: 'Artifial intelligence'
     )
     filter_params = {
       '0' => {

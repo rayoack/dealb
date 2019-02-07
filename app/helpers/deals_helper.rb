@@ -8,6 +8,6 @@ module DealsHelper
       elsif investor.investable_type == 'Person'
         link_to(investor.name, "/people/#{investor.investable.permalink}")
       end
-    end.join('/ ').html_safe
+    end.join('/ ').html_safe # rubocop:disable Rails/OutputSafety
   end
 end

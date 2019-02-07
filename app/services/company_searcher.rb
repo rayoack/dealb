@@ -1,3 +1,4 @@
+# Company Searcher Service
 class CompanySearcher
   def initialize(filter_params, domain_country_context)
     @filter_params = filter_params

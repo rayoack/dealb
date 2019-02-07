@@ -71,7 +71,6 @@ describe CompaniesController do
       create(:company, name: "Bahia's Artificial Intelligence")
 
       filter_value = 'artifi'
-      model = Company
       params = {
         term: filter_value
       }

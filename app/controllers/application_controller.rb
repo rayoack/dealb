@@ -10,9 +10,11 @@ class ApplicationController < ActionController::Base
   DOMAINS_SWITCH_AVAILABLE = {
     'br.dealbook.co' => 'br',
     'uk.dealbook.co' => 'uk'
-  }
+  }.freeze
 
+  # rubocop:disable Rails/LexicallyScopedActionFilter
   before_action :authenticate_user!, except: %i[index show]
+  # rubocop:enable Rails/LexicallyScopedActionFilter
 
   before_action :set_language, if: :change_language?
 
@@ -61,7 +63,7 @@ class ApplicationController < ActionController::Base
   end
   helper_method :user_moderator?
 
-  def after_sign_in_path_for(resource)
+  def after_sign_in_path_for(_resource)
     if current_user.status == User::BLOCKED
       '/logout'
     else

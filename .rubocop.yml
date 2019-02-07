@@ -5,9 +5,7 @@ Layout/MultilineMethodCallIndentation:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
-  Enabled: true
-  Exclude:
-    - 'spec/**/*.rb'
+  Enabled: false
 
 Metrics/BlockLength:
   Enabled: true
@@ -24,6 +22,7 @@ Metrics/ModuleLength:
 
 Metrics/MethodLength:
   Enabled: true
+  Max: 16
   Exclude:
     - 'db/migrate/*.rb'
 
@@ -32,8 +31,33 @@ Metrics/AbcSize:
   Exclude:
     - 'db/migrate/*.rb'
 
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Naming/VariableNumber:
+  Enabled: true
+  Exclude: 
+    - 'spec/**/*.rb'
+
+Rails:
+  Enabled: true
+
 Rails/TimeZone:
   Enabled: false
+
+Rails/InverseOf:
+  Enabled: false
+
+Rails/ApplicationRecord:
+  Enabled: false
+
+Rails/OutputSafety:
+  Enabled: true
+  Exclude: 
+    - 'spec/**/*.rb'
 
 AllCops:
   Exclude:
@@ -42,6 +66,3 @@ AllCops:
     - "vendor/**/*"
     - "tmp/**/*"
     - "config/**/*"
-
-Rails:
-  Enabled: true

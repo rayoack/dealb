@@ -53,9 +53,9 @@ class UsersController < ApplicationController
   private
 
   def only_admin!
-    if current_user&.role != User::ADMIN
-      flash[:error] = 'Unauthorized'
-      redirect_to root_path
-    end
+    return unless current_user&.role != User::ADMIN
+
+    flash[:error] = 'Unauthorized'
+    redirect_to root_path
   end
 end

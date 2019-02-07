@@ -6,6 +6,7 @@ end
 
 class ImportOldDatabaseService
   class ImportUser
+    # rubocop:disable Metrics/MethodLength
     def run
       ImportOldDatabaseService::Entities::User.find_each do |user|
         printf('.')
@@ -33,10 +34,9 @@ class ImportOldDatabaseService
 
       warn "\nImported user - final statistics"
       warn("count: #{::User.count} users")
-    rescue => e
-      require 'pry'; binding.pry
-
+    rescue StandardError
       raise
     end
+    # rubocop:enable Metrics/MethodLength
   end
 end

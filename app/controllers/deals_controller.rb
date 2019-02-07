@@ -81,9 +81,9 @@ class DealsController < ApplicationController
     @deal_params ||=
       begin
         allowed_deal.merge(
-        deal_investors_attributes: [
-          { investor_id: alloweds[:deal_investors_attributes][:investor_id] }
-        ]
+          deal_investors_attributes: [
+            { investor_id: alloweds[:deal_investors_attributes][:investor_id] }
+          ]
         )
       end
   end
@@ -95,9 +95,9 @@ class DealsController < ApplicationController
   end
 
   def only_admin_or_moderator!
-    unless [User::ADMIN, User::MODERATOR].include?(current_user&.role)
-      flash[:error] = 'Unauthorized'
-      redirect_to root_path
-    end
+    return if [User::ADMIN, User::MODERATOR].include?(current_user&.role)
+
+    flash[:error] = 'Unauthorized'
+    redirect_to root_path
   end
 end

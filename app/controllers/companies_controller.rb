@@ -64,15 +64,12 @@ class CompaniesController < ApplicationController
   def locations
     location = "CONCAT(locations.country, ' - ', locations.city) AS location"
     location_names = begin
-      Company
-        .joins(:locations)
-        .select(location)
-        .where(
-          'locations.city ILIKE :term OR locations.country ILIKE :term',
-          term: "%#{params[:term]}%"
-        )
-        .limit(20)
-        .pluck(location)
+      Company.joins(:locations)
+             .select(location)
+             .where(
+               'locations.city ILIKE :term OR locations.country ILIKE :term',
+               term: "%#{params[:term]}%"
+             ).limit(20).pluck(location)
     end
 
     render(json: location_names, status: :ok)
@@ -120,21 +117,18 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    @company_params ||=
-      begin
-        locations_attributes = alloweds[:locations_attributes]
+    @company_params ||= begin
+      locations_attributes = alloweds[:locations_attributes]
 
-        return allowed_company if locations_attributes.to_h.values.all?(&:empty?)
+      return allowed_company if locations_attributes.to_h.values.all?(&:empty?)
 
-        allowed_company.merge({
-          locations_attributes: [
-            {
-              city: locations_attributes[:city].presence,
-              country: locations_attributes[:country].presence
-            }
-          ]
-        })
-      end
+      allowed_company.merge(
+        locations_attributes: [{
+          city: locations_attributes[:city].presence,
+          country: locations_attributes[:country].presence
+        }]
+      )
+    end
   end
 
   def allowed_company

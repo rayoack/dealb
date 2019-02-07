@@ -2,8 +2,11 @@
 
 class ImportOldDatabaseService
   class ImportCompanyMarket
+    # rubocop:disable Metrics/MethodLength
     def run
-      ImportOldDatabaseService::Entities::CompanyMarket.all.each do |company_market|
+      ImportOldDatabaseService::Entities::CompanyMarket
+          .all
+          .each do |company_market|
         printf('.')
 
         old_market = ImportOldDatabaseService::Entities::Market.find(
@@ -21,10 +24,13 @@ class ImportOldDatabaseService
 
       warn "\nImported companies_markets - final statistics"
 
+      # rubocop:disable Metrics/LineLength
       warn(
         "old_count: #{::ImportOldDatabaseService::Entities::CompanyMarket.count} " \
         "new_count: #{::CompanyMarket.count} companies_markets"
       )
+      # rubocop:enable Metrics/LineLength
     end
+    # rubocop:enable Metrics/MethodLength
   end
 end

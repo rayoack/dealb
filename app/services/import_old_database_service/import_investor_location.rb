@@ -2,6 +2,7 @@
 
 class ImportOldDatabaseService
   class ImportInvestorLocation
+    # rubocop:disable Metrics/MethodLength
     def run
       @localizable_count_before = ::Localizable.count
 
@@ -37,10 +38,9 @@ class ImportOldDatabaseService
         "before count: #{@localizable_count_before} " \
         "count: #{::Localizable.count} investor_locations"
       )
-    rescue => e
-      require 'pry'; binding.pry
-
+    rescue StandardError
       raise
     end
+    # rubocop:enable Metrics/MethodLength
   end
 end

@@ -44,10 +44,11 @@ class SearchService
     end
 
     result = if is_number[values[index]]
-      values[index].tr('.', '').tr(',', '') # remove characters from string
-    else
-      values[index]
-    end
+               # remove characters from string
+               values[index].tr('.', '').tr(',', '')
+             else
+               values[index]
+             end
 
     result
   end
