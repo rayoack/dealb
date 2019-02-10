@@ -1,3 +1,4 @@
+import('./swiper.js');
 import('./countries.js');
 import('./investors.js');
 

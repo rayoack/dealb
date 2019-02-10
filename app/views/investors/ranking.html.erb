@@ -57,8 +57,8 @@
                     <%= investor.investable.name %>
                   </td>
                   <td><%= investor.deals.count %></td>
-                  <td><%= 2 || investor.invested_capital %></td> <%# Add to the service %>
-                  <td><%= 'Localização' || investor.location %></td> <%# Add to the service %>
+                  <td><%= format_amount(investor.invested_capital, investor.amount_currency) %></td>
+                  <td><%= investor.formatted_location %></td>
 
                   <%# TODO: Add reviews invformation when finished %>
                   <%# <td>Número de avaliações - I18n</td> %>
