@@ -39,4 +39,7 @@ class Investor < ApplicationRecord
   has_many :people, dependent: :destroy
 
   delegate :name, :permalink, to: :investable
+
+  # Filters
+  scope :active, -> { where(status: :active) }
 end

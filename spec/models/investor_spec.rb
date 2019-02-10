@@ -31,4 +31,17 @@ describe Investor do
     it { is_expected.to have_many(:deal_investors) }
     it { is_expected.to have_many(:deals).through(:deal_investors) }
   end
+
+  describe 'scopes' do
+    context 'active' do
+      let!(:active) { create :investor, status: :active }
+      before do
+        create :investor, status: :inactive
+        create :investor, status: :acquired
+        create :investor, status: :merged
+      end
+
+      it { expect(Investor.active.to_a).to eq([active]) }
+    end
+  end
 end
