@@ -71,7 +71,20 @@ describe Investors::Ranking do
         )
       end
     end
-    context 'order by capital'
-    context 'order by location'
+
+    context 'order by capital invested' do
+      let(:options) { { order: :capital } }
+
+      it '#call!' do
+        expect(subject.call!.map(&:id)).to eq(
+          [
+            investor_3.id,
+            investor_4.id,
+            investor_2.id,
+            investor_1.id
+          ]
+        )
+      end
+    end
   end
 end

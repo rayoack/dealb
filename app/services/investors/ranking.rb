@@ -30,6 +30,7 @@ module Investors
 
     def order_criteria
       return 'deals_count DESC' if options[:order] == :deals
+      return 'invested_capital DESC' if options[:order] == :capital
 
       options[:order]
     end
