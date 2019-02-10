@@ -2,7 +2,7 @@
 
 class InvestorsController < ApplicationController
   def index
-    @investors = InvestorSearcher
+    @investors = Investors::Searcher
       .new(filter_params, domain_country_context)
       .call
 
@@ -16,7 +16,9 @@ class InvestorsController < ApplicationController
     @investor = company_investor || person_investor
   end
 
-  def ranking; end
+  def ranking
+    @investors = Investors::Ranking.new.call!.page(params[:page])
+  end
 
   private
 
