@@ -1,12 +1,76 @@
 <section class="s-title-page">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-7">
-                <h1><%= t('investor.index.investors') %></h1>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-5">
-                <h2>Ranking</h2>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-7">
+        <h1><%= t('investor.index.investors') %></h1>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-5">
+        <h2>Ranking</h2>
+      </div>
     </div>
+  </div>
+</section>
+
+<%= render partial: 'ranking_filters' %>
+
+<section class="s-table-results">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <p class="results">
+          <%= page_entries_info @investors %>
+        </p>
+      </div>
+
+      <div class="col-md-6">
+        <a href="/investors.xls" class="btn-export">
+          <img src="/img/export.svg" alt="">
+          <%= t('investor.index.export') %>
+        </a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <%= render partial: 'shared/flash_messages' %>
+
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th><%= t('investor.index.column_name') %> </th>
+                <th><%= t('investor.index.column_number_of_investments') %> </th>
+                <th><%= t('investor.index.column_invested_capital') %> </th>
+                <th><%= t('investor.index.column_location') %> </th>
+
+                <%# TODO: Add reviews invformation when finished %>
+                <%# <th>Número de avaliações - I18n</th> %>
+                <%# <th>Avaliação média - I18n</th> %>
+              </tr>
+            </thead>
+            <tbody>
+              <% @investors.each do |investor| %>
+                <tr id="<%= "/investors/#{investor.permalink}" %>"
+                    class="investor__row" >
+                  <td>
+                    <img src="/img/logo-investors.png">
+                    <%= investor.investable.name %>
+                  </td>
+                  <td><%= investor.deals.count %></td>
+                  <td><%= 2 || investor.invested_capital %></td> <%# Add to the service %>
+                  <td><%= 'Localização' || investor.location %></td> <%# Add to the service %>
+
+                  <%# TODO: Add reviews invformation when finished %>
+                  <%# <td>Número de avaliações - I18n</td> %>
+                  <%# <td>Avaliação média - I18n</td> %>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <%= paginate @investors %>
+    </div>
+  </div>
 </section>

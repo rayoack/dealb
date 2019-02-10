@@ -209,6 +209,7 @@ pt-br:
       column_name: 'Nome do investidor'
       column_number_of_investments: 'Número de investimentos'
       column_number_of_exited_companies: 'Número de saídas'
+      column_invested_capital: 'Capital investido'
       column_location: 'Localização'
     form:
       back: 'voltar'

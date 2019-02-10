@@ -1,3 +1,6 @@
+import('./countries.js');
+import('./investors.js');
+
 $(".container-add-your-company").hide();
 
 $(".btn-prev-signup").click(function(event) {

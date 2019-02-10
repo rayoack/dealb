@@ -209,6 +209,7 @@ en:
       column_name: 'Investor name'
       column_number_of_investments: 'Number of investments'
       column_number_of_exited_companies: 'Number of exited companies'
+      column_invested_capital: 'Invested Capital'
       column_location: 'Location'
     form:
       back: 'back'
