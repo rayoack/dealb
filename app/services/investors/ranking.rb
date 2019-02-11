@@ -29,10 +29,12 @@ module Investors
     attr_reader :options
 
     def order_criteria
-      return 'deals_count DESC' if options[:order] == :deals
-      return 'invested_capital DESC' if options[:order] == :capital
+      order = options[:order]&.to_sym
 
-      options[:order] || { id: :asc }
+      return 'deals_count DESC' if order == :deals
+      return 'invested_capital DESC' if order == :capital
+
+      order.presence || { id: :asc }
     end
   end
 end

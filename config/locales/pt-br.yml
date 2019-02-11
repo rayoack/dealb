@@ -200,9 +200,11 @@ pt-br:
       send: 'Enviar'
   investor:
     index:
+      investor: 'Investidor'
       investors: 'Investidores'
       new: 'Criar novo'
       filter: 'Filtrar investidores'
+      order: 'Ordenar investidores'
       apply: 'Aplicar filtro'
       add_filter: 'Adicionar filtro'
       export: 'Exportar resultados'

@@ -17,7 +17,9 @@ class InvestorsController < ApplicationController
   end
 
   def ranking
-    @investors = Investors::Ranking.new.call!.page(params[:page])
+    @investors = Investors::Ranking.new(ranking_params)
+                                   .call!
+                                   .page(params[:page])
   end
 
   private
@@ -26,5 +28,9 @@ class InvestorsController < ApplicationController
     return {} unless params[:filter]
 
     params.require(:filter).permit!
+  end
+
+  def ranking_params
+    params.permit(:order)
   end
 end

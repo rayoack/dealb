@@ -18,7 +18,8 @@
     <div class="row">
       <div class="col-md-6">
         <p class="results">
-          <%= page_entries_info @investors %>
+          <%= pluralize @investors.length, t('investor.index.investor'),
+                                           t('investor.index.investors') %>
         </p>
       </div>
 

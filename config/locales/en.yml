@@ -200,9 +200,11 @@ en:
       send: 'Send'
   investor:
     index:
+      investor: 'Investor'
       investors: 'Investors'
       new: 'Create new'
       filter: 'Filter investors'
+      order: 'Order investors'
       apply: 'Apply filter'
       add_filter: 'Add filter investor'
       export: 'Export your results'
