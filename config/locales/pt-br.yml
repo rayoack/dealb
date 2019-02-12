@@ -232,7 +232,7 @@ pt-br:
       explanation: 'Ajude sua comunidade de startup local. É simples, fácil e leva apenas alguns minutos por semana criar um banco de startups, pessoas, negócios em seu país. Tudo que nós pedimos é para nos ajudar a curar e rastrear negócios e desenvolver seu ecosistema local. Você se tornará um movimentador de sua comunidade de startups local.'
       start_now: 'começar agora'
       current_embassadors: 'Embaixadores atuais'
-      got_questions_html: 'Perguntas? <a href="#">Veja nosso FAQ!</a>'
+      got_questions_html: 'Perguntas? <a href="/faq">Veja nosso FAQ!</a>'
       embassador: 'Bill Gates'
       embassador_occupation: 'CEO e Fundador da Microsoft'
       embassador_location: 'Seattle, Washington, EUA'
@@ -241,10 +241,13 @@ pt-br:
       title: 'Programa desenvolvedor'
       subtitle: 'Se torne um desenvolvedor Dealbook!'
       explanation: 'Contribua para sua comunidade de startups local e melhore o desenvolvimento de seu portfolio. Dealbook é open source e mantido por desenvolvedores apaixonados de todo o mundo. Nossos dados são livres e abertos.'
-      view_on_github: 'VER NO GITHUB!'
+      view_on_github: 'GitHub'
       current_developer: 'Desenvolvedores atuais'
-      got_questions_html: 'Perguntas? <a href="#">Veja nosso FAQ!</a>'
+      got_questions_html: 'Perguntas? <a href="/faq">Veja nosso FAQ!</a>'
       show_more: 'mostrar mais'
+  about:
+    title: 'Sobre Nós'
+    sponsor: 'Nossos Apoiadores'
   search:
     index:
       back: 'voltar'
