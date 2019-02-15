@@ -18,7 +18,7 @@ en:
     need_account_html: 'Need an account? <a href="/signup">Sign up</a>'
     forgot_password: 'Forgot your password?'
   footer:
-    explanation_html: "Dealbook is an <a href='https://github.com/lucianot/dealbook/'>open source</a> project released under the MIT license. Dealbook's content is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License."
+    explanation_html: "Dealbook is an <a href='https://github.com/bossabox/dealbook/'>open source</a> project released under the MIT license. Dealbook's content is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License."
     companies: 'Companies'
     deals: 'Deals'
     people: 'People'
@@ -42,7 +42,7 @@ en:
       opensource_html: 'Open<br>Source'
       voluntary_work_html: 'Voluntary<br>Work'
       advanced_search_html: 'Advanced<br>Search'
-      description_html: '<p>The Brazil Startup Dealboook project started in 2011, when Diego Gomes (co-founder of Rock Content) created a public Google Spreadsheet where anybody could insert information about startup deals in Brazil. Since then, hundreds of investors, entrepreneurs and journalists across the globe have used the database to monitor deal flow or to quickly access historic data for the region.</p> <p>I have been a contributor for <span>Dealbook</span> since inception and recently I felt our community had outgrown the original spreadsheet format. Therefore, as a personal project, I decided to build the <span>Dealbook 2.0</span> into an online application where we could add enhanced features beyond the limits of a spreadsheet, but hopefully retaining its simplicity. </p>'
+      description_html: '<p>The Brazil Startup Dealbook project started in 2011, when Diego Gomes (co-founder of Rock Content) created a public Google Spreadsheet where anybody could insert information about startup deals in Brazil. Since then, hundreds of investors, entrepreneurs and journalists across the globe have used the database to monitor deal flow or to quickly access historic data for the region.</p> <p>I have been a contributor for <span>Dealbook</span> since inception and recently I felt our community had outgrown the original spreadsheet format. Therefore, as a personal project, I decided to build the <span>Dealbook 2.0</span> into an online application where we could add enhanced features beyond the limits of a spreadsheet, but hopefully retaining its simplicity. </p>'
       browse: 'Browse the full Database'
       deals_count: 'Deals'
       companies_count: 'Companies'

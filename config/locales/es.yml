@@ -18,7 +18,7 @@ es:
     need_account_html: 'Need an account? <a href="/signup">Sign up</a>'
     forgot_password: 'Forgot your password?'
   footer:
-    explanation_html: "Dealbook is an <a href='https://github.com/lucianot/dealbook/'>open source</a> project released under the MIT license. Dealbook's content is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License."
+    explanation_html: "Dealbook is an <a href='https://github.com/bossabox/dealbook/'>open source</a> project released under the MIT license. Dealbook's content is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License."
     companies: 'Companies'
     deals: 'Deals'
     people: 'People'
@@ -33,32 +33,32 @@ es:
   home:
     join_now: 'Únete ahora'
     section_featured:
-      title: '100% crowdsourced'
+      title: '100% colaborativo'
       subtitle_html: 'El mejor recurso para<br> negocios de tecnología<br> en Brasil'
       subtitle2: 'Una base de datos impulsada por la comunidad sobre nuevas empresas, negocios, inversores, empresarios, etc.'
       button: 'Únete ahora'
     about_us:
       about_us: 'Sobre nosotros'
       opensource_html: 'Open<br>Source'
-      voluntary_work_html: 'Voluntary<br>Work'
-      advanced_search_html: 'Advanced<br>Search'
-      description_html: '<p>The Brazil Startup Dealboook project started in 2011, when Diego Gomes (co-founder of Rock Content) created a public Google Spreadsheet where anybody could insert information about startup deals in Brazil. Since then, hundreds of investors, entrepreneurs and journalists across the globe have used the database to monitor deal flow or to quickly access historic data for the region.</p> <p>I have been a contributor for <span>Dealbook</span> since inception and recently I felt our community had outgrown the original spreadsheet format. Therefore, as a personal project, I decided to build the <span>Dealbook 2.0</span> into an online application where we could add enhanced features beyond the limits of a spreadsheet, but hopefully retaining its simplicity. </p>'
+      voluntary_work_html: 'Trabajo<br>Voluntario'
+      advanced_search_html: 'Búsqueda<br>Avanzada'
+      description_html: '<p>El proyecto Brazil Startup Dealbook comenzó en 2011, cuando Diego Gomes (co-fundador de Rock Content) creó una hoja de cálculo pública de Google en la que cualquiera podía insertar información sobre ofertas de inicio en Brasil. Desde entonces, cientos de inversionistas, empresarios y periodistas de todo el mundo han usado la base de datos para monitorear el flujo de transacciones o para acceder rápidamente a datos históricos de la región.</p> <p>He sido colaborador de <span>Dealbook</span> desde su inicio y recientemente sentí que nuestra comunidad había superado la original Formato de hoja de cálculo. Por lo tanto, como un proyecto personal, decidí integrar <span>Dealbook 2.0</span> en una aplicación en línea donde pudiéramos agregar características mejoradas más allá de los límites de una hoja de cálculo, pero con suerte conservando su simplicidad. </p>'
       browse: 'Examinar la base de datos completa'
-      deals_count: 'Deals'
-      companies_count: 'Companies'
-      investors_count: 'Investors'
-      people_count: 'People'
-      free: "It's completely free"
+      deals_count: 'Acuerdos'
+      companies_count: 'Compañías'
+      investors_count: 'Inversoras'
+      people_count: 'Personsas'
+      free: 'Es completamente gratis'
     reasons:
-      text_receive: 'Receive all the latest'
-      more_reasons: 'More reasons to Sign up'
-      latest_news: 'Receive all the latest updates on tech venture capital and M&A deals.'
-      become_part: 'Become part of a vibrant open-source community that brings more transparency and liquidity to the market.'
-      completely_free: "It's completely free."
-      join_now: 'join now'
+      text_receive: 'Recibe todas las novedades'
+      more_reasons: 'Más razones para inscribirse'
+      latest_news: 'Reciba las últimas actualizaciones sobre capital de riesgo de tecnología y acuerdos de fusiones y adquisiciones.'
+      become_part: 'Forme parte de una comunidad vibrante de código abierto que aporta más transparencia y liquidez al mercado.'
+      completely_free: 'Es completamente gratis'
+      join_now: 'Únete ahora'
     updates:
-      get_all_recent_news: 'Get all the recent Updates'
-      view_all: 'view all'
+      get_all_recent_news: 'Recibe todas las actualizaciones recientes'
+      view_all: 'ver todo'
   companies:
     index:
       companies: 'Companies'
