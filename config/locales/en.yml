@@ -213,8 +213,8 @@ en:
     form:
       back: 'back'
       new: 'Create new investor'
-      featured_title: 'Lorem ipsum dolor sit'
-      featured_subtitle: 'Lorem ipsum dolor sit'
+      featured_title: ''
+      featured_subtitle: ''
       select_investor: 'Select a new investor'
       select_investor_explain: 'Could be a person or company already registered in Dealbook'
       status: 'Status'
