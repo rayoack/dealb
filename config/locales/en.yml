@@ -7,7 +7,7 @@ en:
     investors: 'Investor'
     investors: 'Investors'
     get_involved: 'Get involved'
-    embassador_program: 'Embassador program'
+    embassador_program: 'Ambassador program'
     developer_program: 'Developer program'
     about_us: 'About us'
     join_us: 'Join us'
@@ -228,7 +228,7 @@ en:
   embassador:
     index:
       title: 'Ambassador Program:'
-      subtitle: 'Become a Dealbook Embassador'
+      subtitle: 'Become a Dealbook Ambassador'
       explanation: 'Help your local startup community. It is simple, easy and takes only a couple minutes per week create a database of startups, people and deals in your country. All we ask for is to help us curate and track deals and develop your local ecossystem. You will become a mover and shaker for your local startup community.'
       start_now: 'start now'
       current_embassadors: 'Current Embassadors'
