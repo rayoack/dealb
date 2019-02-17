@@ -241,7 +241,7 @@ es:
       subtitle: '¡Conviértete en un desarrollador de Dealbook!'
       explanation: 'Contribuya a su comunidad local de startups y mejore su cartera de desarrollo. Dealbook es un código abierto mantenido por desarrolladores apasionados de todo el mundo. Nuestros datos son gratuitos y abiertos.'
       view_on_github: 'GitHub'
-      current_developer: 'Current Developer'
+      current_developer: 'Desarrolladores actuales'
       got_questions_html: '¿Tienes preguntas? <a href="/faq">¡Consulta nuestras preguntas frecuentes!</a>'
       show_more: 'mostrar más'
   about:
