@@ -283,6 +283,8 @@ Devise.setup do |config|
     ENV.fetch('DEALBOOK_LINKEDIN_API_SECRET')
   )
 
+  OmniAuth.config.logger = Rails.logger if Rails.env.development?
+
   # ==> Warden configuration
   #
   # If you want to use other strategies, that are not supported by
