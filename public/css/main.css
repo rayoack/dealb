@@ -4426,18 +4426,20 @@ a.menu-button:hover .menu-icon::after {
   }
 }
 .popup-involved {
-  position: absolute;
   background: #fff;
-  right: 45px;
-  bottom: -140px;
-  width: 167px;
-  z-index: 9;
-  padding: 17px 20px;
-  box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 30px;
+  right: 42px;
+  z-index: 10;
+  width: 168px;
+  height: 160px;
+  padding: 25px 20px;
   opacity: 0;
-  pointer-events: none;
   transition: 0.25s all ease-in;
+  pointer-events: none;
+  box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.1);
 }
+
 .popup-involved.opened {
   bottom: -145px;
   opacity: 1;
@@ -4475,6 +4477,7 @@ a.menu-button:hover .menu-icon::after {
     transition: initial;
   }
   .popup-involved.opened {
+    top: 60vh;
     bottom: 275px;
     right: 50%;
     margin-right: -83px;
