@@ -156,6 +156,7 @@ pt-br:
   people:
     index:
       people: 'Pessoa'
+      filter_people: 'Filtrar Pessoas'
       new: 'Criar nova'
       export: 'Exportar resultados'
       column_name: 'Nome'

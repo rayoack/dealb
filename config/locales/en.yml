@@ -156,6 +156,7 @@ en:
   people:
     index:
       people: 'People'
+      filter_people: 'Filter People'
       new: 'Create new'
       export: 'Export your results'
       column_name: 'Name'

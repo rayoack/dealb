@@ -1,69 +1,69 @@
 <%= render partial: 'shared/header' %>
 
 <section class="s-title-page">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-7">
-                <h1><%= t('people.index.people') %></h1>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-5">
-                <h2><%= @people.count %> <%= t('people.index.people') %></h2>
-                <a href="/people/new"><%= t('people.index.new') %></a>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-7">
+        <h1><%= t('people.index.people') %></h1>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-5">
+        <h2><%= @people.count %> <%= t('people.index.people') %></h2>
+        <a href="/people/new"><%= t('people.index.new') %></a>
+      </div>
     </div>
+  </div>
 </section>
 
 <%= render partial: 'filters' %>
 
 <section class="s-table-results">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6">
-                <p class="results">
-		    <%= page_entries_info @people_paginated %>
-		</p>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-6">
-                <a href="/people.xls" class="btn-export">
-                    <img src="/img/export.svg" alt="">
-                    <%= t('people.index.export') %>
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-		<%= render partial: 'shared/flash_messages' %>
-
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th><%= t('people.index.column_name') %> </th>
-                                <th><%= t('people.index.column_occupation') %> </th>
-                                <th><%= t('people.index.column_local') %> </th>
-                                <th colspan="2"><%= t('people.index.column_company') %> </th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-			    <% @people_paginated.each do |person| %>
-				<tr>
-                                    <td><img src="/img/photo-people.png" alt=""> <%= person.name %></td>
-                                    <td><%= person.occupation %></td>
-                                    <td><%= person.locations.pluck(:city, :country).join(', ') %></td>
-                                    <td><img src="/img/logo-company-lg.png" alt=""><strong> <%= latest_company(person) %></strong></td>
-                                    <td><a href="/people/<%= person.permalink %>"><img src="/img/seta-dir.svg" alt=""></a></td>
-				</tr>
-			    <% end %>
-                        </tbody>
-                    </table>
-                </div>
-
-                <%= paginate @people_paginated %>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <p class="results">
+        <%= page_entries_info @people_paginated %>
+        </p>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <a href="/people.xls" class="btn-export">
+          <img src="/img/export.svg" alt="">
+          <%= t('people.index.export') %>
+        </a>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= render partial: 'shared/flash_messages' %>
+
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th><%= t('people.index.column_name') %> </th>
+                <th><%= t('people.index.column_occupation') %> </th>
+                <th><%= t('people.index.column_local') %> </th>
+                <th colspan="2"><%= t('people.index.column_company') %> </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @people_paginated.each do |person| %>
+                <tr>
+                  <td><img src="/img/photo-people.png" alt=""> <%= person.name %></td>
+                  <td><%= person.occupation %></td>
+                  <td><%= person.locations.pluck(:city, :country).join(', ') %></td>
+                  <td><img src="/img/logo-company-lg.png" alt=""><strong> <%= latest_company(person) %></strong></td>
+                  <td><a href="/people/<%= person.permalink %>"><img src="/img/seta-dir.svg" alt=""></a></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <%= paginate @people_paginated %>
+      </div>
+    </div>
+  </div>
 </section>
 
 <%= render partial: 'shared/footer' %>
