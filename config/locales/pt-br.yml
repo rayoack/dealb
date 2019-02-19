@@ -266,6 +266,16 @@ pt-br:
       message: 'Mensagem'
       send: 'Enviar mensagem'
       email_to_contact: 'contact@dealbook.co'
+  sessions:
+    title: '100% colaborativo'
+    subtitle: 'O melhor recurso para <br> negócios de tecnologia <br> no Brasil'
+    open_source: 'Código<br>Aberto'
+    voluntary: 'Trabalho<br>Voluntário'
+    advanced_search: 'Busca<br>Avançada'
+    back_button: 'voltar ao início'
+    sign_in: 'Entrar'
+    email: 'Email'
+    password: 'Senha'
   activerecord:
     errors:
       messages:

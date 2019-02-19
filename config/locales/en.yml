@@ -266,3 +266,13 @@ en:
       message: 'Message'
       send: 'Send message'
       email_to_contact: 'contact@dealbook.co'
+  sessions:
+    title: '100% crowdsourced'
+    subtitle: 'The ultimate resource for<br>tech deals in Brazil'
+    open_source: 'Open<br>Source'
+    voluntary: 'Voluntary<br>Work'
+    advanced_search: 'Advanced<br>Search'
+    back_button: 'back to home'
+    sign_in: 'Sign In'
+    email: 'Email'
+    password: 'Password'
