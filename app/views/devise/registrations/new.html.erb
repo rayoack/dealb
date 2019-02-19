@@ -24,7 +24,7 @@
   <div class="s-right">
     <a href="/" class="btn-back">back to home <img src="/img/close.svg" alt=""></a>
     <p class="text-information">
-    Already have an account? <a href="/login"><strong>Sign in</strong></a>
+      Already have an account? <a href="<%= new_user_session_path %>"><strong>Sign in</strong></a>
     </p>
     <div class="container-signup">
       <div class="top">
@@ -37,7 +37,9 @@
       <% end -%>
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <span><a href="/">or Sign in with Email</a></span>
+        <span>
+          <a href="<%= new_user_session_path %>">or Sign in with Email</a>
+        </span>
 
         <%= devise_error_messages! %>
 
