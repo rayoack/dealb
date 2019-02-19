@@ -3,33 +3,36 @@
     <img src="/img/logo.svg" class="logo" alt="">
     <img src="/img/img-featured-signup.png" class="img-featured" alt="">
     <div class="text">
-      <h2 class="subtitle">100% crowdsourced</h2>
-      <h1>The ultimate resource for<br>tech deals in Brazil</h1>
+      <h2 class="subtitle"><%= t('sessions.title').html_safe %></h2>
+      <h1><%= t('sessions.subtitle').html_safe %></h1>
       <ul>
         <li>
           <img src="/img/cadeado.svg" alt="">
-          <h2>Open<br>Source</h2>
+          <h2><%= t('sessions.open_source').html_safe %></h2>
         </li>
         <li>
           <img src="/img/maos.svg" alt="">
-          <h2>Voluntary<br>Work </h2>
+          <h2><%= t('sessions.voluntary').html_safe %></h2>
         </li>
         <li>
           <img src="/img/alvo.svg" alt="">
-          <h2>Advanced<br>Search</h2>
+          <h2><%= t('sessions.advanced_search').html_safe %></h2>
         </li>
       </ul>
     </div>
   </div>
   <div class="s-right">
-    <a href="/" class="btn-back">back to home <img src="/img/close.svg" alt=""></a>
+    <a href="/"
+       class="btn-back">
+      <%= t('sessions.back_button') %> <img src="/img/close.svg" alt="">
+    </a>
     <p class="text-information">
-      Already have an account? <a href="<%= new_user_session_path %>"><strong>Sign in</strong></a>
+      <%= t('sessions.has_account') %> <a href="<%= new_user_session_path %>"><strong><%= t('sessions.sign_in') %></strong></a>
     </p>
     <div class="container-signup">
       <div class="top">
         <span class="number">01</span>
-        <h1>Sign Up</h1>
+        <h1><%= t('sessions.sign_up') %></h1>
       </div>
 
       <%= button_to(omniauth_authorize_path(resource_name, :linkedin), class: 'btn-linkedin') do %>
@@ -38,24 +41,28 @@
 
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <span>
-          <a href="<%= new_user_session_path %>">or Sign in with Email</a>
+          <a href="<%= new_user_session_path %>"><%= t('sessions.email_signin') %></a>
         </span>
 
         <%= devise_error_messages! %>
 
         <div class="form-group">
-          <%= f.text_field :email, autofocus: true, autocomplete: "Email", placeholder: 'Email' %>
+          <%= f.text_field :email, autofocus: true,
+                                   autocomplete: 'Email',
+                                   placeholder: t('sessions.email') %>
         </div>
 
         <div class="form-group">
           <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <em>(<%= @minimum_password_length %> <%= t('sessions.password_length') %>)</em>
           <% end %><br />
-          <%= f.password_field :password, autocomplete: "off", placeholder: 'Password' %>
+          <%= f.password_field :password, autocomplete: 'off',
+                                          placeholder: t('sessions.password') %>
         </div>
 
         <div class="form-group">
-          <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Confirm Password' %>
+          <%= f.password_field :password_confirmation, autocomplete: 'off',
+                                                       placeholder: t('sessions.password_confirmation') %>
         </div>
 
         <div class="form-group">
@@ -71,7 +78,7 @@
                  border: 2px solid #32d6cc;"
                  value="Continue">
         </div>
-        <span>By creating an account, you agree to our Terms.</span>
+        <span><%= t('sessions.terms') %></span>
       <% end %>
 
       <div class="bottom">
@@ -86,7 +93,7 @@
         </div>
         <div class="current-company">
           <span class="number">02</span>
-          <h1>Add your Company</h1>
+          <h1><%= t('sessions.add_company') %></h1>
           <a href="#">do it later <img src="/img/seta-dir-blue.svg" alt=""></a>
         </div>
       </div>

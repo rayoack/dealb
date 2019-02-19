@@ -274,8 +274,15 @@ pt-br:
     advanced_search: 'Busca<br>Avançada'
     back_button: 'voltar ao início'
     sign_in: 'Entrar'
+    sign_up: 'Cadastro'
     email: 'Email'
     password: 'Senha'
+    password_confirmation: 'Confirmar Senha'
+    has_account: 'Já possui uma conta?'
+    email_signin: 'ou entre com seu Email'
+    password_length: 'caracteres no mínimo'
+    terms: 'Criando sua conta você aceita nossos termos de uso.'
+    add_company: 'Adicionar sua empresa'
   activerecord:
     errors:
       messages:
