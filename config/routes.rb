@@ -49,6 +49,14 @@ Rails.application.routes.draw do
 
   resources :markets, only: %i[index new create edit update]
 
+  namespace :api do
+    resources :companies, only: [] do
+      member do
+        get :info
+      end
+    end
+  end
+
   get :search, to: 'search#index'
   get :contact, to: 'contacts#index'
   post :contact, to: 'contacts#create'
