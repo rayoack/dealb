@@ -79,6 +79,8 @@ class CompaniesController < ApplicationController
     render(json: location_names || [params[:term]], status: :ok)
   end
 
+  def widget; end
+
   private
 
   COMPANY_PARAMS = %i[

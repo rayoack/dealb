@@ -1,0 +1,49 @@
+<%= link_to 'http://dealbook.lvh.me:3000/api/companies/1/info.json' %>
+<script>
+  (function() {
+    if (window.jQuery === undefined || window.jQuery.fn.jquery !== '3.3.1') {
+      var script_tag = document.createElement('script');
+      script_tag.setAttribute('type','text/javascript');
+      script_tag.setAttribute('src', 'https://code.jquery.com/jquery-3.3.1.min.js');
+      if (script_tag.readyState) {
+        /* For old versions of IE */
+        script_tag.onreadystatechange = function () {
+          if (this.readyState == 'complete' || this.readyState == 'loaded') {
+            scriptLoadHandler();
+          }
+        };
+      } else {
+        script_tag.onload = scriptLoadHandler;
+      }
+      (document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script_tag);
+    } else {
+        jQuery = window.jQuery;
+        main();
+    }
+
+    function scriptLoadHandler() {
+      jQuery = window.jQuery.noConflict(true);
+      main();
+    }
+
+    function main() {
+      jQuery(document).ready(function($) {
+        <%# const css_link = $("", { %>
+        <%#   rel: "stylesheet", %>
+        <%#   type: "text/css", %>
+        <%#   href: "<%= URI.join(root_url, path_to_stylesheet("widget.css")).to_s %1>" %>
+        <%# }); %>
+        <%# css_link.appendTo('head'); %>
+
+        const url = 'http://dealbook.lvh.me:3000/api/companies/1/info.json';
+        $.ajax({
+          url: url,
+          dataType: 'jsonp',
+          success: function(data) {
+            console.log('Success', data);
+          }
+        });
+      });
+    }
+  })();
+</script>

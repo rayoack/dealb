@@ -26,6 +26,10 @@ Rails.application.routes.draw do
       get :names, action: :names
       get :locations, action: :locations
     end
+
+    member do
+      get :widget
+    end
   end
 
   resources :deals, only: %i[index new create show edit update]
