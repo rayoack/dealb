@@ -15,16 +15,38 @@ $(".btn-close-search").click(function(event) {
   $(this).parents(".container-menu").find('.container-search').hide();
 });
 
+/* Opens signin popup */
 $(".btn-signup").click(function(event) {
   $(this).parents("ul").find('.popup-login').toggleClass('open-popup');
   $(this).parents("li").find('img').toggleClass('rotate-arrow');
   return false;
 });
 
+/* Disable sigin popup when clicks outside */
+$(document).click(function(event) {
+  $target = $(event.target);
+  $popup = $('.popup-login');
+
+  if(!$target.parents('.popup-login').length && $popup.is(':visible')) {
+    $popup.removeClass('open-popup');
+  }
+});
+
+/* Opens involved popup */
 $(".btn-involved").click(function(event) {
   $(this).parents("ul").find('.popup-involved').toggleClass('opened');
   $(this).parents("li").find('img').toggleClass('rotate-arrow');
   return false;
+});
+
+/* Disable involved popup when clicks outside */
+$(document).click(function(event) {
+  $target = $(event.target);
+  $popup = $('.popup-involved');
+
+  if(!$target.parents('.popup-involved').length && $popup.is(':visible')) {
+    $popup.removeClass('opened');
+  }
 });
 
 $(".btn-login-responsive").click(function(event) {
