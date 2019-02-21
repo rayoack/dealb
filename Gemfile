@@ -22,7 +22,7 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'devise', '~> 4.4'
 gem 'omniauth'
-gem 'omniauth-linkedin'
+gem 'omniauth-linkedin-oauth2'
 
 group :development, :test do
   gem 'capybara', '~> 2.13'
