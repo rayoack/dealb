@@ -283,6 +283,36 @@ es:
     password_length: 'caracteres como mínimo'
     terms: 'Creando su cuenta usted acepta nuestros términos de uso.'
     add_company: 'Añadir su empresa'
+  faq:
+    question_1: '¿Cómo puedo añadir o editar empresas/inversores/negocios?'
+    answer_1: 'Sólo tienes que crear una cuenta y empezar a añadir información! Si desea insertar una nueva empresa, por ejemplo, haga clic en el enlace Empresas de la barra de navegación y, a continuación, en el botón Nueva empresa. Si desea editar una empresa existente, vaya a la página de la empresa seleccionada y haga clic en el botón Editar.
+
+    Por favor, añada sólo información pública de fuentes de confianza. La información que no se considera confiable o relevante se quitará sin previo aviso por los moderadores. '
+    question_2: 'La información de la empresa/inversor X es incorrecta. ¿Puedes reparar eso?'
+    answer_2: 'Usted puede hacer esto solo. Inicio rápido y haga clic en el botón Editar. (Véase más arriba) '
+    question_3: '¿Puedo añadir una empresa que todavía no ha levantado fondos?'
+    answer_3: 'Sí, pero por favor inserte sólo startups de tecnología brasileña. Ningún proveedor de servicios, consultores, agencias de publicidad, etc.'
+    question_4: 'Estoy tratando de asignar un mercado o un sitio a una empresa/inversor, pero no puedo encontrarlo en la lista. ¿Cómo puedo añadir?'
+    answer_4: 'La adición de nuevos lugares y mercados está limitada actualmente a los moderadores. Si necesita agregar un local o un mercado, póngase en contacto con uno de los mods. '
+    question_5: '¿Por qué esta transacción no se comprueba?'
+    answer_5: 'De forma predeterminada, todas las transacciones no se comprueban cuando se insertan. Los moderadores leerán la fuente listada y comprobar si la información suministrada corresponde a la fuente. Sólo entonces el mod señalizará el acuerdo como verificado. Si hay un cambio en la información proporcionada en una transacción comprobada, no se comprobará de nuevo hasta que un mod vuelva a comprobar el origen.
+
+    Tenga en cuenta que sólo porque la oferta está marcada como no confirmada no significa que la información sea incorrecta. Usted siempre puede comprobar la fuente original para estar seguro. '
+    question_6: '¿Cuáles son las fuentes válidas para confirmar una determinada transacción?'
+    answer_6: 'No hay una lista oficial de fuentes de confianza, pero generalmente cualquier gran sitio web de medios o blog de tecnología estará bien. Usted también puede vincular el propio sitio corporativo de la empresa o del inversor. Por favor, asegúrese de que los enlaces utilizados son permanentes y permanecerán válidos en algún momento en el futuro. '
+    question_7: '¿Quiero ver a todas las empresas / inversores de un determinado lugar?'
+    answer_7: 'Usted puede simplemente escribir la ciudad, el estado o el nombre del país en la barra de búsqueda y obtener los resultados deseados. Tenga en cuenta que no todas las empresas tienen un lugar asignado a ellas, por lo que los resultados pueden estar incompletos.
+
+    La búsqueda avanzada ya está en la lista de deseos del recurso. (Puede comprobar la lista completa en el Trello.) '
+    question_8: 'Realmente me gustaría el recurso X. ¿Usted puede implementar?'
+    answer_8: 'Si desea que un recurso determinado se implementa, puede:
+
+    Haciendo una sugerencia en la ficha Feedback (lado derecho de la pantalla) y espere a que otros usuarios voten en él para hacerle una alta prioridad o
+    Si usted es un desarrollador, implemente el recurso por cuenta propia y envíe un pull request a través de Github. '
+    question_9: '¿Cómo puedo enviar código a una nueva característica?'
+    answer_9: 'Contribuciones del código son bienvenidas! La forma más simple de sugerir nuevas características o cambiar el código existente es enviar un pull request por Github. Para hacer esto, basta con seguir las instrucciones aquí. Todas las solicitudes serán analizadas y mergeadas, si se aceptan.'
+    question_10: '¿Cómo me vuelvo moderador?'
+    answer_10: 'Sólo los moderadores existentes pueden promover usuarios a mods. Los privilegios del moderador sólo se reservan para los miembros activos que ya han conquistado la confianza de la comunidad. Si usted piensa que es su caso, entre en contacto con uno. '
   activerecord:
     errors:
       messages:

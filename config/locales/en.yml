@@ -284,3 +284,33 @@ en:
     password_length: 'characters minimum'
     terms: 'By creating an account, you agree to our Terms.'
     add_company: 'Add your Company'
+  faq:
+    question_1: 'How can I add or edit companies/investors/deals?'
+    answer_1: 'Simply create an account and start adding information! If you want to insert a new company, for example, click on the Companies link on the navigation bar and then on the New Company button. If you want to edit an existing company, go to the selected company page and click on the Edit button.
+
+    Please only add public information from reliable sources. Information that is not considered reliable or relevant will be removed without notice by the moderators.'
+    question_2: 'The information for company/investor X is incorrect. Can you fix it?'
+    answer_2: 'You can do it yourself. Simply log in and click on the Edit button. (See above.)' 
+    question_3: 'Can I add a company that has not yet raised funds?'
+    answer_3: 'Yes, but please insert only Brazilian tech startups. No services providers, consultants, ad agencies and such.'
+    question_4: 'I am trying to assign a market or location to a company/investor, but I cannot find it on the list. How can I add it?'
+    answer_4: 'Adding new locations and markets is currently limited to moderators only. If you need to add a location or market, please contact one of the mods.'
+    question_5: 'Why is this deal not verified?'
+    answer_5: 'By default, every deal is unverified when inserted. The moderators will then read the listed source and check if the information provided matches with the source. Only then will the mod signal the deal as verified. If there is a changed in the information provided in a verified deal, it will once again become unverified until a mod re-checks the source.
+
+    Please note that just because the deal is marked as unverified does not mean that the information is incorrect. You can always check the original source to make sure.'
+    question_6: 'What are valid sources to make a given deal verified?'
+    answer_6: "There is no official list of trusted sources, but usually any major media website or tech blog will be fine. You can also link the company's or investor's own corporate website. Please make sure that the links used are permanent and will remain valid sometime in the future."
+    question_7: 'I want to see all the companies/investors from a given location?'
+    answer_7: 'You can simply type the city, state or country name on the search bar and you should get the desired results. Note that not all companies have a location assigned to them, so the results may be incomplete.
+
+    Advanced search is already in the feature wishlist. (You can check the full list on Trello.)'
+    question_8: 'I would really enjoy feature X. Can you implement this?'
+    answer_8: 'If you want a particular feature implemented, you can:
+
+      Make a suggestion on the Feedback tab (right side of the screen) and hope that other users vote on it to make it a high priority or
+      If you are a developer, implement the feature yourself and submit a pull request through Github.'
+    question_9: 'How do I submit code for a new feature?' 
+    answer_9: 'Code contributions are welcome! The simplest way to suggest new features or change existing code is to submit a pull request through Github. To do this, simply follow the instructions here. All requests will be analyzed and merged if accepted.'
+    question_10: 'How do I become a mod?'
+    answer_10: 'Only existing moderators can promote users to mods. Moderator privileges are reserved only to active members who have already earned the trust of the community. If you feel that is your case, contact one'
