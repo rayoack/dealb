@@ -22,7 +22,8 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'devise', '~> 4.4'
 gem 'omniauth'
-gem 'omniauth-linkedin-oauth2'
+gem 'omniauth-linkedin', '~> 0.0'
+# gem 'omniauth-linkedin-oauth2'
 
 gem 'octokit', '~> 4.0'
 
