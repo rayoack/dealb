@@ -24,6 +24,8 @@ gem 'devise', '~> 4.4'
 gem 'omniauth'
 gem 'omniauth-linkedin-oauth2'
 
+gem 'octokit', '~> 4.0'
+
 group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'dotenv-rails'
