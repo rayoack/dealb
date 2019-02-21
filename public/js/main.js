@@ -17,6 +17,7 @@ $(".btn-close-search").click(function(event) {
 
 /* Opens signin popup */
 $(".btn-signup").click(function(event) {
+  $(this).parents("ul").find('.popup-involved').removeClass('opened');
   $(this).parents("ul").find('.popup-login').toggleClass('open-popup');
   $(this).parents("li").find('img').toggleClass('rotate-arrow');
   return false;
@@ -34,6 +35,7 @@ $(document).click(function(event) {
 
 /* Opens involved popup */
 $(".btn-involved").click(function(event) {
+  $(this).parents("ul").find('.popup-login').removeClass('open-popup');
   $(this).parents("ul").find('.popup-involved').toggleClass('opened');
   $(this).parents("li").find('img').toggleClass('rotate-arrow');
   return false;
