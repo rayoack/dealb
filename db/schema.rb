@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180222160416) do
+ActiveRecord::Schema.define(version: 20190222003641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,10 +69,12 @@ ActiveRecord::Schema.define(version: 20180222160416) do
     t.string "domain_country_context", default: "br", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["category"], name: "index_deals_on_category"
     t.index ["company_id"], name: "index_deals_on_company_id"
     t.index ["round"], name: "index_deals_on_round"
     t.index ["status"], name: "index_deals_on_status"
+    t.index ["user_id"], name: "index_deals_on_user_id"
   end
 
   create_table "investors", force: :cascade do |t|
@@ -174,4 +176,5 @@ ActiveRecord::Schema.define(version: 20180222160416) do
     t.index ["uid"], name: "index_users_on_uid"
   end
 
+  add_foreign_key "deals", "users"
 end

@@ -81,6 +81,7 @@ class DealsController < ApplicationController
     @deal_params ||=
       begin
         allowed_deal.merge(
+          user_id: current_user.id,
           deal_investors_attributes: [
             { investor_id: alloweds[:deal_investors_attributes][:investor_id] }
           ]

@@ -64,6 +64,7 @@ class Deal < ApplicationRecord
 
   # Relations
   belongs_to :company
+  belongs_to :user
   has_many :deal_investors, dependent: :destroy
   has_many :investors, through: :deal_investors
 
