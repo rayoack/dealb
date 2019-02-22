@@ -1,14 +1,28 @@
 # Github integration client
 class Github
-  def respository(user: 'Bossabox')
-    client.respository(user: user, repo: 'dealbook')
-  end
+  class << self
+    def all_contributors(except: [])
+      contributors = dealbook_contributors&.reject! do |user|
+        user[:login].in?(except)
+      end
 
-  private
+      return [] if contributors.blank?
 
-  ACCESS_TOKEN = ENV['DEALBOOK_GITHUB_ACCESS_TOKEN'].freeze
+      contributors.map do |user|
+        client.user(user[:login])
+      end
+    end
 
-  def client
-    @client ||= Octokit::Client.new(access_token: ACCESS_TOKEN)
+    private
+
+    ACCESS_TOKEN = ENV['DEALBOOK_GITHUB_ACCESS_TOKEN'].freeze
+
+    def client
+      @client ||= Octokit::Client.new(access_token: ACCESS_TOKEN)
+    end
+
+    def dealbook_contributors
+      client.contributors('bossabox/dealbook')
+    end
   end
 end
