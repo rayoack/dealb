@@ -71,6 +71,15 @@ class Deal < ApplicationRecord
   # Nested
   accepts_nested_attributes_for :deal_investors
 
+  # Scopes
+  scope :top_contributors, lambda { |amount|
+    joins(:user).select('users.*',
+                        'COUNT(*) as number_of_deals')
+                .group('users.id')
+                .order('number_of_deals')
+                .limit(amount)
+  }
+
   def amount
     return unless amount_cents
 
