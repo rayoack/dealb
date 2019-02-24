@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190222003641) do
+ActiveRecord::Schema.define(version: 20190224030311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -168,7 +168,14 @@ ActiveRecord::Schema.define(version: 20190222003641) do
     t.string "status", default: "active", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.bigint "person_id"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["person_id"], name: "index_users_on_person_id"
     t.index ["provider"], name: "index_users_on_provider"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role"], name: "index_users_on_role"
@@ -177,4 +184,5 @@ ActiveRecord::Schema.define(version: 20190222003641) do
   end
 
   add_foreign_key "deals", "users"
+  add_foreign_key "users", "people"
 end

@@ -24,6 +24,7 @@ class Person < ApplicationRecord
     as: :localizable, dependent: :destroy, inverse_of: :localizables
   )
   has_many :locations, through: :localizables
+  has_many :users, dependent: :nullify
   has_one :investor, as: :investable, dependent: :destroy
 
   # Nested
