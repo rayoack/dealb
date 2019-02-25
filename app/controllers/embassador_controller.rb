@@ -2,6 +2,6 @@
 
 class EmbassadorController < ApplicationController
   def index
-    @embassadors = Deal.top_contributors(3)
+    @embassadors = Deal.top_contributors(3).map(&:user)
   end
 end

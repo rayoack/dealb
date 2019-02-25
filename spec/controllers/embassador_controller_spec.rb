@@ -9,13 +9,10 @@ describe EmbassadorController do
 
     before do
       # Three deals for top #1
-      create :deal, user: user
-      create :deal, user: user
-      create :deal, user: user
+      create_list :deal, 3, user: user
 
       # Two deals for top #2
-      create :deal, user: other_user
-      create :deal, user: other_user
+      create_list :deal, 2, user: other_user
 
       # Withour deals
       create :user

@@ -166,7 +166,7 @@ describe Deal do
       end
 
       it 'success' do
-        expect(Deal.top_contributors(3).map(&:id))
+        expect(Deal.top_contributors(3).map(&:user_id))
           .to eq([user_1.id, user_2.id, user_3.id])
       end
     end
