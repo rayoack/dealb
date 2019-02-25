@@ -20,14 +20,16 @@
       </div>
     </div>
     <div class="row line-people">
-      <% 4.times do %>
+      <% @embassadors.each do |user| %>
+        <% next if user.person.blank? %>
+
         <div class="col-xs-12 col-sm-6 col-md-3">
           <div class="box-people">
             <div class="photo">
               <img src="/img/photo-people-02.png" alt="">
             </div>
-            <h1><%= t('embassador.index.embassador') %></h1>
-            <span><%= t('embassador.index.embassador_occupation') %></span>
+            <h1><%= user.person.name %></h1>
+            <span><%= user.person.occupationt %></span>
             <span><%= t('embassador.index.embassador_location') %></span>
             <div class="country">
               <img src="/img/idioma-eua.svg" alt="">

@@ -76,7 +76,7 @@ class Deal < ApplicationRecord
     joins(:user).select('users.*',
                         'COUNT(*) as number_of_deals')
                 .group('users.id')
-                .order('number_of_deals')
+                .order('number_of_deals desc')
                 .limit(amount)
   }
 

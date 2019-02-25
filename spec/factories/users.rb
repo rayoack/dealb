@@ -6,6 +6,6 @@ FactoryBot.define do
     password { 'test1020' }
     password_confirmation { 'test1020' }
 
-    person
+    person nil
   end
 end
