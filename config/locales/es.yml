@@ -279,6 +279,7 @@ es:
     password: 'Contraseña'
     password_confirmation: 'Confirmar Seña'
     has_account: '¿Ya tienes una cuenta?'
+    doesnt_have_account: '¿No tienes una cuenta?'
     email_signin: 'o'
     password_length: 'caracteres como mínimo'
     terms: 'Creando su cuenta usted acepta nuestros términos de uso.'

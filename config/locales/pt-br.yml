@@ -280,6 +280,7 @@ pt-br:
     password: 'Senha'
     password_confirmation: 'Confirmar Senha'
     has_account: 'Já possui uma conta?'
+    doesnt_have_account: 'Não possui uma conta?'
     email_signin: 'ou'
     password_length: 'caracteres no mínimo'
     terms: 'Criando sua conta você aceita nossos termos de uso.'

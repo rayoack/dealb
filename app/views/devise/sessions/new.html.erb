@@ -28,6 +28,10 @@
       <%= t('sessions.back_button') %> <img src="/img/close.svg" alt="">
     </a>
 
+    <p class="text-information">
+      <%= t('sessions.doesnt_have_account') %> <a href="<%= new_registration_path(resource) %>"><strong><%= t('sessions.sign_up') %></strong></a>
+    </p>
+
     <div class="container-signup">
       <div class="top">
         <span class="number">01</span>
