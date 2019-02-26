@@ -285,6 +285,9 @@ pt-br:
     password_length: 'caracteres no mínimo'
     terms: 'Criando sua conta você aceita nossos termos de uso.'
     add_company: 'Adicionar sua empresa'
+    new_password: 'Nova senha'
+    new_password_confirm: 'Confirmar nova senha'
+    set_password: 'Confirmar'
   faq:
     question_1: 'Como posso adicionar ou editar empresas/investidores/negócios?'
     answer_1: 'Basta criar uma conta e começar a adicionar informações! Se você quiser inserir uma nova empresa, por exemplo, clique no link Empresas na barra de navegação e, em seguida, no botão Nova Empresa. Se você quiser editar uma empresa existente, vá para a página da empresa selecionada e clique no botão Editar.

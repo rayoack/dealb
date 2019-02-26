@@ -1,25 +1,79 @@
-<h2>Change your password</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
-
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+<section class="s-signup">
+  <div class="s-left">
+    <img src="/img/logo.svg" class="logo" alt="">
+    <img src="/img/img-featured-signup.png" class="img-featured" alt="">
+    <div class="text">
+    <h2 class="subtitle"><%= t('sessions.title').html_safe %></h2>
+      <h1><%= t('sessions.subtitle').html_safe %></h1>
+      <ul>
+        <li>
+          <img src="/img/cadeado.svg" alt="">
+          <h2><%= t('sessions.open_source').html_safe %></h2>
+        </li>
+        <li>
+          <img src="/img/maos.svg" alt="">
+          <h2><%= t('sessions.voluntary').html_safe %></h2>
+        </li>
+        <li>
+          <img src="/img/alvo.svg" alt="">
+          <h2><%= t('sessions.advanced_search').html_safe %></h2>
+        </li>
+      </ul>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+  <div class="s-right">
+    <a href="/"
+       class="btn-back">
+      <%= t('sessions.back_button') %> <img src="/img/close.svg" alt="">
+    </a>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
+    <p class="text-information">
+      <%= t('sessions.doesnt_have_account') %> <a href="<%= new_registration_path(resource) %>"><strong><%= t('sessions.sign_up') %></strong></a>
+    </p>
 
-<%= render "devise/shared/links" %>
+    <div class="container-signup">
+      <div class="top">
+        <span class="number">01</span>
+        <h1><%= t('sessions.new_password') %></h1>
+      </div>
+
+      <%= form_for(resource, as: resource_name, 
+                             url: password_path(resource_name), 
+                             html: { method: :put }) do |f| %>
+
+        <%= devise_error_messages! %>
+        <%= render partial: 'shared/flash_messages' %>
+
+        <%= f.hidden_field :reset_password_token %>
+
+        <div class="form-group">
+          <%= f.label :password, t('sessions.new_password') %><br />
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+          <% end %>
+          <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password_confirmation, t('sessions.new_password_confirm') %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div>
+
+        <div class="form-group">
+          <input type="submit"
+                 style="width: 100%;
+                 background: #32d6cc;
+                 color: #fff;
+                 border: none;
+                 border-radius: 4px;
+                 line-height: 48px;
+                 font-size: 16px;
+                 outline: none;
+                 border: 2px solid #32d6cc;"
+                 value="<%= t('sessions.set_password') %>">
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
