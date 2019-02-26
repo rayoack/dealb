@@ -285,23 +285,25 @@ pt-br:
     password_length: 'caracteres no mínimo'
     terms: 'Criando sua conta você aceita nossos termos de uso.'
     add_company: 'Adicionar sua empresa'
+    forgot_password: 'Esqueci a senha'
+    recover_password: 'Recuperar senha'
     new_password: 'Nova senha'
     new_password_confirm: 'Confirmar nova senha'
     set_password: 'Confirmar'
   faq:
     question_1: 'Como posso adicionar ou editar empresas/investidores/negócios?'
     answer_1: 'Basta criar uma conta e começar a adicionar informações! Se você quiser inserir uma nova empresa, por exemplo, clique no link Empresas na barra de navegação e, em seguida, no botão Nova Empresa. Se você quiser editar uma empresa existente, vá para a página da empresa selecionada e clique no botão Editar.
-    
+
          Por favor, adicione apenas informações públicas de fontes confiáveis. Informações que não são consideradas confiáveis ou relevantes serão removidas sem aviso prévio pelos moderadores.'
     question_2: 'As informações da empresa/investidor X estão incorretas. Voces pode consertar isso?'
-    answer_2: 'Você pode fazer isso sozinho. Login simples e clique no botão Editar. (Veja acima)' 
+    answer_2: 'Você pode fazer isso sozinho. Login simples e clique no botão Editar. (Veja acima)'
     question_3: 'Posso adicionar uma empresa que ainda não levantou fundos?'
     answer_3: 'Sim, mas por favor insira apenas startups de tecnologia brasileiras. Nenhum prestador de serviços, consultores, agências de publicidade, etc.'
     question_4: 'Estou tentando atribuir um mercado ou local a uma empresa/investidor, mas não consigo encontrá-lo na lista. Como posso adicionar?'
     answer_4: 'A adição de novos locais e mercados está atualmente limitada apenas aos moderadores. Se você precisar adicionar um local ou mercado, entre em contato com um dos mods.'
     question_5: 'Por que esta transação não é verificada?'
     answer_5: 'Por padrão, todas as transações não são verificadas quando inseridas. Os moderadores lerão a fonte listada e verificarão se as informações fornecidas correspondem à fonte. Só então o mod sinalizará o acordo como verificado. Se houver uma alteração nas informações fornecidas em uma transação verificada, ela será novamente não verificada até que um mod verifique novamente a origem.
-    
+
          Tenha em atenção que só porque a oferta está marcada como não confirmada não significa que a informação esteja incorreta. Você sempre pode verificar a fonte original para ter certeza.'
     question_6: 'Quais são as fontes válidas para confirmar uma determinada transação?'
     answer_6: 'Não há uma lista oficial de fontes confiáveis, mas geralmente qualquer grande site de mídia ou blog de tecnologia estará bem. Você também pode vincular o próprio site corporativo da empresa ou do investidor. Por favor, certifique-se de que os links utilizados são permanentes e permanecerão válidos em algum momento no futuro.'
@@ -314,7 +316,7 @@ pt-br:
 
     Fazendo uma sugestão na guia Feedback (lado direito da tela) e espere que outros usuários votem nele para torná-lo uma alta prioridade ou
     Se você é um desenvolvedor, implemente o recurso por conta própria e envie um pull request através do Github.'
-    question_9: 'Como faço para enviar código para um novo recurso?' 
+    question_9: 'Como faço para enviar código para um novo recurso?'
     answer_9: 'Contribuições do código são bem vindas! A maneira mais simples de sugerir novos recursos ou alterar o código existente é enviar um pull request pelo Github. Para fazer isso, basta seguir as instruções aqui. Todas as solicitações serão analisadas e mergeadas, se aceitas.'
     question_10: 'Como eu me torno moderador?'
     answer_10: 'Somente moderadores existentes podem promover usuários a mods. Os privilégios do moderador são reservados apenas para membros ativos que já conquistaram a confiança da comunidade. Se você acha que é o seu caso, entre em contato com um.'

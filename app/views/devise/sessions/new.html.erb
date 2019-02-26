@@ -1,26 +1,5 @@
 <section class="s-signup">
-  <div class="s-left">
-    <img src="/img/logo.svg" class="logo" alt="">
-    <img src="/img/img-featured-signup.png" class="img-featured" alt="">
-    <div class="text">
-    <h2 class="subtitle"><%= t('sessions.title').html_safe %></h2>
-      <h1><%= t('sessions.subtitle').html_safe %></h1>
-      <ul>
-        <li>
-          <img src="/img/cadeado.svg" alt="">
-          <h2><%= t('sessions.open_source').html_safe %></h2>
-        </li>
-        <li>
-          <img src="/img/maos.svg" alt="">
-          <h2><%= t('sessions.voluntary').html_safe %></h2>
-        </li>
-        <li>
-          <img src="/img/alvo.svg" alt="">
-          <h2><%= t('sessions.advanced_search').html_safe %></h2>
-        </li>
-      </ul>
-    </div>
-  </div>
+  <%= render partial: 'devise/shared/summary' %>
 
   <div class="s-right">
     <a href="/"
@@ -74,8 +53,12 @@
                  outline: none;
                  border: 2px solid #32d6cc;"
                  value="Login">
+
+          <%= link_to t('sessions.forgot_password'),
+                      new_password_path(resource) %>
         </div>
       <% end %>
+
     </div>
 
     <div class="container-add-your-company">

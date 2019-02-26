@@ -284,6 +284,8 @@ es:
     password_length: 'caracteres como mínimo'
     terms: 'Creando su cuenta usted acepta nuestros términos de uso.'
     add_company: 'Añadir su empresa'
+    forgot_password: 'Olvidé la contraseña'
+    recover_password: 'Recuperar contraseña'
     new_password: 'Nueva contraseña'
     new_password_confirm: 'Confirmar nueva contraseña'
     set_password: 'Confirmar'
