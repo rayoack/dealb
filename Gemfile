@@ -50,4 +50,9 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 
+group :test do
+  gem 'vcr'
+  gem 'webmock'
+end
+
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
