@@ -27,6 +27,7 @@ class PeopleController < ApplicationController
     @person = Person.new(person_params)
 
     if @person.save
+      current_user.update(person: @person) if current_user.person.blank?
       create_investor(@person) if investor?
 
       redirect_to people_path, notice: 'Successfully saved'

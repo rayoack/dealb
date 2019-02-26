@@ -92,6 +92,17 @@ describe PeopleController do
       expect { create_person }.to change {
         [Person.all.count, Location.all.count, PersonCompany.all.count]
       }.from([0, 0, 0]).to([1, 1, 1])
+      expect(User.last.person).to eq(Person.last)
+    end
+
+    it 'user already has a person' do
+      first_person = create(:person)
+
+      sign_in create(:user, person: first_person)
+
+      create_person
+
+      expect(User.last.person).to eq(first_person)
     end
   end
 end
