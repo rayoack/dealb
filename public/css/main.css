@@ -4980,6 +4980,8 @@ a.menu-button:hover .menu-icon::after {
   border: 1px solid #ebebeb;
   padding: 10px 10px;
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
 }
 .history-dealbook .text .item .sponsors .all-sponsors .box-sponsors .logo img {
   width: 100%;
