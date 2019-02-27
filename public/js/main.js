@@ -5,7 +5,13 @@ $(".btn-prev-signup").click(function(event) {
   $(".container-add-your-company").hide();
 });
 
+/* Expand the search bar */
 $(".btn-search").click(function(event) {
+  $(this).parents(".container-menu").find('nav').hide();
+  $(this).parents(".container-menu").find('.container-search').show();
+});
+
+$(".bar-search").click(function(event) {
   $(this).parents(".container-menu").find('nav').hide();
   $(this).parents(".container-menu").find('.container-search').show();
 });
