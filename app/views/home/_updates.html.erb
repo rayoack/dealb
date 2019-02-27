@@ -1,34 +1,36 @@
 <section class="s-updates">
-    <div class="container-updates">
-	<h1><%= t('home.updates.get_all_recent_news') %></h1>
-	<a href="/deals" class="view-all"><%= t('home.updates.view_all') %> <span class="linha"></span></a>
-	<div class="swiper-updates">
-            <!-- Additional required wrapper -->
-            <div class="swiper-wrapper">
-		<!-- Slides -->
-		<% latest_updates.each do |deal| %>
-		    <div class="swiper-slide">
-			<a href="/deals/<%= deal[:id] %>">
-			    <div class="box-update">
-				<p><%= deal[:description] %></p>
-				<span class="date"><%= I18n.l(deal[:date], format: :default) %></span>
-			    </div>
-			</a>
-		    </div>
-		<% end %>
-            </div>
-	</div>
+  <div class="container-updates">
+    <h1><%= t('home.updates.get_all_recent_news') %></h1>
+
+    <a href="/deals" class="view-all"><%= t('home.updates.view_all') %> <span class="linha"></span></a>
+
+    <div class="swiper-updates">
+      <!-- Additional required wrapper -->
+      <div class="swiper-wrapper">
+        <!-- Slides -->
+        <% latest_updates.each do |deal| %>
+          <div class="swiper-slide">
+            <a href="/deals/<%= deal[:id] %>">
+              <div class="box-update">
+                <p><%= deal[:description] %></p>
+                <span class="date"><%= I18n.l(deal[:date], format: :default) %></span>
+              </div>
+            </a>
+          </div>
+        <% end %>
+      </div>
     </div>
-    <div class="arrows-controls">
-	<div class="arrow-left">
-            <img src="/img/seta-esq.svg" alt="">
-	</div>
-	<div class="count">
-            <span class="current">1</span> /
-            <span class="total">6</span>
-	</div>
-	<div class="arrow-right">
-            <img src="/img/seta-dir.svg" class="seta-esq" alt="">
-	</div>
+  </div>
+  <div class="arrows-controls">
+    <div class="arrow-left">
+      <img src="/img/seta-esq.svg">
     </div>
+    <div class="count">
+      <span class="current">1</span> /
+      <span class="total">6</span>
+    </div>
+    <div class="arrow-right">
+      <img src="/img/seta-dir.svg" class="seta-esq" alt="">
+    </div>
+  </div>
 </section>

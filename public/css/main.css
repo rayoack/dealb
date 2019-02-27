@@ -1176,6 +1176,7 @@ header .header-mobile {
   box-shadow: 0px 20px 50px 0px #e6e7ea;
   padding: 39px 0px 52px 26px;
   margin-top: 0px;
+  min-height: 212px;
 }
 .s-updates .container-updates .swiper-updates .swiper-wrapper .swiper-slide a .box-update:hover {
   margin-top: -5px;
