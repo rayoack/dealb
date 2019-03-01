@@ -36,9 +36,24 @@ class Person < ApplicationRecord
     unless permalink
       self.permalink = name.parameterize if name.presence
     end
+
+    # return unless clearbit_syncronized_at.blank? && Rails.env.production?
+
+    update_from_clearbit(Clearbit::Enrichment::Person.find(email: email,
+                                                           stream: true))
   end
 
   def name
     [first_name, last_name].join(' ').strip
+  end
+
+  private
+
+  def update_from_clearbit(data)
+    return if data.blank?
+
+    self.image_url = data[:avatar]
+
+    self.clearbit_syncronized_at = Time.zone.now
   end
 end
