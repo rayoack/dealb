@@ -31,23 +31,24 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 	<script>
-	 var swiperUpdates = new Swiper('.swiper-updates', {
+	 var swiperUpdates = new Swiper('.swiper-container', {
              pagination: '.swiper-pagination',
              nextButton: '.arrows-controls .arrow-right',
              prevButton: '.arrows-controls .arrow-left',
+             centeredSlides: true,
              slidesPerView: 3,
              spaceBetween: 30,
              breakpoints: {
-		 991: {
-                     slidesPerView: 2,
-                     spaceBetween: 20
-		 },
-		 769: {
-                     slidesPerView: 1,
-                     spaceBetween: 15
-		 }
+               991: {
+                 slidesPerView: 2,
+                 spaceBetween: 20
+               },
+               769: {
+                 slidesPerView: 1,
+                 spaceBetween: 15
+               }
              }
-	 })
+	 });
 	</script>
     </body>
 

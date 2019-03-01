@@ -5,19 +5,22 @@
     <a href="/deals" class="view-all"><%= t('home.updates.view_all') %> <span class="linha"></span></a>
 
     <div class="swiper-updates">
-      <!-- Additional required wrapper -->
-      <div class="swiper-wrapper">
-        <!-- Slides -->
-        <% latest_updates.each do |deal| %>
-          <div class="swiper-slide">
-            <a href="/deals/<%= deal[:id] %>">
-              <div class="box-update">
-                <p><%= deal[:description] %></p>
-                <span class="date"><%= I18n.l(deal[:date], format: :default) %></span>
-              </div>
-            </a>
-          </div>
-        <% end %>
+      <div class="swiper-container">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+
+          <!-- Slides -->
+          <% latest_updates.each do |deal| %>
+            <div class="swiper-slide">
+              <a href="/deals/<%= deal[:id] %>">
+                <div class="box-update">
+                  <p><%= deal[:description] %></p>
+                  <span class="date"><%= I18n.l(deal[:date], format: :default) %></span>
+                </div>
+              </a>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

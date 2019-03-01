@@ -1170,6 +1170,11 @@ header .header-mobile {
   margin-left: 25px;
   margin-top: 10px;
 }
+@media (min-width: 890px) {
+  .swiper-updates {
+    padding-right: 130px;
+  }
+}
 .s-updates .container-updates .swiper-updates .swiper-wrapper .swiper-slide {
   max-width: 360px;
 }
