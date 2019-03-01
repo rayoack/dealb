@@ -45,5 +45,9 @@ class Company < ApplicationRecord
     unless permalink
       self.permalink = name.parameterize if name.present?
     end
+
+    return unless logo_url.blank? && Rails.env.production?
+
+    self.logo_url = Clearbit::NameDomain.find(name: name)[:logo]
   end
 end

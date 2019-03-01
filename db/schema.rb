@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190226001427) do
+ActiveRecord::Schema.define(version: 20190301013715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20190226001427) do
     t.string "domain_country_context", default: "br", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "logo_url"
     t.index ["name"], name: "index_companies_on_name"
     t.index ["permalink"], name: "index_companies_on_permalink"
     t.index ["status"], name: "index_companies_on_status"

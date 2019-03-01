@@ -10,6 +10,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'activevalidators', '~> 4.1'
+gem 'clearbit', '~> 0.2'
 gem 'jbuilder', '~> 2.5'
 gem 'http_accept_language', '~> 2.1.1'
 gem 'kaminari'
