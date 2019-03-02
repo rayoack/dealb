@@ -57,7 +57,8 @@ class Person < ApplicationRecord
                                                       stream: true)
 
     {
-      image_url: information[:avatar],
+      avatar: information[:avatar],
+      bio: information[:bio],
       facebook_url: URLS[:facebook] + data[:facebook][:handle],
       twitter_url: URLS[:twitter] + data[:twitter][:handle],
       linkedin_url: URLS[:linkedin] + data[:linkedin][:handle],

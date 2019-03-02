@@ -12,7 +12,7 @@ module Users
                              occupation: info[:headline],
                              bio: info[:description],
                              linkedin_url: info[:urls][:public_profile],
-                             image_url: info[:image])
+                             avatar: info[:image])
 
       @user = User.from_omniauth(request.env['omniauth.auth'])
       @user.update(person: person)
