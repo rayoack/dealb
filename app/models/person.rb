@@ -2,6 +2,11 @@
 
 class Person < ApplicationRecord
   GENDERS = [MALE = 'male', FEMALE = 'female'].freeze
+  URLS = {
+    facebook: 'https://facebook.com/',
+    linkedin: 'https://linkedin.com/',
+    twitter: 'https://twitter.com/'
+  }.freeze
 
   # Validations
   validates :first_name, :permalink, presence: true
@@ -31,29 +36,32 @@ class Person < ApplicationRecord
   accepts_nested_attributes_for :person_companies
   accepts_nested_attributes_for :locations
 
+  alias_attribute :description, :bio
+
   # Hooks
   before_validation do
     unless permalink
       self.permalink = name.parameterize if name.presence
     end
-
-    # return unless clearbit_syncronized_at.blank? && Rails.env.production?
-
-    update_from_clearbit(Clearbit::Enrichment::Person.find(email: email,
-                                                           stream: true))
   end
 
   def name
     [first_name, last_name].join(' ').strip
   end
 
-  private
+  def self.attributes_from_clearbit(email: nil, data: nil)
+    return if email.blank? && data.blank?
 
-  def update_from_clearbit(data)
-    return if data.blank?
+    information = data
+    information ||= Clearbit::Enrichment::Person.find(email: email,
+                                                      stream: true)
 
-    self.image_url = data[:avatar]
-
-    self.clearbit_syncronized_at = Time.zone.now
+    {
+      image_url: information[:avatar],
+      facebook_url: URLS[:facebook] + data[:facebook][:handle],
+      twitter_url: URLS[:twitter] + data[:twitter][:handle],
+      linkedin_url: URLS[:linkedin] + data[:linkedin][:handle],
+      clearbit_syncronized_at: Time.zone.now
+    }
   end
 end

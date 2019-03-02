@@ -60,11 +60,11 @@ describe PersonSearcher do
   end
 
   it 'filters by description' do
-    matching_person = create(:person, description: 'first')
-    _non_matching_person = create(:person, description: 'second')
+    matching_person = create(:person, bio: 'first')
+    _non_matching_person = create(:person, bio: 'second')
     filter_params = {
       '0' => {
-        'type' => 'description',
+        'type' => 'bio',
         'operator' => 'contains',
         'value' => matching_person.description
       }
