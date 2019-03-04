@@ -78,7 +78,7 @@ class CompaniesController < ApplicationController
   private
 
   COMPANY_PARAMS = %i[
-    name employees_count born_date description email homepage_url
+    name employees_count born_date description contact_email homepage_url
     facebook_url linkedin_url twitter_url google_plus_url phone_number
   ].freeze
   private_constant :COMPANY_PARAMS

@@ -18,7 +18,7 @@ class Company < ApplicationRecord
     :employees_count, numericality: { only_integer: true }, allow_nil: true
   )
 
-  validates :email, email: true, allow_nil: true
+  validates :contact_email, email: true, allow_nil: true
   validates :homepage_url, url: true, allow_nil: true
   validates :linkedin_url, url: true, allow_nil: true
   validates :facebook_url, url: true, allow_nil: true

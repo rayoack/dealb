@@ -37,7 +37,7 @@
   <%= f.text_field :homepage_url, placeholder: t('companies.form.website_url'), class: 'input-date' %>
 </div>
 <div class="form-group">
-  <%= f.text_field :email, placeholder: t('companies.form.email'), class: 'input-email' %>
+  <%= f.text_field :contact_email, placeholder: t('companies.form.email'), class: 'input-email' %>
   <%= f.fields_for :company_markets_attributes do |market_form| %>
     <%= market_form.select(:market_id,
                            @markets.collect { |c| [c.name, c.id] },

@@ -47,21 +47,21 @@ describe Company do
       end
     end
 
-    describe 'email' do
-      it 'is a valid email, then returns valid' do
-        company.email = 'myemail@gmail.com'
+    describe 'contact_email' do
+      it 'is a valid contact_email, then returns valid' do
+        company.contact_email = 'myemail@gmail.com'
 
         is_expected.to be_valid
       end
 
-      it 'is not a valid email, then returns invalid' do
-        company.email = 'i-am-not-an-email'
+      it 'is not a valid contact_email, then returns invalid' do
+        company.contact_email = 'i-am-not-an-email'
 
         is_expected.to_not be_valid
       end
 
       it 'could be nil' do
-        company.email = nil
+        company.contact_email = nil
 
         is_expected.to be_valid
       end

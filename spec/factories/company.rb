@@ -11,7 +11,7 @@ FactoryBot.define do
     employees_count 100
     born_date { Faker::Date.backward }
     phone_number { Faker::PhoneNumber.cell_phone }
-    email { Faker::Internet.email }
+    contact_email { Faker::Internet.email }
     homepage_url { Faker::Internet.url }
     linkedin_url { Faker::Internet.url('linkedin.com') }
     facebook_url { Faker::Internet.url('facebook.com') }
