@@ -42,6 +42,7 @@ class Company < ApplicationRecord
   accepts_nested_attributes_for :company_markets
 
   alias_attribute :website_url, :homepage_url
+  alias_attribute :born_date, :founded_on
 
   before_validation do
     unless permalink

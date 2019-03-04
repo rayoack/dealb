@@ -9,7 +9,7 @@ FactoryBot.define do
 
     # Optionals
     employees_count 100
-    born_date { Faker::Date.backward }
+    founded_on { Faker::Date.backward }
     phone_number { Faker::PhoneNumber.cell_phone }
     contact_email { Faker::Internet.email }
     homepage_url { Faker::Internet.url }

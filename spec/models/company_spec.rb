@@ -33,15 +33,15 @@ describe Company do
       is_expected.to validate_numericality_of(:employees_count).only_integer
     end
 
-    describe 'born_date' do
-      it 'is a valid born_date, then returns valid' do
-        company.born_date = Time.zone.today
+    describe 'founded_on' do
+      it 'is a valid founded_on, then returns valid' do
+        company.founded_on = Time.zone.today
 
         is_expected.to be_valid
       end
 
       it 'could be nil' do
-        company.born_date = nil
+        company.founded_on = nil
 
         is_expected.to be_valid
       end
