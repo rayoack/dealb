@@ -49,7 +49,7 @@
               <% @companies_paginated.each do |company| %>
                 <tr>
                   <td>
-                    <img src="<%= company.logo_url || '/img/logo-company.png' %>">
+                    <img src="<%= company.profile_image_url || '/img/logo-company.png' %>">
                     <%= company.name %>
                   </td>
                   <td class="status-active"><span class="circulo"></span> <%= company.status %></td>

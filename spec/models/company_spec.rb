@@ -67,21 +67,21 @@ describe Company do
       end
     end
 
-    describe 'website_url' do
-      it 'is a valid website_url, then returns valid' do
-        company.website_url = 'https://dealbook.com'
+    describe 'homepage_url' do
+      it 'is a valid homepage_url, then returns valid' do
+        company.homepage_url = 'https://dealbook.com'
 
         is_expected.to be_valid
       end
 
-      it 'is not a valid website_url, then returns invalid' do
-        company.website_url = 'dealbook.xls'
+      it 'is not a valid homepage_url, then returns invalid' do
+        company.homepage_url = 'dealbook.xls'
 
         is_expected.to_not be_valid
       end
 
       it 'could be nil' do
-        company.website_url = nil
+        company.homepage_url = nil
 
         is_expected.to be_valid
       end

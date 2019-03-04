@@ -19,7 +19,7 @@ class ImportOldDatabaseService
           # facebook_url - is not present in the old version
           # twitter_url - is not present in the old version
           # google_plus_url - is not present in the old version
-          website_url: normalize(company.website),
+          homepage_url: normalize(company.website),
           linkedin_url: normalize(company.linkedin),
           status: company.status.presence || ::Company::ACTIVE
         )

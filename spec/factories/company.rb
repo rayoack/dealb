@@ -12,11 +12,11 @@ FactoryBot.define do
     born_date { Faker::Date.backward }
     phone_number { Faker::PhoneNumber.cell_phone }
     email { Faker::Internet.email }
-    website_url { Faker::Internet.url }
+    homepage_url { Faker::Internet.url }
     linkedin_url { Faker::Internet.url('linkedin.com') }
     facebook_url { Faker::Internet.url('facebook.com') }
     google_plus_url { Faker::Internet.url('googleplus.com') }
     twitter_url 'https://twitter.com/whatever'
-    logo_url 'https://logo.clearbit.com/google.com'
+    profile_image_url 'https://logo.clearbit.com/google.com'
   end
 end

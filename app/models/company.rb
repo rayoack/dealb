@@ -19,7 +19,7 @@ class Company < ApplicationRecord
   )
 
   validates :email, email: true, allow_nil: true
-  validates :website_url, url: true, allow_nil: true
+  validates :homepage_url, url: true, allow_nil: true
   validates :linkedin_url, url: true, allow_nil: true
   validates :facebook_url, url: true, allow_nil: true
   validates :twitter_url, twitter: { format: :url }, allow_nil: true
@@ -40,6 +40,8 @@ class Company < ApplicationRecord
   # Nested
   accepts_nested_attributes_for :locations
   accepts_nested_attributes_for :company_markets
+
+  alias_attribute :website_url, :homepage_url
 
   before_validation do
     unless permalink
