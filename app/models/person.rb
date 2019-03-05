@@ -1,12 +1,9 @@
 # frozen_string_literal: true
 
 class Person < ApplicationRecord
+  include Social
+
   GENDERS = [MALE = 'male', FEMALE = 'female'].freeze
-  URLS = {
-    facebook: 'https://facebook.com/',
-    linkedin: 'https://linkedin.com/',
-    twitter: 'https://twitter.com/'
-  }.freeze
 
   # Validations
   validates :first_name, :permalink, presence: true
