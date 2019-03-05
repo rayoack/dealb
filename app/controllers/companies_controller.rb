@@ -33,6 +33,8 @@ class CompaniesController < ApplicationController
       create_company_markets
       create_investor(@company)
 
+      Integrations::Clearbit.new(@company).enrich
+
       redirect_to(companies_path, notice: 'Successfully saved')
     else
       render :new

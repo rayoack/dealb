@@ -51,31 +51,31 @@ class Company < ApplicationRecord
       self.permalink = name.parameterize if name.present?
     end
   end
-  before_validation :populate_from_clearbit
 
-  private
+  def self.attributes_from_clearbit(data)
+    info = []
 
-  def populate_from_clearbit
-    return unless Rails.env.production?
+    info << [:legal_name, data[:legalName]]
+    info << [:profile_image_url, data[:logo]]
+    info << [:employees_count, data.dig(:metrics, :employees)]
+    info << [:phone_number, data[:phone]]
+    info << [:contact_email, data.dig(:site, :emailAddresses)&.first]
+    info << [:founded_on, Time.new(data[:foundedYear])] if data[:foundedYear]
+    info << [:stock_symbol, data[:ticker]]
+    info << [:rank, data.dig(:metrics, :alexaGlobalRank)]
+    info << [:homepage_url, 'https://' + data[:domain]]
+    info << [:facebook_url, URLS[:facebook] + data.dig(:facebook, :handle).to_s]
+    info << [:linkedin_url, URLS[:linkedin] + data.dig(:linkedin, :handle).to_s]
+    info << [:twitter_url, URLS[:twitter] + data.dig(:twitter, :handle).to_s]
+    info << [:crunchbase_url, URLS[:crunchbase] + data.dig(:crunchbase,
+                                                           :handle).to_s]
 
-    domain_data = Clearbit::NameDomain.find(name: name)
-    data = Clearbit::Enrichment::Company.find(domain_data.slice(:domain))
-    data = data.deep_symbolize_keys
+    Hash[info].merge(data.slice(:name, :description))
+  end
 
-    self.name = data[:name]
-    self.description = data[:description]
-    self.profile_image_url = data[:logo] if profile_image_url.blank?
-    self.employees_count = data.dig(:metrics, :employees)
-    self.founded_on = Time.new(data[:foundedYear]) if data[:foundedYear]
-    self.phone_number = data[:phone]
-    self.contact_email = data.dig(:site, :emailAddresses)&.first
-    self.legal_name = data[:legalName]
-    self.homepage_url = 'https://' + data[:domain] if data[:domain]
-    self.facebook_url = URLS[:facebook] + data.dig(:facebook, :handle)
-    self.twitter_url = URLS[:twitter] + data.dig(:twitter, :handle)
-    self.linkedin_url = URLS[:linkedin] + data.dig(:linkedin, :handle)
-    self.crunchbase_url = URLS[:crunchbase] + data.dig(:crunchbase, :handle)
-    self.stock_symbol = data[:ticker]
-    self.rank = data.dig(:metrics, :alexaGlobalRank)
+  def update_from_clearbit(data)
+    new_attributes = attributes.reject { |_, v| v.nil? }
+                               .reverse_merge(data)
+    update!(new_attributes)
   end
 end

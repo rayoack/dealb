@@ -56,6 +56,10 @@ describe CompaniesController do
 
     subject(:create_company) { post :create, params: { company: params } }
 
+    before do
+      expect(Integrations::Clearbit).to receive_message_chain(:new, :enrich)
+    end
+
     it 'creates a company' do
       sign_in create(:user)
 
