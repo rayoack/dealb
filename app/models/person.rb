@@ -67,6 +67,7 @@ class Person < ApplicationRecord
   def update_from_clearbit(data)
     new_attributes = attributes.reject { |_, v| v.nil? }
                                .reverse_merge(data)
-    update!(new_attributes, clearbit_syncronized_at: Time.zone.now)
+    new_attributes[:clearbit_syncronized_at] = Time.zone.now
+    update!(new_attributes)
   end
 end

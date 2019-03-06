@@ -86,6 +86,10 @@ describe PeopleController do
 
     subject(:create_person) { post :create, params: { person: params } }
 
+    before do
+      expect(Integrations::Clearbit).to receive_message_chain(:new, :enrich)
+    end
+
     it 'creates a company' do
       sign_in create(:user)
 

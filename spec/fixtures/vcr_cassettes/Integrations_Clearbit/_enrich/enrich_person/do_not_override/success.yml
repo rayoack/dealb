@@ -1,0 +1,118 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://person-stream.clearbit.com/v2/people/find?email=larry@google.com
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer sk_key
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 06 Mar 2019 00:32:52 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Api-Version:
+      - '2018-11-19'
+      X-Account-Id:
+      - a3973f6a-e34b-45e0-a488-dd9408d62464
+      Vary:
+      - Accept-Encoding
+      Server:
+      - envoy
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "id": "1a1c252e-4985-4243-ac09-821a2a5a337f",
+          "name": {
+            "fullName": "Larry Page",
+            "givenName": "Larry",
+            "familyName": "Page"
+          },
+          "email": "larry@google.com",
+          "location": "San Francisco, CA, US",
+          "timeZone": "America/Los_Angeles",
+          "utcOffset": -8,
+          "geo": {
+            "city": "San Francisco",
+            "state": "California",
+            "stateCode": "CA",
+            "country": "United States",
+            "countryCode": "US",
+            "lat": 37.7749295,
+            "lng": -122.4194155
+          },
+          "bio": "Co-Founder & President, Product of Google",
+          "site": "http://www.quora.com/Larry-Page",
+          "avatar": "https://d1ts43dypk8bqh.cloudfront.net/v1/avatars/1a1c252e-4985-4243-ac09-821a2a5a337f",
+          "employment": {
+            "domain": "google.com",
+            "name": "Google",
+            "title": "Co-founder, President, Products",
+            "role": "leadership",
+            "subRole": "founder",
+            "seniority": "executive"
+          },
+          "facebook": {
+            "handle": null
+          },
+          "github": {
+            "handle": null,
+            "id": null,
+            "avatar": null,
+            "company": null,
+            "blog": null,
+            "followers": null,
+            "following": null
+          },
+          "twitter": {
+            "handle": "q_larrypage",
+            "bio": "Co-Founder & President, Product of Google",
+            "followers": 1033,
+            "following": 0,
+            "statuses": 85,
+            "favorites": 0,
+            "location": "",
+            "site": "http://www.quora.com/Larry-Page",
+            "avatar": "https://pbs.twimg.com/profile_images/1164824789/logo.png"
+          },
+          "linkedin": {
+            "handle": "in/tlytle"
+          },
+          "googleplus": {
+            "handle": null
+          },
+          "gravatar": {
+            "handle": "larrygoogle",
+            "urls": [
+
+            ],
+            "avatar": null,
+            "avatars": [
+
+            ]
+          },
+          "fuzzy": false,
+          "emailProvider": false,
+          "indexedAt": "2019-02-21T13:31:28.998Z"
+        }
+    http_version: 
+  recorded_at: Wed, 06 Mar 2019 00:32:52 GMT
+recorded_with: VCR 4.0.0

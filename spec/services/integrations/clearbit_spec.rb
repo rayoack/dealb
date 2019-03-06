@@ -65,5 +65,71 @@ describe Integrations::Clearbit, :vcr do
         end
       end
     end
+
+    context 'enrich person' do
+      let(:resource) do
+        create :person, first_name: 'larry',
+                        email: 'larry@google.com',
+                        last_name: nil,
+                        description: nil,
+                        occupation: nil,
+                        website_url: nil,
+                        facebook_url: nil,
+                        twitter_url: nil,
+                        linkedin_url: nil,
+                        profile_image_url: nil
+      end
+
+      it 'success' do
+        subject
+
+        resource.reload
+
+        expect(resource).to have_attributes(
+          first_name: 'larry',
+          last_name: 'Page',
+          email: 'larry@google.com',
+          bio: 'Co-Founder & President, Product of Google',
+          occupation: 'Co-founder, President, Products',
+          website_url: 'http://www.quora.com/Larry-Page',
+          facebook_url: 'https://facebook.com/',
+          twitter_url: 'https://twitter.com/q_larrypage',
+          linkedin_url: 'https://linkedin.com/in/tlytle'
+        )
+      end
+
+      context 'do not override' do
+        let(:resource) do
+          create :person, first_name: 'larry',
+                          email: 'larry@google.com',
+                          last_name: 'New Page',
+                          description: nil,
+                          occupation: nil,
+                          website_url: 'https://dealbook.co',
+                          facebook_url: nil,
+                          twitter_url: 'https://twitter.com/dealbook',
+                          linkedin_url: nil,
+                          profile_image_url: nil
+        end
+
+        it 'success' do
+          subject
+
+          resource.reload
+
+          expect(resource).to have_attributes(
+            first_name: 'larry',
+            last_name: 'New Page',
+            email: 'larry@google.com',
+            bio: 'Co-Founder & President, Product of Google',
+            occupation: 'Co-founder, President, Products',
+            website_url: 'https://dealbook.co',
+            facebook_url: 'https://facebook.com/',
+            twitter_url: 'https://twitter.com/dealbook',
+            linkedin_url: 'https://linkedin.com/in/tlytle'
+          )
+        end
+      end
+    end
   end
 end
