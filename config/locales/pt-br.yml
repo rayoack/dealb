@@ -89,6 +89,7 @@ pt-br:
       add_twitter: 'twitter'
       add_linkedin: 'linkedin'
       send: 'Enviar'
+      market: 'Segmento de Mercado'
   deals:
     model:
       categories:

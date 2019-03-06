@@ -337,5 +337,9 @@ $(".all-questions .item").click(function(event) {
 });
 
 $(function() {
-  $(".datepicker").datepicker();
+  $(".datepicker").datepicker({
+    dateFormat: 'dd/mm/yy',
+    changeMonth: true,
+    changeYear: true,
+  });
 });

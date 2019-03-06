@@ -4034,6 +4034,9 @@ footer .copyright p a {
   .container-add-your-company form .form-group .input-industry {
     width: 31.5% !important;
   }
+  .form-group .input-market button {
+    height: 48px;
+  }
 }
 @media (max-width: 991px) {
   .container-add-your-company {

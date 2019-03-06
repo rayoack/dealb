@@ -88,6 +88,7 @@ es:
       add_twitter: 'agregar twitter'
       add_linkedin: 'agregar linkedin'
       send: 'Enviar'
+      market: 'Segmento de Mercado'
   deals:
     model:
       categories:

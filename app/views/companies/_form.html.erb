@@ -1,84 +1,81 @@
 <% if @company.errors.any? %>
-    <% @company.errors.full_messages.each do |error| %>
-	<div class="alert alert-danger" role="alert"><%= error %></div>
-    <% end %>
+  <% @company.errors.full_messages.each do |error| %>
+    <div class="alert alert-danger" role="alert"><%= error %></div>
+  <% end %>
 <% end %>
 
 <div class="form-group">
-    <%= f.text_field :name, placeholder: t('companies.form.name') %>
+  <%= f.text_field :name, placeholder: t('companies.form.name') %>
 </div>
 <div class="form-group">
-    <%= f.text_field(:employees_count, placeholder: 'Employees count', class: 'input-city', pattern: '\d*', title: 'Only digits') %>
+  <%= f.text_field(:employees_count, placeholder: 'Employees count', class: 'input-city', pattern: '\d*', title: 'Only digits') %>
 
-    <%= f.text_field :born_date, placeholder: t('companies.form.date_founded'), class: 'input-date datepicker' %>
+  <%= f.text_field :born_date, placeholder: t('companies.form.date_founded'), class: 'input-date datepicker' %>
 </div>
 <div class="form-group">
-    <div class="form-status form-gender">
-        <span class="label-status"><%= 'Investor' %></span>
+  <div class="form-status form-gender">
+    <span class="label-status"><%= 'Investor' %></span>
 
-        <p class="investor-radio-inline">
-	    <%= f.radio_button :investor, true, id: 'investor-radio-active' %>
-            <label for="investor-radio-active">Yes</label>
-        </p>
-        <p class="investor-radio-inline">
-	    <%= f.radio_button :investor, false, id: 'investor-radio-inactive' %>
-            <label for="investor-radio-inactive">No</label>
-        </p>
-    </div>
+    <p class="investor-radio-inline">
+    <%= f.radio_button :investor, true, id: 'investor-radio-active' %>
+    <label for="investor-radio-active">Yes</label>
+    </p>
+    <p class="investor-radio-inline">
+    <%= f.radio_button :investor, false, id: 'investor-radio-inactive' %>
+    <label for="investor-radio-inactive">No</label>
+    </p>
+  </div>
 </div>
 <div class="form-group">
-    <%= f.fields_for :locations_attributes do |location_form| %>
-	<%= location_form.select :country, [], { prompt: t('companies.form.country') }, { class: 'select-category', style: 'width: 100%' } %>
-	<%= location_form.select :city, [], { prompt: t('companies.form.city') }, { class: 'select-category', style: 'width: 100%' } %>
-    <% end %>
+  <%= f.fields_for :locations_attributes do |location_form| %>
+    <%= location_form.select :country, [], { prompt: t('companies.form.country') }, { class: 'select-category', style: 'width: 100%' } %>
+    <%= location_form.select :city, [], { prompt: t('companies.form.city') }, { class: 'select-category', style: 'width: 100%' } %>
+  <% end %>
 </div>
 <div class="form-group">
-    <%= f.text_field :phone_number, placeholder: t('companies.form.phone_number'), class: 'input-city' %>
-    <%= f.text_field :website_url, placeholder: t('companies.form.website_url'), class: 'input-date' %>
+  <%= f.text_field :phone_number, placeholder: t('companies.form.phone_number'), class: 'input-city' %>
+  <%= f.text_field :website_url, placeholder: t('companies.form.website_url'), class: 'input-date' %>
 </div>
 <div class="form-group">
-    <%= f.text_field :email, placeholder: t('companies.form.email'), class: 'input-email' %>
-    <%= f.fields_for :company_markets_attributes do |market_form| %>
-	<%= market_form.select(
-	    :market_id,
-	    @markets.collect { |c| [c.name, c.id] },
-	    { prompt: t('companies.form.email') },
-	    {
-		class: 'selectpicker input-date',
-		multiple: true,
-		'data-live-search' => true
-	    }
-	) %>
-    <% end %>
+  <%= f.text_field :email, placeholder: t('companies.form.email'), class: 'input-email' %>
+  <%= f.fields_for :company_markets_attributes do |market_form| %>
+    <%= market_form.select(:market_id,
+                           @markets.collect { |c| [c.name, c.id] },
+                           { prompt: t('companies.form.email') },
+                           { class: 'selectpicker input-market',
+                             title: t('companies.form.market'),
+                             multiple: true,
+                             'data-live-search' => true }) %>
+<% end %>
 </div>
 <div class="form-group">
-    <%= f.text_area :description, placeholder: t('companies.form.description'), rows: 6 %>
+  <%= f.text_area :description, placeholder: t('companies.form.description'), rows: 6 %>
 </div>
 <div class="form-group">
-    <div class="input-group social">
-        <span class="input-group-addon"><img src="/img/facebook-gray.svg" alt=""></span>
-	<%= f.text_field :facebook_url, placeholder: t('companies.form.add_facebook'), class: 'form-control', 'aria-label' => 'Username', pattern: 'https?://.+', title: 'Only valid URLs' %>
-    </div>
+  <div class="input-group social">
+    <span class="input-group-addon"><img src="/img/facebook-gray.svg" alt=""></span>
+    <%= f.text_field :facebook_url, placeholder: t('companies.form.add_facebook'), class: 'form-control', 'aria-label' => 'Username', pattern: 'https?://.+', title: 'Only valid URLs' %>
+  </div>
 </div>
 <div class="form-group">
-    <div class="input-group social">
-        <span class="input-group-addon"><img src="/img/twitter-gray.svg" alt=""></span>
-	<%= f.text_field :twitter_url, placeholder: t('companies.form.add_twitter'), class: 'form-control', 'aria-label' => 'Username', pattern: 'https?://.+', title: 'Only valid URLs' %>
-    </div>
+  <div class="input-group social">
+    <span class="input-group-addon"><img src="/img/twitter-gray.svg" alt=""></span>
+    <%= f.text_field :twitter_url, placeholder: t('companies.form.add_twitter'), class: 'form-control', 'aria-label' => 'Username', pattern: 'https?://.+', title: 'Only valid URLs' %>
+  </div>
 </div>
 <div class="form-group">
-    <div class="input-group social">
-        <span class="input-group-addon"><img src="/img/linkedin-gray.png" alt=""></span>
-	<%= f.text_field :linkedin_url, placeholder: t('companies.form.add_linkedin'), class: 'form-control', 'aria-label' => 'Username', pattern: 'https?://.+', title: 'Only valid URLs' %>
-    </div>
+  <div class="input-group social">
+    <span class="input-group-addon"><img src="/img/linkedin-gray.png" alt=""></span>
+    <%= f.text_field :linkedin_url, placeholder: t('companies.form.add_linkedin'), class: 'form-control', 'aria-label' => 'Username', pattern: 'https?://.+', title: 'Only valid URLs' %>
+  </div>
 </div>
 <div class="form-group">
-    <%= f.submit t('companies.form.send') %>
+  <%= f.submit t('companies.form.send') %>
 </div>
 
 <script>
- populateCountries(
-     "company_locations_attributes_country",
-     "company_locations_attributes_city"
- );
+populateCountries(
+  "company_locations_attributes_country",
+  "company_locations_attributes_city"
+);
 </script>

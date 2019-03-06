@@ -89,6 +89,7 @@ en:
       add_twitter: 'add twitter'
       add_linkedin: 'add linkedin'
       send: 'Send'
+      market: 'Market Segment'
   deals:
     model:
       categories:
