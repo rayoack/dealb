@@ -6,6 +6,8 @@ module Integrations
 
     def enrich
       return enrich_company if resource.is_a?(Company)
+
+      enrich_person if resource.is_a?(Person)
     rescue ActiveRecord::RecordInvalid
       nil
     end
@@ -26,6 +28,20 @@ module Integrations
       data = ::Clearbit::Enrichment::Company.find(domain(name))
                                             .deep_symbolize_keys
       Company.attributes_from_clearbit(data)
+    end
+
+    def enrich_person
+      return unless resource.is_a?(Person)
+
+      data = person_data(email: resource.email)
+      resource.update_from_clearbit(data)
+      resource
+    end
+
+    def person_data(email:)
+      data = ::Clearbit::Enrichment::Person.find(email: email, stream: true)
+                                           .deep_symbolize_keys
+      Person.attributes_from_clearbit(data)
     end
 
     def domain(name)

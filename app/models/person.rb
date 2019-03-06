@@ -43,35 +43,30 @@ class Person < ApplicationRecord
     end
   end
 
-  before_save do
-    # Sync with clearbit info
-    if clearbit_syncronized_at.blank? && Rails.env.production?
-      new_attributes = Person.attributes_from_clearbit(email: email)
-      updated_attributes = attributes.reject { |_, v| v.nil? }
-                                     .reverse_merge(new_attributes)
-      assign_attributes(updated_attributes)
-    end
+  def self.attributes_from_clearbit(data)
+    info = []
+
+    info << [:first_name, data.dig(:name, :givenName)]
+    info << [:last_name, data.dig(:name, :familyName)]
+    info << [:profile_image_url, data.dig(:avatar)]
+    info << [:bio, data.dig(:bio)]
+    info << [:occupation, data.dig(:employment, :title)]
+    info << [:website_url, data.dig(:site)] if data.dig(:site)
+    info << [:facebook_url, URLS[:facebook] + data.dig(:facebook, :handle).to_s]
+    info << [:twitter_url, URLS[:twitter] + data.dig(:twitter, :handle).to_s]
+    info << [:linkedin_url, URLS[:linkedin] + data.dig(:linkedin, :handle).to_s]
+    info << [:clearbit_syncronized_at, Time.zone.now]
+
+    Hash[info]
   end
 
   def name
     [first_name, last_name].join(' ').strip
   end
 
-  def self.attributes_from_clearbit(email: nil, data: nil)
-    return if email.blank? && data.blank?
-
-    information = data
-    information ||= Clearbit::Enrichment::Person.find(email: email,
-                                                      stream: true)
-    information = information&.deep_symbolize_keys
-
-    {
-      profile_image_url: information.dig(:avatar),
-      bio: information.dig(:bio),
-      facebook_url: URLS[:facebook] + information.dig(:facebook, :handle).to_s,
-      twitter_url: URLS[:twitter] + information.dig(:twitter, :handle).to_s,
-      linkedin_url: URLS[:linkedin] + information.dig(:linkedin, :handle).to_s,
-      clearbit_syncronized_at: Time.zone.now
-    }
+  def update_from_clearbit(data)
+    new_attributes = attributes.reject { |_, v| v.nil? }
+                               .reverse_merge(data)
+    update!(new_attributes, clearbit_syncronized_at: Time.zone.now)
   end
 end

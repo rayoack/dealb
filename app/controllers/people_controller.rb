@@ -30,6 +30,8 @@ class PeopleController < ApplicationController
       current_user.update(person: @person) if current_user.person.blank?
       create_investor(@person) if investor?
 
+      Integrations::Clearbit.new(@person).enrich
+
       redirect_to people_path, notice: 'Successfully saved'
     else
       render :new
