@@ -40,9 +40,9 @@ class CompanySearcher
 
   def filter_by_params
     Hash(filter_params).each_value do |filter|
-      name = filter.values[0].downcase.tr(' ', '_')
-      operator = filter.values[1].downcase.tr(' ', '_')
-      value = filter.values[2]
+      name = filter['type'].downcase.tr(' ', '_')
+      operator = filter['operator'].downcase.tr(' ', '_')
+      value = filter['value']
       filter_name = FILTERS.fetch(name, 'bypass')
 
       method(filter_name)
