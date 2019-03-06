@@ -48,6 +48,8 @@ $(".last-sub-category li a").click(function(event) {
     $(".controls .arrow-left").removeClass('disabled');
   }
 
+  $('.last-level-filter ul').show();
+
   var item_filter = '<div class="item-filter"><ul><li class="primary-nivel-filter"><button>' + $(this).text() + '</button></li><li class="second-nivel-filter"><select class="selectpicker"><option>input option 01</option><option>input option 02</option><option>input option 03</option></select></li><li class="last-nivel-filter"><input type="text" placeholder="Value"></li></ul><div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div></div>';
   if ($(this).find("i").length == 0) {
     $("#modalFilter").modal("hide");
@@ -87,9 +89,6 @@ $(".arrow-left").click(function(event) {
     transition: '.3s all'
   });
 });
-
-function showAllOperators() { $('.last-level-filter ul').children().show(); }
-function hideAllOperators() { $('.last-level-filter ul').children().hide(); }
 
 $(document).on("click", ".btn-remove-filter", function() {
   $(this).parents(".item-filter").remove();
@@ -166,6 +165,7 @@ $(document).ready(function() {
 
     if ($(this).find("i").length == 0) {
       $("#modalFilter").modal("hide");
+      $('.last-level-filter ul').hide();
       $(".filter-result").show();
       $(".filter-complete").append(item_filter);
       $('.selectpicker').selectpicker();
