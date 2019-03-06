@@ -191,6 +191,7 @@ es:
   people:
     index:
       people: 'Personas'
+      add_filter: 'Adicionar Filtro'
       filter_people: 'Filtrar Personas'
       new: 'Crear persona'
       export: 'Exporta tus resultados'
@@ -380,13 +381,17 @@ es:
     question_10: '¿Cómo me vuelvo moderador?'
     answer_10: 'Sólo los moderadores existentes pueden promover usuarios a mods. Los privilegios del moderador sólo se reservan para los miembros activos que ya han conquistado la confianza de la comunidad. Si usted piensa que es su caso, entre en contacto con uno. '
   filters:
+    new: 'Adicionar filtro'
     companies: 'Compañías'
+    people: 'Personas'
     basic: 'Informaciones'
     name: 'Nombre'
     location: 'Ubicación'
     description: 'Descripción'
     employees_count: 'Empleados'
     status: 'Status'
+    gender: 'Género'
+    occupation: 'Ocupación'
     value: 'Valor'
     operators:
       equal: 'Igual'

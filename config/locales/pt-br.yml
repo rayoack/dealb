@@ -191,7 +191,8 @@ pt-br:
         shutdown: 'Fechado'
   people:
     index:
-      people: 'Pessoa'
+      people: 'Pessoas'
+      add_filter: 'Adicionar Filtro'
       filter_people: 'Filtrar Pessoas'
       new: 'Criar nova'
       export: 'Exportar resultados'
@@ -381,13 +382,17 @@ pt-br:
     question_10: 'Como eu me torno moderador?'
     answer_10: 'Somente moderadores existentes podem promover usuários a mods. Os privilégios do moderador são reservados apenas para membros ativos que já conquistaram a confiança da comunidade. Se você acha que é o seu caso, entre em contato com um.'
   filters:
+    new: 'Adicionar Filtro'
     companies: 'Empresas'
+    people: 'Pessoas'
     basic: 'Informações Básicas'
     name: 'Nome'
     location: 'Localização'
     description: 'Descrição'
     employees_count: 'Empregados'
     status: 'Status'
+    gender: 'Gênero'
+    occupation: 'Ocupação'
     value: 'Valor'
     operators:
       equal: 'Igual'

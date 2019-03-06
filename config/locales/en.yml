@@ -192,6 +192,7 @@ en:
   people:
     index:
       people: 'People'
+      add_filter: 'Add filter People'
       filter_people: 'Filter People'
       new: 'Create new'
       export: 'Export your results'
@@ -381,13 +382,17 @@ en:
     question_10: 'How do I become a mod?'
     answer_10: 'Only existing moderators can promote users to mods. Moderator privileges are reserved only to active members who have already earned the trust of the community. If you feel that is your case, contact one'
   filters:
+    new: 'Add Filter'
     companies: 'Companies'
+    people: 'People'
     basic: 'Basic Info'
     name: 'Name'
     location: 'Location'
     description: 'Description'
     employees_count: 'Employees Count'
     status: 'Status'
+    gender: 'Gender'
+    occupation: 'Occupation'
     value: 'Value'
     operators:
       equal: 'Equal'
