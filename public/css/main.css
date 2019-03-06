@@ -1824,6 +1824,7 @@ footer .copyright p a {
   position: absolute;
   right: -35px;
   top: 17px;
+  cursor: pointer;
 }
 .filter-block .container-filter .filter-result .add-new-filter {
   margin-top: 25px;
