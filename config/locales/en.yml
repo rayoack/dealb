@@ -388,6 +388,7 @@ en:
     description: 'Description'
     employees: 'Employees Count'
     status: 'Status'
+    value: 'Value'
     operators:
       equal: 'Equal'
       contains: 'Contains'

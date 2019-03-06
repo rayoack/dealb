@@ -388,6 +388,7 @@ pt-br:
     description: 'Descrição'
     employees: 'Empregados'
     status: 'Status'
+    value: 'Valor'
     operators:
       equal: 'Igual'
       contains: 'Contém'

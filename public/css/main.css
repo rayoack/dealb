@@ -1784,6 +1784,18 @@ footer .copyright p a {
   height: 55px;
   text-align: left;
   padding-left: 18px;
+  pointer-events: none;
+}
+.filter-block .container-filter .filter-result .filter-complete .item-filter ul li.second-nivel-filter button {
+  background: #2e448b;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  width: 240px;
+  height: 55px;
+  text-align: left;
+  padding-left: 18px;
+  pointer-events: none;
 }
 .filter-block .container-filter .filter-result .filter-complete .item-filter ul li.second-nivel-filter .bootstrap-select .dropdown-toggle {
   background: #2e448b;

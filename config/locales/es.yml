@@ -387,6 +387,7 @@ es:
     description: 'Descripción'
     employees: 'Empleados'
     status: 'Status'
+    value: 'Valor'
     operators:
       equal: 'Igual'
       contains: 'Contiene'
