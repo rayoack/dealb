@@ -15,7 +15,7 @@ class Person < ApplicationRecord
 
   validates :website_url, url: true, allow_nil: true
   validates :facebook_url, url: true, allow_nil: true
-  validates :twitter_url, twitter: { format: :url }, allow_nil: true
+  validates :twitter_url, url: true, allow_nil: true
   validates :google_plus_url, url: true, allow_nil: true
   validates :linkedin_url, url: true, allow_nil: true
 
