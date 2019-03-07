@@ -383,6 +383,7 @@ es:
   filters:
     new: 'Adicionar filtro'
     companies: 'Compañías'
+    investors: 'Inversionistas'
     people: 'Personas'
     deals: 'Transacciones'
     basic: 'Informaciones'
@@ -398,6 +399,9 @@ es:
     funding_type: 'Tipo de financiación'
     amount: 'Cantidad'
     date: 'Data'
+    total_funds_invested: 'Total de fondos'
+    number_of_deals: 'Transacciones'
+    stage: 'Etapa'
     operators:
       equal: 'Igual'
       contains: 'Contiene'

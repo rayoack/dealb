@@ -11,7 +11,7 @@
                   <% params[:filter].values.each_with_index do |filter, index| %>
                     <div class="item-filter">
                       <ul>
-                        <li class="primary-nivel-filter-secondary"><button><%= t("filters.#{filter[:type]}") %> </button></li>
+                        <li class="primary-nivel-filter-secondary"><button><%= t("filters.#{filter[:type]}") %></button></li>
                         <li class="second-nivel-filter"><button><%= t("filters.operators.#{filter[:operator]}") %></button></li>
                         <li class="last-nivel-filter">
                           <input type="hidden" name="filter[<%= index %>][type]" value="<%= filter[:type] %>" />

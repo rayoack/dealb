@@ -1,113 +1,113 @@
 <section class="filter-block">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="container-filter">
-                    <h3><img src="/img/seta-baixo.svg" alt=""> <%= t('investor.index.filter') %></h3>
-                    <div class="filter-result">
-			<form id="filter-form" action="/investors">
-                        <div class="filter-complete">
-			    <% if params[:filter] %>
-				<% params[:filter].values.each_with_index do |filter, index| %>
-				    <div class="item-filter">
-					<ul>
-					    <li class="primary-nivel-filter"><button></button></li>
-					    <li class="primary-nivel-filter-secondary"><button><%= filter[:type] %> </button></li>
-					    <li class="second-nivel-filter">
-						<div class="btn-group bootstrap-select">
-						    <button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" role="button" title="<%= filter[:operator] %>">
-							<span class="filter-option pull-left"><%= filter[:operator] %></span>&nbsp;
-							<span class="bs-caret"><span class="caret"></span></span>
-						    </button>
-						    <div class="dropdown-menu open" role="combobox">
-							<ul class="dropdown-menu inner" role="listbox" aria-expanded="false">
-							    <li data-original-index="0" class="selected">
-								<a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="true">
-								    <span class="text"><%= filter[:operator] %></span>
-								    <span class="glyphicon glyphicon-ok check-mark"></span>
-								</a>
-							    </li>
-							</ul>
-						    </div>
-						</div>
-					    </li>
-					    <li class="last-nivel-filter">
-    					      <input type="hidden" name="filter[<%= index %>][type]" value="<%= filter[:type] %>" />
-					      <input type="hidden" name="filter[<%= index %>][operator]" value="<%= filter[:operator] %>" />
-					      <input type="text" name="filter[<%= index %>][value]" data-subcategory="<%= filter[:type] %>" data-type="<%= filter[:operator] %>" value="<%= filter[:value] %>">
-                                            </li>
-					</ul>
-					<div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div>
-				    </div>
-				<% end %>
-			    <% end %>
-			</div>
-                        <div class="filter-empty">
-                            <a href="#" class="btn-add-filter-modal" data-toggle="modal" data-target="#modalFilter"><img src="/img/add.svg" alt=""> <%= t('investor.index.add_filter') %></a>
-                            <button class="btn-app-filter"><%= t('investor.index.apply') %></button>
-                        </div>
-			</form>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="container-filter">
+          <h3><img src="/img/seta-baixo.svg" alt=""> <%= t('investor.index.filter') %></h3>
+          <div class="filter-result">
+            <form id="filter-form" action="/investors">
+              <div class="filter-complete">
+                <% if params[:filter] %>
+                  <% params[:filter].values.each_with_index do |filter, index| %>
+                    <div class="item-filter">
+                      <ul>
+                        <li class="primary-nivel-filter-secondary"><button><%= t("filters.#{filter[:type]}") %></button></li>
+                        <li class="second-nivel-filter"><button><%= t("filters.operators.#{filter[:operator]}") %></button>
+                        <li class="last-nivel-filter">
+                          <input type="hidden" name="filter[<%= index %>][type]" value="<%= filter[:type] %>" />
+                          <input type="hidden" name="filter[<%= index %>][operator]" value="<%= filter[:operator] %>" />
+                          <input type="text" name="filter[<%= index %>][value]" data-subcategory="<%= filter[:type] %>" data-type="<%= filter[:operator] %>" value="<%= filter[:value] %>">
+                        </li>
+                      </ul>
+                      <div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div>
                     </div>
-                </div>
-            </div>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="filter-empty">
+                <a href="#" class="btn-add-filter-modal" data-toggle="modal" data-target="#modalFilter"><img src="/img/add.svg" alt=""> <%= t('investor.index.add_filter') %></a>
+                <button class="btn-app-filter"><%= t('investor.index.apply') %></button>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <div id="modalFilter" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <h1 class="modal-title">Add Filter</h1>
-            <div class="modal-header">
-                <div class="control-breadcrumbs">
-                    <div class="controls">
-                        <button class="arrow-left disabled">
-                            <img src="/img/seta-esq-modal-filter.svg" alt="">
-                        </button>
-                        <button class="arrow-right disabled">
-                            <img src="/img/seta-dir-modal-filter.svg" alt="">
-                        </button>
-                    </div>
-                    <ul class="bread">
-                        <li class="one-category"></li>
-                        <li class="two-category"></li>
-                        <li class="three-category"></li>
-                        <li class="last-category"></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div class="filter-geral">
-                    <div class="level-filter main-category">
-                        <ul>
-                            <li><a href="">Investors<i class="glyphicon glyphicon-chevron-right"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="level-filter sub-category">
-                        <ul>
-                            <li><a href="">Basic Info<i class="glyphicon glyphicon-chevron-right"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="level-filter last-sub-category">
-                        <ul>
-                            <li><a href="" data-autocomplete-category="Status" data-autocomplete-data=<%= Investor::STATUSES.to_json %>>Status <i class="glyphicon glyphicon-chevron-right"></i></a></li>
-                            <li><a href="" data-autocomplete-category="Category" data-autocomplete-data=<%= Investor::CATEGORIES.to_json %>>Category <i class="glyphicon glyphicon-chevron-right"></i></a></li>
-                            <li><a href="" data-autocomplete-category="Stage" data-autocomplete-data=<%= Investor::STAGES.to_json %>>Stage <i class="glyphicon glyphicon-chevron-right"></i></a></li>
-                            <li><a href="">Number of deals <i class="glyphicon glyphicon-chevron-right"></i></a></li>
-                            <li><a href="">Total funds invested <i class="glyphicon glyphicon-chevron-right"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="level-filter last-level-filter">
-                        <ul>
-                            <li><a href="">equal</a></li>
-                            <li><a href="">contains</a></li>
-                            <li><a href="">greater than</a></li>
-                            <li><a href="">less than</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <h1 class="modal-title"><%= t('filters.new') %></h1>
+      <div class="modal-header">
+        <div class="control-breadcrumbs">
+          <div class="controls">
+            <button class="arrow-left disabled">
+              <img src="/img/seta-esq-modal-filter.svg" alt="">
+            </button>
+            <button class="arrow-right disabled">
+              <img src="/img/seta-dir-modal-filter.svg" alt="">
+            </button>
+          </div>
+          <ul class="bread">
+            <li class="one-category"></li>
+            <li class="two-category"></li>
+            <li class="three-category"></li>
+            <li class="last-category"></li>
+          </ul>
         </div>
+      </div>
+      <div class="modal-body">
+        <div class="filter-geral">
+          <div class="level-filter main-category">
+            <ul>
+              <li><a href=""><%= t('filters.investors') %><i class="glyphicon glyphicon-chevron-right"></i></a></li>
+            </ul>
+          </div>
+          <div class="level-filter sub-category">
+            <ul>
+              <li><a href=""><%= t('filters.basic') %><i class="glyphicon glyphicon-chevron-right"></i></a></li>
+            </ul>
+          </div>
+          <div class="level-filter last-sub-category">
+            <ul>
+              <li>
+                <a href="" data-autocomplete-category="Status"
+                           data-autocomplete-data=<%= Investor::STATUSES.to_json %>
+                           id="status">
+                  <%= t('filters.status') %><i class="glyphicon glyphicon-chevron-right"></i>
+                </a>
+              </li>
+              <li>
+                <a href="" data-autocomplete-category="Category"
+                           data-autocomplete-data=<%= Investor::CATEGORIES.to_json %>
+                           id="category">
+                  <%= t('filters.category') %><i class="glyphicon glyphicon-chevron-right"></i>
+                </a>
+              </li>
+              <li>
+                <a href="" data-autocomplete-category="Stage"
+                           data-autocomplete-data=<%= Investor::STAGES.to_json %>
+                           id="stage">
+                  <%= t('filters.stage') %><i class="glyphicon glyphicon-chevron-right"></i>
+                </a>
+              </li>
+              <li><a href="" id="number_of_deals"><%= t('filters.number_of_deals') %><i class="glyphicon glyphicon-chevron-right"></i></a></li>
+              <li><a href="" id="total_funds_invested"><%= t('filters.total_funds_invested') %><i class="glyphicon glyphicon-chevron-right"></i></a></li>
+            </ul>
+          </div>
+          <div class="level-filter last-level-filter">
+            <ul hidden>
+              <li><a href="" data-type="equal" id="equal"><%= t('filters.operators.equal') %></a></li>
+              <li><a href="" id="contains"><%= t('filters.operators.contains') %></a></li>
+              <li><a href="" id="greater_than"><%= t('filters.operators.greater_than') %></a></li>
+              <li><a href="" id="less_than"><%= t('filters.operators.less_than') %></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

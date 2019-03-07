@@ -384,6 +384,7 @@ en:
   filters:
     new: 'Add Filter'
     companies: 'Companies'
+    investors: 'Investors'
     people: 'People'
     deals: 'Deals'
     basic: 'Basic Info'
@@ -399,6 +400,9 @@ en:
     funding_type: 'Funding Type'
     amount: 'Amount'
     date: 'Date'
+    total_funds_invested: 'Total funds invested'
+    number_of_deals: 'Number of deals'
+    stage: 'Stage'
     operators:
       equal: 'Equal'
       contains: 'Contains'

@@ -384,6 +384,7 @@ pt-br:
   filters:
     new: 'Adicionar Filtro'
     companies: 'Empresas'
+    investors: 'Investidores'
     people: 'Pessoas'
     deals: 'Negócios'
     basic: 'Informações Básicas'
@@ -399,6 +400,9 @@ pt-br:
     funding_type: 'Tipo de Fundo'
     amount: 'Quantidade'
     date: 'Data'
+    total_funds_invested: 'Total Fundos'
+    number_of_deals: 'Investimentos'
+    stage: 'Estágio'
     operators:
       equal: 'Igual'
       contains: 'Contém'
