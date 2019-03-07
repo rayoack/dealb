@@ -27,7 +27,7 @@ class PersonSearcher
 
   FILTERS = {
     name: :filter_by_name,
-    description: :filter_by_column,
+    bio: :filter_by_column,
     gender: :filter_by_column,
     occupation: :filter_by_column
   }.with_indifferent_access.freeze

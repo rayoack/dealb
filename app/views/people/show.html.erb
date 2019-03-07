@@ -22,7 +22,8 @@
         <div class="details">
           <div class="people">
             <div style="margin-right: 20px; float: left;">
-              <img src="/img/avatar.png" class="img-responsive" alt="">
+              <img src="<%= @person.profile_image_url || '/img/avatar.png' %>"
+                   class="img-responsive">
             </div>
             <div class="text">
               <h1><%= @person.name %></h1>
@@ -61,7 +62,7 @@
           <ul class="info-contact">
             <li>
               <p>
-              <strong>Born:</strong> <%= @person.born_date %>
+              <strong>Born:</strong> <%= @person.born_on %>
             </p>
             </li>
             <li>

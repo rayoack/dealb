@@ -1,106 +1,104 @@
 <% if @person.errors.any? %>
-    <% @person.errors.full_messages.each do |error| %>
-	<div class="alert alert-danger" role="alert"><%= error %></div>
-    <% end %>
+  <% @person.errors.full_messages.each do |error| %>
+    <div class="alert alert-danger" role="alert"><%= error %></div>
+  <% end %>
 <% end %>
 
 <div class="form-group">
-    <%= f.text_field :first_name, placeholder: t('people.form.first_name') %>
-    <%= f.text_field :last_name, placeholder: t('people.form.last_name') %>
+  <%= f.text_field :first_name, placeholder: t('people.form.first_name') %>
+  <%= f.text_field :last_name, placeholder: t('people.form.last_name') %>
 </div>
 
 <div class="form-group">
-    <div class="form-status form-gender">
-        <span class="label-status"><%= 'Investor' %></span>
+  <div class="form-status form-gender">
+    <span class="label-status"><%= 'Investor' %></span>
 
-        <p class="investor-radio-inline">
-	    <%= f.radio_button :investor, true, id: 'investor-radio-active' %>
-            <label for="investor-radio-active">Yes</label>
-        </p>
-        <p class="investor-radio-inline">
-	    <%= f.radio_button :investor, false, id: 'investor-radio-inactive' %>
-            <label for="investor-radio-inactive">No</label>
-        </p>
-    </div>
+    <p class="investor-radio-inline">
+    <%= f.radio_button :investor, true, id: 'investor-radio-active' %>
+    <label for="investor-radio-active">Yes</label>
+    </p>
+    <p class="investor-radio-inline">
+    <%= f.radio_button :investor, false, id: 'investor-radio-inactive' %>
+    <label for="investor-radio-inactive">No</label>
+    </p>
+  </div>
 </div>
 
 <div class="form-group">
-    <%= f.text_field :occupation, placeholder: t('people.form.occupation') %>
+  <%= f.text_field :occupation, placeholder: t('people.form.occupation') %>
 </div>
 <div class="form-group">
-    <%= f.fields_for :person_companies_attributes do |person_company_form| %>
-	<%= person_company_form.select(
-	    :company_id,
-	    @companies.collect { |c| [c.name, c.id] },
-	    { prompt: t('people.form.select_company') },
-	    { class: 'select-category' }
-	) %>
-    <% end %>
+  <%= f.fields_for :person_companies_attributes do |person_company_form| %>
+    <%= person_company_form.select(:company_id,
+                                   @companies.collect { |c| [c.name, c.id] },
+                                   { prompt: t('people.form.select_company') },
+                                   { class: 'select-category' }) %>
+<% end %>
 </div>
 
 <div class="form-group">
-    <%= f.text_area :description, rows: 6, placeholder: t('people.form.description') %>
+  <%= f.text_area :description, rows: 6, placeholder: t('people.form.description') %>
 </div>
 
 <%= f.fields_for :locations_attributes do |location_form| %>
-    <div class="form-group">
-        <%= location_form.select :country, [], { prompt: t('people.form.country') }, { class: 'select-category' } %>
-    </div>
-    <div class="form-group">
-	<%= location_form.select :city, [], { prompt: t('people.form.city') }, { class: 'select-category' } %>
-    </div>
+  <div class="form-group">
+    <%= location_form.select :country, [], { prompt: t('people.form.country') }, { class: 'select-category' } %>
+  </div>
+  <div class="form-group">
+    <%= location_form.select :city, [], { prompt: t('people.form.city') }, { class: 'select-category' } %>
+  </div>
 <% end %>
 <h1 class="title-social"><%= t('people.form.social_profile') %></h1>
 <div class="form-group">
-    <div class="input-group social">
-        <span class="input-group-addon"><img src="/img/facebook-gray.svg" alt=""></span>
-	<%= f.text_field :facebook_url, placeholder: t('people.form.add_facebook'), class: 'form-control', 'aria-label' => 'Username' %>
-    </div>
+  <div class="input-group social">
+    <span class="input-group-addon"><img src="/img/facebook-gray.svg" alt=""></span>
+    <%= f.text_field :facebook_url, placeholder: t('people.form.add_facebook'), class: 'form-control', 'aria-label' => 'Username' %>
+  </div>
 </div>
 <div class="form-group">
-    <div class="input-group social">
-        <span class="input-group-addon"><img src="/img/twitter-gray.svg" alt=""></span>
-	<%= f.text_field :twitter_url, placeholder: t('people.form.add_twitter'), class: 'form-control', 'aria-label' => 'Username' %>
-    </div>
+  <div class="input-group social">
+    <span class="input-group-addon"><img src="/img/twitter-gray.svg" alt=""></span>
+    <%= f.text_field :twitter_url, placeholder: t('people.form.add_twitter'), class: 'form-control', 'aria-label' => 'Username' %>
+  </div>
 </div>
 <div class="form-group">
-    <div class="input-group social">
-        <span class="input-group-addon"><img src="/img/linkedin-gray.png" alt=""></span>
-	<%= f.text_field :linkedin_url, placeholder: t('people.form.add_linkedin'), class: 'form-control', 'aria-label' => 'Username' %>
-    </div>
+  <div class="input-group social">
+    <span class="input-group-addon"><img src="/img/linkedin-gray.png" alt=""></span>
+    <%= f.text_field :linkedin_url, placeholder: t('people.form.add_linkedin'), class: 'form-control', 'aria-label' => 'Username' %>
+  </div>
 </div>
 <div class="form-group">
-    <div class="input-group date-close">
-        <span class="input-group-addon"><img src="/img/calendar.svg" alt=""></span>
-	<%= f.text_field :born_date, placeholder: t('people.form.born_date'), 'aria-label' => 'Username', class: 'datepicker' %>
-    </div>
+  <div class="input-group date-close">
+    <span class="input-group-addon"><img src="/img/calendar.svg" alt=""></span>
+    <%= f.text_field :born_on, placeholder: t('people.form.born_date'), 'aria-label' => 'Username', class: 'datepicker' %>
+  </div>
 
-    <div class="form-status form-gender">
-        <span class="label-status"><%= t('people.form.gender') %></span>
+  <div class="form-status form-gender">
+    <span class="label-status"><%= t('people.form.gender') %></span>
 
-        <p class="radio-inline">
-	    <%= f.radio_button :gender, 'male', id: 'radio-active' %>
-            <label for="radio-active"><%= t('people.form.male') %></label>
-        </p>
-        <p class="radio-inline">
-	    <%= f.radio_button :gender, 'female', id: 'radio-inactive' %>
-            <label for="radio-inactive"><%= t('people.form.female') %></label>
-        </p>
-    </div>
+    <p class="radio-inline">
+    <%= f.radio_button :gender, 'male', id: 'radio-active' %>
+    <label for="radio-active"><%= t('people.form.male') %></label>
+    </p>
+    <p class="radio-inline">
+    <%= f.radio_button :gender, 'female', id: 'radio-inactive' %>
+    <label for="radio-inactive"><%= t('people.form.female') %></label>
+    </p>
+  </div>
 </div>
 <div class="form-group">
-    <%= f.text_field :phone_number, placeholder: t('people.form.phone_number') %>
+  <%= f.text_field :phone_number, placeholder: t('people.form.phone_number') %>
 </div>
 <div class="form-group">
-    <%= f.email_field :email, placeholder: t('people.form.email') %>
+  <%= f.email_field :email, placeholder: t('people.form.email') %>
 </div>
 <div class="form-group">
-    <%= f.submit t('people.form.send') %>
+  <%= f.submit t('people.form.send') %>
 </div>
 
 <script>
- populateCountries(
-     "person_locations_attributes_country",
-     "person_locations_attributes_city"
- );
+populateCountries(
+  "person_locations_attributes_country",
+  "person_locations_attributes_city"
+);
 </script>

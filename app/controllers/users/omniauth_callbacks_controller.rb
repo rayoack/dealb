@@ -10,9 +10,9 @@ module Users
                              last_name: info[:last_name],
                              email: info[:email],
                              occupation: info[:headline],
-                             description: info[:description],
+                             bio: info[:description],
                              linkedin_url: info[:urls][:public_profile],
-                             image_url: info[:image])
+                             profile_image_url: info[:image])
 
       @user = User.from_omniauth(request.env['omniauth.auth'])
       @user.update(person: person)
