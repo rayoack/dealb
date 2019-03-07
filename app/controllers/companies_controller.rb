@@ -33,6 +33,8 @@ class CompaniesController < ApplicationController
       create_company_markets
       create_investor(@company)
 
+      Integrations::Clearbit.new(@company).enrich
+
       redirect_to(companies_path, notice: 'Successfully saved')
     else
       render :new
@@ -78,7 +80,7 @@ class CompaniesController < ApplicationController
   private
 
   COMPANY_PARAMS = %i[
-    name employees_count born_date description email website_url
+    name employees_count founded_on description contact_email homepage_url
     facebook_url linkedin_url twitter_url google_plus_url phone_number
   ].freeze
   private_constant :COMPANY_PARAMS

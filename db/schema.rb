@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(version: 20190302105042) do
     t.string "permalink", null: false
     t.text "description"
     t.integer "employees_count"
-    t.date "born_date"
+    t.date "founded_on"
     t.string "phone_number"
-    t.string "email"
-    t.string "website_url"
+    t.string "contact_email"
+    t.string "homepage_url"
     t.string "linkedin_url"
     t.string "facebook_url"
     t.string "twitter_url"
@@ -32,7 +32,13 @@ ActiveRecord::Schema.define(version: 20190302105042) do
     t.string "domain_country_context", default: "br", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "logo_url"
+    t.text "profile_image_url"
+    t.string "legal_name"
+    t.string "crunchbase_url"
+    t.string "stock_symbol"
+    t.string "stock_exchange"
+    t.datetime "closed_on"
+    t.integer "rank"
     t.index ["name"], name: "index_companies_on_name"
     t.index ["permalink"], name: "index_companies_on_permalink"
     t.index ["status"], name: "index_companies_on_status"
