@@ -384,6 +384,7 @@ es:
     new: 'Adicionar filtro'
     companies: 'Compañías'
     people: 'Personas'
+    deals: 'Transacciones'
     basic: 'Informaciones'
     name: 'Nombre'
     location: 'Ubicación'
@@ -393,6 +394,10 @@ es:
     gender: 'Género'
     occupation: 'Ocupación'
     value: 'Valor'
+    category: 'Categoría'
+    funding_type: 'Tipo de financiación'
+    amount: 'Cantidad'
+    date: 'Data'
     operators:
       equal: 'Igual'
       contains: 'Contiene'

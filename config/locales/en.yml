@@ -385,6 +385,7 @@ en:
     new: 'Add Filter'
     companies: 'Companies'
     people: 'People'
+    deals: 'Deals'
     basic: 'Basic Info'
     name: 'Name'
     location: 'Location'
@@ -394,6 +395,10 @@ en:
     gender: 'Gender'
     occupation: 'Occupation'
     value: 'Value'
+    category: 'Category'
+    funding_type: 'Funding Type'
+    amount: 'Amount'
+    date: 'Date'
     operators:
       equal: 'Equal'
       contains: 'Contains'
