@@ -71,6 +71,40 @@ es:
       column_status: 'Estado'
       column_location: 'Ubicación'
       column_deals: 'Transacciones'
+    show:
+      back: 'Volver'
+      edit: 'Editar'
+      site: 'Sitio'
+      locations: 'Localidades'
+      markets: 'Mercados'
+      description: 'Descripción'
+      founded: 'Fundada'
+      contact: 'Contacto'
+      mail: 'E-mail'
+      media: 'Medios Sociales'
+      profile: 'Perfil'
+      status:
+        active: 'Activa'
+        inactive: 'Inactiva'
+        acquired: 'Adquirida'
+        merged: "fundido"
+      deals:
+        investments: 'Inversiones'
+        close_date: 'Fecha de la inversión'
+        company: 'Empresa'
+        deal_type: 'Tipo de negocio'
+        round: "Ronda"
+        amount: "Valor"
+        pre_money: 'Pre-money valuation'
+      investors:
+        investors: 'Inversores'
+        name: 'Nombre'
+        round: "Ronda"
+      people:
+        people: 'Personas'
+        name: 'Nombre'
+        job: 'Título'
+        company: 'Empresa'
     form:
       back: 'atrás'
       create_company: ''
