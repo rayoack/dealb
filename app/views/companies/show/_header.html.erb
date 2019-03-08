@@ -4,37 +4,26 @@
       <div class="col-xs-12 col-sm-12 col-md-12">
         <a href="/companies" class="btn-back">
           <img src="/img/seta-esq-branca.svg" alt="">
-          back
+          <%= t('companies.show.back') %>
         </a>
         <div class="company">
           <div class="name-company">
             <div class="logo">
-              <img src="/img/logo-company-lg.png" class="img-responsive" alt="">
+              <img src="<%= @company.profile_image_url || '/img/logo-company.png' %>"
+                   class="img-responsive"
+                   alt="">
             </div>
             <div class="text">
               <h1><%= @company.name %></h1>
               <span class="status status-active">
                 <div class="circle"></div>
-                <span><%= @company.status %></span>
+                <span><%= t("companies.show.status.#{@company.status}") %></span>
               </span>
             </div>
           </div>
-          <% if false %>
-            <div class="top-contributors">
-              <span>Top Contributors</span>
-              <ul>
-                <li><img src="/img/logo-netflix.png" alt=""></li>
-                <li><img src="/img/logo-dell.png" alt=""></li>
-                <li><img src="/img/logo-apple.png" alt=""></li>
-                <li><img src="/img/logo-ficticio.png" alt=""></li>
-                <li><img src="/img/logo-microsoft.png" alt=""></li>
-                <li><img src="/img/logo-google.png" alt=""></li>
-              </ul>
-            </div>
-          <% end %>
-
-          <% if user_signed_in? %>
-            <a href="/companies/<%= @company.permalink %>/edit" class="btn-edit"><img src="/img/edit.svg" alt="">Edit Page</a>
+          <% if user_admin? || user_moderator? %>
+            <a href="/companies/<%= @company.permalink %>/edit" class="btn-edit"><img src="/img/edit.svg" alt="">
+              <%= t('companies.show.edit') %></a>
           <% end %>
         </div>
       </div>
@@ -48,15 +37,15 @@
       <div class="col-xs-12 col-sm-12 col-md-12">
         <ul>
           <li>
-            <strong>Site</strong>
+            <strong><%= t('companies.show.site') %></strong>
             <a href="<%= @company.homepage_url %>" target="_blank"><%= @company.homepage_url %></a>
           </li>
           <li>
-            <strong>Locations</strong>
+            <strong><%= t('companies.show.locations') %></strong>
             <span><%= @company.locations.pluck(:city, :country).join(', ') %></span>
           </li>
           <li>
-            <strong>Markets</strong>
+            <strong><%= t('companies.show.markets') %></strong>
             <span><%= @company.markets.map(&:name).uniq.join(', ') %></span>
           </li>
         </ul>

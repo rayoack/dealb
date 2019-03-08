@@ -1,32 +1,32 @@
 <% if @company.deals.any? %>
-    <div class="item">
-	<h1><img src="/img/investments.svg" alt=""> Investments</h1>
-	<div class="table-responsive">
-            <table class="table">
-		<thead>
-                    <tr>
-			<th>Close date</th>
-			<th>Company</th>
-			<th>Deal type</th>
-			<th>Round</th>
-			<th>Amount</th>
-			<th>Pre-money valution</th>
-                    </tr>
-		</thead>
-		<tbody>
-		    <% @company.deals.each do |deal| %>
-			<tr>
-			    <td><strong><%= I18n.l(deal.close_date, format: :default) %></strong></td>
-			    <td><a href="/companies/<%= @company.permalink %>" style="float: none;"><%= @company.name %></a></td>
-			    <td><%= I18n.t("deals.model.categories.#{deal.category}") %></td>
-			    <td><%= deal.round ? I18n.t("deals.form.rounds.#{deal.round}") : '' %></td>
-			    <td><%= format_amount(deal.amount, deal.amount_currency) %></td>
-			    <td><%= format_amount(deal.pre_valuation, deal.pre_valuation_currency) %></td>
-			    <td><a href="/deals/<%= deal.id %>"><img src="/img/seta-dir.svg" alt=""></a></td>
-			</tr>
-		    <% end %>
-		</tbody>
-            </table>
-	</div>
+  <div class="item">
+    <h1><img src="/img/investments.svg" alt=""><%= t('companies.show.deals.investments') %></h1>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th><%= t('companies.show.deals.close_date') %></th>
+            <th><%= t('companies.show.deals.company') %></th>
+            <th><%= t('companies.show.deals.deal_type') %></th>
+            <th><%= t('companies.show.deals.round') %></th>
+            <th><%= t('companies.show.deals.amount') %></th>
+            <th><%= t('companies.show.deals.pre_money') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @company.deals.each do |deal| %>
+            <tr>
+              <td><strong><%= I18n.l(deal.close_date, format: :default) %></strong></td>
+              <td><a href="/companies/<%= @company.permalink %>" style="float: none;"><%= @company.name %></a></td>
+              <td><%= I18n.t("deals.model.categories.#{deal.category}") %></td>
+              <td><%= deal.round ? I18n.t("deals.form.rounds.#{deal.round}") : '' %></td>
+              <td><%= format_amount(deal.amount, deal.amount_currency) %></td>
+              <td><%= format_amount(deal.pre_valuation, deal.pre_valuation_currency) %></td>
+              <td><a href="/deals/<%= deal.id %>"><img src="/img/seta-dir.svg" alt=""></a></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
+  </div>
 <% end %>

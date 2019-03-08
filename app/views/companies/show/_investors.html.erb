@@ -1,28 +1,28 @@
 <% if @investors.any? %>
-    <div class="item investors">
-	<h1><img src="/img/investors.svg" alt=""> Investors</h1>
-	<div class="table-responsive">
-            <table class="table">
-		<thead>
-                    <tr>
-			<th>Name Investor</th>
-			<th>Round</th>
-                    </tr>
-		</thead>
-		<tbody>
-		    <% @investors.each do |investor| %>
-			<tr>
-			    <td>
-				<strong>
-				    <a href="/investors/<%= investor.permalink %>" style="float: none;"><%= investor.name %></a>
-				</strong>
-			    </td>
-			    <td><%= investor.stage %></td>
-			    <td><a href="/investors/<%= investor.permalink %>">View profile</a></td>
-			</tr>
-		    <% end %>
-		</tbody>
-            </table>
-	</div>
+  <div class="item investors">
+    <h1><img src="/img/investors.svg" alt=""><%= t('companies.show.investors.investors') %></h1>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th><%= t('companies.show.investors.name') %></th>
+            <th><%= t('companies.show.investors.round') %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @investors.each do |investor| %>
+            <tr>
+              <td>
+                <strong>
+                  <a href="/investors/<%= investor.permalink %>" style="float: none;"><%= investor.name %></a>
+                </strong>
+              </td>
+              <td><%= investor.stage %></td>
+              <td><a href="/investors/<%= investor.permalink %>"><%= t('companies.show.profile') %></a></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
+  </div>
 <% end %>
