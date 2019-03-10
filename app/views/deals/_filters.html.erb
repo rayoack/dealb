@@ -58,7 +58,7 @@
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">
-            <h1 class="modal-title">Add Filter</h1>
+            <h1 class="modal-title"><%= t('filters.add') %></h1>
             <div class="modal-header">
                 <div class="control-breadcrumbs">
                     <div class="controls">
@@ -83,31 +83,54 @@
                         <ul>
                             <li>
 				<a href="">
-				    Deals<i class="glyphicon glyphicon-chevron-right"></i>
+				    <%= t('filters.deals') %><i class="glyphicon glyphicon-chevron-right"></i>
 				</a>
 			    </li>
                         </ul>
                     </div>
                     <div class="level-filter sub-category">
                         <ul>
-                            <li><a href="">Basic Info<i class="glyphicon glyphicon-chevron-right"></i></a></li>
+                            <li><a href=""><%= t('filters.basic') %><i class="glyphicon glyphicon-chevron-right"></i></a></li>
                         </ul>
                     </div>
                     <div class="level-filter last-sub-category">
                         <ul>
-                            <li><a href="" data-autocomplete-category="Status" data-autocomplete-data=<%= Deal::STATUSES.to_json %>>Status <i class="glyphicon glyphicon-chevron-right"></i></a></li>
-                            <li><a href="" data-autocomplete-category="Category" data-autocomplete-data=<%= Deal::CATEGORIES.to_json %>>Category <i class="glyphicon glyphicon-chevron-right"></i></a></li>
-                            <li><a href="" data-autocomplete-category="Funding type" data-autocomplete-data=<%= Deal::ROUNDS.to_json %>>Funding type <i class="glyphicon glyphicon-chevron-right"></i></a></li>
-                            <li><a href="">Amount <i class="glyphicon glyphicon-chevron-right"></i></a></li>
-                            <li><a href="">Date <i class="glyphicon glyphicon-chevron-right"></i></a></li>
+                            <li>
+                              <a href="" data-autocomplete-category="Status"
+                                 data-autocomplete-data=<%= Deal::STATUSES.to_json %>>
+                                <%= t('filters.status') %> <i class="glyphicon glyphicon-chevron-right"></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="" data-autocomplete-category="Category"
+                                 data-autocomplete-data=<%= Deal::CATEGORIES.to_json %>>
+                                <%= t('filters.category') %> <i class="glyphicon glyphicon-chevron-right"></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="" data-autocomplete-category="Funding type"
+                                 data-autocomplete-data=<%= Deal::ROUNDS.to_json %>>
+                                <%= t('filters.funding_type') %> <i class="glyphicon glyphicon-chevron-right"></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="">
+                                <%= t('filters.amount') %> <i class="glyphicon glyphicon-chevron-right"></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="">
+                                <%= t('filters.date') %> <i class="glyphicon glyphicon-chevron-right"></i>
+                              </a>
+                            </li>
                         </ul>
                     </div>
                     <div class="level-filter last-level-filter">
                         <ul>
-                            <li><a href="">equal</a></li>
-                            <li><a href="">contains</a></li>
-                            <li><a href="">greater than</a></li>
-                            <li><a href="">less than</a></li>
+                          <li><a href="" data-type="equal"><%= t('filters.operators.equal') %></a></li>
+                          <li><a href="" data-type="contains"><%= t('filters.operators.contains') %></a></li>
+                          <li><a href="" data-type="greater_than"><%= t('filters.operators.greater') %></a></li>
+                          <li><a href="" data-type="less_than"><%= t('filters.operators.less') %></a></li>
                         </ul>
                     </div>
                 </div>

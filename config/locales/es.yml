@@ -198,6 +198,8 @@ es:
       column_occupation: 'Ocupación'
       column_local: 'Ubicación'
       column_company: 'Compañía'
+      apply_filter: 'Usar filtro'
+      add_filter: 'Añadir filtro'
     show:
       back: 'Volver'
       edit: 'Editar'
@@ -379,6 +381,32 @@ es:
     answer_9: 'Contribuciones del código son bienvenidas! La forma más simple de sugerir nuevas características o cambiar el código existente es enviar un pull request por Github. Para hacer esto, basta con seguir las instrucciones aquí. Todas las solicitudes serán analizadas y mergeadas, si se aceptan.'
     question_10: '¿Cómo me vuelvo moderador?'
     answer_10: 'Sólo los moderadores existentes pueden promover usuarios a mods. Los privilegios del moderador sólo se reservan para los miembros activos que ya han conquistado la confianza de la comunidad. Si usted piensa que es su caso, entre en contacto con uno. '
+  filters:
+    add: 'Añadir filtro'
+    companies: 'Compañías'
+    deals: 'Transacciones'
+    people: 'Personas'
+    investors: 'Inversionistas'
+    basic: 'Informaciones'
+    name: 'Nombre'
+    location: 'Ubicación'
+    description: 'Descripción'
+    employees: 'Empleados'
+    status: 'Status'
+    category: 'Categoría'
+    funding_type: 'Tipo de Inversion'
+    amount: 'Cantidad'
+    date: 'Fecha'
+    gender: 'Género'
+    occupation: 'Ocupación'
+    stage: 'Etapa'
+    number_of_deals: 'Número de Negocios'
+    total_funds_invested: 'Total Invertido'
+    operators:
+      equal: 'Igual'
+      contains: 'Contiene'
+      greater: 'Más grande que'
+      less: 'Menos que'
   activerecord:
     errors:
       messages:
