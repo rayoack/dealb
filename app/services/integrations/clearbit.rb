@@ -20,12 +20,16 @@ module Integrations
       return unless resource.is_a?(Company)
 
       data = company_data(name: resource.name)
-      resource.update_from_clearbit(data)
+      resource.update_from_clearbit(data) if data.present?
       resource
     end
 
     def company_data(name:)
-      data = ::Clearbit::Enrichment::Company.find(domain(name))
+      domain_data = domain(name)
+
+      return if domain_data.blank?
+
+      data = ::Clearbit::Enrichment::Company.find(domain_data)
                                             .deep_symbolize_keys
       Company.attributes_from_clearbit(data)
     end
@@ -34,7 +38,7 @@ module Integrations
       return unless resource.is_a?(Person)
 
       data = person_data(email: resource.email)
-      resource.update_from_clearbit(data)
+      resource.update_from_clearbit(data) if data.present?
       resource
     end
 
