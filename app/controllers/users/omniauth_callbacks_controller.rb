@@ -11,7 +11,7 @@ module Users
                              email: info[:email],
                              occupation: info[:headline],
                              bio: info[:description],
-                             linkedin_url: info[:urls][:public_profile],
+                             linkedin_url: info.dig(:urls, :public_profile),
                              profile_image_url: info[:image])
 
       @user = User.from_omniauth(request.env['omniauth.auth'])
