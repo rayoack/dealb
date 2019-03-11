@@ -198,6 +198,30 @@ es:
       column_occupation: 'Ocupación'
       column_local: 'Ubicación'
       column_company: 'Compañía'
+    show:
+      back: 'Volver'
+      edit: 'Editar'
+      category: 'Categoría'
+      details: 'Detalles'
+      born: 'Nacimiento'
+      gender: 'Género'
+      contact: 'Contacto'
+      email: 'E-mail'
+      media: 'Medios Sociales'
+      deals:
+        investments: 'Inversiones'
+        close_date: 'Fecha de la inversión'
+        company: 'Empresa'
+        deal_type: 'Tipo de negocio'
+        round: "Ronda"
+        amount: "Valor"
+        pre_money: 'Pre-money valuation'
+      companies:
+        name: 'Nombre'
+        status: 'Status'
+        location: 'Ubicación'
+        deals: 'Transacciones'
+        funds: 'Fondos Recaudados'
     form:
       new: 'Crear persona'
       edit: 'Editar persona'

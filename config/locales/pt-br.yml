@@ -96,7 +96,7 @@ pt-br:
         deal_type: 'Tipo do Negócio'
         round: 'Rodada'
         amount: 'Valor'
-        pre_money: 'Pre-money valution'
+        pre_money: 'Pre-money valuation'
       investors:
         investors: 'Investidores'
         name: 'Nome'
@@ -216,7 +216,7 @@ pt-br:
         deal_type: 'Tipo do Negócio'
         round: 'Rodada'
         amount: 'Valor'
-        pre_money: 'Pre-money valution'
+        pre_money: 'Pre-money valuation'
       companies:
         name: 'Nome'
         status: 'Status'
