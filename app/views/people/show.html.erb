@@ -6,10 +6,12 @@
       <div class="col-xs-12 col-sm-12 col-md-12">
         <a href="/people" class="btn-back">
           <img src="/img/seta-esq-back.svg" alt="">
-          back
+          <%= t('people.show.back') %>
         </a>
         <% if user_signed_in? %>
-          <a href="/people/<%= @person.permalink %>/edit" class="btn-edit-page"> <img src="/img/edit.svg" alt=""> Edit page </a>
+          <a href="/people/<%= @person.permalink %>/edit" class="btn-edit-page"> <img src="/img/edit.svg">
+            <%= t('people.show.edit') %>
+          </a>
         <% end %>
       </div>
     </div>
@@ -40,7 +42,7 @@
           </div>
           <% if @person.investor %>
             <div class="categorie">
-              <span>Categorie</span>
+              <span><%= t('people.show.category') %></span>
               <span class="name-categorie"><%= investor_category(@person) %></span>
             </div>
           <% end %>
@@ -56,33 +58,33 @@
         <div class="description">
           <h1>
             <img src="/img/person-details.svg" alt="">
-            Person Details
+            <%= t('people.show.details') %>
           </h1>
           <p><%= @person.description %></p>
           <ul class="info-contact">
             <li>
               <p>
-              <strong>Born:</strong> <%= @person.born_on %>
+              <strong><%= t('people.show.born') %>:</strong> <%= @person.born_on %>
             </p>
             </li>
             <li>
               <p>
-              <strong>Gender:</strong> <%= @person.gender %>
+              <strong><%= t('people.show.gender') %>:</strong> <%= @person.gender %>
             </p>
             </li>
             <li>
               <p>
-              <strong>Contact:</strong> <%= @person.phone_number %>
+              <strong><%= t('people.show.contact') %>:</strong> <%= @person.phone_number %>
             </p>
             </li>
             <li>
               <p>
-              <strong>E-mail:</strong> <%= @person.email %>
+              <strong><%= t('people.show.email') %>:</strong> <%= @person.email %>
             </p>
             </li>
           </ul>
           <div class="social">
-            <h1>Social medias</h1>
+            <h1><%= t('people.show.media') %></h1>
             <ul>
               <% if @person.facebook_url %>
                 <li>
