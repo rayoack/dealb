@@ -27,6 +27,77 @@ $(".last-level-filter ul li a").click(function(event) {
   $(".control-breadcrumbs .bread .last-category").append(itemBread);
 });
 
+function subcategoryCard(name) {
+  return (
+    '<li class="primary-nivel-filter-secondary">' +
+      '<button>' + name + '</button>' +
+    '</li>'
+  );
+}
+
+function operatorCard(name) {
+  return (
+    '<li class="second-nivel-filter">' +
+      '<button>' + name + '</button>' +
+    '</li>'
+  );
+}
+
+function inputCard(options) {
+  if (options.type === 'select') {
+    let content = '<select name="" id="" class="last-nivel.filter">' +
+                    '<option value="nada" disabled selected>Number of employees</option>' +
+                    '<option value="nadad">Option01</option>' +
+                    '<option value="nadadd">Option02</option>' +
+                    '<option value="nadadds">Option03</option>' +
+                  '</select>';
+    return content;
+  } else {
+    return '<li class="last-nivel-filter">' + options.inputs + '</li>';
+  }
+}
+
+function finalSelection(event, params) {
+    const category = $(".sub-category ul li.active a").text().trim();
+    const subcategory = $(".last-sub-category ul li.active a").attr('id');
+    const subcategory_name = $(".last-sub-category ul li.active a").text().trim();
+    const type = params.operator.value || $(".last-level-filter ul li.active a").attr('id');
+    const type_name = params.operator.name || $(".last-level-filter ul li.active a").text().trim();
+    const index = $('.item-filter').length;
+    const value_placeholder = $('.filter-value-placeholder').text();
+    const field_input = '<input type="hidden" name="filter['+index+'][type]" value="'+subcategory+'" />';
+    const operator_input = '<input type="hidden" name="filter['+index+'][operator]" value="'+type+'" />';
+    const value_input = '<input type="text" name="filter['+index+'][value]" data-category="' +
+                            category + '" data-subcategory="' +
+                            subcategory +'" data-type="' +
+                            type + '" placeholder=' + value_placeholder + '>'
+    const inputs = field_input + operator_input + value_input;
+    const item_filter = '<div class="item-filter">' +
+                          '<ul>' +
+                            subcategoryCard(subcategory_name) +
+                            operatorCard(type_name) +
+                            inputCard({ inputs: inputs, ...params}) +
+                          '</ul>' +
+                          '<div class="button btn-remove-filter">' +
+                            '<img src="/img/img-close-filter.png" alt="">' +
+                          '</div>' +
+                        '</div>';
+
+    if ($(this).find("i").length == 0) {
+      $("#modalFilter").modal("hide");
+      $('.last-level-filter ul').hide();
+      $(".filter-result").show();
+      $(".filter-complete").append(item_filter);
+      $('.selectpicker').selectpicker();
+
+      const input = $('input[data-subcategory="' + subcategory + '"]');
+
+      autoComplete(input);
+      input.focus().keydown();
+    }
+
+    return false;
+}
 
 $(".sub-category li a").click(function(event) {
   var item_filter = '<div class="item-filter"><ul><li class="primary-nivel-filter"><button>' + $(this).text() + '</button></li><li class="second-nivel-filter"><select class="selectpicker"><option>input option 01</option><option>input option 02</option><option>input option 03</option></select></li><li class="last-nivel-filter"><input type="text" placeholder="Value"></li></ul><div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div></div>';
@@ -47,6 +118,24 @@ $(".last-sub-category li a").click(function(event) {
     });
     $(".controls .arrow-left").removeClass('disabled');
   }
+
+  /* Text options */
+  // TODO
+
+  /* Numeric options */
+  // TODO
+
+  /* Select options */
+  if ($(this).attr('data-autocomplete-data')) {
+    return finalSelection(event, {
+      type: 'select',
+      inputs: $(this).attr('data-autocomplete-data'),
+      operator: {
+        value: 'equal',
+        name: $('#equal').text().trim(),
+      }
+    });
+  };
 
   $('.last-level-filter ul').show();
 
@@ -138,46 +227,7 @@ $(document).ready(function() {
     });
   }
 
-  $(".last-level-filter li a").click(function(event) {
-    var category = $(".sub-category ul li.active a").text().trim();
-    var subcategory = $(".last-sub-category ul li.active a").attr('id');
-    var subcategory_name = $(".last-sub-category ul li.active a").text().trim();
-    var type = $(".last-level-filter ul li.active a").attr('id');
-    var type_name = $(".last-level-filter ul li.active a").text().trim();
-    var index = $('.item-filter').length;
-    var value_placeholder = $('.filter-value-placeholder').text();
-    var field_input = '<input type="hidden" name="filter['+index+'][type]" value="'+subcategory+'" />';
-    var operator_input = '<input type="hidden" name="filter['+index+'][operator]" value="'+type+'" />';
-    var value_input = '<input type="text" name="filter['+index+'][value]" data-category="'+category+'" data-subcategory="'+subcategory+'" data-type="'+type+'" placeholder=' + value_placeholder + '>'
-    var inputs = field_input + operator_input + value_input;
-    var item_filter = '<div class="item-filter"><ul>' +
-                        '<li class="primary-nivel-filter-secondary">' +
-                          '<button>' + subcategory_name + '</button>' +
-                        '</li>' +
-                        '<li class="second-nivel-filter">' + 
-                          '<button>' + type_name + '</button>' + 
-                        '</li>' + 
-                        '<li class="last-nivel-filter">' + inputs + '</li>' + 
-                        '</ul>' + 
-                        '<div class="button btn-remove-filter">' + 
-                          '<img src="/img/img-close-filter.png" alt="">' + 
-                        '</div></div>';
-
-    if ($(this).find("i").length == 0) {
-      $("#modalFilter").modal("hide");
-      $('.last-level-filter ul').hide();
-      $(".filter-result").show();
-      $(".filter-complete").append(item_filter);
-      $('.selectpicker').selectpicker();
-
-      var input = $('input[data-subcategory="' + subcategory + '"]');
-
-      autoComplete(input);
-      input.focus().keydown();
-    }
-
-    return false;
-  });
+  $(".last-level-filter li a").click(finalSelection);
 
   $('input[data-type="equal"]').on('focus', function(e) {
     var input = $(e.target);
