@@ -90,36 +90,39 @@
                     </div>
                     <div class="level-filter sub-category">
                         <ul>
-                            <li><a href=""><%= t('filters.basic') %><i class="glyphicon glyphicon-chevron-right"></i></a></li>
+                            <li><a href="" data-category="basic"><%= t('filters.basic') %><i class="glyphicon glyphicon-chevron-right"></i></a></li>
                         </ul>
                     </div>
                     <div class="level-filter last-sub-category">
                         <ul>
                             <li>
-                              <a href="" data-autocomplete-category="Status"
-                                 data-autocomplete-data=<%= Deal::STATUSES.to_json %>>
+                              <a href="" data-subcategory="status"
+                                         data-autocomplete-category="Status"
+                                         data-autocomplete-data=<%= Deal::STATUSES.to_json %>>
                                 <%= t('filters.status') %> <i class="glyphicon glyphicon-chevron-right"></i>
                               </a>
                             </li>
                             <li>
-                              <a href="" data-autocomplete-category="Category"
-                                 data-autocomplete-data=<%= Deal::CATEGORIES.to_json %>>
+                              <a href="" data-subcategory="category"
+                                         data-autocomplete-category="Category"
+                                         data-autocomplete-data=<%= Deal::CATEGORIES.to_json %>>
                                 <%= t('filters.category') %> <i class="glyphicon glyphicon-chevron-right"></i>
                               </a>
                             </li>
                             <li>
-                              <a href="" data-autocomplete-category="Funding type"
-                                 data-autocomplete-data=<%= Deal::ROUNDS.to_json %>>
+                              <a href="" data-subcategory="funding_type"
+                                         data-autocomplete-category="Funding type"
+                                         data-autocomplete-data=<%= Deal::ROUNDS.to_json %>>
                                 <%= t('filters.funding_type') %> <i class="glyphicon glyphicon-chevron-right"></i>
                               </a>
                             </li>
                             <li>
-                              <a href="">
+                              <a href=""  data-subcategory="amount">
                                 <%= t('filters.amount') %> <i class="glyphicon glyphicon-chevron-right"></i>
                               </a>
                             </li>
                             <li>
-                              <a href="">
+                              <a href="" data-subcategory="date">
                                 <%= t('filters.date') %> <i class="glyphicon glyphicon-chevron-right"></i>
                               </a>
                             </li>

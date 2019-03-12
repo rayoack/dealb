@@ -95,7 +95,7 @@
           <div class="level-filter sub-category">
             <ul>
               <li>
-                <a href=""><%= t('filters.basic') %><i class="glyphicon glyphicon-chevron-right"></i>
+                <a href="" data-category="basic"><%= t('filters.basic') %><i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
             </ul>
@@ -103,29 +103,32 @@
           <div class="level-filter last-sub-category">
             <ul>
               <li>
-                <a href="" data-autocomplete-category="Name"
+                <a href="" data-subcategory="name"
+                           data-autocomplete-category="Name"
                            data-autocomplete-source="/companies/names">
                   <%= t('filters.name') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
               <li>
-                <a href="" data-autocomplete-category="Location"
+                <a href="" data-subcategory="location"
+                           data-autocomplete-category="Location"
                            data-autocomplete-source="/companies/locations">
                   <%= t('filters.location') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
               <li>
-                <a href="">
+                <a href="" data-subcategory="description">
                   <%= t('filters.description') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
               <li>
-                <a href="">
+                <a href="" data-subcategory="employees">
                   <%= t('filters.employees') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
               <li>
-                <a href="" data-autocomplete-category="Status"
+                <a href="" data-subcategory="status"
+                           data-autocomplete-category="Status"
                            data-autocomplete-data=<%= Company::STATUSES.to_json %>>
                   <%= t('filters.status') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>

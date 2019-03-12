@@ -164,7 +164,7 @@ $(document).ready(function() {
         if (request.term in cache) {
           response(cache[request.term])
         } else {
-          var origin = $('[data-autocomplete-category="' + subcategory + '"]');
+          var origin = $('a[data-subcategory="' + subcategory + '"]');
 
           if (origin) {
             var data = origin.data() || {};
@@ -199,8 +199,9 @@ $(document).ready(function() {
 
   $(".last-level-filter li a").click(function(event) {
     var category = $(".sub-category ul li.active a").text().trim();
-    var subcategory = $(".last-sub-category ul li.active a").text().trim();
-    var type = $(".last-level-filter ul li.active").text().trim();
+    var subcategory = $(".last-sub-category ul li.active a").data().subcategory;
+    var type = $(".last-level-filter ul li.active a").data().type;
+
     var index = $('.item-filter').length;
     var field_input = '<input type="hidden" name="filter['+index+'][type]" value="'+subcategory+'" />';
     var operator_input = '<input type="hidden" name="filter['+index+'][operator]" value="'+type+'" />';
@@ -216,19 +217,17 @@ $(document).ready(function() {
 
       var input = $('input[data-subcategory="' + subcategory + '"]');
 
+      input.focus(function(_e) {
+        autoComplete(input);
+        input.keydown();
+      });
+
       autoComplete(input);
-      input.focus().keydown();
+      input.keydown();
     }
 
-    return false;
+    return true;
   });
-
-  $('input[data-type="equal"]').on('focus', function(e) {
-    var input = $(e.target);
-
-    autoComplete(input);
-    input.keydown();
-  })
 })
 
 $(document).on("click", ".btn-remove-filter", function() {

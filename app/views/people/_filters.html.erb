@@ -91,29 +91,30 @@
           </div>
           <div class="level-filter sub-category">
             <ul>
-              <li><a href=""><%= t('filters.basic') %><i class="glyphicon glyphicon-chevron-right"></i></a></li>
+              <li><a href="" data-category="basic"><%= t('filters.basic') %><i class="glyphicon glyphicon-chevron-right"></i></a></li>
             </ul>
           </div>
           <div class="level-filter last-sub-category">
             <ul>
               <li>
-                <a href="">
+                <a href="" data-subcategory="name">
                   <%= t('filters.name') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
               <li>
-                <a href="">
+                <a href="" data-subcategory="description">
                   <%= t('filters.description') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
               <li>
-                <a href="" data-autocomplete-category="Gender"
+                <a href="" data-subcategory="gender"
+                           data-autocomplete-category="Gender"
                            data-autocomplete-data=<%= Person::GENDERS.to_json %>>
                   <%= t('filters.gender') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
               <li>
-                <a href="">
+                <a href="" data-subcategory="occupation">
                   <%= t('filters.occupation') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
