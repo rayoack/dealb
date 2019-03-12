@@ -27,6 +27,18 @@ $(".last-level-filter ul li a").click(function(event) {
   $(".control-breadcrumbs .bread .last-category").append(itemBread);
 });
 
+function lastLevelSelect(params) {
+  const options = params.options.value.map(function (el, i) {
+    return (
+      '<option name="filter[' + params.index + '][value]" value="' + el + '">' +
+        params.options.label[i] +
+      '</option>'
+    );
+  })
+
+  return options;
+}
+
 function subcategoryCard(name) {
   return (
     '<li class="primary-nivel-filter-secondary">' +
@@ -43,40 +55,39 @@ function operatorCard(name) {
   );
 }
 
-function inputCard(options) {
-  if (options.type === 'select') {
-    let content = '<select name="" id="" class="last-nivel.filter">' +
-                    '<option value="nada" disabled selected>Number of employees</option>' +
-                    '<option value="nadad">Option01</option>' +
-                    '<option value="nadadd">Option02</option>' +
-                    '<option value="nadadds">Option03</option>' +
+function inputCard(params) {
+  const category = $(".sub-category ul li.active a").text().trim();
+  const subcategory = $(".last-sub-category ul li.active a").attr('id');
+  const type = (params && params.operator.value) || $(".last-level-filter ul li.active a").attr('id');
+  const index = $('.item-filter').length;
+  const value_placeholder = $('.filter-value-placeholder').text();
+  const field_input = '<input type="hidden" name="filter['+index+'][type]" value="'+subcategory+'" />';
+  const operator_input = '<input type="hidden" name="filter['+index+'][operator]" value="'+type+'" />';
+  const value_input = '<input type="text" name="filter['+index+'][value]" data-category="' +
+                          category + '" data-subcategory="' +
+                          subcategory +'" data-type="' +
+                          type + '" placeholder=' + value_placeholder + '>'
+  const inputs = field_input + operator_input + value_input;
+
+  if (params && params.type === 'select') {
+    let content = '<select class="last-nivel-filter bootstrap-select">' +
+                    lastLevelSelect({ ...params, inputs, index }) +
                   '</select>';
     return content;
   } else {
-    return '<li class="last-nivel-filter">' + options.inputs + '</li>';
+    return '<li class="last-nivel-filter">' + inputs + '</li>';
   }
 }
 
 function finalSelection(event, params) {
-    const category = $(".sub-category ul li.active a").text().trim();
+    const type_name = (params && params.operator.name) || $(".last-level-filter ul li.active a").text().trim();
     const subcategory = $(".last-sub-category ul li.active a").attr('id');
     const subcategory_name = $(".last-sub-category ul li.active a").text().trim();
-    const type = params.operator.value || $(".last-level-filter ul li.active a").attr('id');
-    const type_name = params.operator.name || $(".last-level-filter ul li.active a").text().trim();
-    const index = $('.item-filter').length;
-    const value_placeholder = $('.filter-value-placeholder').text();
-    const field_input = '<input type="hidden" name="filter['+index+'][type]" value="'+subcategory+'" />';
-    const operator_input = '<input type="hidden" name="filter['+index+'][operator]" value="'+type+'" />';
-    const value_input = '<input type="text" name="filter['+index+'][value]" data-category="' +
-                            category + '" data-subcategory="' +
-                            subcategory +'" data-type="' +
-                            type + '" placeholder=' + value_placeholder + '>'
-    const inputs = field_input + operator_input + value_input;
     const item_filter = '<div class="item-filter">' +
                           '<ul>' +
                             subcategoryCard(subcategory_name) +
                             operatorCard(type_name) +
-                            inputCard({ inputs: inputs, ...params}) +
+                            inputCard(params) +
                           '</ul>' +
                           '<div class="button btn-remove-filter">' +
                             '<img src="/img/img-close-filter.png" alt="">' +
@@ -129,7 +140,10 @@ $(".last-sub-category li a").click(function(event) {
   if ($(this).attr('data-autocomplete-data')) {
     return finalSelection(event, {
       type: 'select',
-      inputs: $(this).attr('data-autocomplete-data'),
+      options: {
+        value: $.parseJSON($(this).attr('data-autocomplete-data')),
+        label: $.parseJSON($(this).attr('data-label')),
+      },
       operator: {
         value: 'equal',
         name: $('#equal').text().trim(),

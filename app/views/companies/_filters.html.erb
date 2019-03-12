@@ -30,7 +30,10 @@
                 <% end %>
               </div>
               <div class="filter-empty">
-                <a href="#" class="btn-add-filter-modal" data-toggle="modal" data-target="#modalFilter"><img src="/img/add.svg" alt=""> <%= t('companies.index.add_filter') %></a>
+                <a href="#" class="btn-add-filter-modal"
+                            data-toggle="modal"
+                            data-target="#modalFilter">
+                  <img src="/img/add.svg" alt=""> <%= t('companies.index.add_filter') %></a>
                 <button class="btn-app-filter"><%= t('companies.index.apply_filter') %></button>
               </div>
             </form>
@@ -112,6 +115,7 @@
               <li>
                 <a href="" data-autocomplete-category="Status"
                            data-autocomplete-data=<%= Company::STATUSES.to_json %>
+                           data-label=<%= Company::STATUSES.map { |s| t("filters.status_options.#{s}") }.to_json %>
                            id="status">
                   <%= t('filters.status') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
