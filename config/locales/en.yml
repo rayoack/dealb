@@ -405,6 +405,12 @@ en:
     stage: 'Stage'
     number_of_deals: 'Number of Deals'
     total_funds_invested: 'Total Funds Invested'
+    labels:
+      status:
+        active: 'Active'
+        inactive: 'Inactive'
+        acquired: 'Acquired'
+        merged: 'Merged'
     operators:
       equal: 'Equal'
       contains: 'Contains'

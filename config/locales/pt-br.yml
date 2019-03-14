@@ -404,6 +404,12 @@ pt-br:
     stage: 'Estágio'
     number_of_deals: 'Número de negócios'
     total_funds_invested: 'Total Investido'
+    labels:
+      status:
+        active: 'Ativa'
+        inactive: 'Inativa'
+        acquired: 'Adquirida'
+        merged: 'Fundida'
     operators:
       equal: 'Igual'
       contains: 'Contém'

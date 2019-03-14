@@ -122,7 +122,7 @@
                 <a href="" data-subcategory="status"
                            data-type="select"
                            data-autocomplete-category="Status"
-                           data-autocomplete-data=<%= Company::STATUSES.to_json %>>
+                           data-autocomplete-data=<%= Hash[Company::STATUSES.map { |s| [s, t("filters.labels.status.#{s}")] }].to_json %>>
                   <%= t('filters.status') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>

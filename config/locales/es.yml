@@ -87,7 +87,7 @@ es:
         active: 'Activa'
         inactive: 'Inactiva'
         acquired: 'Adquirida'
-        merged: "fundido"
+        merged: 'Fundida'
       deals:
         investments: 'Inversiones'
         close_date: 'Fecha de la inversión'
@@ -403,6 +403,12 @@ es:
     stage: 'Etapa'
     number_of_deals: 'Número de Negocios'
     total_funds_invested: 'Total Invertido'
+    labels:
+      status:
+        active: 'Activa'
+        inactive: 'Inactiva'
+        acquired: 'Adquirida'
+        merged: 'Fundida'
     operators:
       equal: 'Igual'
       contains: 'Contiene'

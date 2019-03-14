@@ -182,11 +182,18 @@ $(document).ready(function() {
             var data = origin.data() || {};
 
             if(data['autocompleteData']) {
-              var result = data['autocompleteData'].filter(function(el, i) {
-                return el.includes(request.term);
-              });
+              const autocompleteData = data['autocompleteData'];
+              const values = Object.values(autocompleteData);
 
-              response(result)
+              const result = values.filter((el, i) => {
+                return el.toLowerCase().includes(request.term.toLowerCase());
+              });
+              const key = Object.keys(autocompleteData)
+                                .find(k => autocompleteData[k] === result[0]);
+
+              /* Add autocomplete value to hidden input */
+              $('input[data-subcategory="' + subcategory + '_input"]').val(key);
+              response(result);
             } else if(data['autocompleteSource']) {
               $.ajax({
                 dataType: "json",
@@ -219,8 +226,9 @@ $(document).ready(function() {
     var index = $('.item-filter').length;
     var field_input = '<input type="hidden" name="filter['+index+'][type]" value="'+subcategory+'" />';
     var operator_input = '<input type="hidden" name="filter['+index+'][operator]" value="'+type+'" />';
-    var value_input = '<input type="text" name="filter['+index+'][value]" data-category="'+category+'" data-subcategory="'+subcategory+'" data-type="'+type+'" placeholder="Value">'
-    var inputs = field_input + operator_input + value_input;
+    var value_input = '<input type="hidden" name="filter['+index+'][value]" data-category="'+category+'" data-subcategory="'+subcategory+'_input" data-type="'+type+'" />';
+    var value_input_lbl = '<input type="text"data-category="'+category+'" data-subcategory="'+subcategory+'" data-type="'+type+'"/>';
+    var inputs = field_input + operator_input + value_input + value_input_lbl;
     var item_filter = '<div class="item-filter"><ul><li class="primary-nivel-filter-secondary"><button>' + subcategory_label + '</button></li><li class="second-nivel-filter"><button>' + type_label + '</button></li><li class="last-nivel-filter">'+inputs+'</li></ul><div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div></div>';
 
     if ($(this).find("i").length == 0) {
