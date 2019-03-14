@@ -66,6 +66,6 @@ class ApplicationController < ActionController::Base
   end
 
   def not_found
-    render(file: 'public/404', status: 404, formats: [:html])
+    render(file: 'public/404', status: :not_found, formats: [:html])
   end
 end

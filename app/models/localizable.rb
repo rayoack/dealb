@@ -6,7 +6,7 @@ class Localizable < ApplicationRecord
   # This association is here because of a bug founded in polymorphic
   # association when trying to save nested_attributes in a rails form
   belongs_to(
-    :localizables, polymorphic: true, inverse_of: :companies, required: false
+    :localizables, polymorphic: true, inverse_of: :companies, optional: true
   )
 
   belongs_to :localizable, polymorphic: true, inverse_of: :localizables
