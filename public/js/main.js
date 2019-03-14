@@ -133,7 +133,27 @@ $(".sub-category li a").click(function(event) {
   return false;
 });
 
+function hideLastLevelFilters() { $('.last-level-filter li a').hide(); }
+function showLastLevelFilters() { $('.last-level-filter li a').show(); }
+
+function renderLastLevelFilters(clickedElement) {
+  const type = clickedElement.data().type;
+
+  if (type === 'select') {
+    /* Shows only the equals option */
+    hideLastLevelFilters();
+    $('.last-level-filter li a[data-type="equal"]').show();
+  } else if (type === 'text') {
+    /* Shows only equals & contains options */
+    hideLastLevelFilters();
+    $('.last-level-filter li a[data-type="equal"]').show();
+    $('.last-level-filter li a[data-type="contains"]').show();
+  }
+}
+
 $(".last-sub-category li a").click(function(event) {
+  showLastLevelFilters();
+
   if ($(this).find("i").length > 0) {
     $(".filter-geral").css({
       transform: 'translateX(-199px) translateY(0px)',
@@ -142,14 +162,7 @@ $(".last-sub-category li a").click(function(event) {
     $(".controls .arrow-left").removeClass('disabled');
   }
 
-  var item_filter = '<div class="item-filter"><ul><li class="primary-nivel-filter"><button>' + $(this).text() + '</button></li><li class="second-nivel-filter"><select class="selectpicker"><option>input option 01</option><option>input option 02</option><option>input option 03</option></select></li><li class="last-nivel-filter"><input type="text" placeholder="Value"></li></ul><div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div></div>';
-  if ($(this).find("i").length == 0) {
-    $("#modalFilter").modal("hide");
-    $(".filter-result").show();
-    $(".filter-complete").append(item_filter);
-    $('.selectpicker').selectpicker();
-  }
-  return false;
+  renderLastLevelFilters($(this));
 });
 
 $(document).ready(function() {

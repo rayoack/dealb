@@ -79,24 +79,25 @@
           <div class="level-filter last-sub-category">
             <ul>
               <li>
-                <a href="" data-subcategory="name">
+                <a href="" data-subcategory="name" data-type="text">
                   <%= t('filters.name') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
               <li>
-                <a href="" data-subcategory="description">
+                <a href="" data-subcategory="description" data-type="text">
                   <%= t('filters.description') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
               <li>
                 <a href="" data-subcategory="gender"
+                           data-type="select"
                            data-autocomplete-category="Gender"
                            data-autocomplete-data=<%= Person::GENDERS.to_json %>>
                   <%= t('filters.gender') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
               <li>
-                <a href="" data-subcategory="occupation">
+                <a href="" data-subcategory="occupation" data-type="text">
                   <%= t('filters.occupation') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>

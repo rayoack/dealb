@@ -94,6 +94,7 @@
             <ul>
               <li>
                 <a href="" data-subcategory="name"
+                           data-type="text"
                            data-autocomplete-category="Name"
                            data-autocomplete-source="/companies/names">
                   <%= t('filters.name') %> <i class="glyphicon glyphicon-chevron-right"></i>
@@ -101,13 +102,14 @@
               </li>
               <li>
                 <a href="" data-subcategory="location"
+                           data-type="text"
                            data-autocomplete-category="Location"
                            data-autocomplete-source="/companies/locations">
                   <%= t('filters.location') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
               <li>
-                <a href="" data-subcategory="description">
+                <a href="" data-subcategory="description" data-type="text">
                   <%= t('filters.description') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
@@ -118,6 +120,7 @@
               </li>
               <li>
                 <a href="" data-subcategory="status"
+                           data-type="select"
                            data-autocomplete-category="Status"
                            data-autocomplete-data=<%= Company::STATUSES.to_json %>>
                   <%= t('filters.status') %> <i class="glyphicon glyphicon-chevron-right"></i>
