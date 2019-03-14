@@ -1,5 +1,3 @@
-import("./filters.js");
-
 $(".container-add-your-company").hide();
 
 $(".btn-prev-signup").click(function(event) {
@@ -208,7 +206,7 @@ $(document).ready(function() {
     var operator_input = '<input type="hidden" name="filter['+index+'][operator]" value="'+type+'" />';
     var value_input = '<input type="text" name="filter['+index+'][value]" data-category="'+category+'" data-subcategory="'+subcategory+'" data-type="'+type+'" placeholder="Value">'
     var inputs = field_input + operator_input + value_input;
-    var item_filter = '<div class="item-filter"><ul><li class="primary-nivel-filter"><button>' + category + '</button></li><li class="primary-nivel-filter-secondary"><button>' + subcategory + '</button></li><li class="second-nivel-filter"><select class="selectpicker"><option>' + type + '</option></select></li><li class="last-nivel-filter">'+inputs+'</li></ul><div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div></div>';
+    var item_filter = '<div class="item-filter"><ul><li class="primary-nivel-filter-secondary"><button>' + subcategory + '</button></li><li class="second-nivel-filter"><button>' + type + '</button></li><li class="last-nivel-filter">'+inputs+'</li></ul><div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div></div>';
 
     if ($(this).find("i").length == 0) {
       $("#modalFilter").modal("hide");
