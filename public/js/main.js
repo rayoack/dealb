@@ -199,14 +199,16 @@ $(document).ready(function() {
   $(".last-level-filter li a").click(function(event) {
     var category = $(".sub-category ul li.active a").text().trim();
     var subcategory = $(".last-sub-category ul li.active a").data().subcategory;
+    var subcategory_label = $(".last-sub-category ul li.active a").text().trim();
     var type = $(".last-level-filter ul li.active a").data().type;
+    var type_label = $(".last-level-filter ul li.active a").text().trim();
 
     var index = $('.item-filter').length;
     var field_input = '<input type="hidden" name="filter['+index+'][type]" value="'+subcategory+'" />';
     var operator_input = '<input type="hidden" name="filter['+index+'][operator]" value="'+type+'" />';
     var value_input = '<input type="text" name="filter['+index+'][value]" data-category="'+category+'" data-subcategory="'+subcategory+'" data-type="'+type+'" placeholder="Value">'
     var inputs = field_input + operator_input + value_input;
-    var item_filter = '<div class="item-filter"><ul><li class="primary-nivel-filter-secondary"><button>' + subcategory + '</button></li><li class="second-nivel-filter"><button>' + type + '</button></li><li class="last-nivel-filter">'+inputs+'</li></ul><div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div></div>';
+    var item_filter = '<div class="item-filter"><ul><li class="primary-nivel-filter-secondary"><button>' + subcategory_label + '</button></li><li class="second-nivel-filter"><button>' + type_label + '</button></li><li class="last-nivel-filter">'+inputs+'</li></ul><div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div></div>';
 
     if ($(this).find("i").length == 0) {
       $("#modalFilter").modal("hide");
