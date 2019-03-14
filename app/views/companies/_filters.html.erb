@@ -49,7 +49,7 @@
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content">
-      <h1 class="modal-title"><%= t('filters.new') %></h1>
+      <h1 class="modal-title"><%= t('filters.add') %></h1>
       <div class="modal-header">
         <div class="control-breadcrumbs">
           <div class="controls">
@@ -81,7 +81,7 @@
           <div class="level-filter sub-category">
             <ul>
               <li>
-                <a href=""><%= t('filters.basic') %><i class="glyphicon glyphicon-chevron-right"></i>
+                <a href="" data-category="basic"><%= t('filters.basic') %><i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
             </ul>
@@ -89,45 +89,44 @@
           <div class="level-filter last-sub-category">
             <ul>
               <li>
-                <a href="" data-autocomplete-category="Name"
-                           data-autocomplete-source="/companies/names",
-                           id="name">
+                <a href="" data-subcategory="name"
+                           data-autocomplete-category="Name"
+                           data-autocomplete-source="/companies/names">
                   <%= t('filters.name') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
               <li>
-                <a href="" data-autocomplete-category="Location"
-                           data-autocomplete-source="/companies/locations"
-                           id="location">
+                <a href="" data-subcategory="location"
+                           data-autocomplete-category="Location"
+                           data-autocomplete-source="/companies/locations">
                   <%= t('filters.location') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
               <li>
-                <a href="" id="description">
+                <a href="" data-subcategory="description">
                   <%= t('filters.description') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
               <li>
-                <a href="" id="employees_count">
-                  <%= t('filters.employees_count') %> <i class="glyphicon glyphicon-chevron-right"></i>
+                <a href="" data-subcategory="employees">
+                  <%= t('filters.employees') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
               <li>
-                <a href="" data-autocomplete-category="Status"
-                           data-autocomplete-data=<%= Company::STATUSES.to_json %>
-                           data-label=<%= Company::STATUSES.map { |s| t("filters.status_options.#{s}") }.to_json %>
-                           id="status">
+                <a href="" data-subcategory="status"
+                           data-autocomplete-category="Status"
+                           data-autocomplete-data=<%= Company::STATUSES.to_json %>>
                   <%= t('filters.status') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
             </ul>
           </div>
           <div class="level-filter last-level-filter">
-            <ul hidden>
-              <li><a href="" data-type="equal" id="equal"><%= t('filters.operators.equal') %></a></li>
-              <li><a href="" id="contains"><%= t('filters.operators.contains') %></a></li>
-              <li><a href="" id="greater_than"><%= t('filters.operators.greater_than') %></a></li>
-              <li><a href="" id="less_than"><%= t('filters.operators.less_than') %></a></li>
+            <ul>
+              <li><a href="" data-type="equal"><%= t('filters.operators.equal') %></a></li>
+              <li><a href="" data-type="contains"><%= t('filters.operators.contains') %></a></li>
+              <li><a href="" data-type="greater_than"><%= t('filters.operators.greater') %></a></li>
+              <li><a href="" data-type="less_than"><%= t('filters.operators.less') %></a></li>
             </ul>
           </div>
         </div>

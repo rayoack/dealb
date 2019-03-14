@@ -66,3 +66,4 @@ AllCops:
     - "vendor/**/*"
     - "tmp/**/*"
     - "config/**/*"
+    - "bin/**"

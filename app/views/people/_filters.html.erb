@@ -25,8 +25,8 @@
                 <% end %>
               </div>
               <div class="filter-empty">
-                <a href="#" class="btn-add-filter-modal" data-toggle="modal" data-target="#modalFilter"><img src="/img/add.svg" alt=""><%= t('people.index.add_filter') %></a>
-                <button class="btn-app-filter"><%= t('people.index.filter_people') %></button>
+                <a href="#" class="btn-add-filter-modal" data-toggle="modal" data-target="#modalFilter"><img src="/img/add.svg" alt=""> <%= t('people.index.add_filter') %></a>
+                <button class="btn-app-filter"><%= t('people.index.apply_filter') %></button>
               </div>
             </form>
           </div>
@@ -40,7 +40,7 @@
   <div class="modal-dialog">
     <!-- Modal content-->
     <div class="modal-content">
-      <h1 class="modal-title"><%= t('filters.new') %></h1>
+      <h1 class="modal-title"><%= t('filters.add') %></h1>
       <div class="modal-header">
         <div class="control-breadcrumbs">
           <div class="controls">
@@ -73,26 +73,41 @@
           </div>
           <div class="level-filter sub-category">
             <ul>
-              <li><a href=""><%= t('filters.basic') %><i class="glyphicon glyphicon-chevron-right"></i></a></li>
+              <li><a href="" data-category="basic"><%= t('filters.basic') %><i class="glyphicon glyphicon-chevron-right"></i></a></li>
             </ul>
           </div>
           <div class="level-filter last-sub-category">
             <ul>
-              <li><a href="" id="name"><%= t('filters.name') %><i class="glyphicon glyphicon-chevron-right"></i></a></li>
-              <li><a href="" id="description"><%= t('filters.description') %><i class="glyphicon glyphicon-chevron-right"></i></a></li>
-              <li><a href="" data-autocomplete-category="Gender" 
-                             data-autocomplete-data=<%= Person::GENDERS.to_json %>
-                             id="gender">
-                 <%= t('filters.gender') %><i class="glyphicon glyphicon-chevron-right"></i></a></li>
-              <li><a href="" id="occupation"><%= t('filters.occupation') %><i class="glyphicon glyphicon-chevron-right"></i></a></li>
+              <li>
+                <a href="" data-subcategory="name">
+                  <%= t('filters.name') %> <i class="glyphicon glyphicon-chevron-right"></i>
+                </a>
+              </li>
+              <li>
+                <a href="" data-subcategory="description">
+                  <%= t('filters.description') %> <i class="glyphicon glyphicon-chevron-right"></i>
+                </a>
+              </li>
+              <li>
+                <a href="" data-subcategory="gender"
+                           data-autocomplete-category="Gender"
+                           data-autocomplete-data=<%= Person::GENDERS.to_json %>>
+                  <%= t('filters.gender') %> <i class="glyphicon glyphicon-chevron-right"></i>
+                </a>
+              </li>
+              <li>
+                <a href="" data-subcategory="occupation">
+                  <%= t('filters.occupation') %> <i class="glyphicon glyphicon-chevron-right"></i>
+                </a>
+              </li>
             </ul>
           </div>
           <div class="level-filter last-level-filter">
-            <ul hidden>
-              <li><a href="" id="equal"><%= t('filters.operators.equal') %></a></li>
-              <li><a href="" id="contains"><%= t('filters.operators.contains') %></a></li>
-              <li><a href="" id="greater_than"><%= t('filters.operators.greater_than') %></a></li>
-              <li><a href="" id="less_than"><%= t('filters.operators.less_than') %></a></li>
+            <ul>
+              <li><a href="" data-type="equal"><%= t('filters.operators.equal') %></a></li>
+              <li><a href="" data-type="contains"><%= t('filters.operators.contains') %></a></li>
+              <li><a href="" data-type="greater_than"><%= t('filters.operators.greater') %></a></li>
+              <li><a href="" data-type="less_than"><%= t('filters.operators.less') %></a></li>
             </ul>
           </div>
         </div>
