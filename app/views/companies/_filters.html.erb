@@ -16,11 +16,21 @@
                         <li class="last-nivel-filter">
                           <input type="hidden" name="filter[<%= index %>][type]" value="<%= filter[:type] %>" />
                           <input type="hidden" name="filter[<%= index %>][operator]" value="<%= filter[:operator] %>" />
-                          <input type="text"
-                                 name="filter[<%= index %>][value]"
-                                 data-subcategory="<%= filter[:type] %>"
-                                 data-type="<%= filter[:operator] %>"
-                                 value="<%= filter[:value] %>">
+
+                          <% if filter[:type] == 'status' %>
+                            <input type="text" class="text-lock" value="<%= t("filters.labels.status.#{filter[:value]}") %>" />
+                            <input type="hidden"
+                                   name="filter[<%= index %>][value]"
+                                   data-subcategory="<%= filter[:type] %>"
+                                   data-type="<%= filter[:operator] %>"
+                                   value="<%= filter[:value] %>" />
+                          <% else %>
+                            <input type="text"
+                                   name="filter[<%= index %>][value]"
+                                   data-subcategory="<%= filter[:type] %>"
+                                   data-type="<%= filter[:operator] %>"
+                                   value="<%= filter[:value] %>" />
+                          <% end %>
                         </li>
                       </ul>
                       <div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div>
@@ -94,7 +104,7 @@
             <ul>
               <li>
                 <a href="" data-subcategory="name"
-                           data-type="text"
+                           data-type="text-completion"
                            data-autocomplete-category="Name"
                            data-autocomplete-source="/companies/names">
                   <%= t('filters.name') %> <i class="glyphicon glyphicon-chevron-right"></i>
@@ -102,7 +112,7 @@
               </li>
               <li>
                 <a href="" data-subcategory="location"
-                           data-type="text"
+                           data-type="text-completion"
                            data-autocomplete-category="Location"
                            data-autocomplete-source="/companies/locations">
                   <%= t('filters.location') %> <i class="glyphicon glyphicon-chevron-right"></i>
@@ -114,7 +124,7 @@
                 </a>
               </li>
               <li>
-                <a href="" data-subcategory="employees">
+                <a href="" data-subcategory="employees" data-type="number">
                   <%= t('filters.employees') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
