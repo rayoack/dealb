@@ -396,7 +396,7 @@ en:
     gender: 'Gender'
     occupation: 'Occupation'
     value: 'Value'
-    employees: 'Employees Count'
+    employees_count: 'Employees Count'
     status: 'Status'
     category: 'Category'
     funding_type: 'Funding Type'
@@ -414,5 +414,5 @@ en:
     operators:
       equal: 'Equal'
       contains: 'Contains'
-      greater: 'Greater than'
-      less: 'Less than'
+      greater_than: 'Greater than'
+      less_than: 'Less than'

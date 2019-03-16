@@ -392,7 +392,7 @@ es:
     name: 'Nombre'
     location: 'Ubicación'
     description: 'Descripción'
-    employees: 'Empleados'
+    employees_count: 'Empleados'
     status: 'Status'
     category: 'Categoría'
     funding_type: 'Tipo de Inversion'
@@ -412,8 +412,8 @@ es:
     operators:
       equal: 'Igual'
       contains: 'Contiene'
-      greater: 'Más grande que'
-      less: 'Menos que'
+      greater_than: 'Más grande que'
+      less_than: 'Menos que'
   activerecord:
     errors:
       messages:
