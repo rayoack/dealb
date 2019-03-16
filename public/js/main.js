@@ -243,6 +243,23 @@ $(document).ready(function() {
     });
   }
 
+  function autocompleteFocus(givenInput) {
+    const subcategory = givenInput ? '' : $(".last-sub-category ul li.active a").data().subcategory;
+    const input = givenInput ? givenInput : $('input[data-subcategory="' + subcategory + '"]');
+
+    input.focus(function() {
+      autoComplete(input);
+      input.keydown();
+    });
+
+    autoComplete(input);
+    input.keydown();
+  }
+
+  /* Autocomplete on input focus, instead of new filters */
+  $(".last-nivel-filter input").click(function() { autocompleteFocus($(this)); });
+
+  /* Adds the filter and autocomplete other filters */
   $(".last-level-filter li a").click(function(event) {
     const category = $(".sub-category ul li.active a").text().trim();
     const subcategory = $(".last-sub-category ul li.active a").data().subcategory;
@@ -261,15 +278,7 @@ $(document).ready(function() {
       $(".filter-complete").append(item_filter);
       $('.selectpicker').selectpicker();
 
-      var input = $('input[data-subcategory="' + subcategory + '"]');
-
-      input.focus(function(_e) {
-        autoComplete(input);
-        input.keydown();
-      });
-
-      autoComplete(input);
-      input.keydown();
+      autocompleteFocus();
     }
 
     return true;
