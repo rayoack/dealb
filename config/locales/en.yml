@@ -419,6 +419,11 @@ en:
         merged_with: 'Merged'
         was_acquired_by: 'Acquired'
         shutdown: 'Shutdown'
+        angel: 'Angel'
+        venture_capital: 'Venture Capital'
+        accelerator: 'Acceleration'
+        incubator: 'Incubator'
+        corporate: 'Corporate'
       funding_type:
         acceleration: 'Acceleration'
         series_seed: 'Seed Series'
@@ -446,6 +451,13 @@ en:
       gender:
         female: 'Female'
         male: 'Male'
+      stage:
+        seed: 'Seed'
+        series-seed: 'Seed Series'
+        series-a: 'Series A'
+        series-b: 'Series B'
+        series-c: 'Series C'
+        ipo: 'IPO'
     operators:
       equal: 'Equal'
       contains: 'Contains'

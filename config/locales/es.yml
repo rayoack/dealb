@@ -417,6 +417,11 @@ es:
         merged_with: 'Fusionado'
         was_acquired_by: 'Adquirido por'
         shutdown: 'Apagado'
+        angel: 'Ángel'
+        venture_capital: 'Capital de Riesgo'
+        accelerator: 'Aceleración'
+        incubator: 'Incubador'
+        corporate: 'Corporativo'
       funding_type:
         acceleration: 'Aceleración'
         series_seed: 'Série Seed'
@@ -444,6 +449,13 @@ es:
       gender:
         female: 'Femenino'
         male: 'Masculino'
+      stage:
+        seed: 'Seed'
+        series-seed: 'Série Seed'
+        series-a: 'Série A'
+        series-b: 'Série B'
+        series-c: 'Série C'
+        ipo: 'IPO'
     operators:
       equal: 'Igual'
       contains: 'Contiene'

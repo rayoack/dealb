@@ -60,17 +60,16 @@ class InvestorSearcher
     @filter = @filter
       .joins(:deal_investors)
       .group('investors.id')
-      .having("COUNT(investor_id) #{operator} ?", format(operator, value))
+      .having("COUNT(investor_id) #{operator} ?",
+              format(operator, value)&.to_i)
   end
 
   def filter_by_total_funds_invested(_name, operator, value)
     @filter = @filter
       .joins(:deals)
       .group('investors.id')
-      .having(
-        "SUM(amount_cents) #{operator} ?",
-        format(operator, value.gsub(/[^\d]+/, '').to_i)
-      )
+      .having("SUM(amount_cents) #{operator} ?",
+              format(operator, value.gsub(/[^\d]+/, '').to_i))
   end
 
   def bypass(name, _operator, _value)
