@@ -18,7 +18,9 @@
                           <input type="hidden" name="filter[<%= index %>][operator]" value="<%= filter[:operator] %>" />
 
                           <% if filter[:type] == 'status' %>
-                            <input type="text" class="text-lock" value="<%= t("filters.labels.status.#{filter[:value]}") %>" />
+                            <input type="text"
+                                   class="text-lock"
+                                   value="<%= filter[:value].present? ? t("filters.labels.status.#{filter[:value]}") : '' %>" />
                             <input type="hidden"
                                    name="filter[<%= index %>][value]"
                                    data-subcategory="<%= filter[:type] %>"

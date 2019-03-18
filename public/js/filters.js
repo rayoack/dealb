@@ -99,9 +99,13 @@ export function loadAutoComplete() {
               const autocompleteData = data['autocompleteData'];
               const values = Object.values(autocompleteData);
 
-              const result = values.filter((el, i) => {
-                return el.toLowerCase().includes(request.term.toLowerCase());
-              });
+              /* Takes the closest option if we have closer ones */
+              let result = values.filter((el) => el.toLowerCase() === request.term.toLowerCase());
+
+              if (result.length < 1) {
+                result = values.filter((el) => el.toLowerCase().includes(request.term.toLowerCase()));
+              }
+
               const key = Object.keys(autocompleteData)
                                 .find(k => autocompleteData[k] === result[0]);
 
