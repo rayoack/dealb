@@ -16,7 +16,23 @@
                         <li class="last-nivel-filter">
                           <input type="hidden" name="filter[<%= index %>][type]" value="<%= filter[:type] %>" />
                           <input type="hidden" name="filter[<%= index %>][operator]" value="<%= filter[:operator] %>" />
-                          <input type="text" name="filter[<%= index %>][value]" data-subcategory="<%= filter[:type] %>" data-type="<%= filter[:operator] %>" value="<%= filter[:value] %>">
+
+                          <% if filter[:type] == 'gender' %>
+                            <input type="text"
+                                   class="text-lock"
+                                   value="<%= filter[:value].present? ? t("filters.labels.#{filter[:type]}.#{filter[:value]}") : '' %>" />
+                            <input type="hidden"
+                                   name="filter[<%= index %>][value]"
+                                   data-subcategory="<%= filter[:type] %>"
+                                   data-type="<%= filter[:operator] %>"
+                                   value="<%= filter[:value] %>" />
+                          <% else %>
+                            <input type="text"
+                                   name="filter[<%= index %>][value]"
+                                   data-subcategory="<%= filter[:type] %>"
+                                   data-type="<%= filter[:operator] %>"
+                                   value="<%= filter[:value] %>" />
+                          <% end %>
                         </li>
                       </ul>
                       <div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div>
@@ -92,7 +108,7 @@
                 <a href="" data-subcategory="gender"
                            data-type="select"
                            data-autocomplete-category="Gender"
-                           data-autocomplete-data=<%= Person::GENDERS.to_json %>>
+                           data-autocomplete-data="<%= Hash[Person::GENDERS.map { |s| [s, t("filters.labels.gender.#{s}")] }].to_json %>">
                   <%= t('filters.gender') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
@@ -107,8 +123,8 @@
             <ul>
               <li><a href="" data-type="equal"><%= t('filters.operators.equal') %></a></li>
               <li><a href="" data-type="contains"><%= t('filters.operators.contains') %></a></li>
-              <li><a href="" data-type="greater_than"><%= t('filters.operators.greater') %></a></li>
-              <li><a href="" data-type="less_than"><%= t('filters.operators.less') %></a></li>
+              <li><a href="" data-type="greater_than"><%= t('filters.operators.greater_than') %></a></li>
+              <li><a href="" data-type="less_than"><%= t('filters.operators.less_than') %></a></li>
             </ul>
           </div>
         </div>

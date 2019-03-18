@@ -443,6 +443,9 @@ en:
         non_equity_assistance: 'Non-equity Assistance'
         undisclosed: 'Undisclosed'
         unknown: 'Unknown'
+      gender:
+        female: 'Female'
+        male: 'Male'
     operators:
       equal: 'Equal'
       contains: 'Contains'

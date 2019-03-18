@@ -442,6 +442,9 @@ pt-br:
         non_equity_assistance: 'Assistência não patrimonial'
         undisclosed: 'Não revelado'
         unknown: 'Desconhecido'
+      gender:
+        female: 'Feminino'
+        male: 'Masculino'
     operators:
       equal: 'Igual'
       contains: 'Contém'
