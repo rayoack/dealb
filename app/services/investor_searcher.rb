@@ -51,7 +51,7 @@ class InvestorSearcher
 
   def filter_by_column(name, operator, value)
     @filter = @filter.where(
-      "#{name} #{operator} ?",
+      "investors.#{name} #{operator} ?",
       format(operator, value)
     )
   end

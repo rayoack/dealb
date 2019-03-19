@@ -1701,7 +1701,7 @@ footer .copyright p a {
   margin-top: -75px;
   float: left;
   width: 100%;
-  overflow-y: auto;
+  overflow: auto;
 }
 .filter-block .container-filter h3 {
   font-size: 16px;
@@ -1721,7 +1721,7 @@ footer .copyright p a {
 }
 .filter-block .container-filter .filter-result {
   float: left;
-  width: 1110px;
+  width: 100%;
 }
 .filter-block .container-filter .filter-result .filter-complete {
   float: left;
@@ -1811,6 +1811,14 @@ footer .copyright p a {
   margin-left: initial !important;
   float: initial;
 }
+
+@media (max-width: 992px) {
+  .filter-block .container-filter .filter-result .filter-complete .item-filter ul li.last-nivel-filter {
+    margin-top: 30px;
+    margin-left: 0;
+  }
+}
+
 .filter-block .container-filter .filter-result .filter-complete .item-filter ul li.last-nivel-filter input[type="text"] {
   border: none;
   border-radius: 5px;
@@ -1859,6 +1867,14 @@ footer .copyright p a {
   left: 50%;
   margin-left: -1px;
 }
+
+@media (max-width: 562px) {
+  .filter-block .container-filter .filter-result button.btn-app-filter {
+    margin: 0px;
+    margin-top: 16px;
+  }
+}
+
 .filter-block .container-filter .filter-result .btn-app-filter {
   font-weight: bold;
   font-size: 15px;

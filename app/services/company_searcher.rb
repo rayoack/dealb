@@ -35,6 +35,13 @@ class CompanySearcher < BaseSearcher
     end
   end
 
+  def filter_by_column(name, operator, value)
+    @filter = @filter.where(
+      "companies.#{name} #{operator} ?",
+      format(operator, value)
+    )
+  end
+
   def filter_by_location(_name, operator, value)
     @filter = @filter.joins(:locations).where(
       "locations.city #{operator} :value OR " \

@@ -35,6 +35,13 @@ class DealSearcher < BaseSearcher
     end
   end
 
+  def filter_by_column(name, operator, value)
+    @filter = @filter.where(
+      "deals.#{name} #{operator} ?",
+      format(operator, value)
+    )
+  end
+
   def filter_by_amount(_name, operator, value)
     filter_by_number(:amount_cents, operator, value.to_f * 100)
   end
