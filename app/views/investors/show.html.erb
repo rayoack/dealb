@@ -4,7 +4,9 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12">
-        <a href="/investors" class="btn-back"><img src="/img/seta-esq-cinza.svg" alt=""> back </a>
+        <a href="/investors" class="btn-back">
+          <img src="/img/seta-esq-cinza.svg" alt=""> <%= t('investor.show.back') %>
+        </a>
       </div>
     </div>
     <div class="row">
@@ -12,26 +14,26 @@
         <div class="detail-investor-geral">
           <div class="status-name">
             <div class="status active">
-              <span class="circle"></span> <%= @investor.status %>
+              <span class="circle"></span> <%= t("investor.show.status.#{@investor.status}") %>
           </div>
           <h1> <%= @investor.investable.name %></h1>
           <h2 class="category">
             <img src="/img/clock.svg" alt="">
-            Category: <%= @investor.category %>
+            <%= t('investor.show.category') %>: <%= t("investor.show.categories.#{@investor.category}") %>
         </h2>
           </div>
           <div class="info-geral">
             <div class="item">
               <h3><%= @investor.deals.count %></h3>
-              <span>Investments</span>
+              <span><%= t('investor.show.investments') %></span>
             </div>
             <div class="item">
               <h3><%= @investor.deals.map(&:company).uniq.count %></h3>
-              <span>Companies</span>
+              <span><%= t('investor.show.companies') %></span>
             </div>
             <div class="item">
               <h3><%= format_amount(@investor.deals.map(&:amount).compact.sum) %></h3>
-              <span>Funds Raised</span>
+              <span><%= t('investor.show.funds_raised') %></span>
             </div>
           </div>
         </div>
@@ -46,24 +48,26 @@
         <div class="description">
           <h1>
             <img src="/img/description.svg" alt="">
-            Description
+            <%= t('investor.show.description') %>
           </h1>
           <p><%= @investor.investable.description %></p>
           <ul class="info-contact">
             <li>
               <p>
-              <strong>Site:</strong> <a href="<%= @investor.investable.website_url %>" target="_blank"><%= @investor.investable.website_url %></a>
+                <strong><%= t('investor.show.site') %>:</strong>
+                <a href="<%= @investor.investable.website_url %>" target="_blank"><%= @investor.investable.website_url %></a>
               </p>
             </li>
 
             <li>
               <p>
-              <strong>Born date:</strong> <%= @investor.investable.born_date %>
-            </p>
+                <strong><%= t('investor.show.founded') %>:</strong>
+                <%= @investor.investable.born_date %>
+              </p>
             </li>
           </ul>
           <div class="social">
-            <h1>Social medias</h1>
+            <h1><%= t('investor.show.media') %></h1>
             <ul>
               <% if @investor.investable.facebook_url %>
                 <li>
