@@ -3578,6 +3578,7 @@ footer .copyright p a {
   background: url("/img/seta-baixo-select.png") no-repeat right;
   background-position-x: 95%;
   background-position-y: 20px;
+  margin-bottom: 16px;
 }
 .form-create form .form-group .select-round,
 .form-create form .form-group .select-category-investor {

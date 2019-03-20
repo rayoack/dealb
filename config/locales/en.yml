@@ -108,6 +108,7 @@ en:
         company: 'Company'
     form:
       back: 'back'
+      employees_count: 'Employees count'
       create_company: ''
       featured_title: ''
       featured_subtitle: ''

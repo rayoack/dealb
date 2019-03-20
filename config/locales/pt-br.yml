@@ -108,6 +108,7 @@ pt-br:
         company: 'Empresa'
     form:
       back: 'voltar'
+      employees_count: 'Número de funcionários'
       create_company: 'Criar empresa'
       featured_title: ''
       featured_subtitle: ''

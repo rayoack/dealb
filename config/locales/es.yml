@@ -107,6 +107,7 @@ es:
         company: 'Empresa'
     form:
       back: 'atrás'
+      employees_count: 'Número de empleados'
       create_company: ''
       featured_title: ''
       featured_subtitle: ''
