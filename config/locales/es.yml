@@ -143,6 +143,18 @@ es:
       column_deal_type: 'Tipo de transaccion'
       column_investors: 'Inversionistas'
       column_amount: 'Cantidad'
+    show:
+      back: 'Volver'
+      edit: 'Editar'
+      category: 'Categoría'
+      round: 'Ronda'
+      pre_money: 'Pre-money valuation'
+      source: 'Origin'
+      amount: 'Valor'
+      close_date: 'Fecha de la inversión'
+      status:
+        verified: 'Verificado'
+        unverified: 'Inconfirmado'
     form:
       new: 'Crear nueva Transaccion'
       back: 'atrás'
@@ -215,8 +227,8 @@ es:
         close_date: 'Fecha de la inversión'
         company: 'Empresa'
         deal_type: 'Tipo de negocio'
-        round: "Ronda"
-        amount: "Valor"
+        round: 'Ronda'
+        amount: 'Valor'
         pre_money: 'Pre-money valuation'
       companies:
         name: 'Nombre'

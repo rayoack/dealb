@@ -144,6 +144,18 @@ pt-br:
       column_deal_type: 'Tipo de negócio'
       column_investors: 'Investidores'
       column_amount: 'Montante'
+    show:
+      back: 'Voltar'
+      edit: 'Editar'
+      category: 'Categoria'
+      round: 'Rodada'
+      pre_money: 'Pre valuation'
+      source: 'Fonte'
+      amount: 'Valor'
+      close_date: 'Data de fechamento'
+      status:
+        verified: 'Verificado'
+        unverified: 'Não verificado'
     form:
       new: 'Criar novo negócio'
       back: 'voltar'

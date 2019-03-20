@@ -144,6 +144,18 @@ en:
       column_deal_type: 'Deal type'
       column_investors: 'Investors'
       column_amount: 'Amount'
+    show:
+      back: 'Back'
+      edit: 'Edit'
+      category: 'Category'
+      round: 'Round'
+      pre_money: 'Pre valuation'
+      source: 'Source'
+      amount: 'Amount'
+      close_date: 'Close date'
+      status:
+        verified: 'Verified'
+        unverified: 'Unverified'
     form:
       new: 'Create new deal'
       back: 'back'
