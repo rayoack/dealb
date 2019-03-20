@@ -55,7 +55,6 @@ class Person < ApplicationRecord
     info << [:facebook_url, URLS[:facebook] + data.dig(:facebook, :handle).to_s]
     info << [:twitter_url, URLS[:twitter] + data.dig(:twitter, :handle).to_s]
     info << [:linkedin_url, URLS[:linkedin] + data.dig(:linkedin, :handle).to_s]
-    info << [:clearbit_syncronized_at, Time.zone.now]
 
     Hash[info]
   end
@@ -67,7 +66,7 @@ class Person < ApplicationRecord
   def update_from_clearbit(data)
     new_attributes = attributes.reject { |_, v| v.nil? }
                                .reverse_merge(data)
-    new_attributes[:clearbit_syncronized_at] = Time.zone.now
+    new_attributes[:clearbit_synchronized_at] = Time.zone.now
     update!(new_attributes)
   end
 end
