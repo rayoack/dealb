@@ -78,8 +78,22 @@ $(".btn-add-filter-modal").click(function(event) {
   $(".main-category ul li:first-child").addClass('active');
 });
 
+function reloadMasks() {
+  $('input[data-subcategory="amount"').inputmask({
+    alias: 'numeric',
+    enforceDigitsOnBlur: true,
+    groupSeparator: '.',
+    groupSize: 3,
+    autoGroup: true,
+    digits: 2,
+    unmaskAsNumber: true,
+    removeMaskOnSubmit: true,
+  });
+}
 
 export function loadAutoComplete() {
+  reloadMasks();
+
   function autoComplete(input) {
     var subcategory = input.data()['subcategory'];
     var cache = {};
@@ -172,6 +186,7 @@ export function loadAutoComplete() {
       $('.selectpicker').selectpicker();
 
       autocompleteFocus();
+      reloadMasks();
     }
 
     return true;
