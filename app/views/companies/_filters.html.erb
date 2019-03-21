@@ -1,62 +1,63 @@
 <section class="filter-block">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="container-filter">
-                    <h3><img src="/img/seta-baixo.svg" alt=""> <%= t('companies.index.filter') %></h3>
-                    <div class="filter-result">
-			<form id="filter-form" action="/companies">
-                        <div class="filter-complete">
-			    <% if params[:filter] %>
-				<% params[:filter].values.each_with_index do |filter, index| %>
-				    <div class="item-filter">
-					<ul>
-					    <li class="primary-nivel-filter"><button></button></li>
-					    <li class="primary-nivel-filter-secondary"><button><%= filter[:type] %> </button></li>
-					    <li class="second-nivel-filter">
-						<div class="btn-group bootstrap-select">
-						    <button type="button" class="btn dropdown-toggle btn-default" data-toggle="dropdown" role="button" title="<%= filter[:operator] %>">
-							<span class="filter-option pull-left"><%= filter[:operator] %></span>&nbsp;
-							<span class="bs-caret"><span class="caret"></span></span>
-						    </button>
-						    <div class="dropdown-menu open" role="combobox">
-							<ul class="dropdown-menu inner" role="listbox" aria-expanded="false">
-							    <li data-original-index="0" class="selected">
-								<a tabindex="0" class="" data-tokens="null" role="option" aria-disabled="false" aria-selected="true">
-								    <span class="text"><%= filter[:operator] %></span>
-								    <span class="glyphicon glyphicon-ok check-mark"></span>
-								</a>
-							    </li>
-							</ul>
-						    </div>
-						</div>
-					    </li>
-					    <li class="last-nivel-filter">
-    					      <input type="hidden" name="filter[<%= index %>][type]" value="<%= filter[:type] %>" />
-					      <input type="hidden" name="filter[<%= index %>][operator]" value="<%= filter[:operator] %>" />
-					      <input type="text" name="filter[<%= index %>][value]" data-subcategory="<%= filter[:type] %>" data-type="<%= filter[:operator] %>" value="<%= filter[:value] %>">
-                                            </li>
-					</ul>
-					<div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div>
-				    </div>
-				<% end %>
-				<script>
-				 window.onload = function() {
-				     $(".filter-result").show();
-				 };
-				</script>
-			    <% end %>
-			</div>
-                         <div class="filter-empty">
-                             <a href="#" class="btn-add-filter-modal" data-toggle="modal" data-target="#modalFilter"><img src="/img/add.svg" alt=""> <%= t('companies.index.add_filter') %></a>
-                             <button class="btn-app-filter"><%= t('companies.index.apply_filter') %></button>
-                         </div>
-			</form>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="container-filter">
+          <h3><img src="/img/seta-baixo.svg" alt=""> <%= t('companies.index.filter') %></h3>
+          <div class="filter-result">
+            <form id="filter-form" action="/companies">
+              <div class="filter-complete">
+                <% if params[:filter] %>
+                  <% params[:filter].values.each_with_index do |filter, index| %>
+                    <div class="item-filter">
+                      <ul>
+                        <li class="primary-nivel-filter-secondary"><button><%= t("filters.#{filter[:type]}") %></button></li>
+                        <li class="second-nivel-filter"><button><%= t("filters.operators.#{filter[:operator]}") %></button></li>
+                        <li class="last-nivel-filter">
+                          <input type="hidden" name="filter[<%= index %>][type]" value="<%= filter[:type] %>" />
+                          <input type="hidden" name="filter[<%= index %>][operator]" value="<%= filter[:operator] %>" />
+
+                          <% if filter[:type] == 'status' %>
+                            <input type="text"
+                                   class="text-lock"
+                                   value="<%= filter[:value].present? ? t("filters.labels.status.#{filter[:value]}") : '' %>" />
+                            <input type="hidden"
+                                   name="filter[<%= index %>][value]"
+                                   data-subcategory="<%= filter[:type] %>"
+                                   data-type="<%= filter[:operator] %>"
+                                   value="<%= filter[:value] %>" />
+                          <% else %>
+                            <input type="text"
+                                   name="filter[<%= index %>][value]"
+                                   data-subcategory="<%= filter[:type] %>"
+                                   data-type="<%= filter[:operator] %>"
+                                   value="<%= filter[:value] %>" />
+                          <% end %>
+                        </li>
+                      </ul>
+                      <div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div>
                     </div>
-                </div>
-            </div>
+                  <% end %>
+                  <script>
+                    window.onload = function() {
+                      $(".filter-result").show();
+                    };
+                  </script>
+                <% end %>
+              </div>
+              <div class="filter-empty">
+                <a href="#" class="btn-add-filter-modal"
+                            data-toggle="modal"
+                            data-target="#modalFilter">
+                  <img src="/img/add.svg" alt=""> <%= t('companies.index.add_filter') %></a>
+                <button class="btn-app-filter"><%= t('companies.index.apply_filter') %></button>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Modal -->
@@ -85,6 +86,7 @@
       </div>
       <div class="modal-body">
         <div class="filter-geral">
+          <div class="filter-value-placeholder" hidden><%= t('filters.value') %></div>
           <div class="level-filter main-category">
             <ul>
               <li class="active">
@@ -104,6 +106,7 @@
             <ul>
               <li>
                 <a href="" data-subcategory="name"
+                           data-type="text-completion"
                            data-autocomplete-category="Name"
                            data-autocomplete-source="/companies/names">
                   <%= t('filters.name') %> <i class="glyphicon glyphicon-chevron-right"></i>
@@ -111,25 +114,27 @@
               </li>
               <li>
                 <a href="" data-subcategory="location"
+                           data-type="text-completion"
                            data-autocomplete-category="Location"
                            data-autocomplete-source="/companies/locations">
                   <%= t('filters.location') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
               <li>
-                <a href="" data-subcategory="description">
+                <a href="" data-subcategory="description" data-type="text">
                   <%= t('filters.description') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
               <li>
-                <a href="" data-subcategory="employees">
-                  <%= t('filters.employees') %> <i class="glyphicon glyphicon-chevron-right"></i>
+                <a href="" data-subcategory="employees_count" data-type="number">
+                  <%= t('filters.employees_count') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
               <li>
                 <a href="" data-subcategory="status"
+                           data-type="select"
                            data-autocomplete-category="Status"
-                           data-autocomplete-data=<%= Company::STATUSES.to_json %>>
+                           data-autocomplete-data=<%= Hash[Company::STATUSES.map { |s| [s, t("filters.labels.status.#{s}")] }].to_json %>>
                   <%= t('filters.status') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
@@ -139,8 +144,8 @@
             <ul>
               <li><a href="" data-type="equal"><%= t('filters.operators.equal') %></a></li>
               <li><a href="" data-type="contains"><%= t('filters.operators.contains') %></a></li>
-              <li><a href="" data-type="greater_than"><%= t('filters.operators.greater') %></a></li>
-              <li><a href="" data-type="less_than"><%= t('filters.operators.less') %></a></li>
+              <li><a href="" data-type="greater_than"><%= t('filters.operators.greater_than') %></a></li>
+              <li><a href="" data-type="less_than"><%= t('filters.operators.less_than') %></a></li>
             </ul>
           </div>
         </div>

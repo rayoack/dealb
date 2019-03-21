@@ -60,7 +60,7 @@ class CompaniesController < ApplicationController
   end
 
   def names
-    render(json: autocomplete(:name), status: :ok)
+    render(json: autocomplete(:name) || [params[:term]], status: :ok)
   end
 
   def locations
@@ -71,10 +71,12 @@ class CompaniesController < ApplicationController
              .where(
                'locations.city ILIKE :term OR locations.country ILIKE :term',
                term: "%#{params[:term]}%"
-             ).limit(20).pluck(location)
+             ).limit(20)
+              .pluck(location)
+              .presence
     end
 
-    render(json: location_names, status: :ok)
+    render(json: location_names || [params[:term]], status: :ok)
   end
 
   private
@@ -86,10 +88,10 @@ class CompaniesController < ApplicationController
   private_constant :COMPANY_PARAMS
 
   def autocomplete(key)
-    Company
-      .where("#{key} ILIKE ?", "%#{params[:term]}%")
-      .limit(20)
-      .pluck(key)
+    Company.where("#{key} ILIKE ?", "%#{params[:term]}%")
+           .limit(20)
+           .pluck(key)
+           .presence
   end
 
   def alloweds

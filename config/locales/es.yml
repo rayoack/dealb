@@ -87,7 +87,7 @@ es:
         active: 'Activa'
         inactive: 'Inactiva'
         acquired: 'Adquirida'
-        merged: "Fundida"
+        merged: 'Fundida'
       deals:
         investments: 'Inversiones'
         close_date: 'Fecha de la inversión'
@@ -204,6 +204,7 @@ es:
   people:
     index:
       people: 'Personas'
+      add_filter: 'Adicionar Filtro'
       filter_people: 'Filtrar Personas'
       new: 'Crear persona'
       export: 'Exporta tus resultados'
@@ -433,7 +434,7 @@ es:
     name: 'Nombre'
     location: 'Ubicación'
     description: 'Descripción'
-    employees: 'Empleados'
+    employees_count: 'Empleados'
     status: 'Status'
     category: 'Categoría'
     funding_type: 'Tipo de Inversion'
@@ -444,11 +445,64 @@ es:
     stage: 'Etapa'
     number_of_deals: 'Número de Negocios'
     total_funds_invested: 'Total Invertido'
+    labels:
+      status:
+        active: 'Activa'
+        inactive: 'Inactiva'
+        acquired: 'Adquirida'
+        merged: 'Fundida'
+        verified: 'Verificado'
+        unverified: 'No Verificado'
+      category:
+        raised_funds_from: 'Fondos recaudados'
+        incubated_by: 'Incubado'
+        merged_with: 'Fusionado'
+        was_acquired_by: 'Adquirido por'
+        shutdown: 'Apagado'
+        angel: 'Ángel'
+        venture_capital: 'Capital de Riesgo'
+        accelerator: 'Aceleración'
+        incubator: 'Incubador'
+        corporate: 'Corporativo'
+      funding_type:
+        acceleration: 'Aceleración'
+        series_seed: 'Série Seed'
+        series_a: 'Série A'
+        series_b: 'Série B'
+        series_c: 'Série C'
+        series_d: 'Série D'
+        series_e: 'Série E'
+        ipo: 'IPO'
+        seed: 'Seed'
+        angel: 'Ángel'
+        venture: 'Riesgo'
+        equity_crowdfunding: 'Equity Crowdfunding'
+        product_crowdfunding: 'Product Crowdfunding'
+        private_equity: 'Capital Privado'
+        convertible_note: 'Nota convertible'
+        debt_financing: 'Financiación de Débito'
+        secondary_market: 'Mercado Secundário'
+        grant: 'Concedido'
+        post_ipo_equity: 'Capital Post IPO'
+        post_ipo_debt: 'Débito Post IPO'
+        non_equity_assistance: 'Asistencia no patrimonial'
+        undisclosed: 'No revelado'
+        unknown: 'Desconocido'
+      gender:
+        female: 'Femenino'
+        male: 'Masculino'
+      stage:
+        seed: 'Seed'
+        series-seed: 'Série Seed'
+        series-a: 'Série A'
+        series-b: 'Série B'
+        series-c: 'Série C'
+        ipo: 'IPO'
     operators:
       equal: 'Igual'
       contains: 'Contiene'
-      greater: 'Más grande que'
-      less: 'Menos que'
+      greater_than: 'Más grande que'
+      less_than: 'Menos que'
   activerecord:
     errors:
       messages:

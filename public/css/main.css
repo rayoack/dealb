@@ -1,4 +1,5 @@
 @import './dealbook/shared/header.css';
+@import './dealbook/shared/filters.css';
 @import './dealbook/home.css';
 @import './dealbook/developers.css';
 
@@ -90,7 +91,7 @@ header .header-desktop {
   top: 0;
   width: 100%;
   left: 0;
-  z-index: 90;
+  z-index: 200;
 }
 header .header-desktop .container-logo {
   float: left;
@@ -1700,7 +1701,7 @@ footer .copyright p a {
   margin-top: -75px;
   float: left;
   width: 100%;
-  overflow-y: auto;
+  overflow: auto;
 }
 .filter-block .container-filter h3 {
   font-size: 16px;
@@ -1720,7 +1721,7 @@ footer .copyright p a {
 }
 .filter-block .container-filter .filter-result {
   float: left;
-  width: 1110px;
+  width: 100%;
 }
 .filter-block .container-filter .filter-result .filter-complete {
   float: left;
@@ -1784,6 +1785,18 @@ footer .copyright p a {
   height: 55px;
   text-align: left;
   padding-left: 18px;
+  pointer-events: none;
+}
+.filter-block .container-filter .filter-result .filter-complete .item-filter ul li.second-nivel-filter button {
+  background: #2e448b;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  width: 240px;
+  height: 55px;
+  text-align: left;
+  padding-left: 18px;
+  pointer-events: none;
 }
 .filter-block .container-filter .filter-result .filter-complete .item-filter ul li.second-nivel-filter .bootstrap-select .dropdown-toggle {
   background: #2e448b;
@@ -1798,6 +1811,14 @@ footer .copyright p a {
   margin-left: initial !important;
   float: initial;
 }
+
+@media (max-width: 992px) {
+  .filter-block .container-filter .filter-result .filter-complete .item-filter ul li.last-nivel-filter {
+    margin-top: 30px;
+    margin-left: 0;
+  }
+}
+
 .filter-block .container-filter .filter-result .filter-complete .item-filter ul li.last-nivel-filter input[type="text"] {
   border: none;
   border-radius: 5px;
@@ -1824,6 +1845,7 @@ footer .copyright p a {
   position: absolute;
   right: -35px;
   top: 17px;
+  cursor: pointer;
 }
 .filter-block .container-filter .filter-result .add-new-filter {
   margin-top: 25px;
@@ -1845,6 +1867,14 @@ footer .copyright p a {
   left: 50%;
   margin-left: -1px;
 }
+
+@media (max-width: 562px) {
+  .filter-block .container-filter .filter-result button.btn-app-filter {
+    margin: 0px;
+    margin-top: 16px;
+  }
+}
+
 .filter-block .container-filter .filter-result .btn-app-filter {
   font-weight: bold;
   font-size: 15px;

@@ -63,7 +63,7 @@ describe DealSearcher do
       '0' => {
         'type' => 'amount',
         'operator' => 'equal',
-        'value' => matching_deal.amount_cents.to_s
+        'value' => (matching_deal.amount_cents.to_f / 100).to_s
       }
     }
 
