@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190320013109) do
+ActiveRecord::Schema.define(version: 20190321234932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -146,6 +146,7 @@ ActiveRecord::Schema.define(version: 20190320013109) do
     t.datetime "clearbit_synchronized_at"
     t.integer "rank"
     t.datetime "died_on"
+    t.datetime "verified_at"
     t.index ["first_name"], name: "index_people_on_first_name"
     t.index ["permalink"], name: "index_people_on_permalink"
   end
