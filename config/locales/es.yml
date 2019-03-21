@@ -107,6 +107,7 @@ es:
         company: 'Empresa'
     form:
       back: 'atrás'
+      employees_count: 'Número de empleados'
       create_company: ''
       featured_title: ''
       featured_subtitle: ''
@@ -143,6 +144,18 @@ es:
       column_deal_type: 'Tipo de transaccion'
       column_investors: 'Inversionistas'
       column_amount: 'Cantidad'
+    show:
+      back: 'Volver'
+      edit: 'Editar'
+      category: 'Categoría'
+      round: 'Ronda'
+      pre_money: 'Pre-money valuation'
+      source: 'Origin'
+      amount: 'Valor'
+      close_date: 'Fecha de la inversión'
+      status:
+        verified: 'Verificado'
+        unverified: 'Inconfirmado'
     form:
       new: 'Crear nueva Transaccion'
       back: 'atrás'
@@ -216,8 +229,8 @@ es:
         close_date: 'Fecha de la inversión'
         company: 'Empresa'
         deal_type: 'Tipo de negocio'
-        round: "Ronda"
-        amount: "Valor"
+        round: 'Ronda'
+        amount: 'Valor'
         pre_money: 'Pre-money valuation'
       companies:
         name: 'Nombre'
@@ -273,6 +286,35 @@ es:
       column_number_of_investments: 'Número de inversiones'
       column_number_of_exited_companies: 'Número de empresas salidas'
       column_location: 'Ubicación'
+    show:
+      back: 'Volver'
+      category: 'Categoría'
+      investments: 'Inversiones'
+      companies: 'Compañías'
+      funds_raised: 'Fondos Recaudados'
+      site: 'Sitio'
+      description: 'Descripción'
+      founded: 'Fundada'
+      media: 'Medios Sociales'
+      status:
+        active: 'Activa'
+        inactive: 'Inactiva'
+        acquired: 'Adquirida'
+        merged: "Fundida"
+      categories:
+        angel: 'Ángel'
+        venture_capital: 'Capital de Riesgo'
+        accelerator: 'Aceleración'
+        incubator: 'Incubador'
+        corporate: 'Corporativo'
+      deals:
+        investments: 'Inversiones'
+        close_date: 'Fecha de la inversión'
+        company: 'Empresa'
+        deal_type: 'Tipo de negocio'
+        round: "Ronda"
+        amount: "Valor"
+        pre_money: 'Pre-money valuation'
     form:
       back: 'atrás'
       new: 'Crear nuevo Inversionista'

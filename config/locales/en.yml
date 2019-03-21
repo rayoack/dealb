@@ -108,6 +108,7 @@ en:
         company: 'Company'
     form:
       back: 'back'
+      employees_count: 'Employees count'
       create_company: ''
       featured_title: ''
       featured_subtitle: ''
@@ -144,6 +145,18 @@ en:
       column_deal_type: 'Deal type'
       column_investors: 'Investors'
       column_amount: 'Amount'
+    show:
+      back: 'Back'
+      edit: 'Edit'
+      category: 'Category'
+      round: 'Round'
+      pre_money: 'Pre valuation'
+      source: 'Source'
+      amount: 'Amount'
+      close_date: 'Close date'
+      status:
+        verified: 'Verified'
+        unverified: 'Unverified'
     form:
       new: 'Create new deal'
       back: 'back'
@@ -274,6 +287,35 @@ en:
       column_number_of_investments: 'Number of investments'
       column_number_of_exited_companies: 'Number of exited companies'
       column_location: 'Location'
+    show:
+      back: 'Back'
+      category: 'Category'
+      investments: 'Investments'
+      companies: 'Companies'
+      funds_raised: 'Funds Raised'
+      site: 'Site'
+      description: 'Description'
+      founded: 'Born'
+      media: 'Social Media'
+      status:
+        active: 'Active'
+        inactive: 'Inactive'
+        acquired: 'Acquired'
+        merged: 'Merged'
+      categories:
+        angel: 'Angel'
+        venture_capital: 'Venture Capital'
+        accelerator: 'Acceleration'
+        incubator: 'Incubator'
+        corporate: 'Corporate'
+      deals:
+        investments: 'Investments'
+        close_date: 'Investment Date'
+        company: 'Company'
+        deal_type: 'Deal Type'
+        round: 'Round'
+        amount: 'Value'
+        pre_money: 'Pre-money valuation'
     form:
       back: 'back'
       new: 'Create new investor'

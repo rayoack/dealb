@@ -8,7 +8,7 @@
   <%= f.text_field :name, placeholder: t('companies.form.name') %>
 </div>
 <div class="form-group">
-  <%= f.text_field(:employees_count, placeholder: 'Employees count', class: 'input-city', pattern: '\d*', title: 'Only digits') %>
+  <%= f.text_field(:employees_count, placeholder: t('companies.form.employees_count'), class: 'input-city', pattern: '\d*', title: 'Only digits') %>
 
   <%= f.text_field :founded_on, placeholder: t('companies.form.date_founded'), class: 'input-date datepicker' %>
 </div>

@@ -88,10 +88,10 @@ class CompaniesController < ApplicationController
   private_constant :COMPANY_PARAMS
 
   def autocomplete(key)
-    Company .where("#{key} ILIKE ?", "%#{params[:term]}%")
-            .limit(20)
-            .pluck(key)
-            .presence
+    Company.where("#{key} ILIKE ?", "%#{params[:term]}%")
+           .limit(20)
+           .pluck(key)
+           .presence
   end
 
   def alloweds

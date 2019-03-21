@@ -18,6 +18,7 @@ module Integrations
 
     def enrich_company
       return unless resource.is_a?(Company)
+      return if resource.clearbit_synchronized_at.present?
 
       data = company_data(name: resource.name)
       resource.update_from_clearbit(data) if data.present?
@@ -36,6 +37,7 @@ module Integrations
 
     def enrich_person
       return unless resource.is_a?(Person)
+      return if resource.clearbit_synchronized_at.present?
 
       data = person_data(email: resource.email)
       resource.update_from_clearbit(data) if data.present?

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190302105042) do
+ActiveRecord::Schema.define(version: 20190320013109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20190302105042) do
     t.string "stock_exchange"
     t.datetime "closed_on"
     t.integer "rank"
+    t.datetime "clearbit_synchronized_at"
     t.index ["name"], name: "index_companies_on_name"
     t.index ["permalink"], name: "index_companies_on_permalink"
     t.index ["status"], name: "index_companies_on_status"
@@ -142,7 +143,7 @@ ActiveRecord::Schema.define(version: 20190302105042) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "profile_image_url"
-    t.datetime "clearbit_syncronized_at"
+    t.datetime "clearbit_synchronized_at"
     t.integer "rank"
     t.datetime "died_on"
     t.index ["first_name"], name: "index_people_on_first_name"

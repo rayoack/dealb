@@ -1,57 +1,59 @@
 <%= render partial: 'shared/header' %>
 
 <section class="top-section-detail-investor">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <a href="/deals" class="btn-back"><img src="/img/seta-esq-cinza.svg" alt=""> back </a>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="detail-investor-geral">
-                    <div class="status-name">
-                        <div class="status <%= @deal.status == 'verified' ? 'active' : '' %>">
-                            <span class="circle"></span> <%= @deal.status %>
-                        </div>
-                        <h1> <%= @deal.company.name %></h1>
-                        <h2 class="category">
-                            <img src="/img/clock.svg" alt="">
-                            Category: <%= I18n.t("deals.model.categories.#{@deal.category}") %>
-                        </h2>
-			<h2 class="category">
-                            <img src="/img/description.svg" alt="">
-                            Round: <%= @deal.round ? I18n.t("deals.form.rounds.#{@deal.round}") : '' %>
-                        </h2>
-			<h2 class="category">
-                            <img src="/img/description.svg" alt="">
-                            Pre valuation: <%= format_amount(@deal.pre_valuation, @deal.pre_valuation_currency) %>
-                        </h2>
-
-			<h2 class="category">
-                            <img src="/img/description.svg" alt="">
-                            Source URL: <%= link_to @deal.source_url, @deal.source_url %>
-                        </h2>
-
-			<% if user_admin? || user_moderator? %>
-			    <a href="/deals/<%= @deal.id %>/edit" class="btn btn-default">Edit</a>
-			<% end %>
-                    </div>
-                    <div class="info-geral">
-                        <div class="item">
-                            <h3><%= format_amount(@deal.amount, @deal.amount_currency) %></h3>
-                            <span>Amount</span>
-                        </div>
-                        <div class="item">
-                            <h3><%= I18n.l @deal.close_date, format: :default %></h3>
-                            <span>Close date</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <a href="/deals" class="btn-back">
+        <img src="/img/seta-esq-cinza.svg" alt=""> <%= t('deals.show.back') %></a>
+      </div>
     </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="detail-investor-geral">
+          <div class="status-name">
+            <div class="status <%= @deal.status == 'verified' ? 'active' : '' %>">
+              <span class="circle"></span> <%= t("deals.show.status.#{@deal.status}") %>
+            </div>
+
+            <h1> <%= @deal.company.name %></h1>
+            <h2 class="category">
+              <img src="/img/clock.svg" alt="">
+              <%= t('deals.show.category') %>: <%= I18n.t("deals.model.categories.#{@deal.category}") %>
+            </h2>
+            <h2 class="category">
+              <img src="/img/description.svg" alt="">
+              <%= t('deals.show.round') %>: <%= @deal.round ? I18n.t("deals.form.rounds.#{@deal.round}") : '' %>
+            </h2>
+            <h2 class="category">
+              <img src="/img/description.svg" alt="">
+              <%= t('deals.show.pre_money') %>: <%= format_amount(@deal.pre_valuation, @deal.pre_valuation_currency) %>
+            </h2>
+
+            <h2 class="category">
+              <img src="/img/description.svg" alt="">
+              <%= t('deals.show.source') %>: <%= link_to @deal.source_url, @deal.source_url %>
+            </h2>
+
+            <% if user_admin? || user_moderator? %>
+              <a href="/deals/<%= @deal.id %>/edit" class="btn btn-default"><%= t('deals.show.edit') %></a>
+            <% end %>
+          </div>
+          <div class="info-geral">
+            <div class="item">
+              <h3><%= format_amount(@deal.amount, @deal.amount_currency) %></h3>
+              <span><%= t('deals.show.amount') %></span>
+            </div>
+            <div class="item">
+              <h3><%= I18n.l @deal.close_date, format: :default %></h3>
+              <span><%= t('deals.show.close_date') %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <%= render partial: 'shared/footer' %>

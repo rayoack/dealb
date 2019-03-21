@@ -33,6 +33,28 @@ describe Integrations::Clearbit, :vcr do
         )
       end
 
+      context 'Synchronization' do
+        it 'do not sync again - default behaviour' do
+          subject
+
+          expect(resource).to have_attributes(
+            homepage_url: 'https://spotify.com',
+            linkedin_url: 'https://linkedin.com/company/spotify',
+            facebook_url: 'https://facebook.com/spotify'
+          )
+
+          resource.update(name: 'SumOne')
+
+          subject
+
+          expect(resource).to have_attributes(
+            homepage_url: 'https://spotify.com',
+            linkedin_url: 'https://linkedin.com/company/spotify',
+            facebook_url: 'https://facebook.com/spotify'
+          )
+        end
+      end
+
       context 'do not override' do
         let(:resource) do
           create :company, name: 'Spotify',
