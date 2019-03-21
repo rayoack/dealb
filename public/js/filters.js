@@ -146,7 +146,8 @@ export function loadAutoComplete() {
             }
           }
         }
-      }
+      },
+      select: (event) => autocompleteFocus($(event.target)),
     });
   }
 
