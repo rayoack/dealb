@@ -17,7 +17,7 @@ es:
     need_account_html: '¿Necesita una cuenta? <a href="/signup">Regístrate</a>'
     forgot_password: '¿Olvidaste tu contraseña?'
   footer:
-    explanation_html: "Dealbook es un proyecto de <a href='https://github.com/bossabox/dealbook/'>código abierto</a> publicado bajo la licencia MIT. El contenido de Dealbook está bajo una licencia Creative Commons Attribution-ShareAlike 3.0 Unported."
+    explanation_html: "Dealbook es un proyecto de <a href='https://github.com/bossabox/dealbook/' target='_blank'>código abierto</a> publicado bajo la licencia MIT. El contenido de Dealbook está bajo una licencia Creative Commons Attribution-ShareAlike 3.0 Unported."
     companies: 'Compañías'
     deals: 'Transacciones'
     people: 'Personas'

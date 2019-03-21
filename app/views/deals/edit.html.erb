@@ -1,32 +1,32 @@
 <%= render partial: 'shared/header' %>
 
 <section class="form-create">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <a href="/deals" class="btn-back"><img src="/img/seta-esq-cinza.svg" alt=""> <%= t('deals.form.back') %></a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <h1 class="title"><%= t('deals.form.edit') %></h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-5">
-		<%= form_for @deal, url: { action: 'update' , id: @deal.id }, method: :put do |f| %>
-		    <%= render partial: 'form', locals: { f: f } %>
-                <% end %>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-7">
-                <div class="text-featured">
-                    <h1><%= t('deals.form.featured_title') %></h1>
-                    <p><%= t('deals.form.featured_subtitle') %></p>
-                    <img src="/img/img-featured-deals.png" class="img-featured-deals" alt="">
-                </div>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <a href="/deals" class="btn-back"><img src="/img/seta-esq-cinza.svg" alt=""> <%= t('deals.form.back') %></a>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <h1 class="title"><%= t('deals.form.edit') %></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-5">
+        <%= form_for @deal, url: { action: 'update', id: @deal.id }, method: :put do |f| %>
+          <%= render partial: 'form', locals: { f: f } %>
+        <% end %>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-7">
+        <div class="text-featured">
+          <h1><%= t('deals.form.featured_title') %></h1>
+          <p><%= t('deals.form.featured_subtitle') %></p>
+          <img src="/img/img-featured-deals.png" class="img-featured-deals" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <%= render partial: 'shared/footer' %>
