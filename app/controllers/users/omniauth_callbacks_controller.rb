@@ -12,7 +12,8 @@ module Users
                              occupation: info[:headline],
                              bio: info[:description],
                              linkedin_url: info.dig(:urls, :public_profile),
-                             profile_image_url: info[:image])
+                             profile_image_url: info[:image],
+                             verified_at: Time.zone.now)
 
       @user = User.from_omniauth(request.env['omniauth.auth'])
       @user.update(person: person)
