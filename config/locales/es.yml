@@ -224,6 +224,7 @@ es:
       contact: 'Contacto'
       email: 'E-mail'
       media: 'Medios Sociales'
+      status: 'Status'
       deals:
         investments: 'Inversiones'
         close_date: 'Fecha de la inversión'
@@ -238,6 +239,9 @@ es:
         location: 'Ubicación'
         deals: 'Transacciones'
         funds: 'Fondos Recaudados'
+      statuses:
+        verified: 'Verificado'
+        unverified: 'No Verificado'
     form:
       new: 'Crear persona'
       edit: 'Editar persona'

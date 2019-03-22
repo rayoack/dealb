@@ -225,6 +225,7 @@ pt-br:
       contact: 'Contato'
       email: 'E-mail'
       media: 'Mídias Sociais'
+      status: 'Status'
       deals:
         investments: 'Investimentos'
         close_date: 'Data do Investimento'
@@ -239,6 +240,9 @@ pt-br:
         location: 'Localização'
         deals: 'Negócios'
         funds: 'Levantou Fundos'
+      statuses:
+        verified: 'Verificado'
+        unverified: 'Não verificado'
     form:
       new: 'Criar nova pessoa'
       edit: 'Editar pessoa'

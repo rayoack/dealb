@@ -225,6 +225,7 @@ en:
       contact: 'Contact'
       email: 'E-mail'
       media: 'Social Media'
+      status: 'Status'
       deals:
         investments: 'Investments'
         close_date: 'Close date'
@@ -239,6 +240,9 @@ en:
         location: 'Location'
         deals: 'Deals'
         funds: 'Raised Funds'
+      statuses:
+        verified: 'Verified'
+        unverified: 'Unverified'
     form:
       new: 'Create new person'
       edit: 'Edit person'
