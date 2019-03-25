@@ -4469,11 +4469,14 @@ a.menu-button:hover .menu-icon::after {
     margin-left: -26px;
   }
 }
+.popup-container {
+  width: 0;
+}
 .popup-involved {
   background: #fff;
-  position: absolute;
-  top: 30px;
-  right: 42px;
+  position: relative;
+  top: 16px;
+  right: 52px;
   z-index: 10;
   width: 168px;
   height: 160px;
