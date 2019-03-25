@@ -19,10 +19,6 @@
   </head>
 
   <body>
-    <%= render partial: 'shared/header' %>
-    <%= yield %>
-    <%= render partial: 'shared/footer' %>
-
     <script type="text/javascript" src="/libs/jQuery/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="/libs/Bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/libs/Modernizr/modernizr-2.8.3.min.js"></script>
@@ -52,5 +48,10 @@
        }
      });
     </script>
+
+    <%= render partial: 'shared/header' unless @blank_layout %>
+    <%= yield %>
+    <%= render partial: 'shared/footer' unless @blank_layout %>
+
   </body>
 </html>

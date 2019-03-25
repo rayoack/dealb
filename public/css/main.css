@@ -534,9 +534,7 @@ header .header-mobile {
     padding: 10px 0px;
   }
   header .header-mobile .btns-menu .menu-colapsado ul li a {
-    color: #ffffff;
     font-family: 'museo_sans500';
-    font-size: 20px;
     text-transform: uppercase;
   }
   header .header-mobile .btns-menu .menu-colapsado ul li .btn-join-now {
@@ -4471,6 +4469,7 @@ a.menu-button:hover .menu-icon::after {
 }
 .popup-container {
   width: 0;
+  height: 0;
 }
 .popup-card {
   background: #fff;
@@ -4524,10 +4523,7 @@ a.menu-button:hover .menu-icon::after {
     transition: initial;
   }
   .popup-card.opened {
-    top: 60vh;
-    bottom: 275px;
-    right: 50%;
-    margin-right: -83px;
+    left: 30vw;
     transition: initial;
   }
 }

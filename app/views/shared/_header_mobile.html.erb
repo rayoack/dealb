@@ -43,18 +43,35 @@
         <li><a href="/companies"><%= t('header.companies') %></a></li>
         <li><a href="/deals"><%= t('header.deals') %></a></li>
         <li><a href="/people"><%= t('header.people') %></a></li>
-        <li><a href="/investors"><%= t('header.investors') %></a></li>
-        <li><a href="" class="btn-involved"><%= t('header.get_involved') %> <img src="/img/seta.svg" alt=""></a></li>
+        <li>
+          <a href="" class="btn-investors">
+            <%= t('header.investors') %><img src="/img/seta.svg" alt="">
+          </a>
+
+          <div class="popup-container">
+            <div class="popup-card popup-investors">
+              <a href="/investors"><%= t('header.investors_list') %></a>
+              <a href="/investors/ranking"><%= t('header.investors_ranking') %></a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <a href="" class="btn-involved">
+            <%= t('header.get_involved') %><img src="/img/seta.svg" alt="">
+          </a>
+
+          <div class="popup-container">
+            <div class="popup-card popup-involved">
+              <a href="/embassador"><%= t('header.embassador_program') %></a>
+              <a href="/developer"><%= t('header.developer_program') %></a>
+              <a href="/about"><%= t('header.about_us') %></a>
+            </div>
+          </div>
+        </li>
 
         <% if user_signed_in? && user_admin? %>
           <li><a href="/users"><%= t('header.users') %></a></li>
         <% end %>
-
-        <div class="popup-involved">
-          <a href="/embassador"><%= t('header.embassador_program') %></a>
-          <a href="/developer"><%= t('header.developer_program') %></a>
-          <a href="/about"><%= t('header.about_us') %></a>
-        </div>
 
         <% if user_signed_in? %>
           <a href="/logout" type="button" class="btn-join"><%= t('header.logout') %></a>
