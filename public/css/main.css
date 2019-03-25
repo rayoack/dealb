@@ -4472,7 +4472,7 @@ a.menu-button:hover .menu-icon::after {
 .popup-container {
   width: 0;
 }
-.popup-involved {
+.popup-card {
   background: #fff;
   position: relative;
   top: 16px;
@@ -4487,25 +4487,25 @@ a.menu-button:hover .menu-icon::after {
   box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
-.popup-involved.opened {
+.popup-card.opened {
   bottom: -145px;
   opacity: 1;
   transition: 0.25s all ease-in;
   pointer-events: all;
 }
-.popup-involved a {
+.popup-card a {
   display: block;
   font-size: 13px;
   color: #8f98ae;
   margin-bottom: 20px;
 }
-.popup-involved a:last-child {
+.popup-card a:last-child {
   margin-bottom: 0px;
 }
-.popup-involved a:hover {
+.popup-card a:hover {
   color: #00e9dd;
 }
-.popup-involved:before {
+.popup-card:before {
   content: "";
   display: inline-block;
   vertical-align: middle;
@@ -4519,11 +4519,11 @@ a.menu-button:hover .menu-icon::after {
   right: 42px;
 }
 @media (max-width: 769px) {
-  .popup-involved {
+  .popup-card {
     bottom: 270px;
     transition: initial;
   }
-  .popup-involved.opened {
+  .popup-card.opened {
     top: 60vh;
     bottom: 275px;
     right: 50%;
