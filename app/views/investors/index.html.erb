@@ -1,65 +1,65 @@
 <%= render partial: 'shared/header' %>
 
 <section class="s-title-page">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-7">
-                <h1><%= t('investor.index.investors') %></h1>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-5">
-                <h2><%= @investors.count %> <%= t('investor.index.investors') %></h2>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-7">
+        <h1><%= t('investor.index.investors') %></h1>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-5">
+        <h2><%= @investors.count %> <%= t('investor.index.investors') %></h2>
+      </div>
     </div>
+  </div>
 </section>
 
 <%= render partial: 'filters' %>
 
 <section class="s-table-results">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6">
-                <p class="results">
-		    <%= page_entries_info @investors_paginated %>
-		</p>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-6">
-                <a href="/investors.xls" class="btn-export">
-                    <img src="/img/export.svg" alt="">
-                    <%= t('investor.index.export') %>
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-		<%= render partial: 'shared/flash_messages' %>
-
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th><%= t('investor.index.column_name') %> </th>
-                                <th><%= t('investor.index.column_number_of_investments') %> </th>
-                                <th colspan="2"><%= t('investor.index.column_location') %> </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-			    <% @investors_paginated.each do |investor| %>
-				<tr>
-                                    <td><img src="/img/logo-investors.png" alt=""> <%= investor.investable.name %></td>
-                                    <td><%= investor.deals.count %></td>
-                                    <td><%= investor.investable.locations.pluck(:city, :country).map { |c| c.join(', ') }.join('/ ') %></td>
-                                    <td><a href="/investors/<%= investor.permalink %>"><img src="/img/seta-dir.svg" alt=""></a></td>
-				</tr>
-			    <% end %>
-                        </tbody>
-                    </table>
-                </div>
-
-		<%= paginate @investors_paginated %>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <p class="results">
+        <%= page_entries_info @investors_paginated %>
+        </p>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <a href="/investors.xls" class="btn-export">
+          <img src="/img/export.svg" alt="">
+          <%= t('investor.index.export') %>
+        </a>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= render partial: 'shared/flash_messages' %>
+
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th><%= t('investor.index.column_name') %> </th>
+                <th><%= t('investor.index.column_number_of_investments') %> </th>
+                <th colspan="2"><%= t('investor.index.column_location') %> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @investors_paginated.each do |investor| %>
+                <tr>
+                  <td><img src="/img/logo-investors.png" alt=""> <%= investor.investable.name %></td>
+                  <td><%= investor.deals.count %></td>
+                  <td><%= investor.investable.locations.pluck(:city, :country).map { |c| c.join(', ') }.join('/ ') %></td>
+                  <td><a href="/investors/<%= investor.permalink %>"><img src="/img/seta-dir.svg" alt=""></a></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <%= paginate @investors_paginated %>
+      </div>
+    </div>
+  </div>
 </section>
 
 <%= render partial: 'shared/footer' %>

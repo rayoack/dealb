@@ -312,6 +312,10 @@ en:
         accelerator: 'Acceleration'
         incubator: 'Incubator'
         corporate: 'Corporate'
+        profit: 'Profit Company'
+        non_profit: 'Non Profit Company'
+        family_office: 'Family Office'
+        private_equity: 'Private Equity'
       deals:
         investments: 'Investments'
         close_date: 'Investment Date'
@@ -470,6 +474,10 @@ en:
         accelerator: 'Acceleration'
         incubator: 'Incubator'
         corporate: 'Corporate'
+        profit: 'Profit Company'
+        non_profit: 'Non Profit Company'
+        family_office: 'Family Office'
+        private_equity: 'Private Equity'
       funding_type:
         acceleration: 'Acceleration'
         series_seed: 'Seed Series'
