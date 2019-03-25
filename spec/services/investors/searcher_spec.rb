@@ -1,4 +1,4 @@
-describe InvestorSearcher do
+describe Investors::Searcher do
   it 'filters by status' do
     matching_investor = create(:investor, status: Investor::ACTIVE)
     _non_matching_investor = create(:investor, status: Investor::INACTIVE)

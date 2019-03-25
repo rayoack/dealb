@@ -1,0 +1,19 @@
+.btn-select__order {
+  border: 0;
+  text-align: center;
+  text-align-last: center;
+
+  font-weight: bold;
+  font-size: 15px;
+  color: #596276;
+  display: inline-block;
+  box-shadow: 0px 15px 50px 0px #e3e8f3;
+  width: 230px;
+  height: 65px;
+  padding: 21px 30px;
+  border-radius: 5px;
+
+  float: left;
+  margin-right: 15px;
+}
+

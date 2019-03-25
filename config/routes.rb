@@ -16,7 +16,8 @@ Rails.application.routes.draw do
     },
     controllers: {
       omniauth_callbacks: 'users/omniauth_callbacks',
-      registrations: 'users/registrations'
+      registrations: 'users/registrations',
+      sessions: 'users/sessions'
     }
   )
 
@@ -26,9 +27,17 @@ Rails.application.routes.draw do
       get :locations, action: :locations
     end
   end
+
   resources :deals, only: %i[index new create show edit update]
+
   resources :people, only: %i[index new create show edit update]
-  resources :investors, only: %i[index show]
+
+  resources :investors, only: %i[index show] do
+    collection do
+      get :ranking, action: :ranking
+    end
+  end
+
   resources :users, only: %i[index] do
     get 'block', action: 'block'
     get 'unblock', action: 'unblock'

@@ -6,6 +6,8 @@ pt-br:
     people: 'Pessoas'
     investor: 'Investidor'
     investors: 'Investidores'
+    investors_list: 'Listagem de Investidores'
+    investors_ranking: 'Ranking'
     get_involved: 'Participe'
     embassador_program: 'Programa embaixador'
     developer_program: 'Programa desenvolvedor'
@@ -281,15 +283,18 @@ pt-br:
       send: 'Enviar'
   investor:
     index:
+      investor: 'Investidor'
       investors: 'Investidores'
       new: 'Criar novo'
       filter: 'Filtrar investidores'
+      order: 'Ordenar investidores'
       apply: 'Aplicar filtro'
       add_filter: 'Adicionar filtro'
       export: 'Exportar resultados'
       column_name: 'Nome do investidor'
       column_number_of_investments: 'Número de investimentos'
       column_number_of_exited_companies: 'Número de saídas'
+      column_invested_capital: 'Capital investido'
       column_location: 'Localização'
     show:
       back: 'Voltar'

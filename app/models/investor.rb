@@ -43,4 +43,13 @@ class Investor < ApplicationRecord
   has_many :people, dependent: :destroy
 
   delegate :name, :permalink, to: :investable
+
+  # Filters
+  scope :active, -> { where(status: :active) }
+
+  def formatted_location
+    investable.locations
+              .pluck(:city, :country)
+              .map { |c| c.join(', ') }.join('/ ')
+  end
 end

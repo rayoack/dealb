@@ -2,6 +2,8 @@
 @import './dealbook/shared/filters.css';
 @import './dealbook/home.css';
 @import './dealbook/developers.css';
+@import './dealbook/investors.css';
+@import './btn.css';
 
 .museosans-500-italico {
   font-family: 'museo_sans500_italic';
@@ -532,9 +534,7 @@ header .header-mobile {
     padding: 10px 0px;
   }
   header .header-mobile .btns-menu .menu-colapsado ul li a {
-    color: #ffffff;
     font-family: 'museo_sans500';
-    font-size: 20px;
     text-transform: uppercase;
   }
   header .header-mobile .btns-menu .menu-colapsado ul li .btn-join-now {
@@ -4467,11 +4467,15 @@ a.menu-button:hover .menu-icon::after {
     margin-left: -26px;
   }
 }
-.popup-involved {
+.popup-container {
+  width: 0;
+  height: 0;
+}
+.popup-card {
   background: #fff;
-  position: absolute;
-  top: 30px;
-  right: 42px;
+  position: relative;
+  top: 16px;
+  right: 52px;
   z-index: 10;
   width: 168px;
   height: 160px;
@@ -4482,25 +4486,25 @@ a.menu-button:hover .menu-icon::after {
   box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
-.popup-involved.opened {
+.popup-card.opened {
   bottom: -145px;
   opacity: 1;
   transition: 0.25s all ease-in;
   pointer-events: all;
 }
-.popup-involved a {
+.popup-card a {
   display: block;
   font-size: 13px;
   color: #8f98ae;
   margin-bottom: 20px;
 }
-.popup-involved a:last-child {
+.popup-card a:last-child {
   margin-bottom: 0px;
 }
-.popup-involved a:hover {
+.popup-card a:hover {
   color: #00e9dd;
 }
-.popup-involved:before {
+.popup-card:before {
   content: "";
   display: inline-block;
   vertical-align: middle;
@@ -4514,15 +4518,12 @@ a.menu-button:hover .menu-icon::after {
   right: 42px;
 }
 @media (max-width: 769px) {
-  .popup-involved {
+  .popup-card {
     bottom: 270px;
     transition: initial;
   }
-  .popup-involved.opened {
-    top: 60vh;
-    bottom: 275px;
-    right: 50%;
-    margin-right: -83px;
+  .popup-card.opened {
+    left: 30vw;
     transition: initial;
   }
 }

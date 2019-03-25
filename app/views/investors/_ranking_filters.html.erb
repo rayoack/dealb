@@ -1,0 +1,28 @@
+<section class="filter-block">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="container-filter">
+          <h3><img src="/img/seta-baixo.svg" alt=""> <%= t('investor.index.order') %></h3>
+
+          <div class="filter-result">
+            <form id="filter-form" action=<%= ranking_investors_path %>>
+              <%= select_tag :order, options_for_select(
+                { t('investor.index.column_number_of_investments') => :deals,
+                  t('investor.index.column_invested_capital') => :capital},
+                params[:order]),
+                                     prompt: t('investor.index.add_filter'),
+                                     class: 'btn-select__order' %>
+
+             <button class="btn-app-filter">
+               <%= t('investor.index.apply') %>
+             </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
