@@ -1,0 +1,4 @@
+pt-br:
+  views:
+    pagination:
+      next: 'Próximo'

@@ -1,0 +1,80 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/bossabox/dealbook/contributors
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 4.13.0
+      Content-Type:
+      - application/json
+      Authorization:
+      - token 80773c9f5cc3f8f87cf235f2a754ae48e66a5d1e
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 26 Feb 2019 00:54:48 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4993'
+      X-Ratelimit-Reset:
+      - '1551146088'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      Etag:
+      - W/"668d109ead0838286c91bca2518821c9"
+      Last-Modified:
+      - Tue, 26 Feb 2019 00:39:31 GMT
+      X-Oauth-Scopes:
+      - admin:org_hook, public_repo, read:org, repo:status
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - 6FF8:43F4:585E8:F4830:5C748E57
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"login":"pgt","id":1042981,"node_id":"MDQ6VXNlcjEwNDI5ODE=","avatar_url":"https://avatars0.githubusercontent.com/u/1042981?v=4","gravatar_id":"","url":"https://api.github.com/users/pgt","html_url":"https://github.com/pgt","followers_url":"https://api.github.com/users/pgt/followers","following_url":"https://api.github.com/users/pgt/following{/other_user}","gists_url":"https://api.github.com/users/pgt/gists{/gist_id}","starred_url":"https://api.github.com/users/pgt/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/pgt/subscriptions","organizations_url":"https://api.github.com/users/pgt/orgs","repos_url":"https://api.github.com/users/pgt/repos","events_url":"https://api.github.com/users/pgt/events{/privacy}","received_events_url":"https://api.github.com/users/pgt/received_events","type":"User","site_admin":false,"contributions":182},{"login":"lucaspbordignon","id":11822875,"node_id":"MDQ6VXNlcjExODIyODc1","avatar_url":"https://avatars3.githubusercontent.com/u/11822875?v=4","gravatar_id":"","url":"https://api.github.com/users/lucaspbordignon","html_url":"https://github.com/lucaspbordignon","followers_url":"https://api.github.com/users/lucaspbordignon/followers","following_url":"https://api.github.com/users/lucaspbordignon/following{/other_user}","gists_url":"https://api.github.com/users/lucaspbordignon/gists{/gist_id}","starred_url":"https://api.github.com/users/lucaspbordignon/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/lucaspbordignon/subscriptions","organizations_url":"https://api.github.com/users/lucaspbordignon/orgs","repos_url":"https://api.github.com/users/lucaspbordignon/repos","events_url":"https://api.github.com/users/lucaspbordignon/events{/privacy}","received_events_url":"https://api.github.com/users/lucaspbordignon/received_events","type":"User","site_admin":false,"contributions":47},{"login":"fernandoalmeida","id":73923,"node_id":"MDQ6VXNlcjczOTIz","avatar_url":"https://avatars0.githubusercontent.com/u/73923?v=4","gravatar_id":"","url":"https://api.github.com/users/fernandoalmeida","html_url":"https://github.com/fernandoalmeida","followers_url":"https://api.github.com/users/fernandoalmeida/followers","following_url":"https://api.github.com/users/fernandoalmeida/following{/other_user}","gists_url":"https://api.github.com/users/fernandoalmeida/gists{/gist_id}","starred_url":"https://api.github.com/users/fernandoalmeida/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/fernandoalmeida/subscriptions","organizations_url":"https://api.github.com/users/fernandoalmeida/orgs","repos_url":"https://api.github.com/users/fernandoalmeida/repos","events_url":"https://api.github.com/users/fernandoalmeida/events{/privacy}","received_events_url":"https://api.github.com/users/fernandoalmeida/received_events","type":"User","site_admin":false,"contributions":44}]'
+    http_version: 
+  recorded_at: Tue, 26 Feb 2019 00:54:48 GMT
+recorded_with: VCR 4.0.0

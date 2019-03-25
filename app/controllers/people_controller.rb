@@ -27,7 +27,10 @@ class PeopleController < ApplicationController
     @person = Person.new(person_params)
 
     if @person.save
+      current_user.update(person: @person) if current_user.person.blank?
       create_investor(@person) if investor?
+
+      Integrations::Clearbit.new(@person).enrich
 
       redirect_to people_path, notice: 'Successfully saved'
     else
@@ -56,7 +59,7 @@ class PeopleController < ApplicationController
   private
 
   PERSON_PARAMS = %i[
-    first_name last_name description occupation born_date gender phone_number
+    first_name last_name bio occupation born_on gender phone_number
     email website_url facebook_url twitter_url google_plus_url linkedin_url
   ].freeze
   private_constant :PERSON_PARAMS

@@ -2,8 +2,8 @@
 
 module ApplicationHelper
   def language_flag
-    if session[:language]
-      "flag-#{session[:language]}.svg"
+    if session[:language] || I18n.locale
+      "flag-#{I18n.locale}.svg"
     else
       'language.svg'
     end

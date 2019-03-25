@@ -86,12 +86,27 @@ describe PeopleController do
 
     subject(:create_person) { post :create, params: { person: params } }
 
+    before do
+      expect(Integrations::Clearbit).to receive_message_chain(:new, :enrich)
+    end
+
     it 'creates a company' do
       sign_in create(:user)
 
       expect { create_person }.to change {
         [Person.all.count, Location.all.count, PersonCompany.all.count]
       }.from([0, 0, 0]).to([1, 1, 1])
+      expect(User.last.person).to eq(Person.last)
+    end
+
+    it 'user already has a person' do
+      first_person = create(:person)
+
+      sign_in create(:user, person: first_person)
+
+      create_person
+
+      expect(User.last.person).to eq(first_person)
     end
   end
 end

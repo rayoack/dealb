@@ -13,7 +13,11 @@ class Investor < ApplicationRecord
     VENTURE_CAPITAL = 'venture_capital',
     ACCELERATOR = 'accelerator',
     INCUBARTOR = 'incubator',
-    CORPORATE = 'corporate'
+    CORPORATE = 'corporate',
+    PROFIT = 'profit',
+    NON_PROFIT = 'non_profit',
+    FAMILY = 'family_office',
+    PRIVATE_EQUITY = 'private_equity'
   ].freeze
 
   STAGES = [

@@ -1,76 +1,76 @@
 <section class="s-title-page">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-7">
-                <h1><%= t('deals.index.deals') %></h1>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-5">
-                <h2><%= @deals.count %> <%= t('deals.index.deals') %></h2>
-                <a href="/deals/new"><%= t('deals.index.new') %></a>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-7">
+        <h1><%= t('deals.index.deals') %></h1>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-5">
+        <h2><%= @deals.count %> <%= t('deals.index.deals') %></h2>
+        <a href="/deals/new"><%= t('deals.index.new') %></a>
+      </div>
     </div>
+  </div>
 </section>
 
 <%= render partial: 'filters' %>
 
 <section class="s-table-results">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6">
-                <p class="results"><%= page_entries_info @deals_paginated %></p>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-6">
-                <a href="/deals.xls" class="btn-export">
-                    <img src="/img/export.svg" alt="">
-                    <%= t('deals.index.export') %>
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-		<%= render partial: 'shared/flash_messages' %>
-
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th><%= t('deals.index.column_company') %> </th>
-                                <th><%= t('deals.index.column_close_date') %> </th>
-                                <th><%= t('deals.index.column_deal_type') %> </th>
-                                <th><%= t('deals.index.column_investors') %> </th>
-                                <th><%= t('deals.index.column_amount') %> </th>
-                                <th></th>
-
-				<% if user_admin? || user_moderator? %>
-				    <th></th>
-				<% end %>
-                            </tr>
-                        </thead>
-                        <tbody>
-			    <% @deals_paginated.each do |deal| %>
-				<tr>
-                                    <td><img src="/img/logo-investors.png" alt=""> <%= link_to(deal.company.name, company_path(deal.company.permalink)) %></td>
-                                    <td><%= I18n.l(deal.close_date, format: :default) %></td>
-                                    <td><%= I18n.t("deals.model.categories.#{deal.category}") %></td>
-                                    <td><%= investors_link(deal) %></td>
-                                    <td><%= format_amount(deal.amount, deal.amount_currency) %></td>
-				    <td>
-					<a href="/deals/<%= deal.id %>">
-					    <img src="/img/seta-dir.svg" alt="">
-					</a>
-				    </td>
-				    <% if user_admin? || user_moderator? %>
-					<td><a href="/deals/<%= deal.id %>/edit" class="btn btn-default">Edit</a></td>
-				    <% end %>
-				</tr>
-			    <% end %>
-                        </tbody>
-                    </table>
-                </div>
-
-                <%= paginate @deals_paginated %>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <p class="results"><%= page_entries_info @deals_paginated %></p>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <a href="/deals.xls" class="btn-export">
+          <img src="/img/export.svg" alt="">
+          <%= t('deals.index.export') %>
+        </a>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= render partial: 'shared/flash_messages' %>
+
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th><%= t('deals.index.column_company') %> </th>
+                <th><%= t('deals.index.column_close_date') %> </th>
+                <th><%= t('deals.index.column_deal_type') %> </th>
+                <th><%= t('deals.index.column_investors') %> </th>
+                <th><%= t('deals.index.column_amount') %> </th>
+                <th></th>
+
+                <% if user_admin? || user_moderator? %>
+                  <th></th>
+                <% end %>
+              </tr>
+            </thead>
+            <tbody>
+              <% @deals_paginated.each do |deal| %>
+                <tr>
+                  <td><img src="/img/logo-investors.png" alt=""> <%= link_to(deal.company.name, company_path(deal.company.permalink)) %></td>
+                  <td><%= I18n.l(deal.close_date, format: :default) %></td>
+                  <td><%= I18n.t("deals.model.categories.#{deal.category}") %></td>
+                  <td><%= investors_link(deal) %></td>
+                  <td><%= format_amount(deal.amount, deal.amount_currency) %></td>
+                  <td>
+                    <a href="/deals/<%= deal.id %>">
+                      <img src="/img/seta-dir.svg" alt="">
+                    </a>
+                  </td>
+                  <% if user_admin? || user_moderator? %>
+                    <td><a href="/deals/<%= deal.id %>/edit" class="btn btn-default">Edit</a></td>
+                  <% end %>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <%= paginate @deals_paginated %>
+      </div>
+    </div>
+  </div>
 </section>

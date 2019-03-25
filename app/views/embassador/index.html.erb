@@ -1,150 +1,73 @@
 <section class="s-featured-embassador">
-    <div class="s-container">
-        <h2><%= t('embassador.index.title') %></h2>
-        <h1><%= t('embassador.index.subtitle') %></h1>
-        <p><%= t('embassador.index.explanation') %></p>
-        <a href="#" class="btn-start-now"><%= t('embassador.index.start_now') %></a>
-        <img src="/img/img-embassador.png" alt="">
-    </div>
+  <div class="s-container">
+    <h2><%= t('embassador.index.title') %></h2>
+    <h1><%= t('embassador.index.subtitle') %></h1>
+    <p><%= t('embassador.index.explanation') %></p>
+    <a href="#" class="btn-start-now"><%= t('embassador.index.start_now') %></a>
+    <img src="/img/img-embassador.png" alt="">
+  </div>
 </section>
 <section class="all-peoples">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="top">
-                    <h1><%= t('embassador.index.current_embassadors') %></h1>
-                    <p><%= t('embassador.index.got_questions_html') %></p>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="top">
+          <h1><%= t('embassador.index.current_embassadors') %></h1>
+          <p><%= t('embassador.index.got_questions_html') %></p>
         </div>
-        <div class="row line-people">
-	    <% 4.times do %>
-		<div class="col-xs-12 col-sm-6 col-md-3">
-                    <div class="box-people">
-			<div class="photo">
-                            <img src="/img/photo-people-02.png" alt="">
-			</div>
-			<h1><%= t('embassador.index.embassador') %></h1>
-			<span><%= t('embassador.index.embassador_occupation') %></span>
-			<span><%= t('embassador.index.embassador_location') %></span>
-			<div class="country">
-                            <img src="/img/idioma-eua.svg" alt="">
-			</div>
-			<div class="social">
-                            <ul>
-				<li>
-                                    <a href="#" target="_blank">
-					<img src="/img/facebook-azul-02.png" alt="">
-                                    </a>
-				</li>
-				<li>
-                                    <a href="#" target="_blank">
-					<img src="/img/twitter-azul-02.png" alt="">
-                                    </a>
-				</li>
-				<li>
-                                    <a href="#" target="_blank">
-					<img src="/img/linkedin-azul.png" alt="">
-                                    </a>
-				</li>
-				<li>
-                                    <a href="#" target="_blank">
-					<img src="/img/instagram-azul.png" alt="">
-                                    </a>
-				</li>
-                            </ul>
-			</div>
-                    </div>
-		</div>
-	    <% end %>
-        </div>
-        <div class="row line-people">
-	    <% 4.times do %>
-		<div class="col-xs-12 col-sm-6 col-md-3">
-                    <div class="box-people">
-			<div class="photo">
-                            <img src="/img/photo-people-02.png" alt="">
-			</div>
-			<h1><%= t('embassador.index.embassador') %></h1>
-			<span><%= t('embassador.index.embassador_occupation') %></span>
-			<span><%= t('embassador.index.embassador_location') %></span>
-			<div class="country">
-                            <img src="/img/idioma-eua.svg" alt="">
-			</div>
-			<div class="social">
-                            <ul>
-				<li>
-                                    <a href="#" target="_blank">
-					<img src="/img/facebook-azul-02.png" alt="">
-                                    </a>
-				</li>
-				<li>
-                                    <a href="#" target="_blank">
-					<img src="/img/twitter-azul-02.png" alt="">
-                                    </a>
-				</li>
-				<li>
-                                    <a href="#" target="_blank">
-					<img src="/img/linkedin-azul.png" alt="">
-                                    </a>
-				</li>
-				<li>
-                                    <a href="#" target="_blank">
-					<img src="/img/instagram-azul.png" alt="">
-                                    </a>
-				</li>
-                            </ul>
-			</div>
-                    </div>
-		</div>
-	    <% end %>
-        </div>
-        <div class="row line-people">
-	    <% 4.times do %>
-		<div class="col-xs-12 col-sm-6 col-md-3">
-                    <div class="box-people">
-			<div class="photo">
-                            <img src="/img/photo-people-02.png" alt="">
-			</div>
-			<h1><%= t('embassador.index.embassador') %></h1>
-			<span><%= t('embassador.index.embassador_occupation') %></span>
-			<span><%= t('embassador.index.embassador_location') %></span>
-			<div class="country">
-                            <img src="/img/idioma-eua.svg" alt="">
-			</div>
-			<div class="social">
-                            <ul>
-				<li>
-                                    <a href="#" target="_blank">
-					<img src="/img/facebook-azul-02.png" alt="">
-                                    </a>
-				</li>
-				<li>
-                                    <a href="#" target="_blank">
-					<img src="/img/twitter-azul-02.png" alt="">
-                                    </a>
-				</li>
-				<li>
-                                    <a href="#" target="_blank">
-					<img src="/img/linkedin-azul.png" alt="">
-                                    </a>
-				</li>
-				<li>
-                                    <a href="#" target="_blank">
-					<img src="/img/instagram-azul.png" alt="">
-                                    </a>
-				</li>
-                            </ul>
-			</div>
-                    </div>
-		</div>
-	    <% end %>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <button type="button" class="btn-show-more">show more</button>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="row line-people">
+      <% @embassadors.each do |user| %>
+        <% next if user.person.blank? %>
+
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="box-people">
+            <div class="photo">
+              <img src="<%= user.person.profile_image_url %>">
+            </div>
+            <h1><%= user.person.name %></h1>
+            <span><%= user.person.occupation %></span>
+            <span><%= user.person.locations.first %></span>
+            <div class="country">
+              <img src="/img/idioma-eua.svg" alt="">
+            </div>
+            <div class="social">
+              <ul>
+                <% if user.person.facebook_url.present? %>
+                  <li>
+                    <a href="<%= user.person.facebook_url %>" target="_blank">
+                      <img src="/img/facebook-azul-02.png" alt="">
+                    </a>
+                  </li>
+                <% end %>
+
+                <% if user.person.twitter_url.present? %>
+                  <li>
+                    <a href="<%= user.person.twitter_url %>" target="_blank">
+                      <img src="/img/twitter-azul-02.png" alt="">
+                    </a>
+                  </li>
+                <% end %>
+
+                <% if user.person.linkedin_url.present? %>
+                  <li>
+                    <a href="<%= user.person.linkedin_url %>" target="_blank">
+                      <img src="/img/linkedin-azul.png" alt="">
+                    </a>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <button type="button" class="btn-show-more">show more</button>
+      </div>
+    </div>
+  </div>
 </section>

@@ -1,6 +1,6 @@
 ENV['RAILS_ENV'] ||= 'test'
 
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 
 if Rails.env.production?
   abort(
@@ -11,6 +11,7 @@ end
 require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
+require 'vcr'
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -51,4 +52,11 @@ Shoulda::Matchers.configure do |config|
 
     with.library :active_record
   end
+end
+
+VCR.configure do |config|
+  config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+  config.hook_into :webmock
+  config.default_cassette_options = { record: :new_episodes }
+  config.configure_rspec_metadata!
 end

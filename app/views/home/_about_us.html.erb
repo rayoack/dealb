@@ -1,53 +1,53 @@
 <section class="s-about-us">
-    <div class="s-container">
-	<div class="text-about">
-            <div class="s-left">
-		<h1><%= t('home.about_us.about_us') %></h1>
-		<ul>
-                    <li>
-			<img src="/img/cadeado.svg" alt="">
-			<h2><%= t('home.about_us.opensource_html') %></h2>
-                    </li>
-                    <li>
-			<img src="/img/maos.svg" alt="">
-			<h2><%= t('home.about_us.voluntary_work_html') %></h2>
-                    </li>
-                    <li>
-			<img src="/img/alvo.svg" alt="">
-			<h2><%= t('home.about_us.advanced_search_html') %></h2>
-                    </li>
-		</ul>
-            </div>
-            <div class="s-right">
-		<%= t('home.about_us.description_html') %>
-            </div>
-	</div>
-	<div class="database">
-            <div class="title">
-		<h1><%= t('home.about_us.browse') %></h1>
-		<img src="/img/seta-baixo.svg" alt="">
-            </div>
-            <div class="info-geral">
-		<ul>
-                    <li>
-			<span class="num"><%= @deals_count %></span>
-			<a href="/deals"><span class="caracter"><%= t('home.about_us.deals_count') %></span></a>
-                    </li>
-                    <li>
-			<span class="num"><%= @companies_count %></span>
-			<a href="/companies"><span class="caracter"><%= t('home.about_us.companies_count') %></span></a>
-                    </li>
-                    <li>
-			<span class="num"><%= @investors_count %></span>
-			<a href="/investors"><span class="caracter"><%= t('home.about_us.investors_count') %></span></a>
-                    </li>
-                    <li>
-			<span class="num"><%= @people_count %></span>
-			<a href="/people"><span class="caracter"><%= t('home.about_us.people_count') %></span></a>
-                    </li>
-		</ul>
-            </div>
-            <span class="title-featured"><%= t('home.about_us.free') %></span>
-	</div>
+  <div class="s-container">
+    <div class="text-about">
+      <div class="s-left">
+        <h1><%= t('home.about_us.about_us') %></h1>
+        <ul>
+          <li>
+            <img src="/img/cadeado.svg" alt="">
+            <h2><%= t('home.about_us.opensource_html') %></h2>
+          </li>
+          <li>
+            <img src="/img/maos.svg" alt="">
+            <h2><%= t('home.about_us.voluntary_work_html') %></h2>
+          </li>
+          <li>
+            <img src="/img/alvo.svg" alt="">
+            <h2><%= t('home.about_us.advanced_search_html') %></h2>
+          </li>
+        </ul>
+      </div>
+      <div class="s-right">
+        <%= t('home.about_us.description_html') %>
+      </div>
     </div>
+    <div class="database">
+      <div class="title">
+        <h1><%= t('home.about_us.browse') %></h1>
+        <img src="/img/seta-baixo.svg" alt="">
+      </div>
+      <div class="info-geral">
+        <ul>
+          <li>
+            <span class="num"><%= @deals_count %></span>
+            <a href="/deals"><span class="caracter"><%= t('home.about_us.deals_count') %></span></a>
+          </li>
+          <li>
+            <span class="num"><%= @companies_count %></span>
+            <a href="/companies"><span class="caracter"><%= t('home.about_us.companies_count') %></span></a>
+          </li>
+          <li>
+            <span class="num"><%= @investors_count %></span>
+            <a href="/investors"><span class="caracter"><%= t('home.about_us.investors_count') %></span></a>
+          </li>
+          <li>
+            <span class="num"><%= @people_count %></span>
+            <a href="/people"><span class="caracter"><%= t('home.about_us.people_count') %></span></a>
+          </li>
+        </ul>
+      </div>
+      <span class="title-featured"><%= t('home.about_us.free') %></span>
+    </div>
+  </div>
 </section>

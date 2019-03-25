@@ -1,60 +1,60 @@
 <section class="s-title-page title-page-search">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-7">
-                <a href="#" class="btn-back">
-                    <img src="/img/seta-esq-back.svg" alt="">
-                    <%= t('search.index.back') %>
-                </a>
-                <h1><%= t('search.index.search_result') %> “<%= params[:query] %>”</h1>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-7">
+        <a href="#" class="btn-back">
+          <img src="/img/seta-esq-back.svg" alt="">
+          <%= t('search.index.back') %>
+        </a>
+        <h1><%= t('search.index.search_result') %> “<%= params[:query] %>”</h1>
+      </div>
     </div>
+  </div>
 </section>
 
 <section class="s-table-results">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6">
-                <p class="results">
-		    <%= page_entries_info @results_paginated %>
-		</p>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-6">
-                <a href="/search.xls?<%= params.permit(:query).to_query %>" class="btn-export">
-                    <img src="/img/export.svg" alt="">
-                    <%= t('search.index.export') %>
-                </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th><%= t('search.index.column_name') %></th>
-                                <th><%= t('search.index.column_status') %></th>
-                                <th><%= t('search.index.column_location') %></th>
-                                <th colspan="2"><%= t('search.index.column_deals') %></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-			    <% @results_paginated.each do |result| %>
-				<tr>
-                                    <td><img src="/img/logo-investors.png" alt=""> <%= result.name %></td>
-                                    <td class="status-active"><span class="circulo"></span> <%= result.try(:status) %></td>
-                                    <td><%= result.locations.pluck(:city, :country).join(', ') %></td>
-                                    <td><%= result.try(:investor).try(:category) %></td>
-                                    <td><a href="<%= "/#{result.class.to_s.downcase.pluralize}/#{result.permalink}" %>"><img src="/img/seta-dir.svg" alt=""></a></td>
-				</tr>
-			    <% end %>
-                        </tbody>
-                    </table>
-                </div>
-
-		<%= paginate @results_paginated %>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <p class="results">
+        <%= page_entries_info @results_paginated %>
+        </p>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <a href="/search.xls?<%= params.permit(:query).to_query %>" class="btn-export">
+          <img src="/img/export.svg" alt="">
+          <%= t('search.index.export') %>
+        </a>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th><%= t('search.index.column_name') %></th>
+                <th><%= t('search.index.column_status') %></th>
+                <th><%= t('search.index.column_location') %></th>
+                <th colspan="2"><%= t('search.index.column_deals') %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @results_paginated.each do |result| %>
+                <tr>
+                  <td><img src="/img/logo-investors.png" alt=""> <%= result.name %></td>
+                  <td class="status-active"><span class="circulo"></span> <%= result.try(:status) %></td>
+                  <td><%= result.locations.pluck(:city, :country).join(', ') %></td>
+                  <td><%= result.try(:investor).try(:category) %></td>
+                  <td><a href="<%= "/#{result.class.to_s.downcase.pluralize}/#{result.permalink}" %>"><img src="/img/seta-dir.svg" alt=""></a></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <%= paginate @results_paginated %>
+      </div>
+    </div>
+  </div>
 </section>

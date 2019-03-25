@@ -13,5 +13,6 @@ FactoryBot.define do
     source_url { Faker::Internet.url }
 
     company
+    user
   end
 end

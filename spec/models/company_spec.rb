@@ -33,55 +33,55 @@ describe Company do
       is_expected.to validate_numericality_of(:employees_count).only_integer
     end
 
-    describe 'born_date' do
-      it 'is a valid born_date, then returns valid' do
-        company.born_date = Time.zone.today
+    describe 'founded_on' do
+      it 'is a valid founded_on, then returns valid' do
+        company.founded_on = Time.zone.today
 
         is_expected.to be_valid
       end
 
       it 'could be nil' do
-        company.born_date = nil
+        company.founded_on = nil
 
         is_expected.to be_valid
       end
     end
 
-    describe 'email' do
-      it 'is a valid email, then returns valid' do
-        company.email = 'myemail@gmail.com'
+    describe 'contact_email' do
+      it 'is a valid contact_email, then returns valid' do
+        company.contact_email = 'myemail@gmail.com'
 
         is_expected.to be_valid
       end
 
-      it 'is not a valid email, then returns invalid' do
-        company.email = 'i-am-not-an-email'
+      it 'is not a valid contact_email, then returns invalid' do
+        company.contact_email = 'i-am-not-an-email'
 
         is_expected.to_not be_valid
       end
 
       it 'could be nil' do
-        company.email = nil
+        company.contact_email = nil
 
         is_expected.to be_valid
       end
     end
 
-    describe 'website_url' do
-      it 'is a valid website_url, then returns valid' do
-        company.website_url = 'https://dealbook.com'
+    describe 'homepage_url' do
+      it 'is a valid homepage_url, then returns valid' do
+        company.homepage_url = 'https://dealbook.com'
 
         is_expected.to be_valid
       end
 
-      it 'is not a valid website_url, then returns invalid' do
-        company.website_url = 'dealbook.xls'
+      it 'is not a valid homepage_url, then returns invalid' do
+        company.homepage_url = 'dealbook.xls'
 
         is_expected.to_not be_valid
       end
 
       it 'could be nil' do
-        company.website_url = nil
+        company.homepage_url = nil
 
         is_expected.to be_valid
       end

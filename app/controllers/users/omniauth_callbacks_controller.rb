@@ -5,7 +5,18 @@ module Users
     skip_before_action :verify_authenticity_token
 
     def linkedin
+      info = request.env['omniauth.auth'].try(:[], :info)&.deep_symbolize_keys
+      person = Person.create(first_name: info[:first_name],
+                             last_name: info[:last_name],
+                             email: info[:email],
+                             occupation: info[:headline],
+                             bio: info[:description],
+                             linkedin_url: info.dig(:urls, :public_profile),
+                             profile_image_url: info[:image],
+                             verified_at: Time.zone.now)
+
       @user = User.from_omniauth(request.env['omniauth.auth'])
+      @user.update(person: person)
       sign_in_and_redirect(@user, event: :authentication)
 
       flash = is_navigational_format?

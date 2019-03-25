@@ -150,4 +150,25 @@ describe Deal do
       end
     end
   end
+
+  describe '#scopes' do
+    context 'top_contributors' do
+      let(:user_1) { create :user }
+      let(:user_2) { create :user }
+      let(:user_3) { create :user }
+      let(:user_4) { create :user }
+
+      before do
+        create_list :deal, 4, user: user_1
+        create_list :deal, 3, user: user_2
+        create_list :deal, 2, user: user_3
+        create_list :deal, 1, user: user_4
+      end
+
+      it 'success' do
+        expect(Deal.top_contributors(3).map(&:user_id))
+          .to eq([user_1.id, user_2.id, user_3.id])
+      end
+    end
+  end
 end

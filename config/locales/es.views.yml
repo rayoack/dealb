@@ -1,0 +1,4 @@
+es:
+  views:
+    pagination:
+      next: 'Siguiente'

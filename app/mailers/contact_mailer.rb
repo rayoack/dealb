@@ -7,7 +7,7 @@ class ContactMailer < ApplicationMailer
     @message = params.fetch(:message)
 
     mail(
-      to: "contact@#{ENV.fetch('DEALBOOK_DOMAIN')}",
+      to: @email,
       subject: "[Contact from site Dealbook] Name: #{@name} Email: #{@email}"
     )
   end

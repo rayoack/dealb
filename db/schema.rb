@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180222160416) do
+ActiveRecord::Schema.define(version: 20190321234932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(version: 20180222160416) do
     t.string "permalink", null: false
     t.text "description"
     t.integer "employees_count"
-    t.date "born_date"
+    t.date "founded_on"
     t.string "phone_number"
-    t.string "email"
-    t.string "website_url"
+    t.string "contact_email"
+    t.string "homepage_url"
     t.string "linkedin_url"
     t.string "facebook_url"
     t.string "twitter_url"
@@ -32,6 +32,14 @@ ActiveRecord::Schema.define(version: 20180222160416) do
     t.string "domain_country_context", default: "br", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "profile_image_url"
+    t.string "legal_name"
+    t.string "crunchbase_url"
+    t.string "stock_symbol"
+    t.string "stock_exchange"
+    t.datetime "closed_on"
+    t.integer "rank"
+    t.datetime "clearbit_synchronized_at"
     t.index ["name"], name: "index_companies_on_name"
     t.index ["permalink"], name: "index_companies_on_permalink"
     t.index ["status"], name: "index_companies_on_status"
@@ -69,10 +77,12 @@ ActiveRecord::Schema.define(version: 20180222160416) do
     t.string "domain_country_context", default: "br", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["category"], name: "index_deals_on_category"
     t.index ["company_id"], name: "index_deals_on_company_id"
     t.index ["round"], name: "index_deals_on_round"
     t.index ["status"], name: "index_deals_on_status"
+    t.index ["user_id"], name: "index_deals_on_user_id"
   end
 
   create_table "investors", force: :cascade do |t|
@@ -118,8 +128,8 @@ ActiveRecord::Schema.define(version: 20180222160416) do
     t.string "first_name", null: false
     t.string "last_name"
     t.string "permalink", null: false
-    t.text "description"
-    t.date "born_date"
+    t.text "bio"
+    t.date "born_on"
     t.string "gender"
     t.string "phone_number"
     t.string "occupation"
@@ -132,6 +142,11 @@ ActiveRecord::Schema.define(version: 20180222160416) do
     t.string "domain_country_context", default: "br", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "profile_image_url"
+    t.datetime "clearbit_synchronized_at"
+    t.integer "rank"
+    t.datetime "died_on"
+    t.datetime "verified_at"
     t.index ["first_name"], name: "index_people_on_first_name"
     t.index ["permalink"], name: "index_people_on_permalink"
   end
@@ -166,7 +181,14 @@ ActiveRecord::Schema.define(version: 20180222160416) do
     t.string "status", default: "active", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.bigint "person_id"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["person_id"], name: "index_users_on_person_id"
     t.index ["provider"], name: "index_users_on_provider"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role"], name: "index_users_on_role"
@@ -174,4 +196,6 @@ ActiveRecord::Schema.define(version: 20180222160416) do
     t.index ["uid"], name: "index_users_on_uid"
   end
 
+  add_foreign_key "deals", "users"
+  add_foreign_key "users", "people"
 end

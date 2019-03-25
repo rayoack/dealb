@@ -57,7 +57,7 @@ class ImportOldDatabaseService
           @new_investor1 = ::Investor.create!(
             investable: @person,
             status: investor.status || Investor::ACTIVE,
-            category: ::Investor::ANGEL,
+            category: ::Investor::ANGEL
             # stage: investor.stage.strip.presence
           )
         else
@@ -71,7 +71,7 @@ class ImportOldDatabaseService
             # born_date: '',
             # phone_number: '',
             # email: '',
-            website_url: investor.website.try(:strip).presence,
+            homepage_url: investor.website.try(:strip).presence,
             linkedin_url: investor.linkedin.try(:strip).presence,
             # facebook_url: '',
             # twitter_url: '',
@@ -82,7 +82,7 @@ class ImportOldDatabaseService
           @new_investor2 = ::Investor.create!(
             investable: @company,
             status: investor.status || Investor::ACTIVE,
-            category: ::Investor::ANGEL,
+            category: ::Investor::ANGEL
             # stage: investor.stage.strip.presence
           )
         end

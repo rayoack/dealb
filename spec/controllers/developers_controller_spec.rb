@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe DevelopersController do
+describe DevelopersController, :vcr do
   describe '#index' do
     subject(:index) { get :index }
 

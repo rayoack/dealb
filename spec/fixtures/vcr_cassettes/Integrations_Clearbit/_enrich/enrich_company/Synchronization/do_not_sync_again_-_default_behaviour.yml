@@ -1,0 +1,99 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://company.clearbit.com/v1/domains/find?name=Spotify
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer sk_key
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 20 Mar 2019 02:00:52 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - public, must-revalidate, max-age=2592000
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Account-Id:
+      - a3973f6a-e34b-45e0-a488-dd9408d62464
+      Vary:
+      - Accept-Encoding
+      Server:
+      - envoy
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "name": "Spotify",
+          "domain": "spotify.com",
+          "logo": "https://logo.clearbit.com/spotify.com"
+        }
+    http_version: 
+  recorded_at: Wed, 20 Mar 2019 02:00:52 GMT
+- request:
+    method: get
+    uri: https://company.clearbit.com/v2/companies/find?domain=spotify.com
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer sk_key
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 20 Mar 2019 02:00:54 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Api-Version:
+      - '2017-09-12'
+      X-Ratelimit-Limit:
+      - '600'
+      X-Ratelimit-Remaining:
+      - '599'
+      X-Ratelimit-Reset:
+      - '1553047314'
+      X-Account-Id:
+      - a3973f6a-e34b-45e0-a488-dd9408d62464
+      Vary:
+      - Accept-Encoding
+      Server:
+      - envoy
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICJpZCI6ICIzNDA0ZTFjOC1hZTc2LTQ3ZDYtYjFmNS1jODMxN2Y4NTBmY2QiLAogICJuYW1lIjogIlNwb3RpZnkiLAogICJsZWdhbE5hbWUiOiBudWxsLAogICJkb21haW4iOiAic3BvdGlmeS5jb20iLAogICJkb21haW5BbGlhc2VzIjogWwogICAgInNwb3RpZnkuY2EiLAogICAgInNwb3RpZnkuY28udGgiLAogICAgInNwb3RpZnkuY29tLnZuIiwKICAgICJzcG90aWZ5LnVzIiwKICAgICJzcG90aWZ5LmF0IiwKICAgICJmZXN0dW5kZmxhdXNjaGlnLmRlIiwKICAgICJkYW5nZXJtb3VzZXNpdGUuY29tIiwKICAgICJzcG90aWZ5LmRlIiwKICAgICJzcG90aWZ5Lml0IiwKICAgICJzcG90aWZ5LmNvLnVrIiwKICAgICJzcG90aWZ5c3R1ZGVudHByZW1pdW1zdG9yZS5jb20iLAogICAgInNoYW1hbmFiZWF0cy5jb20iLAogICAgInNwb3RpZnktbWl4bWF0ZXMuY29tIiwKICAgICIxODAwZW50bGxjLmNvbSIsCiAgICAic3BvdGlmeXdyYXBwZWQuY29tIiwKICAgICJzcG90aWZ5LnNrIiwKICAgICJzcG90aWZ5LmFtIiwKICAgICJzcG90aWZ5LmNvLm56IiwKICAgICJzcG90aWZ5LmRrIiwKICAgICJzcG90aWZ5LmNoIiwKICAgICJzcG90aWZ5LnBsIiwKICAgICJzcG90aWZ5Lmx2IiwKICAgICJzcG90aWZ5LmllIiwKICAgICJzcG90aWZ5Lmx0IiwKICAgICJzcG90aWZ5Lm51IiwKICAgICJzcG90aWZ5LmZtIiwKICAgICJzcG90aWZ5LmdyIiwKICAgICJzcG90aWZ5LnB0IiwKICAgICJzcG90aWZ5LmpwIiwKICAgICJzcG90aWZ5LnJvIiwKICAgICJzcG90aWZ5LnR2IiwKICAgICJzcG90aWZ5LmJlIiwKICAgICJzcG90aWZ5LmN6IiwKICAgICJzcG90aWZ5LmlvIiwKICAgICJzcG90aWZ5LnBoIiwKICAgICIyMDE3d3JhcHBlZC5jb20iLAogICAgInNwb3RpZnkuZXMiLAogICAgInNwb3RpZnlmYW5zZmlyc3QuY29tIiwKICAgICJzcG90aWZ5Lm5vIiwKICAgICJzcG90aWZ5cmlwcGluZy5jb20iLAogICAgInNwb3RpZnkub3JnIiwKICAgICJzcG90aS5maSIsCiAgICAic3BvdGlmeS5ydSIsCiAgICAic3BvdGlmeS5jbiIsCiAgICAic3BvdGlmeS5jb20uYXUiLAogICAgInNwb3RpZnkuZmkiLAogICAgInNwb3RpZnkuZnIiLAogICAgInNwb3RpZnkuc2UiLAogICAgInNwb3RpZnkuYml6IiwKICAgICJzcG90aWZ5Lm5sIgogIF0sCiAgInNpdGUiOiB7CiAgICAicGhvbmVOdW1iZXJzIjogWwoKICAgIF0sCiAgICAiZW1haWxBZGRyZXNzZXMiOiBbCiAgICAgICJvZmZpY2VAc3BvdGlmeS5jb20iCiAgICBdCiAgfSwKICAiY2F0ZWdvcnkiOiB7CiAgICAic2VjdG9yIjogIkluZm9ybWF0aW9uIFRlY2hub2xvZ3kiLAogICAgImluZHVzdHJ5R3JvdXAiOiAiU29mdHdhcmUgJiBTZXJ2aWNlcyIsCiAgICAiaW5kdXN0cnkiOiAiSW50ZXJuZXQgU29mdHdhcmUgJiBTZXJ2aWNlcyIsCiAgICAic3ViSW5kdXN0cnkiOiAiSW50ZXJuZXQiLAogICAgInNpY0NvZGUiOiAiODciLAogICAgIm5haWNzQ29kZSI6ICI1NCIKICB9LAogICJ0YWdzIjogWwogICAgIkludGVybmV0IiwKICAgICJUZWNobm9sb2d5IiwKICAgICJJbmZvcm1hdGlvbiBUZWNobm9sb2d5ICYgU2VydmljZXMiLAogICAgIk1vYmlsZSIsCiAgICAiQjJDIgogIF0sCiAgImRlc2NyaXB0aW9uIjogIlNwb3RpZnkgaXMgYW4gYXVkaW8gc3RyZWFtaW5nIHBsYXRmb3JtIGxhdW5jaGVkIGJ5IFNwb3RpZnkgQUIgb24gNyBPY3RvYmVyIDIwMDguIiwKICAiZm91bmRlZFllYXIiOiAyMDA2LAogICJsb2NhdGlvbiI6ICJCaXJnZXIgSmFybHNnYXRhbiA2MSwgMTEzIDU2IFN0b2NraG9sbSwgU3dlZGVuIiwKICAidGltZVpvbmUiOiAiRXVyb3BlL1N0b2NraG9sbSIsCiAgInV0Y09mZnNldCI6IDEsCiAgImdlbyI6IHsKICAgICJzdHJlZXROdW1iZXIiOiAiNjEiLAogICAgInN0cmVldE5hbWUiOiAiQmlyZ2VyIEphcmxzZ2F0YW4iLAogICAgInN1YlByZW1pc2UiOiBudWxsLAogICAgImNpdHkiOiAiU3RvY2tob2xtIiwKICAgICJwb3N0YWxDb2RlIjogIjExMyA1NiIsCiAgICAic3RhdGUiOiAiU3RvY2tob2xtcyBsw6RuIiwKICAgICJzdGF0ZUNvZGUiOiBudWxsLAogICAgImNvdW50cnkiOiAiU3dlZGVuIiwKICAgICJjb3VudHJ5Q29kZSI6ICJTRSIsCiAgICAibGF0IjogNTkuMzQyMTcxNzk5OTk5OTksCiAgICAibG5nIjogMTguMDYzNjIyMwogIH0sCiAgImxvZ28iOiAiaHR0cHM6Ly9sb2dvLmNsZWFyYml0LmNvbS9zcG90aWZ5LmNvbSIsCiAgImZhY2Vib29rIjogewogICAgImhhbmRsZSI6ICJzcG90aWZ5IiwKICAgICJsaWtlcyI6IDE2NTQ4NjA2CiAgfSwKICAibGlua2VkaW4iOiB7CiAgICAiaGFuZGxlIjogImNvbXBhbnkvc3BvdGlmeSIKICB9LAogICJ0d2l0dGVyIjogewogICAgImhhbmRsZSI6ICJTcG90aWZ5IiwKICAgICJpZCI6ICIxNzIzMDAxOCIsCiAgICAiYmlvIjogIk11c2ljIGZvciBldmVyeSBtb21lbnQuIFBsYXksIGRpc2NvdmVyLCBhbmQgc2hhcmUgZm9yIGZyZWUuIE5lZWQgc3VwcG9ydD8gV2UncmUgaGFwcHkgdG8gaGVscCBhdCBAU3BvdGlmeUNhcmVzIiwKICAgICJmb2xsb3dlcnMiOiAyOTE4MzA4LAogICAgImZvbGxvd2luZyI6IDE3Mzk5LAogICAgImxvY2F0aW9uIjogIiIsCiAgICAic2l0ZSI6ICJodHRwczovL3QuY28vanFBYjY0TUQzeSIsCiAgICAiYXZhdGFyIjogImh0dHBzOi8vcGJzLnR3aW1nLmNvbS9wcm9maWxlX2ltYWdlcy8xMDEzNjE0MTEwMTcxMjUwNjg4L3ZyUFVDRG4yX25vcm1hbC5qcGciCiAgfSwKICAiY3J1bmNoYmFzZSI6IHsKICAgICJoYW5kbGUiOiAib3JnYW5pemF0aW9uL3Nwb3RpZnkiCiAgfSwKICAiZW1haWxQcm92aWRlciI6IGZhbHNlLAogICJ0eXBlIjogInB1YmxpYyIsCiAgInRpY2tlciI6ICJTUE9UIiwKICAiaWRlbnRpZmllcnMiOiB7CiAgICAidXNFSU4iOiAiODAwNTU1NDMxIgogIH0sCiAgInBob25lIjogIisxIDIxMi0zMjAtMzc0MCIsCiAgIm1ldHJpY3MiOiB7CiAgICAiYWxleGFVc1JhbmsiOiA1NywKICAgICJhbGV4YUdsb2JhbFJhbmsiOiAxMDcsCiAgICAiZW1wbG95ZWVzIjogNDk2MCwKICAgICJlbXBsb3llZXNSYW5nZSI6ICIxSy01SyIsCiAgICAibWFya2V0Q2FwIjogbnVsbCwKICAgICJyYWlzZWQiOiBudWxsLAogICAgImFubnVhbFJldmVudWUiOiA1OTgwMDAwMDAwLAogICAgImVzdGltYXRlZEFubnVhbFJldmVudWUiOiAiJDFCLSQxMEIiLAogICAgImZpc2NhbFllYXJFbmQiOiBudWxsCiAgfSwKICAiaW5kZXhlZEF0IjogIjIwMTktMDMtMDlUMDE6MzI6MDEuNzYwWiIsCiAgInRlY2giOiBbCiAgICAiZ29vZ2xlX2FwcHMiLAogICAgInZpc3VhbF9pcSIsCiAgICAibnMxIiwKICAgICJtYWlsY2hpbXAiLAogICAgIm5naW54IiwKICAgICJnb29nbGVfY2xvdWQiLAogICAgImdvb2dsZV9hbmFseXRpY3MiLAogICAgImR5bl9kbnMiLAogICAgImdvb2dsZV90YWdfbWFuYWdlciIsCiAgICAicmVjYXB0Y2hhIiwKICAgICJmYWNlYm9va19jb25uZWN0IiwKICAgICJmYWNlYm9va19hZHZlcnRpc2VyIgogIF0sCiAgInBhcmVudCI6IHsKICAgICJkb21haW4iOiBudWxsCiAgfQp9
+    http_version: 
+  recorded_at: Wed, 20 Mar 2019 02:00:54 GMT
+recorded_with: VCR 4.0.0

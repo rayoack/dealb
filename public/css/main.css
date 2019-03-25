@@ -1,3 +1,7 @@
+@import './dealbook/shared/header.css';
+@import './dealbook/shared/filters.css';
+@import './dealbook/home.css';
+@import './dealbook/developers.css';
 @import './dealbook/investors.css';
 @import './btn.css';
 
@@ -89,7 +93,7 @@ header .header-desktop {
   top: 0;
   width: 100%;
   left: 0;
-  z-index: 90;
+  z-index: 200;
 }
 header .header-desktop .container-logo {
   float: left;
@@ -1169,6 +1173,11 @@ header .header-mobile {
   margin-left: 25px;
   margin-top: 10px;
 }
+@media (min-width: 890px) {
+  .swiper-updates {
+    padding-right: 130px;
+  }
+}
 .s-updates .container-updates .swiper-updates .swiper-wrapper .swiper-slide {
   max-width: 360px;
 }
@@ -1176,6 +1185,7 @@ header .header-mobile {
   box-shadow: 0px 20px 50px 0px #e6e7ea;
   padding: 39px 0px 52px 26px;
   margin-top: 0px;
+  min-height: 212px;
 }
 .s-updates .container-updates .swiper-updates .swiper-wrapper .swiper-slide a .box-update:hover {
   margin-top: -5px;
@@ -1693,7 +1703,7 @@ footer .copyright p a {
   margin-top: -75px;
   float: left;
   width: 100%;
-  overflow-y: auto;
+  overflow: auto;
 }
 .filter-block .container-filter h3 {
   font-size: 16px;
@@ -1713,7 +1723,7 @@ footer .copyright p a {
 }
 .filter-block .container-filter .filter-result {
   float: left;
-  width: 1110px;
+  width: 100%;
 }
 .filter-block .container-filter .filter-result .filter-complete {
   float: left;
@@ -1777,6 +1787,18 @@ footer .copyright p a {
   height: 55px;
   text-align: left;
   padding-left: 18px;
+  pointer-events: none;
+}
+.filter-block .container-filter .filter-result .filter-complete .item-filter ul li.second-nivel-filter button {
+  background: #2e448b;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  width: 240px;
+  height: 55px;
+  text-align: left;
+  padding-left: 18px;
+  pointer-events: none;
 }
 .filter-block .container-filter .filter-result .filter-complete .item-filter ul li.second-nivel-filter .bootstrap-select .dropdown-toggle {
   background: #2e448b;
@@ -1791,6 +1813,14 @@ footer .copyright p a {
   margin-left: initial !important;
   float: initial;
 }
+
+@media (max-width: 992px) {
+  .filter-block .container-filter .filter-result .filter-complete .item-filter ul li.last-nivel-filter {
+    margin-top: 30px;
+    margin-left: 0;
+  }
+}
+
 .filter-block .container-filter .filter-result .filter-complete .item-filter ul li.last-nivel-filter input[type="text"] {
   border: none;
   border-radius: 5px;
@@ -1817,6 +1847,7 @@ footer .copyright p a {
   position: absolute;
   right: -35px;
   top: 17px;
+  cursor: pointer;
 }
 .filter-block .container-filter .filter-result .add-new-filter {
   margin-top: 25px;
@@ -1838,6 +1869,14 @@ footer .copyright p a {
   left: 50%;
   margin-left: -1px;
 }
+
+@media (max-width: 562px) {
+  .filter-block .container-filter .filter-result button.btn-app-filter {
+    margin: 0px;
+    margin-top: 16px;
+  }
+}
+
 .filter-block .container-filter .filter-result .btn-app-filter {
   font-weight: bold;
   font-size: 15px;
@@ -3571,6 +3610,7 @@ footer .copyright p a {
   background: url("/img/seta-baixo-select.png") no-repeat right;
   background-position-x: 95%;
   background-position-y: 20px;
+  margin-bottom: 16px;
 }
 .form-create form .form-group .select-round,
 .form-create form .form-group .select-category-investor {
@@ -4027,6 +4067,9 @@ footer .copyright p a {
   .container-add-your-company form .form-group .input-industry {
     width: 31.5% !important;
   }
+  .form-group .input-market button {
+    height: 48px;
+  }
 }
 @media (max-width: 991px) {
   .container-add-your-company {
@@ -4427,18 +4470,20 @@ a.menu-button:hover .menu-icon::after {
   }
 }
 .popup-involved {
-  position: absolute;
   background: #fff;
-  right: 45px;
-  bottom: -140px;
-  width: 167px;
-  z-index: 9;
-  padding: 17px 20px;
-  box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 30px;
+  right: 42px;
+  z-index: 10;
+  width: 168px;
+  height: 160px;
+  padding: 25px 20px;
   opacity: 0;
-  pointer-events: none;
   transition: 0.25s all ease-in;
+  pointer-events: none;
+  box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.1);
 }
+
 .popup-involved.opened {
   bottom: -145px;
   opacity: 1;
@@ -4476,6 +4521,7 @@ a.menu-button:hover .menu-icon::after {
     transition: initial;
   }
   .popup-involved.opened {
+    top: 60vh;
     bottom: 275px;
     right: 50%;
     margin-right: -83px;
@@ -4977,9 +5023,10 @@ a.menu-button:hover .menu-icon::after {
   border: 1px solid #ebebeb;
   padding: 10px 10px;
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
 }
 .history-dealbook .text .item .sponsors .all-sponsors .box-sponsors .logo img {
-  margin-top: 40px !important;
   width: 100%;
 }
 .history-dealbook .text .item .sponsors .all-sponsors .box-sponsors .info h2 {
