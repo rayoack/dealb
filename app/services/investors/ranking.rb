@@ -20,7 +20,7 @@ module Investors
                       :investable_type,
                       :investable_id,
                       :amount_currency)
-              .select('SUM(amount_cents) as invested_capital')
+              .select(invested_capital_selection)
               .select('COUNT(deals.id) as deals_count')
     end
 
@@ -35,6 +35,11 @@ module Investors
       return 'invested_capital DESC' if order == :capital
 
       order.presence || { id: :asc }
+    end
+
+    def invested_capital_selection
+      'SUM(CASE WHEN amount_cents = NULL THEN 0 ELSE amount_cents END) ' \
+      'as invested_capital'
     end
   end
 end
