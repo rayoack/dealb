@@ -73,10 +73,7 @@ class Company < ApplicationRecord
     Hash[info].merge(data.slice(:name, :description))
   end
 
-  def update_from_clearbit(data)
-    new_attributes = attributes.reject { |_, v| v.nil? }
-                               .reverse_merge(data)
-    new_attributes[:clearbit_synchronized_at] = Time.zone.now
-    update!(new_attributes)
+  def headquarter_country
+    locations.first&.country
   end
 end
