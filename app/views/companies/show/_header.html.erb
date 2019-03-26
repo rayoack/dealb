@@ -45,7 +45,7 @@
             <span><%= @company.locations.pluck(:city, :country).join(', ') %></span>
           </li>
           <li>
-            <strong><%= t('companies.show.markets') %></strong>
+            <strong><%= t('companies.show.tags') %></strong>
             <span><%= @company.markets.map(&:name).uniq.join(', ') %></span>
           </li>
         </ul>
