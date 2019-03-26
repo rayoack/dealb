@@ -148,7 +148,7 @@ class CompaniesController < ApplicationController
 
   def create_investor(company)
     Investor.create!(
-      investable: company, category: Investor::ANGEL, stage: Investor::SEED
+      investable: company, tag: Investor::ANGEL, stage: Investor::SEED
     )
   end
 end

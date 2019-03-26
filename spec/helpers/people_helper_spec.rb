@@ -40,7 +40,7 @@ describe PeopleHelper do
       # has to be an investor
       investor_profile = create(:investor, investable: person)
 
-      expect(investor_category).to eq(investor_profile.category)
+      expect(investor_category).to eq(investor_profile.tag)
     end
 
     context 'when the person is not an investor' do

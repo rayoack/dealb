@@ -5,7 +5,7 @@ FactoryBot.define do
     investable { create(:person) }
 
     status Investor::ACTIVE
-    category Investor::ANGEL
+    tag Investor::ANGEL
     stage Investor::SEED
 
     trait :company do

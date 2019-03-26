@@ -45,7 +45,7 @@
                   <td><img src="/img/logo-investors.png" alt=""> <%= result.name %></td>
                   <td class="status-active"><span class="circulo"></span> <%= result.try(:status) %></td>
                   <td><%= result.locations.pluck(:city, :country).join(', ') %></td>
-                  <td><%= result.try(:investor).try(:category) %></td>
+                  <td><%= result.try(:investor).try(:tag) %></td>
                   <td><a href="<%= "/#{result.class.to_s.downcase.pluralize}/#{result.permalink}" %>"><img src="/img/seta-dir.svg" alt=""></a></td>
                 </tr>
               <% end %>

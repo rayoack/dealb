@@ -27,14 +27,11 @@ Metrics/MethodLength:
     - 'db/migrate/*.rb'
 
 Metrics/AbcSize:
-  Enabled: true
+  Enabled: false
   Exclude:
     - 'db/migrate/*.rb'
 
 Metrics/ClassLength:
-  Enabled: false
-
-Metrics/AbcSize:
   Enabled: false
 
 Naming/VariableNumber:

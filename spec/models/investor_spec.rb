@@ -15,7 +15,7 @@ describe Investor do
 
     it do
       is_expected.to(
-        validate_inclusion_of(:category).in_array(described_class::CATEGORIES)
+        validate_inclusion_of(:tag).in_array(described_class::TAGS)
       )
     end
 

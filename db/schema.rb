@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190321234932) do
+ActiveRecord::Schema.define(version: 20190325025143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20190321234932) do
     t.string "investable_type", null: false
     t.bigint "investable_id", null: false
     t.string "status", default: "active", null: false
-    t.string "category"
+    t.string "tag"
     t.string "stage"
     t.string "domain_country_context", default: "br", null: false
     t.datetime "created_at", null: false

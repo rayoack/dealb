@@ -18,14 +18,14 @@ describe Investors::Searcher do
     expect(result.pluck(:id)).to eq([matching_investor.id])
   end
 
-  it 'filters by category' do
-    matching_investor = create(:investor, category: Investor::ANGEL)
-    _non_matching_investor = create(:investor, category: Investor::ACCELERATOR)
+  it 'filters by tag' do
+    matching_investor = create(:investor, tag: Investor::ANGEL)
+    _non_matching_investor = create(:investor, tag: Investor::ACCELERATOR)
     filter_params = {
       '0' => {
-        'type' => 'category',
+        'type' => 'tag',
         'operator' => 'equal',
-        'value' => matching_investor.category
+        'value' => matching_investor.tag
       }
     }
 
@@ -104,25 +104,25 @@ describe Investors::Searcher do
     matching_investor1 = create(
       :investor,
       status: Investor::ACTIVE,
-      category: Investor::ANGEL,
+      tag: Investor::ANGEL,
       stage: Investor::SEED
     )
     matching_investor2 = create(
       :investor,
       status: Investor::ACTIVE,
-      category: Investor::ANGEL,
+      tag: Investor::ANGEL,
       stage: Investor::SEED
     )
     _non_matching_investor1 = create(
       :investor,
       status: Investor::INACTIVE,
-      category: Investor::ANGEL,
+      tag: Investor::ANGEL,
       stage: Investor::SEED
     )
     _non_matching_investor2 = create(
       :investor,
       status: Investor::ACTIVE,
-      category: Investor::ACCELERATOR,
+      tag: Investor::ACCELERATOR,
       stage: Investor::SEED
     )
     filter_params = {
@@ -132,7 +132,7 @@ describe Investors::Searcher do
         'value' => Investor::ACTIVE
       },
       '1' => {
-        'type' => 'category',
+        'type' => 'tag',
         'operator' => 'contains',
         'value' => Investor::ANGEL
       },

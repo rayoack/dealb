@@ -127,7 +127,7 @@ class PeopleController < ApplicationController
 
   def create_investor(person)
     Investor.create!(
-      investable: person, category: Investor::ANGEL, stage: Investor::SEED
+      investable: person, tag: Investor::ANGEL, stage: Investor::SEED
     )
   end
 end

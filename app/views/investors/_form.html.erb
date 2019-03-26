@@ -35,12 +35,9 @@
 </div>
 
 <div class="form-group">
-    <%= f.select(
-	:category,
-	Investor::CATEGORIES.collect { |category| [category, category] },
-	{ prompt: t('investor.form.select_category') },
-	{ class: 'select-category-investor' }
-    ) %>
+    <%= f.select(:tag, Investor::TAGS.collect { |tag| [tag, tag] },
+                       { prompt: t('investor.form.select_category') },
+                       { class: 'select-category-investor' }) %>
 </div>
 
 <div class="form-group">

@@ -20,6 +20,6 @@ module PeopleHelper
   def investor_category(person)
     return unless person.investor
 
-    person.investor.category
+    person.investor.tag
   end
 end

@@ -17,7 +17,7 @@
                           <input type="hidden" name="filter[<%= index %>][type]" value="<%= filter[:type] %>" />
                           <input type="hidden" name="filter[<%= index %>][operator]" value="<%= filter[:operator] %>" />
 
-                          <% if filter[:type].in?(%w[status category stage]) %>
+                          <% if filter[:type].in?(%w[status tag stage]) %>
                             <input type="text"
                                    class="text-lock"
                                    value="<%= filter[:value].present? ? t("filters.labels.#{filter[:type]}.#{filter[:value]}") : '' %>" />
@@ -98,11 +98,11 @@
                 </a>
               </li>
               <li>
-                <a href="" data-subcategory="category"
+                <a href="" data-subcategory="tag"
                            data-type="select"
-                           data-autocomplete-category="Category"
-                           data-autocomplete-data="<%= Hash[Investor::CATEGORIES.map { |s| [s, t("filters.labels.category.#{s}")] }].to_json %>">
-                  <%= t('filters.category') %> <i class="glyphicon glyphicon-chevron-right"></i>
+                           data-autocomplete-category="Tag"
+                           data-autocomplete-data="<%= Hash[Investor::TAGS.map { |s| [s, t("filters.labels.tag.#{s}")] }].to_json %>">
+                  <%= t('filters.tag') %> <i class="glyphicon glyphicon-chevron-right"></i>
                 </a>
               </li>
               <li>

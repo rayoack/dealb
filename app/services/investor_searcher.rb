@@ -27,7 +27,7 @@ class InvestorSearcher
 
   FILTERS = {
     status: :filter_by_column,
-    category: :filter_by_column,
+    tag: :filter_by_column,
     stage: :filter_by_column,
     number_of_deals: :filter_by_number_of_deals,
     total_funds_invested: :filter_by_total_funds_invested

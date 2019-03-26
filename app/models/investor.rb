@@ -8,7 +8,7 @@ class Investor < ApplicationRecord
     MERGED = 'merged'
   ].freeze
 
-  CATEGORIES = [
+  TAGS = [
     ANGEL = 'angel',
     VENTURE_CAPITAL = 'venture_capital',
     ACCELERATOR = 'accelerator',
@@ -33,7 +33,7 @@ class Investor < ApplicationRecord
   validates :investable_id, :investable_type, presence: true
 
   validates :status, inclusion: { in: STATUSES }
-  validates :category, inclusion: { in: CATEGORIES }, allow_nil: true
+  validates :tag, inclusion: { in: TAGS }, allow_nil: true
   validates :stage, inclusion: { in: STAGES }, allow_nil: true
 
   # Relations
