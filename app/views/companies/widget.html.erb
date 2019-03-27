@@ -1,49 +1,171 @@
 <%= link_to 'http://dealbook.lvh.me:3000/api/companies/1/info.json' %>
+
 <script>
   (function() {
-    if (window.jQuery === undefined || window.jQuery.fn.jquery !== '3.3.1') {
-      var script_tag = document.createElement('script');
-      script_tag.setAttribute('type','text/javascript');
-      script_tag.setAttribute('src', 'https://code.jquery.com/jquery-3.3.1.min.js');
-      if (script_tag.readyState) {
-        /* For old versions of IE */
-        script_tag.onreadystatechange = function () {
-          if (this.readyState == 'complete' || this.readyState == 'loaded') {
-            scriptLoadHandler();
-          }
-        };
-      } else {
-        script_tag.onload = scriptLoadHandler;
-      }
-      (document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script_tag);
-    } else {
-        jQuery = window.jQuery;
-        main();
-    }
+    /* Libraries */
+    var axios_tag = document.createElement('script');
+    axios_tag.setAttribute('type','text/javascript');
+    axios_tag.setAttribute('src', 'https://unpkg.com/axios/dist/axios.min.js');
 
-    function scriptLoadHandler() {
-      jQuery = window.jQuery.noConflict(true);
-      main();
-    }
+    var micromodal_tag = document.createElement('script');
+    micromodal_tag.setAttribute('type', 'text/javascript');
+    micromodal_tag.setAttribute('src', 'https://unpkg.com/micromodal/dist/micromodal.min.js');
 
-    function main() {
-      jQuery(document).ready(function($) {
-        <%# const css_link = $("", { %>
-        <%#   rel: "stylesheet", %>
-        <%#   type: "text/css", %>
-        <%#   href: "<%= URI.join(root_url, path_to_stylesheet("widget.css")).to_s %1>" %>
-        <%# }); %>
-        <%# css_link.appendTo('head'); %>
+    document.documentElement.appendChild(axios_tag);
+    document.documentElement.appendChild(micromodal_tag);
 
-        const url = 'http://dealbook.lvh.me:3000/api/companies/1/info.json';
-        $.ajax({
-          url: url,
-          dataType: 'jsonp',
-          success: function(data) {
-            console.log('Success', data);
-          }
-        });
+    setTimeout(renderWidget, 2000);
+
+    /* Render modal and open buttons */
+    function renderWidget() {
+      var container = document.createElement('div');
+      var conteudoNovo = document.createTextNode("Olá, cumprimentos!");
+      container.appendChild(conteudoNovo);
+      document.body.appendChild(container);
+
+      var button = document.querySelector('.myButton');
+      button.addEventListener('click', function(){
+        MicroModal.show('modal-1');
       });
+
+      window.MicroModal.init();
     }
   })();
 </script>
+
+<div class="dealbook-modal">
+  <div class="dealbook-modal__header">
+    Overview
+  </div>
+  <div class="dealbook-modal__content">
+    <div class="dealbook-miniprofile">
+      <div class="dealbook-miniprofile__img-col">
+        <img class="dealbook-miniprofile__img"
+             src="https://i0.wp.com/www.connectedremag.com/wp-content/uploads/2018/06/wework.jpg?w=300&ssl=1"/>
+      </div>
+
+      <div class="dealbook-miniprofile__content-col">
+        <h3>WeWork</h3>
+        <h4>New York, USA</h4>
+        <h4>Founded 2011</h4>
+      </div>
+    </div>
+
+    <div class="dealbook-description">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </div>
+
+    <div class="dealbook-company">
+      <h4>Last Funding</h4>
+      Series B
+    </div>
+
+    <div class="dealbook-funding">
+      <h4>Funding</h4>
+      $12.8 B
+    </div>
+  </div>
+  <div class="dealbook-modal__footer">
+    <a class="dealbook-footer__btn" href="http://dealbook.co" target="_blank">
+      Ver perfil completo no DealBook
+    </a>
+  </div>
+</div>
+
+
+<style type='text/css'>
+  .dealbook-modal {
+    margin-top: 300px;
+    border-radius: 2px;
+    font-family: 'Museo Sans', sans-serif;
+  }
+
+  .dealbook-modal__header {
+    padding: 16px 32px;
+    border-bottom: 1px solid #CCCCCC;
+    color: #354D96;
+    font-family: 'Lato', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  .dealbook-modal__content {
+    padding: 32px;
+  }
+
+  .dealbook-modal__content h4 {
+    color: #8C8C8C;
+    font-family: 'Museo Sans', sans-serif;
+    font-weight: 400;
+  }
+
+  .dealbook-modal__content h3 {
+    color: #363C4A;
+    font-weight: 500;
+  }
+
+  .dealbook-modal__content .dealbook-miniprofile__img {
+    width: 64px;
+    height: 64px;
+    max-width: 64px;
+    max-height: 64px;
+    border-radius: 50%;
+    margin: 16px;
+  }
+
+  .dealbook-miniprofile__img-col {
+    float: left;
+    width: 30%;
+  }
+
+  .dealbook-miniprofile__content-col {
+    float: left;
+    width: 70%;
+  }
+
+  .dealbook-modal__content .dealbook-description {
+    font-size: 18px;
+    font-weight: 500;
+    width: 100%;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  .dealbook-modal__content .dealbook-company {
+    color: #363C4A;
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 16px 0;
+  }
+
+  .dealbook-modal__content .dealbook-funding {
+    color: #363C4A;
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 8px 0;
+  }
+
+  .dealbook-modal__footer {
+    padding: 32px;
+    border-top: 1px solid #CCCCCC;
+  }
+
+  .dealbook-modal__footer .dealbook-footer__btn {
+    background-color: #2CC9C2;
+    border-radius: 2px;
+    padding: 16px 32px;
+    color: #FFFFFF;
+    font-weight: 100;
+  }
+
+  @media screen and (max-width: 450px) {
+    .dealbook-miniprofile__content-col {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+  }
+</style>

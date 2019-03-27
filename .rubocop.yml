@@ -4,6 +4,9 @@ Documentation:
 Layout/MultilineMethodCallIndentation:
   Enabled: false
 
+Lint/UnneededCopDisableDirective:
+  Enabled: false
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 
