@@ -86,6 +86,7 @@ pt-br:
       mail: 'E-mail'
       media: 'Mídias Sociais'
       profile: 'Visualizar perfil'
+      widget: 'Widget'
       status:
         active: 'Ativa'
         inactive: 'Inativa'

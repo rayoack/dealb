@@ -24,12 +24,10 @@ class ImportOldDatabaseService
 
       warn "\nImported companies_markets - final statistics"
 
-      # rubocop:disable Metrics/LineLength
       warn(
         "old_count: #{::ImportOldDatabaseService::Entities::CompanyMarket.count} " \
         "new_count: #{::CompanyMarket.count} companies_markets"
       )
-      # rubocop:enable Metrics/LineLength
     end
     # rubocop:enable Metrics/MethodLength
   end

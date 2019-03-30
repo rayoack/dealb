@@ -1,5 +1,6 @@
 @import './dealbook/shared/header.css';
 @import './dealbook/shared/filters.css';
+@import './dealbook/shared/modal.css';
 @import './dealbook/home.css';
 @import './dealbook/developers.css';
 @import './dealbook/investors.css';
@@ -2141,6 +2142,17 @@ footer .copyright p a {
 .details-company .company .top-contributors ul li:first-child {
   margin-left: 0px;
 }
+.details-company .company .btn-widget {
+  float: right;
+  color: #b7c2e7;
+  margin-top: 68px;
+  margin-right: 16px;
+}
+.details-company .company .btn-widget img {
+  float: left;
+  margin-right: 10px;
+  margin-top: -4px;
+}
 .details-company .company .btn-edit {
   float: right;
   color: #b7c2e7;
@@ -2194,6 +2206,12 @@ footer .copyright p a {
     margin: 0 auto;
     margin-top: 30px;
     text-align: center;
+  }
+  .details-company .company .btn-widget {
+    float: initial;
+    display: table;
+    margin: 0 auto;
+    margin-top: 40px;
   }
   .details-company .company .btn-edit {
     float: initial;

@@ -86,6 +86,7 @@ en:
       mail: 'E-mail'
       media: 'Social Media'
       profile: 'View Profile'
+      widget: 'Widget'
       status:
         active: 'Active'
         inactive: 'Inactive'

@@ -167,11 +167,10 @@ $(function() {
   });
 });
 
+$(document).on("click", ".btn-remove-filter", function() {
+  $(this).parents(".item-filter").remove();
+});
 
 $(document).ready(function() {
   loadAutoComplete();
 })
-
-$(document).on("click", ".btn-remove-filter", function() {
-  $(this).parents(".item-filter").remove();
-});

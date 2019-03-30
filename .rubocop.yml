@@ -23,6 +23,9 @@ Metrics/ModuleLength:
   Exclude:
     - 'spec/**/*.rb'
 
+Metrics/LineLength:
+  Max: 120
+
 Metrics/MethodLength:
   Enabled: true
   Max: 16
@@ -39,7 +42,7 @@ Metrics/ClassLength:
 
 Naming/VariableNumber:
   Enabled: true
-  Exclude: 
+  Exclude:
     - 'spec/**/*.rb'
 
 Rails:
@@ -56,7 +59,7 @@ Rails/ApplicationRecord:
 
 Rails/OutputSafety:
   Enabled: true
-  Exclude: 
+  Exclude:
     - 'spec/**/*.rb'
 
 AllCops:

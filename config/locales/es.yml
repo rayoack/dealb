@@ -86,6 +86,7 @@ es:
       mail: 'E-mail'
       media: 'Medios Sociales'
       profile: 'Perfil'
+      widget: 'Widget'
       status:
         active: 'Activa'
         inactive: 'Inactiva'
