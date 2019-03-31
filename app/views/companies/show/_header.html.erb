@@ -25,6 +25,15 @@
             <a href="/companies/<%= @company.permalink %>/edit" class="btn-edit"><img src="/img/edit.svg" alt="">
               <%= t('companies.show.edit') %></a>
           <% end %>
+          <% if current_user.present? %>
+            <div class="btn-widget">
+              <img src="/img/edit.svg" alt="">
+              <%= link_to t('companies.show.widget'), widget_company_path(@company.permalink),
+                                                      class: 'btn-widget__link modal-trigger',
+                                                      data: { type: :script },
+                                                      remote: true %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

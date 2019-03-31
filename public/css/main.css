@@ -4,6 +4,7 @@
 @import './dealbook/home.css';
 @import './dealbook/developers.css';
 @import './dealbook/investors.css';
+@import './dealbook/widget.css';
 @import './btn.css';
 
 .museosans-500-italico {
@@ -2141,6 +2142,10 @@ footer .copyright p a {
 }
 .details-company .company .top-contributors ul li:first-child {
   margin-left: 0px;
+}
+.details-company .company .btn-widget__link {
+  color: #b7c2e7;
+  margin-top: 0px;
 }
 .details-company .company .btn-widget {
   float: right;

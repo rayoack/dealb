@@ -87,6 +87,7 @@ pt-br:
       media: 'Mídias Sociais'
       profile: 'Visualizar perfil'
       widget: 'Widget'
+      copy_code: 'Copiar Código'
       status:
         active: 'Ativa'
         inactive: 'Inativa'

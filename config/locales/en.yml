@@ -87,6 +87,7 @@ en:
       media: 'Social Media'
       profile: 'View Profile'
       widget: 'Widget'
+      copy_code: 'Copy Code'
       status:
         active: 'Active'
         inactive: 'Inactive'
