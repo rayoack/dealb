@@ -1,7 +1,7 @@
 pt-br:
   header:
-    search_box: 'Encontre empresas, investidores e pessoas'
-    companies: 'Empresas'
+    search_box: 'Encontre organizações, investidores e pessoas'
+    companies: 'Organizações'
     deals: 'Negócios'
     people: 'Pessoas'
     investor: 'Investidor'
@@ -21,7 +21,7 @@ pt-br:
     forgot_password: 'Esqueceu a senha?'
   footer:
     explanation_html: "Dealbook é um projeto <a href='https://github.com/bossabox/dealbook/' target='_blank'>open source</a> lançado sob a licença MIT. O conteúdo do Dealbook é licenciado sob Creative Commons Attribution-ShareAlike 3.0 Unported License."
-    companies: 'Empresas'
+    companies: 'Organizações'
     deals: 'Negócios'
     people: 'Pessoas'
     investors: 'Investidores'
@@ -48,7 +48,7 @@ pt-br:
       description_html: '<p>O projeto Dealbook começou em 2011, quando Diego Gomes (co-fundador da Rock Content) criou uma planilha pública no Google Spreadsheet onde qualquer um poderia inserir informações sobre negócios de startup no Brazil. Desde então, centenas de investidores, empreendedores e jornalistas no mundo inteiro tem usado os dados para monitorar fluxos de negócios ou para rapidamente acessar dados históricos pela região.</p> <p>Eu tenho sido um contribuidor para <span>Dealbook</span> desde a concepção e recentemente senti que nossa comunidade tinha crescido além da planilha do formato original. Portanto, como um projeto pessoal, decidi construir o <span>Dealbook 2.0</span> como uma aplicação online onde nós podemos adicionar melhorias além dos limites de uma planilha, mas esperando manter sua simplicidade. </p>'
       browse: 'Navegue o banco de dados'
       deals_count: 'Negócios'
-      companies_count: 'Empresas'
+      companies_count: 'Organizações'
       investors_count: 'Investidores'
       people_count: 'Pessoas'
       free: "É totalmente gratuito"
@@ -64,13 +64,14 @@ pt-br:
       view_all: 'Ver tudo'
   companies:
     index:
-      companies: 'Empresas'
+      companies: 'Organizações'
+      company: 'organização'
       new: 'Criar nova'
-      filter: 'Filtrar empresas'
+      filter: 'Filtrar organizações'
       apply_filter: 'Aplicar filtro'
       add_filter: 'Adicionar filtro'
       export: 'Exportar resultados'
-      column_company: 'Empresa'
+      column_company: 'Organização'
       column_status: 'Status'
       column_location: 'Localização'
       column_deals: 'Negócios'
@@ -94,7 +95,7 @@ pt-br:
       deals:
         investments: 'Investimentos'
         close_date: 'Data do Investimento'
-        company: 'Empresa'
+        company: 'Organização'
         deal_type: 'Tipo do Negócio'
         round: 'Rodada'
         amount: 'Valor'
@@ -107,11 +108,11 @@ pt-br:
         people: 'Pessoas'
         name: 'Nome'
         job: 'Título'
-        company: 'Empresa'
+        company: 'Organização'
     form:
       back: 'voltar'
       employees_count: 'Número de funcionários'
-      create_company: 'Criar empresa'
+      create_company: 'Criar organização'
       featured_title: ''
       featured_subtitle: ''
       name: 'Nome'
@@ -142,7 +143,7 @@ pt-br:
       apply_filter: 'Aplicar filtro'
       add_filter: 'Adicionar filtro'
       export: 'Exportar resultados'
-      column_company: 'Empresa'
+      column_company: 'Organização'
       column_close_date: 'Data de fechamento'
       column_deal_type: 'Tipo de negócio'
       column_investors: 'Investidores'
@@ -164,7 +165,7 @@ pt-br:
       back: 'voltar'
       featured_title: ''
       featured_subtitle: ''
-      select_company: 'Selecione uma empresa'
+      select_company: 'Selecione uma organização'
       close_date: 'Data de fechamento'
       select_category: 'Selecione uma categoria'
       select_investor: 'Selecione um investidor'
@@ -214,7 +215,7 @@ pt-br:
       column_name: 'Nome'
       column_occupation: 'Ocupação'
       column_local: 'Local'
-      column_company: 'Empresa'
+      column_company: 'Organização'
       apply_filter: 'Aplicar filtro'
       add_filter: 'Adicionar filtro'
     show:
@@ -231,7 +232,7 @@ pt-br:
       deals:
         investments: 'Investimentos'
         close_date: 'Data do Investimento'
-        company: 'Empresa'
+        company: 'Organização'
         deal_type: 'Tipo do Negócio'
         round: 'Rodada'
         amount: 'Valor'
@@ -254,7 +255,7 @@ pt-br:
       first_name: 'Primeiro nome'
       last_name: 'Último nome'
       occupation: 'Ocupação'
-      select_company: 'Selecione uma empresa'
+      select_company: 'Selecione uma organização'
       description: 'Bio: Ex: Adriana Cisneros é CEO e Vice Chairman da Cisneros, uma das maiores propriedades privadas de media, entretenimento e media digital, imobiliária, turismo, resorts do mundo.'
       city: 'Cidade'
       country: 'País'
@@ -300,7 +301,7 @@ pt-br:
       back: 'Voltar'
       tag: 'Tag'
       investments: 'Investimentos'
-      companies: 'Empresas'
+      companies: 'Organizações'
       funds_raised: 'Fundos Levantados'
       site: 'Site'
       description: 'Descrição'
@@ -324,7 +325,7 @@ pt-br:
       deals:
         investments: 'Investimentos'
         close_date: 'Data do Investimento'
-        company: 'Empresa'
+        company: 'Organização'
         deal_type: 'Tipo do Negócio'
         round: 'Rodada'
         amount: 'Valor'
@@ -335,7 +336,7 @@ pt-br:
       featured_title: ''
       featured_subtitle: ''
       select_investor: 'Selecione um investidor'
-      select_investor_explain: 'Pode ser uma pessoa ou empresa já registrada no Dealbook'
+      select_investor_explain: 'Pode ser uma pessoa ou organização já registrada no Dealbook'
       status: 'Status'
       active: 'ativo'
       inactive: 'inativo'
@@ -402,31 +403,31 @@ pt-br:
     email_signin: 'ou'
     password_length: 'caracteres no mínimo'
     terms: 'Criando sua conta você aceita nossos termos de uso.'
-    add_company: 'Adicionar sua empresa'
+    add_company: 'Adicionar sua organização'
     forgot_password: 'Esqueci a senha'
     recover_password: 'Recuperar senha'
     new_password: 'Nova senha'
     new_password_confirm: 'Confirmar nova senha'
     set_password: 'Confirmar'
   faq:
-    question_1: 'Como posso adicionar ou editar empresas/investidores/negócios?'
-    answer_1: 'Basta criar uma conta e começar a adicionar informações! Se você quiser inserir uma nova empresa, por exemplo, clique no link Empresas na barra de navegação e, em seguida, no botão Nova Empresa. Se você quiser editar uma empresa existente, vá para a página da empresa selecionada e clique no botão Editar.
+    question_1: 'Como posso adicionar ou editar organizações/investidores/negócios?'
+    answer_1: 'Basta criar uma conta e começar a adicionar informações! Se você quiser inserir uma nova organização, por exemplo, clique no link organizações na barra de navegação e, em seguida, no botão Nova Organização. Se você quiser editar uma organização existente, vá para a página da organização selecionada e clique no botão Editar.
 
          Por favor, adicione apenas informações públicas de fontes confiáveis. Informações que não são consideradas confiáveis ou relevantes serão removidas sem aviso prévio pelos moderadores.'
-    question_2: 'As informações da empresa/investidor X estão incorretas. Voces pode consertar isso?'
+    question_2: 'As informações da organização/investidor X estão incorretas. Voces pode consertar isso?'
     answer_2: 'Você pode fazer isso sozinho. Login simples e clique no botão Editar. (Veja acima)'
-    question_3: 'Posso adicionar uma empresa que ainda não levantou fundos?'
+    question_3: 'Posso adicionar uma organização que ainda não levantou fundos?'
     answer_3: 'Sim, mas por favor insira apenas startups de tecnologia brasileiras. Nenhum prestador de serviços, consultores, agências de publicidade, etc.'
-    question_4: 'Estou tentando atribuir um mercado ou local a uma empresa/investidor, mas não consigo encontrá-lo na lista. Como posso adicionar?'
+    question_4: 'Estou tentando atribuir um mercado ou local a uma organização/investidor, mas não consigo encontrá-lo na lista. Como posso adicionar?'
     answer_4: 'A adição de novos locais e mercados está atualmente limitada apenas aos moderadores. Se você precisar adicionar um local ou mercado, entre em contato com um dos mods.'
     question_5: 'Por que esta transação não é verificada?'
     answer_5: 'Por padrão, todas as transações não são verificadas quando inseridas. Os moderadores lerão a fonte listada e verificarão se as informações fornecidas correspondem à fonte. Só então o mod sinalizará o acordo como verificado. Se houver uma alteração nas informações fornecidas em uma transação verificada, ela será novamente não verificada até que um mod verifique novamente a origem.
 
          Tenha em atenção que só porque a oferta está marcada como não confirmada não significa que a informação esteja incorreta. Você sempre pode verificar a fonte original para ter certeza.'
     question_6: 'Quais são as fontes válidas para confirmar uma determinada transação?'
-    answer_6: 'Não há uma lista oficial de fontes confiáveis, mas geralmente qualquer grande site de mídia ou blog de tecnologia estará bem. Você também pode vincular o próprio site corporativo da empresa ou do investidor. Por favor, certifique-se de que os links utilizados são permanentes e permanecerão válidos em algum momento no futuro.'
-    question_7: 'Eu quero ver todas as empresas/investidores de um determinado local?'
-    answer_7: 'Você pode simplesmente digitar a cidade, o estado ou o nome do país na barra de pesquisa e obter os resultados desejados. Observe que nem todas as empresas têm um local atribuído a elas, portanto, os resultados podem estar incompletos.
+    answer_6: 'Não há uma lista oficial de fontes confiáveis, mas geralmente qualquer grande site de mídia ou blog de tecnologia estará bem. Você também pode vincular o próprio site corporativo da organização ou do investidor. Por favor, certifique-se de que os links utilizados são permanentes e permanecerão válidos em algum momento no futuro.'
+    question_7: 'Eu quero ver todas as organizações/investidores de um determinado local?'
+    answer_7: 'Você pode simplesmente digitar a cidade, o estado ou o nome do país na barra de pesquisa e obter os resultados desejados. Observe que nem todas as organizações têm um local atribuído a elas, portanto, os resultados podem estar incompletos.
 
     A pesquisa avançada já está na lista de desejos do recurso. (Você pode verificar a lista completa no Trello.)'
     question_8: 'Eu realmente gostaria do recurso X. Voces podem implementar?'
@@ -440,7 +441,7 @@ pt-br:
     answer_10: 'Somente moderadores existentes podem promover usuários a mods. Os privilégios do moderador são reservados apenas para membros ativos que já conquistaram a confiança da comunidade. Se você acha que é o seu caso, entre em contato com um.'
   filters:
     add: 'Adicionar filtro'
-    companies: 'Empresas'
+    companies: 'Organizações'
     deals: 'Negócios'
     people: 'Pessoas'
     investors: 'Investidores'
