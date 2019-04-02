@@ -3,6 +3,10 @@
   font-family: 'Museo Sans', sans-serif;
 }
 
+.dealbook-modal .tingle-modal-box {
+  width: 460px;
+}
+
 .dealbook-modal__header {
   padding: 16px 32px;
   border-bottom: 1px solid #CCCCCC;

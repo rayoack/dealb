@@ -22,9 +22,11 @@
         cssClass: ['dealbook-modal'],
       });
 
-      modal.setContent('<div class="dealbook-modal" id="dealbook-company-modal"> <div class="dealbook-modal__inner"> <div class="dealbook-modal__header"> Overview </div> <div class="dealbook-modal__content-test"> </div> <div class="dealbook-modal__content"> <div class="dealbook-miniprofile"> <div class="dealbook-miniprofile__img-col"> <img class="dealbook-miniprofile__img" src="<%= image_url %>"/> </div> <div class="dealbook-miniprofile__content-col"> <h3><%= name %></h3> <h4><%= location %></h4> <h4>Founded <%= born_at %></h4> </div> </div> <div class="dealbook-description"> <%= description %>  </div> <div class="dealbook-company"> <h4>Last Funding</h4> <%= last_funding_type %> </div> <div class="dealbook-funding"> <h4>Funding</h4> <%= "$#{last_funding_value}" %></div> </div> <div class="dealbook-modal__footer"> <a class="dealbook-footer__btn" href="http://dealbook-prod.herokuapp.com/companies/<%= permalink %>" target="_blank"> Ver perfil completo no DealBook </a> </div> </div> </div>');
+      modal.setContent('<div class="dealbook-modal" id="dealbook-company-modal"> <div class="dealbook-modal__inner"> <div class="dealbook-modal__header"> Overview </div> <div class="dealbook-modal__content-test"> </div> <div class="dealbook-modal__content"> <div class="dealbook-miniprofile"> <div class="dealbook-miniprofile__img-col"> <img class="dealbook-miniprofile__img" src="<%= image_url || "" %>"/> </div> <div class="dealbook-miniprofile__content-col"> <h3><%= name %></h3> <h4><%= location %></h4> <h4>Founded <%= born_at %></h4> </div> </div> <div class="dealbook-description"> <%= description %>  </div> <div class="dealbook-company"> <h4>Last Funding</h4> <%= last_funding_type %> </div> <div class="dealbook-funding"> <h4>Funding</h4> <%= "$#{last_funding_value}" %></div> </div> <div class="dealbook-modal__footer"> <a class="dealbook-footer__btn" href="http://dealbook-prod.herokuapp.com/companies/<%= permalink %>" target="_blank"> Ver perfil completo no DealBook </a> </div> </div> </div>');
 
-      modal.open();
+      document.getElementById("dealbook-company__name").onmouseover = function() {
+        modal.open();
+      };
     }
   })();
 </script>
@@ -33,6 +35,10 @@
   .dealbook-modal {
     border-radius: 2px;
     font-family: 'Museo Sans', sans-serif;
+  }
+
+  .dealbook-modal .tingle-modal-box {
+    width: 460px;
   }
 
   .dealbook-modal__header {
@@ -118,6 +124,15 @@
     font-weight: 100;
   }
 
+  #dealbook-company__name {
+    text-decoration-line: underline;
+    text-decoration-color: #f1f1f1;
+
+    font-family: inherit;
+    font-weight: inherit;
+    color: #354D96;
+  }
+
   @media screen and (max-width: 450px) {
     .dealbook-miniprofile__content-col {
       width: 100%;
@@ -126,8 +141,4 @@
   }
 </style>
 
-<div id="dealbook-company__container">
-  <a class="dealbook-company__button" href="#">
-    <%= name %>
-  </a>
-</div>
+<span id="dealbook-company__name"><%= name %></span>
