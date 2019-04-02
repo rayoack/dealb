@@ -43,7 +43,7 @@
             </thead>
             <tbody>
               <% @investors_paginated.each do |investor| %>
-                <tr>
+                <tr class="clickable-row" data-href=<%= "/investors/#{investor.permalink}" %>>
                   <td><img src="/img/logo-investors.png" alt=""> <%= investor.investable.name %></td>
                   <td><%= investor.deals.count %></td>
                   <td><%= investor.investable.locations.pluck(:city, :country).map { |c| c.join(', ') }.join('/ ') %></td>

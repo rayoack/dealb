@@ -1,5 +1,6 @@
 @import './dealbook/shared/header.css';
 @import './dealbook/shared/filters.css';
+@import './dealbook/shared/table.css';
 @import './dealbook/home.css';
 @import './dealbook/developers.css';
 @import './dealbook/investors.css';
@@ -3833,6 +3834,12 @@ footer .copyright p a {
   .form-create .text-featured img.img-featured-people {
     bottom: -40px;
   }
+}
+.category-text {
+  width: 32vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .container-add-your-company {
   padding-top: 90px;

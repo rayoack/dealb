@@ -159,6 +159,10 @@ $(".all-questions .item").click(function(event) {
   $(this).toggleClass('opened-answers');
 });
 
+$(".clickable-row").click(function() {
+  window.location = $(this).data("href");
+});
+
 $(function() {
   $(".datepicker").datepicker({
     dateFormat: 'dd/mm/yy',
@@ -166,7 +170,6 @@ $(function() {
     changeYear: true,
   });
 });
-
 
 $(document).ready(function() {
   loadAutoComplete();
