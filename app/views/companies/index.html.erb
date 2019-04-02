@@ -45,7 +45,7 @@
             </thead>
             <tbody>
               <% @companies_paginated.each do |company| %>
-                <tr>
+                <tr class="clickable-row" data-href=<%= "/companies/#{company.permalink}" %>>
                   <td>
                     <img src="<%= company.profile_image_url || '/img/logo-company.png' %>">
                     <%= company.name %>
