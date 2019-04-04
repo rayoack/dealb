@@ -4,7 +4,7 @@ FactoryBot.define do
   factory :deal do
     close_date { Faker::Date.backward }
     status Deal::UNVERIFIED
-    category Deal::CATEGORIES.sample # eg.: Deal::RAISED_FUNDS_FROM
+    category Deal::RAISED_FUNDS_FROM
     round Deal::ROUNDS.sample # eg.: Deal::IPO
     amount_currency Deal::CURRENCIES.sample # eg.: Deal::USD
     amount_cents { Faker::Number.between(1, 10_000_000_00) }

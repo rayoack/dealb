@@ -58,7 +58,7 @@ describe Investors::Ranking do
     end
 
     context 'order by deals' do
-      let(:options) { { order: :deals } }
+      let(:options) { { type: :deals, order: :desc } }
 
       it '#call!' do
         expect(subject.call!.map(&:id)).to eq(
@@ -70,10 +70,25 @@ describe Investors::Ranking do
           ]
         )
       end
+
+      context 'crescent order' do
+        let(:options) { { type: :deals, order: :asc } }
+
+        it '#call!' do
+          expect(subject.call!.map(&:id)).to eq(
+            [
+              investor_1.id,
+              investor_4.id,
+              investor_2.id,
+              investor_3.id
+            ]
+          )
+        end
+      end
     end
 
     context 'order by capital invested' do
-      let(:options) { { order: :capital } }
+      let(:options) { { type: :capital, order: :desc } }
 
       it '#call!' do
         expect(subject.call!.map(&:id)).to eq(
@@ -84,6 +99,21 @@ describe Investors::Ranking do
             investor_1.id
           ]
         )
+      end
+
+      context 'crescent order' do
+        let(:options) { { type: :capital, order: :asc } }
+
+        it '#call!' do
+          expect(subject.call!.map(&:id)).to eq(
+            [
+              investor_1.id,
+              investor_2.id,
+              investor_4.id,
+              investor_3.id
+            ]
+          )
+        end
       end
     end
   end
