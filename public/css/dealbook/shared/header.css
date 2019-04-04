@@ -4,3 +4,7 @@
   display: block;
   cursor: pointer;
 }
+
+.sortable-header {
+  color: white;
+}

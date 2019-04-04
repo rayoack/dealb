@@ -40,8 +40,20 @@
             <thead>
               <tr>
                 <th><%= t('investor.index.column_name') %> </th>
-                <th><%= t('investor.index.column_number_of_investments') %> </th>
-                <th><%= t('investor.index.column_invested_capital') %> </th>
+                <%= render partial: 'shared/sortable_header',
+                           locals: {
+                             url: ranking_investors_path,
+                             label: t('investor.index.column_number_of_investments'),
+                             type: 'deals',
+                             order: params[:order]
+                           } %>
+                <%= render partial: 'shared/sortable_header',
+                           locals: {
+                             url: ranking_investors_path,
+                             label: t('investor.index.column_invested_capital'),
+                             type: 'capital',
+                             order: params[:order]
+                           } %>
                 <th><%= t('investor.index.column_location') %> </th>
 
                 <%# TODO: Add reviews invformation when finished %>

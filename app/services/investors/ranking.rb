@@ -13,9 +13,10 @@ module Investors
     def call!
       Investor.active
               .joins(:deals)
+              .preload(:investable)
+              .where(deals: { category: :raised_funds_from })
               .group(:id, :amount_currency)
               .order(order_criteria)
-              .preload(:investable)
               .select(:id,
                       :investable_type,
                       :investable_id,
@@ -29,17 +30,21 @@ module Investors
     attr_reader :options
 
     def order_criteria
-      order = options[:order]&.to_sym
+      type = options[:type]&.to_sym
 
-      return 'deals_count DESC' if order == :deals
-      return 'invested_capital DESC' if order == :capital
+      return "deals_count #{order}" if type == :deals
+      return "invested_capital #{order}" if type == :capital
 
-      order.presence || { id: :asc }
+      type.presence || { id: :asc }
     end
 
     def invested_capital_selection
-      'SUM(CASE WHEN amount_cents = NULL THEN 0 ELSE amount_cents END) ' \
+      'SUM(CASE WHEN amount_cents = NULL THEN 0 ELSE (amount_cents/100) END) ' \
       'as invested_capital'
+    end
+
+    def order
+      options.dig(:order)&.to_s&.upcase || 'DESC'
     end
   end
 end
