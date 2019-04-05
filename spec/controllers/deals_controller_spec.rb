@@ -18,7 +18,7 @@ describe DealsController do
 
       index
 
-      expect(assigns(:deals_paginated).count).to eq(10)
+      expect(assigns(:deals_paginated).count).to eq(11)
     end
   end
 

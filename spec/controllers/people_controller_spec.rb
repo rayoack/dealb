@@ -17,7 +17,7 @@ describe PeopleController do
 
       index
 
-      expect(assigns(:people_paginated).count).to eq(10)
+      expect(assigns(:people_paginated).count).to eq(11)
     end
   end
 
