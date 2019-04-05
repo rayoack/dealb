@@ -20,7 +20,7 @@ class InvestorsController < ApplicationController
 
   def ranking
     @investors = Investors::Ranking.new(ranking_params)
-                                   .call!
+                                   .call
                                    .page(params[:page])
   end
 
