@@ -1596,7 +1596,7 @@ footer .copyright p a {
 }
 .s-title-page.title-page-search {
   background: #fff;
-  padding: 30px 0px 140px 0px;
+  padding: 30px 0px;
 }
 .s-title-page.title-page-search h1 {
   color: #151f3e;
@@ -2090,7 +2090,7 @@ footer .copyright p a {
 }
 .details-company .company .name-company .text {
   float: left;
-  margin-top: 30px;
+  margin-top: 16px;
 }
 .details-company .company .name-company .text h1 {
   margin: 0;
