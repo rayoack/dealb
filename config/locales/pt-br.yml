@@ -541,6 +541,11 @@ pt-br:
       contains: 'Contém'
       greater_than: 'Maior que'
       less_than: 'Menor que'
+  widget:
+    founded: 'Fundada em'
+    last_funding: 'Última negociação'
+    value: 'Valor'
+    full_profile: 'Ver perfil completo no DealBook'
   activerecord:
     errors:
       messages:

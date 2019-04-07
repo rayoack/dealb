@@ -542,3 +542,8 @@ en:
       contains: 'Contains'
       greater_than: 'Greater than'
       less_than: 'Less than'
+  widget:
+    founded: 'Funded'
+    last_funding: 'Last Funding'
+    value: 'Funding'
+    full_profile: 'See the profile on DealBook'
