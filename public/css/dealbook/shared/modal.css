@@ -1,0 +1,18 @@
+.modal-container {
+  font-family: 'Museo Sans', sans-serif;
+  padding: 32px;
+}
+
+.modal-container__title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #354D96;
+}
+
+.modal-container__subtitle {
+  font-size: 18px;
+}
+
+.modal-container__content {
+  margin-top: 16px;
+}

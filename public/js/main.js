@@ -174,7 +174,3 @@ $(function() {
 $(document).ready(function() {
   loadAutoComplete();
 })
-
-$(document).on("click", ".btn-remove-filter", function() {
-  $(this).parents(".item-filter").remove();
-});

@@ -87,6 +87,8 @@ es:
       mail: 'E-mail'
       media: 'Medios Sociales'
       profile: 'Perfil'
+      widget: 'Widget'
+      copy_code: 'Copiar Código'
       status:
         active: 'Activa'
         inactive: 'Inactiva'
@@ -536,6 +538,11 @@ es:
       contains: 'Contiene'
       greater_than: 'Más grande que'
       less_than: 'Menos que'
+  widget:
+    founded: 'Fundada em'
+    last_funding: 'Última transacción'
+    value: 'Valor'
+    full_profile: 'Ver el perfil completo en DealBook'
   activerecord:
     errors:
       messages:

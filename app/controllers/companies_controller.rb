@@ -3,6 +3,8 @@
 class CompaniesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[names locations]
 
+  before_action :load_company, only: %i[show edit update widget]
+
   def index
     @companies = CompanySearcher.new(
       filter_params,
@@ -13,8 +15,6 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @company = Company.find_by!(permalink: params[:id])
-
     @investors = @company.deals.flat_map(&:investors).uniq
   end
 
@@ -43,14 +43,10 @@ class CompaniesController < ApplicationController
 
   def edit
     @markets = Market.all
-
-    @company = Company.find_by!(permalink: params[:id])
   end
 
   def update
     @markets = Market.all
-
-    @company = Company.find_by!(permalink: params[:id])
 
     if @company.update(company_params)
       redirect_to companies_path, notice: 'Successfully updated'
@@ -79,6 +75,28 @@ class CompaniesController < ApplicationController
     render(json: location_names || [params[:term]], status: :ok)
   end
 
+  def widget
+    @last_deal = @company&.deals&.last
+    @last_funding_type = I18n.t("filters.labels.funding_type.#{@last_deal.round}") if @last_deal&.round.present?
+
+    # rubocop:disable Rails/OutputSafety
+    render('companies/widget.js.erb', layout: false,
+                                      locals: {
+                                        name: @company.name,
+                                        permalink: @company.permalink,
+                                        location: @company.all_headquarters,
+                                        born_at: @company.born_date&.year,
+                                        description: @company.description,
+                                        image_url: @company.profile_image_url,
+                                        last_funding_type: @last_funding_type,
+                                        last_funding_value: @last_deal&.amount,
+                                        widget_content: widget_content(@last_deal,
+                                                                       @last_funding_type).html_safe,
+                                        footer: true
+                                      })
+    # rubocop:enable Rails/OutputSafety
+  end
+
   private
 
   COMPANY_PARAMS = %i[
@@ -86,6 +104,10 @@ class CompaniesController < ApplicationController
     facebook_url linkedin_url twitter_url google_plus_url phone_number
   ].freeze
   private_constant :COMPANY_PARAMS
+
+  def load_company
+    @company = Company.find_by!(permalink: params[:id])
+  end
 
   def autocomplete(key)
     Company.where("#{key} ILIKE ?", "%#{params[:term]}%")
@@ -150,5 +172,20 @@ class CompaniesController < ApplicationController
     Investor.create!(
       investable: company, tag: Investor::ANGEL, stage: Investor::SEED
     )
+  end
+
+  def widget_content(last_deal, last_funding_type)
+    render_to_string('companies/widget_content.html.erb',
+                     layout: false,
+                     locals: {
+                       name: @company.name,
+                       permalink: @company.permalink,
+                       location: @company.all_headquarters,
+                       born_at: @company.born_date&.year,
+                       description: @company.description,
+                       image_url: @company.profile_image_url,
+                       last_funding_type: last_funding_type,
+                       last_funding_value: last_deal&.amount
+                     }).squish.gsub("\'", "\\\\'")
   end
 end

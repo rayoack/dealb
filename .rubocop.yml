@@ -4,6 +4,9 @@ Documentation:
 Layout/MultilineMethodCallIndentation:
   Enabled: false
 
+Lint/UnneededCopDisableDirective:
+  Enabled: false
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 
@@ -19,6 +22,9 @@ Metrics/ModuleLength:
   Enabled: true
   Exclude:
     - 'spec/**/*.rb'
+
+Metrics/LineLength:
+  Max: 120
 
 Metrics/MethodLength:
   Enabled: true
@@ -36,7 +42,7 @@ Metrics/ClassLength:
 
 Naming/VariableNumber:
   Enabled: true
-  Exclude: 
+  Exclude:
     - 'spec/**/*.rb'
 
 Rails:
@@ -53,7 +59,7 @@ Rails/ApplicationRecord:
 
 Rails/OutputSafety:
   Enabled: true
-  Exclude: 
+  Exclude:
     - 'spec/**/*.rb'
 
 AllCops:

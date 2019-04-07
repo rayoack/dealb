@@ -26,6 +26,10 @@ Rails.application.routes.draw do
       get :names, action: :names
       get :locations, action: :locations
     end
+
+    member do
+      get :widget
+    end
   end
 
   resources :deals, only: %i[index new create show edit update]
@@ -48,6 +52,14 @@ Rails.application.routes.draw do
   end
 
   resources :markets, only: %i[index new create edit update]
+
+  namespace :api do
+    resources :companies, only: [] do
+      member do
+        get :info
+      end
+    end
+  end
 
   get :search, to: 'search#index'
   get :contact, to: 'contacts#index'
