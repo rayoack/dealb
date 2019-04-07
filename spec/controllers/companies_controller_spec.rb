@@ -18,7 +18,7 @@ describe CompaniesController do
 
       index
 
-      expect(assigns(:companies_paginated).count).to eq(10)
+      expect(assigns(:companies_paginated).count).to eq(20)
     end
   end
 

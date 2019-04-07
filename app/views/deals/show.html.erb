@@ -11,13 +11,19 @@
       <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="detail-investor-geral">
           <div class="status-name">
-            <div class="status <%= @deal.status == 'verified' ? 'active' : '' %>">
-              <span class="circle"></span> <%= t("deals.show.status.#{@deal.status}") %>
+            <div>
+              <img src=<%= @deal.company&.profile_image_url || '/img/logo-company.png' %> width=64px />
+              <h1> <%= @deal.company.name %></h1>
             </div>
 
-            <h1> <%= @deal.company.name %></h1>
+            <% if @deal.status == 'verified' %>
+              <div class="status active">
+                <img src="/img/checkmark.svg" width=22px></img> <%= t("deals.show.status.verified") %>
+              </div>
+            <% end %>
+
             <h2 class="category">
-              <img src="/img/clock.svg" alt="">
+              <img src="/img/clock.svg" alt="" width=20px>
               <%= t('deals.show.category') %>: <%= I18n.t("deals.model.categories.#{@deal.category}") %>
             </h2>
             <h2 class="category">
@@ -29,7 +35,7 @@
               <%= t('deals.show.pre_money') %>: <%= format_amount(@deal.pre_valuation, @deal.pre_valuation_currency) %>
             </h2>
 
-            <h2 class="category">
+            <h2 class="category category-text">
               <img src="/img/description.svg" alt="">
               <%= t('deals.show.source') %>: <%= link_to @deal.source_url, @deal.source_url %>
             </h2>

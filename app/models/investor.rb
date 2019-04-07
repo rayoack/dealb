@@ -46,6 +46,12 @@ class Investor < ApplicationRecord
 
   # Filters
   scope :active, -> { where(status: :active) }
+  scope :company, lambda { |ids|
+    where(investable_type: 'Company', investable_id: ids)
+  }
+  scope :people, lambda { |ids|
+    where(investable_type: 'Person', investable_id: ids)
+  }
 
   def formatted_location
     investable.locations

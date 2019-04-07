@@ -20,7 +20,7 @@ describe InvestorsController do
 
       index
 
-      expect(assigns(:investors_paginated).count).to eq(10)
+      expect(assigns(:investors_paginated).count).to eq(11)
     end
   end
 

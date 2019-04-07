@@ -2,10 +2,10 @@
 
 describe SearchController do
   describe '#index' do
-    let(:query) { { query: 'ab' } }
-    subject(:index) { get :index, params: query }
+    let(:global_search) { { global_search: 'ab' } }
+    subject(:index) { get :index, params: global_search }
 
-    it 'returns the query result' do
+    it 'returns the global_search result' do
       person = create(:person, first_name: 'Abc')
       company = create(:company, name: 'aBcD')
 

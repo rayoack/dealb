@@ -1,7 +1,7 @@
 en:
   header:
-    search_box: 'Find companies, investors and people'
-    companies: 'Companies'
+    search_box: 'Find organizations, investors and people'
+    companies: 'Organizations'
     deals: 'Deals'
     people: 'People'
     investor: 'Investor'
@@ -21,7 +21,7 @@ en:
     forgot_password: 'Forgot your password?'
   footer:
     explanation_html: "Dealbook is an <a href='https://github.com/bossabox/dealbook/' target='_blank'>open source</a> project released under the MIT license. Dealbook's content is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License."
-    companies: 'Companies'
+    companies: 'Organizations'
     deals: 'Deals'
     people: 'People'
     investors: 'Investors'
@@ -48,7 +48,7 @@ en:
       description_html: '<p>The Brazil Startup Dealbook project started in 2011, when Diego Gomes (co-founder of Rock Content) created a public Google Spreadsheet where anybody could insert information about startup deals in Brazil. Since then, hundreds of investors, entrepreneurs and journalists across the globe have used the database to monitor deal flow or to quickly access historic data for the region.</p> <p>I have been a contributor for <span>Dealbook</span> since inception and recently I felt our community had outgrown the original spreadsheet format. Therefore, as a personal project, I decided to build the <span>Dealbook 2.0</span> into an online application where we could add enhanced features beyond the limits of a spreadsheet, but hopefully retaining its simplicity. </p>'
       browse: 'Browse the full Database'
       deals_count: 'Deals'
-      companies_count: 'Companies'
+      companies_count: 'Organizations'
       investors_count: 'Investors'
       people_count: 'People'
       free: "It's completely free"
@@ -64,13 +64,14 @@ en:
       view_all: 'view all'
   companies:
     index:
-      companies: 'Companies'
+      companies: 'Organizations'
+      company: 'organization'
       new: 'Create new'
-      filter: 'Filter companies'
+      filter: 'Filter organizations'
       apply_filter: 'Apply filter'
-      add_filter: 'Add filter company'
+      add_filter: 'Add filter'
       export: 'Export your results'
-      column_company: 'Company'
+      column_company: 'Organization'
       column_status: 'Status'
       column_location: 'Location'
       column_deals: 'Deals'
@@ -96,7 +97,7 @@ en:
       deals:
         investments: 'Investments'
         close_date: 'Investment Date'
-        company: 'Company'
+        company: 'Organization'
         deal_type: 'Deal Type'
         round: 'Round'
         amount: 'value'
@@ -109,7 +110,7 @@ en:
         people: 'People'
         name: 'Name'
         job: 'Title'
-        company: 'Company'
+        company: 'Organization'
     form:
       back: 'back'
       employees_count: 'Employees count'
@@ -144,7 +145,7 @@ en:
       apply_filter: 'Apply filter'
       add_filter: 'Add filter deal'
       export: 'Export your results'
-      column_company: 'Company'
+      column_company: 'Organization'
       column_close_date: 'Close date'
       column_deal_type: 'Deal type'
       column_investors: 'Investors'
@@ -166,7 +167,7 @@ en:
       back: 'back'
       featured_title: ''
       featured_subtitle: ''
-      select_company: 'Select a company'
+      select_company: 'Select an organization'
       close_date: 'Close date'
       select_category: 'Select a category'
       select_investor: 'Select an investor'
@@ -216,7 +217,7 @@ en:
       column_name: 'Name'
       column_occupation: 'Occupation'
       column_local: 'Local'
-      column_company: 'Company'
+      column_company: 'Organization'
       apply_filter: 'Apply filter'
       add_filter: 'Add filter'
     show:
@@ -233,7 +234,7 @@ en:
       deals:
         investments: 'Investments'
         close_date: 'Close date'
-        company: 'Company'
+        company: 'Organization'
         deal_type: 'Deal type'
         round: 'Round'
         amount: 'Amount'
@@ -256,7 +257,7 @@ en:
       first_name: 'First Name'
       last_name: 'Last Name'
       occupation: 'Occupation'
-      select_company: 'Select a company'
+      select_company: 'Select an organization'
       description: 'Bio:  Ex: Adriana Cisneros is CEO and Vice Chairman of Cisneros, one of the largest privately held media, entertainment, digital media, real estate, tourism resorts and consumer products organizations in the world.'
       city: 'City'
       country: 'Country'
@@ -295,14 +296,14 @@ en:
       export: 'Export your results'
       column_name: 'Investor name'
       column_number_of_investments: 'Number of investments'
-      column_number_of_exited_companies: 'Number of exited companies'
+      column_number_of_exited_companies: 'Number of exited organizations'
       column_invested_capital: 'Invested Capital'
       column_location: 'Location'
     show:
       back: 'Back'
       tag: 'Tag'
       investments: 'Investments'
-      companies: 'Companies'
+      companies: 'Organizations'
       funds_raised: 'Funds Raised'
       site: 'Site'
       description: 'Description'
@@ -319,14 +320,14 @@ en:
         accelerator: 'Acceleration'
         incubator: 'Incubator'
         corporate: 'Corporate'
-        profit: 'Profit Company'
-        non_profit: 'Non Profit Company'
+        profit: 'Profit Organization'
+        non_profit: 'Non Profit Organization'
         family_office: 'Family Office'
         private_equity: 'Private Equity'
       deals:
         investments: 'Investments'
         close_date: 'Investment Date'
-        company: 'Company'
+        company: 'Organization'
         deal_type: 'Deal Type'
         round: 'Round'
         amount: 'Value'
@@ -337,7 +338,7 @@ en:
       featured_title: ''
       featured_subtitle: ''
       select_investor: 'Select a new investor'
-      select_investor_explain: 'Could be a person or company already registered in Dealbook'
+      select_investor_explain: 'Could be a person or organization already registered in Dealbook'
       status: 'Status'
       active: 'active'
       inactive: 'inactive'
@@ -378,6 +379,12 @@ en:
       column_status: 'Status'
       column_location: 'Location'
       column_deals: 'Deals'
+      column_type: 'Type'
+      types:
+        deal: 'Deal'
+        investor: 'Investor'
+        person: 'Person'
+        company: 'Organization'
   contact:
     index:
       back: 'back to home'
@@ -404,31 +411,31 @@ en:
     email_signin: 'or'
     password_length: 'characters minimum'
     terms: 'By creating an account, you agree to our Terms.'
-    add_company: 'Add your Company'
+    add_company: 'Add your organization'
     forgot_password: 'Forgot your password'
     recover_password: 'Recover password'
     new_password: 'New password'
     new_password_confirm: 'Confirm new password'
     set_password: 'Confirm'
   faq:
-    question_1: 'How can I add or edit companies/investors/deals?'
-    answer_1: 'Simply create an account and start adding information! If you want to insert a new company, for example, click on the Companies link on the navigation bar and then on the New Company button. If you want to edit an existing company, go to the selected company page and click on the Edit button.
+    question_1: 'How can I add or edit organizations/investors/deals?'
+    answer_1: 'Simply create an account and start adding information! If you want to insert a new organization, for example, click on the Organization link on the navigation bar and then on the New Organization button. If you want to edit an existing organization, go to the selected organization page and click on the Edit button.
 
     Please only add public information from reliable sources. Information that is not considered reliable or relevant will be removed without notice by the moderators.'
-    question_2: 'The information for company/investor X is incorrect. Can you fix it?'
+    question_2: 'The information for organization/investor X is incorrect. Can you fix it?'
     answer_2: 'You can do it yourself. Simply log in and click on the Edit button. (See above.)'
-    question_3: 'Can I add a company that has not yet raised funds?'
+    question_3: 'Can I add an organization that has not yet raised funds?'
     answer_3: 'Yes, but please insert only Brazilian tech startups. No services providers, consultants, ad agencies and such.'
-    question_4: 'I am trying to assign a market or location to a company/investor, but I cannot find it on the list. How can I add it?'
+    question_4: 'I am trying to assign a market or location to an organization/investor, but I cannot find it on the list. How can I add it?'
     answer_4: 'Adding new locations and markets is currently limited to moderators only. If you need to add a location or market, please contact one of the mods.'
     question_5: 'Why is this deal not verified?'
     answer_5: 'By default, every deal is unverified when inserted. The moderators will then read the listed source and check if the information provided matches with the source. Only then will the mod signal the deal as verified. If there is a changed in the information provided in a verified deal, it will once again become unverified until a mod re-checks the source.
 
     Please note that just because the deal is marked as unverified does not mean that the information is incorrect. You can always check the original source to make sure.'
     question_6: 'What are valid sources to make a given deal verified?'
-    answer_6: "There is no official list of trusted sources, but usually any major media website or tech blog will be fine. You can also link the company's or investor's own corporate website. Please make sure that the links used are permanent and will remain valid sometime in the future."
-    question_7: 'I want to see all the companies/investors from a given location?'
-    answer_7: 'You can simply type the city, state or country name on the search bar and you should get the desired results. Note that not all companies have a location assigned to them, so the results may be incomplete.
+    answer_6: "There is no official list of trusted sources, but usually any major media website or tech blog will be fine. You can also link the organization's or investor's own corporate website. Please make sure that the links used are permanent and will remain valid sometime in the future."
+    question_7: 'I want to see all the organizations/investors from a given location?'
+    answer_7: 'You can simply type the city, state or country name on the search bar and you should get the desired results. Note that not all organizations have a location assigned to them, so the results may be incomplete.
 
     Advanced search is already in the feature wishlist. (You can check the full list on Trello.)'
     question_8: 'I would really enjoy feature X. Can you implement this?'
@@ -442,7 +449,7 @@ en:
     answer_10: 'Only existing moderators can promote users to mods. Moderator privileges are reserved only to active members who have already earned the trust of the community. If you feel that is your case, contact one'
   filters:
     add: 'Add filter'
-    companies: 'Companies'
+    companies: 'Organizations'
     deals: 'Deals'
     people: 'People'
     investors: 'Investors'
@@ -482,8 +489,8 @@ en:
         accelerator: 'Acceleration'
         incubator: 'Incubator'
         corporate: 'Corporate'
-        profit: 'Profit Company'
-        non_profit: 'Non Profit Company'
+        profit: 'Profit Organization'
+        non_profit: 'Non Profit Organization'
         family_office: 'Family Office'
         private_equity: 'Private Equity'
       tag:
@@ -492,8 +499,8 @@ en:
         accelerator: 'Acceleration'
         incubator: 'Incubator'
         corporate: 'Corporate'
-        profit: 'Profit Company'
-        non_profit: 'Non Profit Company'
+        profit: 'Profit Organization'
+        non_profit: 'Non Profit Organization'
         family_office: 'Family Office'
         private_equity: 'Private Equity'
       funding_type:

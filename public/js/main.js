@@ -159,16 +159,16 @@ $(".all-questions .item").click(function(event) {
   $(this).toggleClass('opened-answers');
 });
 
+$(".clickable-row").click(function() {
+  window.location = $(this).data("href");
+});
+
 $(function() {
   $(".datepicker").datepicker({
     dateFormat: 'dd/mm/yy',
     changeMonth: true,
     changeYear: true,
   });
-});
-
-$(document).on("click", ".btn-remove-filter", function() {
-  $(this).parents(".item-filter").remove();
 });
 
 $(document).ready(function() {

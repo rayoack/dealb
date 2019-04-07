@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class InvestorsController < ApplicationController
+  before_action :authenticate_user!, except: %i[ranking index show]
+
   def index
     @investors = Investors::Searcher
       .new(filter_params, domain_country_context)
@@ -18,7 +20,7 @@ class InvestorsController < ApplicationController
 
   def ranking
     @investors = Investors::Ranking.new(ranking_params)
-                                   .call!
+                                   .call
                                    .page(params[:page])
   end
 
@@ -31,6 +33,6 @@ class InvestorsController < ApplicationController
   end
 
   def ranking_params
-    params.permit(:order)
+    params.permit(:type, :order)
   end
 end

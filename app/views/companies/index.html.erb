@@ -19,7 +19,7 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-6">
         <p class="results">
-        <%= page_entries_info @companies_paginated %>
+          <%= page_entries_info @companies_paginated, entry_name: t('companies.index.company') %>
         </p>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-6">
@@ -45,13 +45,13 @@
             </thead>
             <tbody>
               <% @companies_paginated.each do |company| %>
-                <tr>
+                <tr class="clickable-row" data-href=<%= "/companies/#{company.permalink}" %>>
                   <td>
                     <img src="<%= company.profile_image_url || '/img/logo-company.png' %>">
                     <%= company.name %>
                   </td>
                   <td class="status-active"><span class="circulo"></span> <%= company.status %></td>
-                  <td><%= company.locations.pluck(:city, :country).join(', ') %></td>
+                  <td class="column-location"><%= company.locations.pluck(:city, :country).join(', ') %></td>
                   <td><%= company.deals.map(&:category).uniq.map { |category| I18n.t("deals.model.categories.#{category}") }.join(', ') %></td>
                   <td><a href="/companies/<%= company.permalink %>"><img src="/img/seta-dir.svg" alt=""></a></td>
                 </tr>

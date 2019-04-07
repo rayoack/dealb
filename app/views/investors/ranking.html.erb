@@ -11,8 +11,6 @@
   </div>
 </section>
 
-<%= render partial: 'ranking_filters' %>
-
 <section class="s-table-results">
   <div class="container">
     <div class="row">
@@ -40,8 +38,20 @@
             <thead>
               <tr>
                 <th><%= t('investor.index.column_name') %> </th>
-                <th><%= t('investor.index.column_number_of_investments') %> </th>
-                <th><%= t('investor.index.column_invested_capital') %> </th>
+                <%= render partial: 'shared/sortable_header',
+                           locals: {
+                             url: ranking_investors_path,
+                             label: t('investor.index.column_number_of_investments'),
+                             type: 'deals',
+                             order: params[:order]
+                           } %>
+                <%= render partial: 'shared/sortable_header',
+                           locals: {
+                             url: ranking_investors_path,
+                             label: t('investor.index.column_invested_capital'),
+                             type: 'capital',
+                             order: params[:order]
+                           } %>
                 <th><%= t('investor.index.column_location') %> </th>
 
                 <%# TODO: Add reviews invformation when finished %>
@@ -59,7 +69,7 @@
                   </td>
                   <td><%= investor.deals_count %></td>
                   <td><%= format_amount(investor.invested_capital, investor.amount_currency) %></td>
-                  <td><%= investor.formatted_location %></td>
+                  <td class="column-location"><%= investor.formatted_location %></td>
 
                   <%# TODO: Add reviews invformation when finished %>
                   <%# <td>Número de avaliações - I18n</td> %>

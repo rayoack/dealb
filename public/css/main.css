@@ -1,6 +1,7 @@
 @import './dealbook/shared/header.css';
 @import './dealbook/shared/filters.css';
 @import './dealbook/shared/modal.css';
+@import './dealbook/shared/table.css';
 @import './dealbook/home.css';
 @import './dealbook/developers.css';
 @import './dealbook/investors.css';
@@ -1180,6 +1181,7 @@ header .header-mobile {
 }
 .s-updates .container-updates .swiper-updates .swiper-wrapper .swiper-slide {
   max-width: 360px;
+  margin: 16px;
 }
 .s-updates .container-updates .swiper-updates .swiper-wrapper .swiper-slide a .box-update {
   box-shadow: 0px 20px 50px 0px #e6e7ea;
@@ -1597,7 +1599,7 @@ footer .copyright p a {
 }
 .s-title-page.title-page-search {
   background: #fff;
-  padding: 30px 0px 140px 0px;
+  padding: 30px 0px;
 }
 .s-title-page.title-page-search h1 {
   color: #151f3e;
@@ -2091,7 +2093,7 @@ footer .copyright p a {
 }
 .details-company .company .name-company .text {
   float: left;
-  margin-top: 30px;
+  margin-top: 16px;
 }
 .details-company .company .name-company .text h1 {
   margin: 0;
@@ -3856,6 +3858,12 @@ footer .copyright p a {
   .form-create .text-featured img.img-featured-people {
     bottom: -40px;
   }
+}
+.category-text {
+  width: 32vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .container-add-your-company {
   padding-top: 90px;
