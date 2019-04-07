@@ -377,6 +377,12 @@ pt-br:
       column_status: 'Status'
       column_location: 'Localização'
       column_deals: 'Negócios'
+      column_type: 'Tipo'
+      types:
+        deal: 'Negócio'
+        investor: 'Investidor'
+        person: 'Pessoa'
+        company: 'Organização'
   contact:
     index:
       back: 'voltar para o início'

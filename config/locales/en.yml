@@ -377,6 +377,12 @@ en:
       column_status: 'Status'
       column_location: 'Location'
       column_deals: 'Deals'
+      column_type: 'Type'
+      types:
+        deal: 'Deal'
+        investor: 'Investor'
+        person: 'Person'
+        company: 'Organization'
   contact:
     index:
       back: 'back to home'

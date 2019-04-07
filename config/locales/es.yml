@@ -50,7 +50,7 @@ es:
       deals_count: 'Transacciones'
       companies_count: 'Organizaciones'
       investors_count: 'Inversionistas'
-      people_count: 'Personsas'
+      people_count: 'Personas'
       free: 'Es completamente gratis'
     reasons:
       text_receive: 'Recibe todas las novedades'
@@ -374,6 +374,12 @@ es:
       column_status: 'Estado'
       column_location: 'Ubicación'
       column_deals: 'Transacciones'
+      column_type: 'Tipo'
+      types:
+        deal: 'Transaccion'
+        investor: 'Inversionista'
+        person: 'Personas'
+        company: 'Organización'
   contact:
     index:
       back: 'atrás'
