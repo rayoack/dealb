@@ -79,6 +79,7 @@ class CompaniesController < ApplicationController
     @last_deal = @company&.deals&.last
     @last_funding_type = I18n.t("filters.labels.funding_type.#{@last_deal.round}") if @last_deal&.round.present?
 
+    # rubocop:disable Rails/OutputSafety
     render('companies/widget.js.erb', layout: false,
                                       locals: {
                                         name: @company.name,
@@ -89,9 +90,11 @@ class CompaniesController < ApplicationController
                                         image_url: @company.profile_image_url,
                                         last_funding_type: @last_funding_type,
                                         last_funding_value: @last_deal&.amount,
-                                        widget_content: widget_content(@last_deal, @last_funding_type).squish,
+                                        widget_content: widget_content(@last_deal,
+                                                                       @last_funding_type).html_safe,
                                         footer: true
                                       })
+    # rubocop:enable Rails/OutputSafety
   end
 
   private
@@ -183,6 +186,6 @@ class CompaniesController < ApplicationController
                        image_url: @company.profile_image_url,
                        last_funding_type: last_funding_type,
                        last_funding_value: last_deal&.amount
-                     })
+                     }).squish.gsub("\'", "\\\\'")
   end
 end

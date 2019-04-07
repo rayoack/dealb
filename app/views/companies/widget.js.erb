@@ -10,28 +10,16 @@
       cssClass: ['dealbook-modal'],
     });
 
-    modal.setContent('<div class="dealbook-modal" id="dealbook-company-modal"> <div class="dealbook-modal__inner"> <div class="dealbook-modal__header"> Overview </div> <div class="dealbook-modal__content-test"> </div> <div class="dealbook-modal__content"> <div class="dealbook-miniprofile"> <div class="dealbook-miniprofile__img-col"> <img class="dealbook-miniprofile__img" src="<%= image_url || '' %>"/> </div> <div class="dealbook-miniprofile__content-col"> <h3><%= name %></h3> <h4><%= location %></h4> <h4>Founded <%= born_at %></h4> </div> </div> <div class="dealbook-description"> <%= description %>  </div> <div class="dealbook-company"> <h4>Last Funding</h4> <%= last_funding_type %> </div> <div class="dealbook-funding"> <h4>Funding</h4> <%= "$#{last_funding_value}" %></div> <div class="dealbook-powered"> <p>powered by</p> <a href="https://dealbook.co" class="dealbook-powered__text" target="_blank">Deal<strong>Book</strong></a></div> </div> <div class="dealbook-modal__footer"> <a class="dealbook-footer__btn" href="http://dealbook-prod.herokuapp.com/companies/<%= permalink %>" target="_blank"> Ver perfil completo no DealBook </a> </div> </div> </div>');
+    modal.setContent('<div class="dealbook-modal" id="dealbook-company-modal"> <div class="dealbook-modal__inner"> <div class="dealbook-modal__header"> Overview </div> <div class="dealbook-modal__content-test"> </div> <div class="dealbook-modal__content"> <div class="dealbook-miniprofile"> <div class="dealbook-miniprofile__img-col"> <img class="dealbook-miniprofile__img" src="<%= image_url || '' %>"/> </div> <div class="dealbook-miniprofile__content-col"> <h3><%= name %></h3> <h4><%= location %></h4> <h4>Founded <%= born_at %></h4> </div> </div> <div class="dealbook-description"> <%= description %>  </div> <div class="dealbook-company"> <% if last_funding_type.present? %> <h4>Last Funding</h4> <%= last_funding_type %> <% end %> </div> <div class="dealbook-funding"> <% if last_funding_value.present? %> <h4>Funding</h4> <%= "$#{last_funding_value}" %> <% end %> </div> <div class="dealbook-powered"> <p>powered by</p> <a href="https://dealbook.co" class="dealbook-powered__text" target="_blank">Deal<strong>Book</strong></a></div> </div> <div class="dealbook-modal__footer"> <a class="dealbook-footer__btn" href="http://dealbook-prod.herokuapp.com/companies/<%= permalink %>" target="_blank"> Ver perfil completo no DealBook </a> </div> </div> </div>');
 
     if (showFooter) {
       modal.addFooterBtn("<%= t('companies.show.copy_code') %>",
                             'tingle-btn tingle-btn--primary',
                             function() {
-        copyToClipboard("<%= widget_content %>");
+        navigator.clipboard.writeText('<%= widget_content %>');
       });
     }
 
     modal.open();
   }
-
-  function copyToClipboard(str) {
-    const el = document.createElement('textarea');
-    el.value = str;
-    el.setAttribute('readonly', '');
-    el.style.position = 'absolute';
-    el.style.left = '-9999px';
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
-  };
 })();
