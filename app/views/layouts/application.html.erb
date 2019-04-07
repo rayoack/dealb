@@ -30,6 +30,10 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="/libs/inputmask/inputmask.js"></script>
 
+    <%= render partial: 'shared/header' unless @blank_layout %>
+    <%= yield %>
+    <%= render partial: 'shared/footer' unless @blank_layout %>
+
     <script>
      var swiperUpdates = new Swiper('.swiper-container', {
        pagination: '.swiper-pagination',
@@ -50,10 +54,5 @@
        }
      });
     </script>
-
-    <%= render partial: 'shared/header' unless @blank_layout %>
-    <%= yield %>
-    <%= render partial: 'shared/footer' unless @blank_layout %>
-
   </body>
 </html>
