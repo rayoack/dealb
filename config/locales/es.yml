@@ -714,15 +714,11 @@ es:
       decimal_units:
         format: "%n %u"
         units:
-          billion: mil millones
-          million:
-            one: millón
-            other: millones
-          quadrillion: mil billones
-          thousand: mil
-          trillion:
-            one: billón
-            other: billones
+          billion: bi
+          million: mi
+          quadrillion: q
+          thousand: k
+          trillion: tri
           unit: ''
       format:
         delimiter: ''

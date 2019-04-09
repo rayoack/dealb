@@ -717,19 +717,11 @@ pt-br:
       decimal_units:
         format: "%n %u"
         units:
-          billion:
-            one: bilhão
-            other: bilhões
-          million:
-            one: milhão
-            other: milhões
-          quadrillion:
-            one: quatrilhão
-            other: quatrilhões
-          thousand: mil
-          trillion:
-            one: trilhão
-            other: trilhões
+          billion: bi
+          million: mi
+          quadrillion: q
+          thousand: k
+          trillion: tri
           unit: ''
       format:
         delimiter: ""

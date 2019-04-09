@@ -547,3 +547,44 @@ en:
     last_funding: 'Last Funding'
     value: 'Funding'
     full_profile: 'See the profile on DealBook'
+  number:
+    currency:
+      format:
+        delimiter: "."
+        format: "%u %n"
+        precision: 2
+        separator: ","
+        significant: false
+        strip_insignificant_zeros: false
+        unit: USD
+    format:
+      delimiter: "."
+      precision: 3
+      separator: ","
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion: bi
+          million: mi
+          quadrillion: q
+          thousand: k
+          trillion: tri
+          unit: ''
+      format:
+        delimiter: ""
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
