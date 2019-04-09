@@ -15,6 +15,7 @@ module Investors
               .joins(:deals)
               .preload(:investable)
               .where(deals: { category: :raised_funds_from })
+              .where.not(deals: { amount_cents: nil })
               .group(:id, :amount_currency)
               .order(order_criteria)
               .select(:id,
