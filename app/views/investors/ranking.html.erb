@@ -52,7 +52,6 @@
                              type: 'capital',
                              order: params[:order]
                            } %>
-                <th><%= t('investor.index.column_location') %> </th>
 
                 <%# TODO: Add reviews invformation when finished %>
                 <%# <th>Número de avaliações - I18n</th> %>
@@ -69,7 +68,6 @@
                   </td>
                   <td><%= investor.deals_count %></td>
                   <td><%= format_amount(investor.invested_capital, investor.amount_currency) %></td>
-                  <td class="column-location"><%= investor.formatted_location %></td>
 
                   <%# TODO: Add reviews invformation when finished %>
                   <%# <td>Número de avaliações - I18n</td> %>
