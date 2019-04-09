@@ -44,6 +44,7 @@
 
                 <% if user_admin? || user_moderator? %>
                   <th></th>
+                  <th></th>
                 <% end %>
               </tr>
             </thead>
@@ -51,7 +52,7 @@
               <% @deals_paginated.each do |deal| %>
                   <tr class="clickable-row" data-href=<%= "/deals/#{deal.id}" %>>
                       <td>
-                        <img src=<%= deal.company&.profile_image_url || '/img/logo-investors.png' %> alt=""> 
+                        <img src=<%= deal.company&.profile_image_url || '/img/logo-investors.png' %> alt="">
                         <%= link_to(deal.company.name, company_path(deal.company.permalink)) %>
                       </td>
                       <td><%= I18n.l(deal.close_date, format: :default) %></td>
@@ -64,6 +65,12 @@
                         </a>
                       </td>
                       <% if user_admin? || user_moderator? %>
+                        <td>
+                          <%= link_to 'Delete', deal_path(deal.id),
+                                                class: 'btn btn-danger',
+                                                method: :delete,
+                                                data: { confirm: "Are you sure you want to delete?" } %>
+                        </td>
                         <td><a href="/deals/<%= deal.id %>/edit" class="btn btn-default">Edit</a></td>
                       <% end %>
                   </tr>

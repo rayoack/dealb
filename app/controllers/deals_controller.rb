@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class DealsController < ApplicationController
-  before_action :authenticate_user!, only: %i[edit update]
-  before_action :only_admin_or_moderator!, only: %i[edit update]
+  before_action :authenticate_user!, only: %i[edit update destroy]
+  before_action :only_admin_or_moderator!, only: %i[edit update destroy]
 
   def index
     @deals = DealSearcher.new(
@@ -54,6 +54,16 @@ class DealsController < ApplicationController
       redirect_to deals_path, notice: 'Successfully updated'
     else
       render :edit
+    end
+  end
+
+  def destroy
+    @deal = Deal.find(params[:id])
+
+    if @deal.delete
+      redirect_to deals_path, notice: 'Successfully deleted.'
+    else
+      redirect_to deals_path
     end
   end
 

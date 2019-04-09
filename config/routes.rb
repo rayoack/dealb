@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :deals, only: %i[index new create show edit update]
+  resources :deals, only: %i[index new create show edit update destroy]
 
   resources :people, only: %i[index new create show edit update]
 
