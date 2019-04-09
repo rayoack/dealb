@@ -1,71 +1,57 @@
 <% if @deal.errors.any? %>
-    <% @deal.errors.full_messages.each do |error| %>
-	<div class="alert alert-danger" role="alert"><%= error %></div>
-    <% end %>
+  <% @deal.errors.full_messages.each do |error| %>
+    <div class="alert alert-danger" role="alert"><%= error %></div>
+  <% end %>
 <% end %>
 
 <div class="form-group">
-    <%= f.select(
-	:company_id,
-	@companies.collect { |c| [c.name, c.id] },
-	{ prompt: t('deals.form.select_company') },
-	{ class: 'select-category' }
-    ) %>
+  <%= f.select(:company_id, @companies.collect { |c| [c.name, c.id] },
+                            { prompt: t('deals.form.select_company') },
+                            { class: 'select-category' }) %>
 </div>
 <div class="form-group">
-    <div class="input-group date-close">
-        <span class="input-group-addon"><img src="/img/calendar.svg" alt=""></span>
-	<%= f.text_field :close_date, placeholder: t('deals.form.close_date'), class: 'form-control datepicker', 'aria-label' => 'Username' %>
-    </div>
-    <%= f.select(
-	:category,
-	Deal::CATEGORIES.collect { |category| [t("deals.form.categories.#{category}"), category] },
-	{ prompt: t('deals.form.select_category') },
-	{ class: 'select-category' }
-    ) %>
+  <div class="input-group date-close">
+    <span class="input-group-addon"><img src="/img/calendar.svg" alt=""></span>
+    <%= f.text_field :close_date, placeholder: t('deals.form.close_date'),
+                                  class: 'form-control datepicker',
+                                  'aria-label' => 'Username' %>
+  </div>
+  <%= f.select(:category, Deal::CATEGORIES.collect { |category| [t("deals.form.categories.#{category}"), category] },
+                          { prompt: t('deals.form.select_category') },
+                          { class: 'select-category' }) %>
 </div>
 <div class="form-group">
-    <%= f.fields_for :deal_investors_attributes do |investor_form| %>
-	<%= investor_form.select(
-	    :investor_id,
-	    @investors.collect { |c| [c.investable.name, c.id] },
-	    { prompt: t('deals.form.select_investor') },
-	    { class: 'select-category' }
-	) %>
-    <% end %>
+  <%= f.fields_for :deal_investors_attributes do |investor_form| %>
+    <%= investor_form.select(:investor_id, @investors.collect { |c| [c.investable.name, c.id] },
+                                           { prompt: t('deals.form.select_investor') },
+                                           { class: 'select-category' }) %>
+  <% end %>
 </div>
 <div class="form-group">
-    <%= f.select(
-	:round,
-	Deal::ROUNDS.collect { |round| [t("deals.form.rounds.#{round}"), round] },
-	{ prompt: t('deals.form.select_round') },
-	{ class: 'select-round' }
-    ) %>
+  <%= f.select(:round, Deal::ROUNDS.collect { |round| [t("deals.form.rounds.#{round}"), round] },
+                       { prompt: t('deals.form.select_round') },
+                       { class: 'select-round' }) %>
 
-    <%= f.select(
-	:amount_currency,
-	Deal::CURRENCIES.collect { |currency| [currency, currency] },
-	{ prompt: t('deals.form.select_currency') },
-	{ class: 'select-currency' }
-    ) %>
+  <%= f.select(:amount_currency, Deal::CURRENCIES.collect { |currency| [currency, currency] },
+                                 { prompt: t('deals.form.select_currency') },
+                                 { class: 'select-currency' }) %>
 </div>
 <div class="form-group">
-    <%= f.text_field :amount_cents, placeholder: t('deals.form.total_amount'), class: 'input-total-amount' %>
+  <%= f.text_field :amount_cents, placeholder: t('deals.form.total_amount'),
+                                  class: 'input-total-amount',
+                                  data: { type: 'money' } %>
 </div>
 <div class="form-group">
-    <%= f.text_field :pre_valuation_cents, placeholder: t('deals.form.pre_valuation'), class: 'input-money' %>
+  <%= f.text_field :pre_valuation_cents, placeholder: t('deals.form.pre_valuation'), class: 'input-money' %>
 </div>
 <div class="form-group">
-    <%= f.text_field :source_url, placeholder: t('deals.form.source_url'), pattern: 'https?://.+', title: 'Only valid URLs' %>
+  <%= f.text_field :source_url, placeholder: t('deals.form.source_url'), pattern: 'https?://.+', title: 'Only valid URLs' %>
 </div>
 <div class="form-group">
-	<%= f.select(
-	    :status,
-	    Deal::STATUSES.collect { |status| [t("deals.form.status.#{status}"), status] },
-	    { prompt: t('deals.form.select_status') },
-	    { class: 'select-currency' }
-	) %>
+  <%= f.select(:status, Deal::STATUSES.collect { |status| [t("deals.form.status.#{status}"), status] },
+                        { prompt: t('deals.form.select_status') },
+                        { class: 'select-currency' }) %>
 </div>
 <div class="form-group">
-    <%= f.submit t('deals.form.send') %>
+  <%= f.submit t('deals.form.send') %>
 </div>

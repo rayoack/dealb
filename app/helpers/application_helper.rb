@@ -11,7 +11,8 @@ module ApplicationHelper
 
   def format_amount(amount, currency = Deal::USD)
     unit = {
-      Deal::USD => '$'
+      Deal::USD => 'USD',
+      Deal::BRL => 'R$'
     }.fetch(currency, currency)
 
     number_to_currency(number_to_human(amount, precision: 2), unit: unit)

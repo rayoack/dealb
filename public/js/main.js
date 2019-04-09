@@ -163,6 +163,21 @@ $(".clickable-row").click(function() {
   window.location = $(this).data("href");
 });
 
+$('input[data-type="money"').inputmask({
+  alias: 'numeric',
+  enforceDigitsOnBlur: true,
+  autoGroup: true,
+  groupSize: 3,
+  groupSeparator: '.',
+  digits: 3,
+  radixPoint: ',',
+  unmaskAsNumber: true,
+  removeMaskOnSubmit: true,
+  rightAlign: false,
+  allowPlus: false,
+  allowMinus: false
+});
+
 $(function() {
   $(".datepicker").datepicker({
     dateFormat: 'dd/mm/yy',

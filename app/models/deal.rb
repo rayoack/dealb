@@ -35,7 +35,10 @@ class Deal < ApplicationRecord
     UNKNOWN = 'unknown'
   ].freeze
 
-  CURRENCIES = [USD = 'USD'].freeze
+  CURRENCIES = [
+    USD = 'USD',
+    BRL = 'BRL'
+  ].freeze
 
   STATUSES = [UNVERIFIED = 'unverified', VERIFIED = 'verified'].freeze
 
