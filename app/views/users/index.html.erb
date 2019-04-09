@@ -1,74 +1,72 @@
 <section class="s-title-page" style="padding: 53px 0px 40px 0px">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-7">
-                <h1><%= t('users.index.users') %></h1>
-            </div>
-            <div class="col-xs-12 col-sm-6 col-md-5">
-                <h2><%= @users.count %> <%= t('users.index.users') %></h2>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-7">
+        <h1><%= t('users.index.users') %></h1>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-5">
+        <h2><%= @users.count %> <%= t('users.index.users') %></h2>
+      </div>
     </div>
+  </div>
 </section>
 
 <section class="s-table-results">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6">
-                <p class="results"><%= page_entries_info @users_paginated %></p>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6">
+        <p class="results"><%= page_entries_info @users_paginated %></p>
+      </div>
 
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-		<%= render partial: 'shared/flash_messages' %>
-
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Email</th>
-                                <th>Provider</th>
-                                <th>Role</th>
-                                <th>Created at</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-			    <% @users_paginated.each do |user| %>
-				<tr>
-                                    <td><%= user.email %> <%= user.status == User::BLOCKED ? "[BLOCKED]" : nil %></td>
-                                    <td><%= user.provider || 'Through signup' %></td>
-                                    <td><%= user.role %></td>
-                                    <td><%= I18n.l(user.created_at, format: :default) %></td>
-                                    <td>
-					<% if user.role == User::MODERATOR %>
-					    <a href="/users/<%= user.id %>/become_user" class="btn btn-default">Set as user</a>
-					    <a href="/users/<%= user.id %>/become_admin" class="btn btn-default">Set as admin</a>
-					<% elsif user.role == User::ADMIN && current_user != user %>
-					    <a href="/users/<%= user.id %>/become_user" class="btn btn-default">Set as user</a>
-					    <a href="/users/<%= user.id %>/become_moderator" class="btn btn-default">Set as moderator</a>
-					<% elsif user.role == User::USER %>
-					    <a href="/users/<%= user.id %>/become_admin" class="btn btn-default">Set as admin</a>
-					    <a href="/users/<%= user.id %>/become_moderator" class="btn btn-default">Set as moderator</a>
-					<% end %>
-
-					<% unless current_user == user %>
-					    <% if user.status == User::ACTIVE %>
-						<a href="/users/<%= user.id %>/block" class="btn btn-danger">Block</a>
-					    <% else %>
-						<a href="/users/<%= user.id %>/unblock" class="btn btn-primary">Unblock</a>
-					    <% end %>
-					<% end %>
-				    </td>
-				</tr>
-			    <% end %>
-                        </tbody>
-                    </table>
-                </div>
-
-                <%= paginate @users_paginated %>
-            </div>
-        </div>
     </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= render partial: 'shared/flash_messages' %>
+
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Provider</th>
+                <th>Role</th>
+                <th>Created at</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @users_paginated.each do |user| %>
+                <tr>
+                  <td><%= user.provider || 'Through signup' %></td>
+                  <td><%= user.role %></td>
+                  <td><%= I18n.l(user.created_at, format: :default) %></td>
+                  <td>
+                    <% if user.role == User::MODERATOR %>
+                      <a href="/users/<%= user.id %>/become_user" class="btn btn-default">Set as user</a>
+                      <a href="/users/<%= user.id %>/become_admin" class="btn btn-default">Set as admin</a>
+                    <% elsif user.role == User::ADMIN && current_user != user %>
+                      <a href="/users/<%= user.id %>/become_user" class="btn btn-default">Set as user</a>
+                      <a href="/users/<%= user.id %>/become_moderator" class="btn btn-default">Set as moderator</a>
+                    <% elsif user.role == User::USER %>
+                      <a href="/users/<%= user.id %>/become_admin" class="btn btn-default">Set as admin</a>
+                      <a href="/users/<%= user.id %>/become_moderator" class="btn btn-default">Set as moderator</a>
+                    <% end %>
+
+                    <% unless current_user == user %>
+                      <% if user.status == User::ACTIVE %>
+                        <a href="/users/<%= user.id %>/block" class="btn btn-danger">Block</a>
+                      <% else %>
+                        <a href="/users/<%= user.id %>/unblock" class="btn btn-primary">Unblock</a>
+                      <% end %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <%= paginate @users_paginated %>
+      </div>
+    </div>
+  </div>
 </section>
