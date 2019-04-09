@@ -547,6 +547,9 @@ pt-br:
     last_funding: 'Última negociação'
     value: 'Valor'
     full_profile: 'Ver perfil completo no DealBook'
+  powered:
+    by: 'Feito por'
+    bossa: 'bossabox'
   activerecord:
     errors:
       messages:

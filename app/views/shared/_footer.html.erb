@@ -46,6 +46,8 @@
             </ul>
           </div>
 
+          <%= render partial: 'shared/powered_by' %>
+
           <% unless user_signed_in? %>
             <a href="/signup" class="btn-join"><%= t('footer.join_now') %></a>
           <% end %>

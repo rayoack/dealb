@@ -548,6 +548,9 @@ en:
     last_funding: 'Last Funding'
     value: 'Funding'
     full_profile: 'See the profile on DealBook'
+  powered:
+    by: 'Powered by'
+    bossa: 'bossabox'
   number:
     currency:
       format:

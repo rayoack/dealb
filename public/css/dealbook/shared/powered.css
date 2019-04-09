@@ -1,0 +1,89 @@
+@import '../../../libs/icomoon/icomoon7.css';
+
+.powered_by {
+  display: table;
+  float: initial;
+  width: initial;
+  margin-left: 64px;
+}
+
+.made-by-bossabox {
+    height: 48px;
+    display: inline-block;
+    border-radius: 5px;
+    font-family: 'Montserrat','Source Sans Pro', 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    color: #c7c7d6;
+    overflow: hidden;
+    border: 1px solid #c7c7d6;
+    text-decoration: none !important;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+.made-by-bossabox .icon {
+    margin-right: 6px;
+}
+
+.made-by-bossabox .face-primary,
+.made-by-bossabox .face-secondary {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    transition: margin .2s;
+    height: 48px;
+    padding: 6px 13px;
+    box-sizing: border-box;
+}
+.made-by-bossabox .face-primary {
+    color: #c7c7d6 !important;
+}
+.made-by-bossabox .face-secondary {
+    background-color: #296EF8;
+    color: #fff;
+}
+.made-by-bossabox .text-wrapper {
+    height: auto;
+    width: 100%;
+    line-height: 1rem;
+    box-sizing: border-box;
+}
+.made-by-bossabox .face-primary small {
+    text-align: left;
+    line-height: 1.1;
+    width: 100%;
+    display: block;
+    font-size: 12px;
+    margin-top: -3px;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+.made-by-bossabox .face-primary span {
+    font-weight: bold;
+    font-size: 18px;
+}
+.made-by-bossabox .face-secondary span.icon7-icone {
+    font-size: 3rem;
+    position: relative;
+    left: 4px;
+}
+.made-by-bossabox .face-secondary span.icon7-seta {
+    opacity: 0.3;
+    position: relative;
+    left: 36%;
+    top: -2px;
+}
+.made-by-bossabox:hover .face-primary {
+    margin-top: -48px;
+}
+
+@media screen and (max-width: 996px) {
+  .powered_by {
+    margin: auto;
+  }
+}
