@@ -36,7 +36,7 @@ Rails.application.routes.draw do
 
   resources :people, only: %i[index new create show edit update]
 
-  resources :investors, only: %i[index show] do
+  resources :investors, only: %i[index show edit update] do
     collection do
       get :ranking, action: :ranking
     end

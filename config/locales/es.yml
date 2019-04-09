@@ -332,6 +332,7 @@ es:
     form:
       back: 'atrás'
       new: 'Crear nuevo Inversionista'
+      new: 'Editar Inversionista'
       featured_title: ''
       featured_subtitle: ''
       select_investor: 'Seleccione un nuevo inversionista'

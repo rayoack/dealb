@@ -335,6 +335,7 @@ pt-br:
     form:
       back: 'voltar'
       new: 'Criar novo investidor'
+      edit: 'Editar investidor'
       featured_title: ''
       featured_subtitle: ''
       select_investor: 'Selecione um investidor'

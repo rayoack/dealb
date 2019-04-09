@@ -3,11 +3,11 @@
 module InvestorsHelper
   def possible_new_investors
     people = Person.all.collect do |p|
-      ["#{p.name}- Person", "Person-#{p.id}"]
+      ["#{p.name}- Person", p.permalink]
     end
 
     companies = Company.all.collect do |p|
-      ["#{p.name}- Company", "Company-#{p.id}"]
+      ["#{p.name}- Company", p.permalink]
     end
 
     Array(people + companies)
