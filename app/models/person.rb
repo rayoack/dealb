@@ -11,7 +11,6 @@ class Person < ApplicationRecord
   validates :permalink, uniqueness: true
   validates :gender, inclusion: { in: GENDERS }, allow_nil: true
   validates :email, email: true, allow_nil: true
-  validates :email, uniqueness: true, allow_nil: true
 
   validates :website_url, url: true, allow_nil: true
   validates :facebook_url, url: true, allow_nil: true
