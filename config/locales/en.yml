@@ -1,4 +1,10 @@
 en:
+  auth:
+    registration:
+      mail:
+        title: 'Welcome to Dealbook!'
+        body: 'You can confirm your account email through the link below:'
+        confirm: 'Confirm my account'
   header:
     search_box: 'Find organizations, investors and people'
     companies: 'Organizations'
