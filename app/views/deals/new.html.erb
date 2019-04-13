@@ -12,6 +12,8 @@
     </div>
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-5">
+        <%= render partial: 'shared/flash_messages' %>
+
         <%= form_for @deal do |f| %>
           <%= render partial: 'form', locals: { f: f } %>
         <% end %>

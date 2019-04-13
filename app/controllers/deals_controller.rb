@@ -29,7 +29,7 @@ class DealsController < ApplicationController
     if @deal.save
       redirect_to deals_path, notice: I18n.t('deals.messages.create.success')
     else
-      render :new
+      render :new, flash: { error: I18n.t('deals.messages.create.failure') }
     end
   end
 

@@ -207,6 +207,10 @@ en:
         merged_with: 'Merged with'
         was_acquired_by: 'Was acquired by'
         shutdown: 'Shutdown'
+    messages:
+      create:
+        success: 'Created with success'
+        failure: 'Failed to create deal'
   people:
     index:
       people: 'People'

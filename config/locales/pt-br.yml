@@ -207,6 +207,10 @@ pt-br:
         merged_with: 'Fundido'
         was_acquired_by: 'Adquirido'
         shutdown: 'Fechado'
+    messages:
+      create:
+        success: 'Criado com sucesso'
+        failure: 'Falha ao criar negócio'
   people:
     index:
       people: 'Pessoas'

@@ -207,6 +207,10 @@ es:
         merged_with: 'Fusionado con'
         was_acquired_by: 'Adquirido'
         shutdown: 'Cierrado'
+    messages:
+      create:
+        success: 'Creado com sucesso'
+        failure: 'Error al crear negócio'
   people:
     index:
       people: 'Personas'
