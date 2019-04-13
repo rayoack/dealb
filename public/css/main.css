@@ -5371,3 +5371,6 @@ a.menu-button:hover .menu-icon::after {
     font-size: 30px !important;
   }
 }
+.select2 {
+  width: 50%;
+}

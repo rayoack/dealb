@@ -27,7 +27,7 @@ class DealsController < ApplicationController
     @deal = Deal.new(deal_params)
 
     if @deal.save
-      redirect_to deals_path, notice: 'Successfully saved'
+      redirect_to deals_path, notice: I18n.t('deals.messages.create.success')
     else
       render :new
     end
@@ -83,8 +83,9 @@ class DealsController < ApplicationController
 
   def alloweds
     params.require(:deal).permit(
-      *DEAL_PARAMS, deal_investors_attributes: [:investor_id]
-    )
+      *DEAL_PARAMS, deal_investor_attributes: [:investor_id]
+    ).merge(investor_ids: params.require(:deal)
+                                .require(:deal_investors_attributes)[:investor_id])
   end
 
   def deal_params
@@ -92,9 +93,8 @@ class DealsController < ApplicationController
       begin
         allowed_deal.merge(
           user_id: current_user.id,
-          deal_investors_attributes: [
-            { investor_id: alloweds[:deal_investors_attributes][:investor_id] }
-          ]
+          deal_investors_attributes: alloweds[:investor_ids].select(&:present?)
+                                                            .map { |id| { investor_id: id } }
         )
       end
   end
