@@ -48,7 +48,7 @@ describe DealsController do
     let(:params) do
       attributes_for(:deal).merge(
         company_id: company.id,
-        deal_investors_attributes: { investor_id: investor.id }
+        deal_investors_attributes: { investor_id: [investor.id] }
       )
     end
 
@@ -60,6 +60,24 @@ describe DealsController do
       expect { create_deal }.to change {
         [Deal.all.count, DealInvestor.all.count]
       }.from([0, 0]).to([1, 1])
+    end
+
+    context 'with multiple investors' do
+      let(:other_investor) { create(:investor) }
+      let(:params) do
+        attributes_for(:deal).merge(
+          company_id: company.id,
+          deal_investors_attributes: { investor_id: [investor.id, other_investor.id] }
+        )
+      end
+
+      it 'create a deal' do
+        sign_in create(:user)
+
+        expect { create_deal }.to change {
+          [Deal.all.count, DealInvestor.all.count]
+        }.from([0, 0]).to([1, 2])
+      end
     end
   end
 end
