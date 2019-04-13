@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     path_names: {
       sign_in: 'login',
       sign_out: 'logout',
-      confirmation: 'confirmation',
+      confirmation: 'users/confirmations',
       unlock: 'unlock',
       registration: '',
       sign_up: 'signup'
@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     controllers: {
       omniauth_callbacks: 'users/omniauth_callbacks',
       registrations: 'users/registrations',
+      confirmations: 'users/confirmations',
       sessions: 'users/sessions'
     }
   )
