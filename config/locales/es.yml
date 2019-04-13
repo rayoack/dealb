@@ -419,6 +419,9 @@ es:
     new_password: 'Nueva contraseña'
     new_password_confirm: 'Confirmar nueva contraseña'
     set_password: 'Confirmar'
+    confirmation:
+      success: 'Cuenta confirmada con éxito!'
+      failure: 'Error al confirmar la cuenta. ¡Inténtalo de nuevo!'
   faq:
     question_1: '¿Cómo puedo añadir o editar organizaciones/inversores/negocios?'
     answer_1: 'Sólo tienes que crear una cuenta y empezar a añadir información! Si desea insertar una nueva organización, por ejemplo, haga clic en el enlace organizaciones de la barra de navegación y, a continuación, en el botón Nueva Organización. Si desea editar una organización existente, vaya a la página de la organización seleccionada y haga clic en el botón Editar.

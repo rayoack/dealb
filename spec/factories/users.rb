@@ -5,6 +5,7 @@ FactoryBot.define do
     email { Faker::Internet.email }
     password { 'test1020' }
     password_confirmation { 'test1020' }
+    confirmed_at { Time.zone.now }
 
     person nil
   end

@@ -422,6 +422,9 @@ en:
     new_password: 'New password'
     new_password_confirm: 'Confirm new password'
     set_password: 'Confirm'
+    confirmation:
+      success: 'Account confirmed with success!'
+      failure: "Error confirming you're account. Try again!"
   faq:
     question_1: 'How can I add or edit organizations/investors/deals?'
     answer_1: 'Simply create an account and start adding information! If you want to insert a new organization, for example, click on the Organization link on the navigation bar and then on the New Organization button. If you want to edit an existing organization, go to the selected organization page and click on the Edit button.
