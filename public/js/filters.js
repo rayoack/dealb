@@ -78,6 +78,10 @@ $(".btn-add-filter-modal").click(function(event) {
   $(".main-category ul li:first-child").addClass('active');
 });
 
+$(document).on("click", ".btn-remove-filter", function() {    
+  $(this).parents(".item-filter").remove();    
+});
+
 function reloadMasks() {
   $('input[data-subcategory="amount"').inputmask({
     alias: 'numeric',
