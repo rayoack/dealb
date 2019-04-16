@@ -5,3 +5,15 @@
 .column-location {
   max-width: 320px;
 }
+
+.profile-img__sm {
+  border-radius: 50%;
+  width: 84px;
+  height: 84px;
+}
+
+.profile-img__md {
+  border-radius: 50%;
+  width: 128px;
+  height: 128px;
+}

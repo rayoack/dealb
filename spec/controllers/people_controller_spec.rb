@@ -87,6 +87,10 @@ describe PeopleController do
     subject(:create_person) { post :create, params: { person: params } }
 
     before do
+      allow(Rails.env)
+        .to receive(:production?)
+        .and_return(true)
+
       expect(Integrations::Clearbit).to receive_message_chain(:new, :enrich)
     end
 
