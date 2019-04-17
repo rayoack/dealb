@@ -1,7 +1,7 @@
-require('csv')
+require 'csv'
 
-namespace :import_from_csv do
-  task investors: :environment do |_task, _args|
+namespace :investors do
+  task import: :environment do |_task, _args|
     puts('---- Starting Investors import from CSV ----')
 
     CSV.foreach('./investors_import.csv') do |row|
@@ -9,7 +9,7 @@ namespace :import_from_csv do
       name = row.first.presence
       permalink = name&.parameterize
       website = row.second.presence
-      title = row.third.presence || 'Investor'
+      title = row.third.presence || 'Contributor'
       org = row.fourth.presence
       org_permalink = org&.parameterize
 
