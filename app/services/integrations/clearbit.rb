@@ -31,7 +31,10 @@ module Integrations
       return if domain_data.blank?
 
       data = ::Clearbit::Enrichment::Company.find(domain_data)
-                                            .deep_symbolize_keys
+                                           &.deep_symbolize_keys
+
+      return if data.blank?
+
       Company.attributes_from_clearbit(data)
     end
 
@@ -46,7 +49,10 @@ module Integrations
 
     def person_data(email:)
       data = ::Clearbit::Enrichment::Person.find(email: email, stream: true)
-                                           .deep_symbolize_keys
+                                          &.deep_symbolize_keys
+
+      return if data.blank?
+
       Person.attributes_from_clearbit(data)
     end
 
