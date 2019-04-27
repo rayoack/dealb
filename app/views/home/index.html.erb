@@ -16,4 +16,4 @@
 
 <%= render partial: 'reasons' %>
 
-<%= render partial: 'updates' %>
+<%= render partial: 'updates', locals: { updates: formatted_updates(@updates) }%>
