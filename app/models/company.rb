@@ -22,7 +22,6 @@ class Company < ApplicationRecord
 
   validates :contact_email, email: true, allow_nil: true
   validates :homepage_url, url: true, allow_nil: true
-  validates :linkedin_url, url: true, allow_nil: true
   validates :facebook_url, url: true, allow_nil: true
   validates :twitter_url, url: true, allow_nil: true
   validates :google_plus_url, url: true, allow_nil: true
@@ -38,6 +37,7 @@ class Company < ApplicationRecord
   has_one :investor, as: :investable, dependent: :destroy
   has_many :company_markets, dependent: :destroy
   has_many :markets, through: :company_markets
+  has_many :deals, dependent: :destroy
 
   # Nested
   accepts_nested_attributes_for :locations

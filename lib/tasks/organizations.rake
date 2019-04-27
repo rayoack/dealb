@@ -1,5 +1,6 @@
 require 'csv'
 
+# rubocop:disable Metrics/BlockLength
 namespace :organizations do
   task import: :environment do |_task, _args|
     puts('---- Starting Organization import from CSV ----')
@@ -24,12 +25,28 @@ namespace :organizations do
 
     puts('---- Finished Organization import from CSV ----')
   end
-end
 
-def find_org(name, url, permalink)
-  org = Company.find_by(name: name)
-  org ||= Company.find_by(homepage_url: url)
-  org ||= Company.find_by(permalink: permalink)
+  task import_original: :environment do |_task, _args|
+    puts('---- Starting Organization import from Original Dealbook ----')
 
-  org
+    file = File.open('./dealbook_one_companies.csv')
+    file.each_line do |row|
+      data = OpenStruct.new(eval(row)) # rubocop:disable Security/Eval
+
+      company = Company.find_by(permalink: data.slug)
+      company ||= Company.find_by(permalink: data.name.parameterize)
+      company ||= Company.new
+
+      company.update!(name: data.name,
+                      description: data.description,
+                      homepage_url: data.website.presence&.downcase&.strip,
+                      linkedin_url: data.linkedin.presence&.downcase&.strip,
+                      status: data.status.presence || 'active')
+
+      puts("Company #{company.id} updated.")
+    end
+
+    puts('---- Finished Organization import from Original Dealbook ----')
+  end
 end
+# rubocop:enable Metrics/BlockLength
