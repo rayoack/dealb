@@ -36,7 +36,7 @@ module Investors
       return "deals_count #{order}" if type == :deals
       return "invested_capital #{order}" if type == :capital
 
-      type.presence || { id: :asc }
+      type.presence || 'invested_capital DESC'
     end
 
     def invested_capital_selection

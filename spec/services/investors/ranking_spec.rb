@@ -48,10 +48,10 @@ describe Investors::Ranking do
       it '#call!' do
         expect(subject.call!.map(&:id)).to eq(
           [
-            investor_1.id,
-            investor_2.id,
             investor_3.id,
-            investor_4.id
+            investor_4.id,
+            investor_2.id,
+            investor_1.id
           ]
         )
       end
