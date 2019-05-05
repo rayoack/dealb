@@ -27,6 +27,7 @@
           <table class="table">
             <thead>
               <tr>
+                <th>Email</th>
                 <th>Provider</th>
                 <th>Role</th>
                 <th>Created at</th>
@@ -36,6 +37,7 @@
             <tbody>
               <% @users_paginated.each do |user| %>
                 <tr>
+                  <td><%= user.email %></td>
                   <td><%= user.provider || 'Through signup' %></td>
                   <td><%= user.role %></td>
                   <td><%= I18n.l(user.created_at, format: :default) %></td>
