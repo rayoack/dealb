@@ -13,7 +13,10 @@
       <tbody>
         <% @person.person_companies.each do |person_company| %>
           <tr>
-            <td><img src="/img/logo-company.png" alt=""><strong> <%= person_company.company.name %></strong></td>
+            <td>
+              <img src=<%= person_company.company&.profile_image_url || '/img/logo-company.png' %> width=38px />
+              <strong> <%= person_company.company.name %></strong>
+            </td>
             <td class="status-active"><span class="circle"></span> <%= person_company.company.status %></td>
             <td><%= person_company.company.locations.pluck(:city, :country).map { |c| c.join(', ') }.join('/ ') %></td>
             <td><%= t('people.show.companies.location') %></td>
