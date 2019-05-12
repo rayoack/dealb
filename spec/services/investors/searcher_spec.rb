@@ -81,14 +81,19 @@ describe Investors::Searcher do
   it 'filters by total funds invested' do
     matching_investor = create(:investor)
     non_matching_investor = create(:investor)
-    create_list(:deal_investor, 2, investor: matching_investor)
-    create_list(:deal_investor, 1, investor: non_matching_investor)
+    deal_1 = create :deal, amount_cents: 200_000
+    deal_2 = create :deal, amount_cents: 2_000_000
+    deal_3 = create :deal, amount_cents: 800_000
+
+    create :deal_investor, deal: deal_1, investor: matching_investor
+    create :deal_investor, deal: deal_2, investor: matching_investor
+    create :deal_investor, deal: deal_3, investor: non_matching_investor
 
     filter_params = {
       '0' => {
         'type' => 'total_funds_invested',
         'operator' => 'equal',
-        'value' => matching_investor.deals.sum(:amount_cents).to_i.to_s
+        'value' => ((deal_1.amount_cents + deal_2.amount_cents).to_i / 100).to_s
       }
     }
 

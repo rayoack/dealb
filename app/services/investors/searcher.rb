@@ -45,33 +45,27 @@ module Investors
         value = filter.values[2]
         filter_name = FILTERS.fetch(name, 'bypass')
 
-        method(filter_name)
-          .call(name, OPERATORS.fetch(operator), value)
+        method(filter_name).call(name, OPERATORS.fetch(operator), value)
       end
     end
 
     def filter_by_column(name, operator, value)
-      @filter = @filter.where(
-        "#{name} #{operator} ?",
-        format(operator, value)
-      )
+      @filter = @filter.where("#{name} #{operator} ?", format(operator, value))
     end
 
     def filter_by_number_of_deals(_name, operator, value)
-      @filter = @filter
-        .joins(:deal_investors)
-        .group('investors.id')
-        .having("COUNT(investor_id) #{operator} ?", format(operator, value))
+      @filter = @filter.joins(:deal_investors)
+                       .group('investors.id')
+                       .having("COUNT(investor_id) #{operator} ?", format(operator, value))
     end
 
     def filter_by_total_funds_invested(_name, operator, value)
-      @filter = @filter
-        .joins(:deals)
-        .group('investors.id')
-        .having(
-          "SUM(amount_cents) #{operator} ?",
-          format(operator, value.gsub(/[^\d]+/, '').to_i)
-        )
+      parsed_value = value.gsub(/[^\d]+/, '').to_i * 100
+
+      @filter = @filter.joins(:deals)
+                       .group('investors.id')
+                       .having("SUM(amount_cents) #{operator} ?",
+                               format(operator, parsed_value))
     end
 
     def bypass(name, _operator, _value)

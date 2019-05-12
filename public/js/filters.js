@@ -78,12 +78,12 @@ $(".btn-add-filter-modal").click(function(event) {
   $(".main-category ul li:first-child").addClass('active');
 });
 
-$(document).on("click", ".btn-remove-filter", function() {    
-  $(this).parents(".item-filter").remove();    
+$(document).on("click", ".btn-remove-filter", function() {
+  $(this).parents(".item-filter").remove();
 });
 
 function reloadMasks() {
-  $('input[data-subcategory="amount"').inputmask({
+  const inputMaskParams = {
     alias: 'numeric',
     enforceDigitsOnBlur: true,
     groupSeparator: '.',
@@ -92,7 +92,10 @@ function reloadMasks() {
     digits: 2,
     unmaskAsNumber: true,
     removeMaskOnSubmit: true,
-  });
+  };
+
+  $('input[data-subcategory="total_funds_invested"').inputmask(inputMaskParams);
+  $('input[data-subcategory="amount"').inputmask(inputMaskParams);
 }
 
 export function loadAutoComplete() {
