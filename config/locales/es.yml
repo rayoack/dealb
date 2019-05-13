@@ -460,6 +460,7 @@ es:
     location: 'Ubicación'
     description: 'Descripción'
     employees_count: 'Empleados'
+    rounds_count: 'Rodadas'
     status: 'Status'
     category: 'Categoría'
     tag: 'Tag'

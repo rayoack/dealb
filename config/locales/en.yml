@@ -466,6 +466,7 @@ en:
     occupation: 'Occupation'
     value: 'Value'
     employees_count: 'Employees Count'
+    rounds_count: 'Deal Rounds'
     status: 'Status'
     category: 'Category'
     tag: 'Tag'

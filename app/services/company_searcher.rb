@@ -20,7 +20,8 @@ class CompanySearcher < BaseSearcher
     description: :filter_by_column,
     status: :filter_by_column,
     employees_count: :filter_by_number,
-    location: :filter_by_location
+    location: :filter_by_location,
+    rounds_count: :filter_by_rounds
   }.with_indifferent_access.freeze
 
   def filter_by_params
@@ -48,6 +49,12 @@ class CompanySearcher < BaseSearcher
       "locations.country #{operator} :value",
       value: format(operator, value)
     )
+  end
+
+  def filter_by_rounds(_name, operator, value)
+    @filter = @filter.joins(:deals)
+                     .having("COUNT(*) #{operator} ?", value)
+                     .group(:id)
   end
 
   def format(operator, value)
