@@ -37,8 +37,22 @@
           <table class="table">
             <thead>
               <tr>
-                <th> <%= t('companies.index.column_company') %>  </th>
-                <th> <%= t('companies.index.column_status') %>  </th>
+                <%= render partial: 'shared/sortable_header',
+                           locals: {
+                             url: companies_path,
+                             label: t('companies.index.column_company'),
+                             type: 'name',
+                             order: params[:order]
+                           } %>
+
+                <%= render partial: 'shared/sortable_header',
+                           locals: {
+                             url: companies_path,
+                             label: t('companies.index.column_status'),
+                             type: 'status',
+                             order: params[:order]
+                           } %>
+
                 <th> <%= t('companies.index.column_location') %>  </th>
                 <th colspan="2"> <%= t('companies.index.column_deals') %>  </th>
               </tr>

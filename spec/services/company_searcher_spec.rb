@@ -158,4 +158,24 @@ describe CompanySearcher do
       [matching_company_1.id, matching_company_2.id]
     )
   end
+
+  context 'sorting' do
+    subject { described_class.new(filter_params, company_1.domain_country_context) }
+
+    let!(:company_1) { create :company, name: 'Bossa', description: 'Only devops' }
+    let!(:company_2) { create :company, name: 'Box', description: 'For UXes' }
+    let(:filter_params) { {} }
+
+    context 'order by name desc' do
+      let(:filter_params) { { type: 'name', order: 'desc' } }
+
+      it { expect(subject.call.to_a).to match_array([company_2, company_1]) }
+    end
+
+    context 'order by name asc' do
+      let(:filter_params) { { type: 'name', order: 'asc' } }
+
+      it { expect(subject.call.to_a).to match_array([company_1, company_2]) }
+    end
+  end
 end

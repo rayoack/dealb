@@ -8,9 +8,8 @@ class CompanySearcher < BaseSearcher
   def call
     filter_by_domain_country_context
     filter_by_params
-    sort_by_name
 
-    @filter
+    @filter.order(order_criteria)
   end
 
   private
@@ -26,6 +25,8 @@ class CompanySearcher < BaseSearcher
 
   def filter_by_params
     Hash(filter_params).each_value do |filter|
+      next if filter.is_a?(String)
+
       name = filter['type'].downcase.tr(' ', '_')
       operator = filter['operator'].downcase.tr(' ', '_')
       value = filter['value']
@@ -63,7 +64,12 @@ class CompanySearcher < BaseSearcher
     value
   end
 
-  def sort_by_name
-    @filter = @filter.order(name: :asc)
+  def order_criteria
+    order = filter_params.fetch('order', nil)
+    type = filter_params.fetch('type', nil)&.to_sym
+
+    return { type => order } if order.present? && type.present?
+
+    { name: :asc }
   end
 end

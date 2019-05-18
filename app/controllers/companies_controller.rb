@@ -125,9 +125,9 @@ class CompaniesController < ApplicationController
   end
 
   def filter_params
-    return {} unless params[:filter]
+    return {} unless params[:filter] || params[:order]
 
-    params.require(:filter).permit!
+    params.permit(:order, :type, filter: {})
   end
 
   def create_company_markets
