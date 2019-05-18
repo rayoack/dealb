@@ -8,7 +8,6 @@ class DealSearcher < BaseSearcher
   def call
     filter_by_domain_country_context
     filter_by_params
-
     sorted_deals
   end
 
@@ -61,14 +60,6 @@ class DealSearcher < BaseSearcher
     value
   end
 
-  def order_direction
-    @order_direction ||= filter_params.fetch('order', nil)
-  end
-
-  def order_type
-    @order_type ||= filter_params.fetch('type', nil)&.to_sym
-  end
-
   def sorted_deals
     @filter = @filter.joins(:company) if order_type == :name
 
@@ -80,5 +71,13 @@ class DealSearcher < BaseSearcher
     return "companies.#{order_type} #{order_direction}" if order_type == :name
 
     { order_type => order_direction }
+  end
+
+  def order_direction
+    @order_direction ||= filter_params.fetch('order', nil)
+  end
+
+  def order_type
+    @order_type ||= filter_params.fetch('type', nil)&.to_sym
   end
 end

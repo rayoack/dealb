@@ -8,9 +8,8 @@ class PersonSearcher
   def call
     filter_by_domain_country_context
     filter_by_params
-    sort_by_creation_date
 
-    @filter
+    @filter.order(order_criteria)
   end
 
   private
@@ -38,6 +37,8 @@ class PersonSearcher
 
   def filter_by_params
     Hash(filter_params).each_value do |filter|
+      next if filter.is_a?(String)
+
       name = filter.values[0].downcase.tr(' ', '_')
       operator = filter.values[1].downcase.tr(' ', '_')
       value = filter.values[2]
@@ -74,7 +75,17 @@ class PersonSearcher
     value
   end
 
-  def sort_by_creation_date
-    @filter = @filter.order(created_at: :asc)
+  def order_criteria
+    return { created_at: :asc } if order_direction.blank? || order_type.blank?
+
+    { order_type => order_direction }
+  end
+
+  def order_direction
+    @order_direction ||= filter_params.fetch('order', nil)
+  end
+
+  def order_type
+    @order_type ||= filter_params.fetch('type', nil)&.to_sym
   end
 end

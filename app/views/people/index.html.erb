@@ -37,8 +37,15 @@
           <table class="table">
             <thead>
               <tr>
-                <th><%= t('people.index.column_name') %> </th>
-                <th><%= t('people.index.column_occupation') %> </th>
+                <%= render 'shared/sortable_header', url: people_path,
+                                                     label: t('people.index.column_name'),
+                                                     type: 'first_name',
+                                                     order: params[:order] %>
+
+                <%= render 'shared/sortable_header', url: people_path,
+                                                     label: t('people.index.column_occupation'),
+                                                     type: 'occupation',
+                                                     order: params[:order] %>
                 <th><%= t('people.index.column_local') %> </th>
                 <th colspan="2"><%= t('people.index.column_company') %> </th>
               </tr>

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class PeopleController < ApplicationController
   def index
     @people = PersonSearcher
@@ -84,9 +82,9 @@ class PeopleController < ApplicationController
   end
 
   def filter_params
-    return {} unless params[:filter]
+    return {} unless params[:filter] || params[:order]
 
-    params.require(:filter).permit!
+    params.permit(:order, :type, filter: {})
   end
 
   def person_params
