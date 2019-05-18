@@ -8,9 +8,8 @@ class DealSearcher < BaseSearcher
   def call
     filter_by_domain_country_context
     filter_by_params
-    sort_by_close_date
 
-    @filter
+    sorted_deals
   end
 
   private
@@ -25,6 +24,8 @@ class DealSearcher < BaseSearcher
 
   def filter_by_params
     Hash(filter_params).each_value do |filter|
+      next if filter.is_a?(String)
+
       name = filter['type'].downcase.tr(' ', '_')
       operator = filter['operator'].downcase.tr(' ', '_')
       value = filter['value']
@@ -60,7 +61,24 @@ class DealSearcher < BaseSearcher
     value
   end
 
-  def sort_by_close_date
-    @filter = @filter.order(close_date: :desc)
+  def order_direction
+    @order_direction ||= filter_params.fetch('order', nil)
+  end
+
+  def order_type
+    @order_type ||= filter_params.fetch('type', nil)&.to_sym
+  end
+
+  def sorted_deals
+    @filter = @filter.joins(:company) if order_type == :name
+
+    @filter.order(order_criteria)
+  end
+
+  def order_criteria
+    return { close_date: :desc } if order_direction.blank? || order_type.blank?
+    return "companies.#{order_type} #{order_direction}" if order_type == :name
+
+    { order_type => order_direction }
   end
 end

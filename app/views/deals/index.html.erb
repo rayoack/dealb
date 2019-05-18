@@ -35,11 +35,21 @@
           <table class="table">
             <thead>
               <tr>
-                <th><%= t('deals.index.column_company') %> </th>
-                <th><%= t('deals.index.column_close_date') %> </th>
+                <%= render 'shared/sortable_header', url: deals_path,
+                                                     label: t('deals.index.column_company'),
+                                                     type: 'name',
+                                                     order: params[:order] %>
+
+                <%= render 'shared/sortable_header', url: deals_path,
+                                                     label: t('deals.index.column_close_date'),
+                                                     type: 'close_date',
+                                                     order: params[:order] %>
                 <th><%= t('deals.index.column_deal_type') %> </th>
                 <th><%= t('deals.index.column_investors') %> </th>
-                <th><%= t('deals.index.column_amount') %> </th>
+                <%= render 'shared/sortable_header', url: deals_path,
+                                                     label: t('deals.index.column_amount'),
+                                                     type: 'amount_cents',
+                                                     order: params[:order] %>
                 <th></th>
 
                 <% if user_admin? || user_moderator? %>

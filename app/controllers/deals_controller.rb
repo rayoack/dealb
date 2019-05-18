@@ -76,9 +76,9 @@ class DealsController < ApplicationController
   private_constant :DEAL_PARAMS
 
   def filter_params
-    return {} unless params[:filter]
+    return {} unless params[:filter] || params[:order]
 
-    params.require(:filter).permit!
+    params.permit(:order, :type, filter: {})
   end
 
   def alloweds
