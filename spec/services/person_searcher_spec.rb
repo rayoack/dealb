@@ -163,4 +163,41 @@ describe PersonSearcher do
       [matching_person1.id, matching_person2.id]
     )
   end
+
+  context 'sorting' do
+    subject { described_class.new(filter_params, company.domain_country_context) }
+
+    let(:company) { create :company }
+    let!(:person_1) { create :person, first_name: 'Lucas', occupation: 'PM' }
+    let!(:person_2) { create :person, first_name: 'Pedro', occupation: 'DevOps' }
+    let(:filter_params) { {} }
+
+    context 'order by desc' do
+      context 'name' do
+        let(:filter_params) { { type: 'first_name', order: 'desc' } }
+
+        it { expect(subject.call.to_a).to match_array([person_2, person_1]) }
+      end
+
+      context 'occupation' do
+        let(:filter_params) { { type: 'occupation', order: 'desc' } }
+
+        it { expect(subject.call.to_a).to match_array([person_1, person_2]) }
+      end
+    end
+
+    context 'order by asc' do
+      context 'name' do
+        let(:filter_params) { { type: 'first_name', order: 'asc' } }
+
+        it { expect(subject.call.to_a).to match_array([person_1, person_2]) }
+      end
+
+      context 'occupation' do
+        let(:filter_params) { { type: 'occupation', order: 'asc' } }
+
+        it { expect(subject.call.to_a).to match_array([person_2, person_1]) }
+      end
+    end
+  end
 end
