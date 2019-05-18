@@ -165,4 +165,54 @@ describe DealSearcher do
       [matching_deal1.id, matching_deal2.id]
     )
   end
+
+  context 'sorting' do
+    subject { described_class.new(filter_params, company_1.domain_country_context) }
+
+    let!(:company_1) { create :company, name: 'Bossa', description: 'Only devops' }
+    let!(:company_2) { create :company, name: 'Box', description: 'For UXes' }
+    let!(:deal_1) { create :deal, company: company_1, amount_cents: 4000, close_date: 2.days.ago }
+    let!(:deal_2) { create :deal, company: company_2, amount_cents: 200, close_date: 1.hour.ago }
+    let(:filter_params) { {} }
+
+    context 'order by desc' do
+      context 'name' do
+        let(:filter_params) { { type: 'name', order: 'desc' } }
+
+        it { expect(subject.call.to_a).to match_array([deal_2, deal_1]) }
+      end
+
+      context 'close_date' do
+        let(:filter_params) { { type: 'close_date', order: 'desc' } }
+
+        it { expect(subject.call.to_a).to match_array([deal_2, deal_1]) }
+      end
+
+      context 'amount' do
+        let(:filter_params) { { type: 'amount_cents', order: 'desc' } }
+
+        it { expect(subject.call.to_a).to match_array([deal_1, deal_2]) }
+      end
+    end
+
+    context 'order by asc' do
+      context 'name' do
+        let(:filter_params) { { type: 'name', order: 'asc' } }
+
+        it { expect(subject.call.to_a).to match_array([deal_1, deal_2]) }
+      end
+
+      context 'close_date' do
+        let(:filter_params) { { type: 'close_date', order: 'asc' } }
+
+        it { expect(subject.call.to_a).to match_array([deal_1, deal_2]) }
+      end
+
+      context 'amount' do
+        let(:filter_params) { { type: 'amount_cents', order: 'asc' } }
+
+        it { expect(subject.call.to_a).to match_array([deal_2, deal_1]) }
+      end
+    end
+  end
 end
