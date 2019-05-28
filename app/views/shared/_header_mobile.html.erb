@@ -39,6 +39,21 @@
       <% end %>
     </div>
     <div class="menu-colapsado">
+      <div class="search">
+          <form action="/search">
+            <div class="form-group search-form">
+              <input
+                 type="text"
+                 name="global_search"
+                 placeholder="<%= t('header.search_box') %>"
+                 class="search-input__mobile">
+              <input type="submit" value="Search" class="btn search-input__submit">
+            </div>
+          </form>
+      </div>
+      <div class="container-search">
+      </div>
+
       <ul>
         <li><a href="/companies"><%= t('header.companies') %></a></li>
         <li><a href="/deals"><%= t('header.deals') %></a></li>
@@ -102,7 +117,7 @@
                 <img src="/img/flag-es.svg" alt="" class="flag">
               </a>
             <% end %>
-        </div>
+          </div>
         </div>
       </ul>
     </div>
