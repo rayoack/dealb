@@ -157,4 +157,40 @@ describe Investors::Searcher do
       [matching_investor1.id, matching_investor2.id]
     )
   end
+
+  context 'sorting' do
+    subject { described_class.new(filter_params, company_1.domain_country_context) }
+
+    let!(:company_1) { create :company, name: 'Bossa', description: 'Only devops' }
+
+    let!(:investor_1) { create :investor }
+    let!(:investor_2) { create :investor }
+
+    let(:deal_1) { create :deal }
+    let(:deal_2) { create :deal }
+    let(:deal_3) { create :deal }
+
+    let(:filter_params) { {} }
+
+    context 'order by deals count' do
+      before do
+        create :deal_investor, deal: deal_1, investor: investor_1
+
+        create :deal_investor, deal: deal_2, investor: investor_2
+        create :deal_investor, deal: deal_3, investor: investor_2
+      end
+
+      context 'ASC' do
+        let(:filter_params) { { type: 'number_of_deals', order: 'asc' } }
+
+        it { expect(subject.call.to_a).to match_array([investor_1, investor_2]) }
+      end
+
+      context 'DESC' do
+        let(:filter_params) { { type: 'number_of_deals', order: 'desc' } }
+
+        it { expect(subject.call.to_a).to match_array([investor_2, investor_1]) }
+      end
+    end
+  end
 end
