@@ -5,9 +5,8 @@ class InvestorsController < ApplicationController
   before_action :load_investor, only: %i[show edit update]
 
   def index
-    @investors = Investors::Searcher
-      .new(filter_params, domain_country_context)
-      .call
+    @investors = Investors::Searcher.new(filter_params, domain_country_context)
+                                    .call
 
     @investors_paginated = @investors.page(params[:page])
   end

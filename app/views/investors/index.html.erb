@@ -36,8 +36,15 @@
           <table class="table">
             <thead>
               <tr>
-                <th><%= t('investor.index.column_name') %> </th>
-                <th><%= t('investor.index.column_number_of_investments') %> </th>
+                <th><%= t('investor.index.column_name') %></th>
+
+                <%= render partial: 'shared/sortable_header',
+                           locals: {
+                             url: investors_path,
+                             label: t('investor.index.column_number_of_investments'),
+                             type: 'number_of_deals',
+                             order: params[:order]
+                           } %>
                 <th colspan="2"><%= t('investor.index.column_location') %> </th>
               </tr>
             </thead>
