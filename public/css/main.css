@@ -1679,7 +1679,7 @@ footer .copyright p a {
 }
 .filter-block .container-filter .filter-result .filter-complete .item-filter {
   float: left;
-  width: auto;
+  width: 80rem;
   margin-bottom: 30px;
   position: relative;
 }
@@ -1701,6 +1701,7 @@ footer .copyright p a {
   padding-left: 0px;
   margin-bottom: 0px;
   list-style: none;
+  min-width: 76rem;
 }
 .filter-block .container-filter .filter-result .filter-complete .item-filter ul li {
   float: left;
@@ -1764,8 +1765,7 @@ footer .copyright p a {
 
 @media (max-width: 992px) {
   .filter-block .container-filter .filter-result .filter-complete .item-filter ul li.last-nivel-filter {
-    margin-top: 30px;
-    margin-left: 0;
+    margin-left: 3rem;
   }
 }
 
@@ -1791,10 +1791,13 @@ footer .copyright p a {
   float: left;
   background: transparent;
   border: none;
+
   padding: 0;
+  padding-right: 1rem;
+
   position: absolute;
   right: -35px;
-  top: 17px;
+  top: 16px;
   cursor: pointer;
 }
 .filter-block .container-filter .filter-result .add-new-filter {

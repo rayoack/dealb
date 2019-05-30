@@ -45,10 +45,6 @@ $(".last-sub-category li a").click(function(event) {
   showLastLevelFilters();
 
   if ($(this).find("i").length > 0) {
-    $(".filter-geral").css({
-      transform: 'translateX(-199px) translateY(0px)',
-      transition: '.3s all'
-    });
     $(".controls .arrow-left").removeClass('disabled');
   }
 
@@ -56,10 +52,6 @@ $(".last-sub-category li a").click(function(event) {
 });
 
 $(".add-new-filter").click(function(event) {
-  $(".filter-geral").css({
-    transform: 'translateX(0px) translateY(0px)',
-    transition: '.3s all'
-  });
   $(".bread li span").empty();
   $(".control-breadcrumbs .controls .arrow-left").addClass('disabled');
   $(".level-filter ul li").removeClass('active');
@@ -68,10 +60,6 @@ $(".add-new-filter").click(function(event) {
 });
 
 $(".btn-add-filter-modal").click(function(event) {
-  $(".filter-geral").css({
-    transform: 'translateX(0px) translateY(0px)',
-    transition: '.3s all'
-  });
   $(".bread li span").empty();
   $(".control-breadcrumbs .controls .arrow-left").addClass('disabled');
   $(".level-filter ul li").removeClass('active');
