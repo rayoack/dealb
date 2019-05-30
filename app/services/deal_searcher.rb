@@ -20,7 +20,7 @@ class DealSearcher < BaseSearcher
       funding_type: :filter_by_funding_type,
       amount: :filter_by_amount,
       date: :filter_by_date
-    }
+    }.with_indifferent_access
   end
 
   def filter_by_column(name, operator, value)
