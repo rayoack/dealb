@@ -59,7 +59,7 @@ class InvestorsController < ApplicationController
   def filter_params
     return {} unless params[:filter]
 
-    params.require(:filter).permit!
+    params.permit(:order, :type, filter: {})
   end
 
   def ranking_params

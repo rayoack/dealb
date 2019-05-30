@@ -1,8 +1,7 @@
 class PeopleController < ApplicationController
   def index
-    @people = PersonSearcher
-      .new(filter_params, domain_country_context)
-      .call
+    @people = PersonSearcher.new(filter_params, domain_country_context)
+                            .call
 
     @people_paginated = @people.page(params[:page])
   end

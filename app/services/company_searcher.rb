@@ -14,27 +14,15 @@ class CompanySearcher < BaseSearcher
 
   private
 
-  FILTERS = {
-    name: :filter_by_column,
-    description: :filter_by_column,
-    status: :filter_by_column,
-    employees_count: :filter_by_number,
-    location: :filter_by_location,
-    rounds_count: :filter_by_rounds
-  }.with_indifferent_access.freeze
-
-  def filter_by_params
-    Hash(filter_params).each_value do |filter|
-      next if filter.is_a?(String)
-
-      name = filter['type'].downcase.tr(' ', '_')
-      operator = filter['operator'].downcase.tr(' ', '_')
-      value = filter['value']
-      filter_name = FILTERS.fetch(name, 'bypass')
-
-      method(filter_name)
-        .call(name, OPERATORS.fetch(operator), value)
-    end
+  def filters
+    {
+      name: :filter_by_column,
+      description: :filter_by_column,
+      status: :filter_by_column,
+      employees_count: :filter_by_number,
+      location: :filter_by_location,
+      rounds_count: :filter_by_rounds
+    }
   end
 
   def filter_by_column(name, operator, value)
