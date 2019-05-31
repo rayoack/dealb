@@ -119,13 +119,15 @@ describe DealSearcher do
     let!(:matching_deal) do
       create :deal, status: Deal::VERIFIED,
                     category: Deal::INCUBATED_BY,
-                    round: Deal::ACCELERATION
+                    round: Deal::ACCELERATION,
+                    close_date: 1.day.ago
     end
 
     let!(:matching_deal2) do
       create :deal, status: Deal::VERIFIED,
                     category: Deal::INCUBATED_BY,
-                    round: Deal::ACCELERATION
+                    round: Deal::ACCELERATION,
+                    close_date: 1.hour.ago
     end
 
     let!(:non_matching_deal1) do

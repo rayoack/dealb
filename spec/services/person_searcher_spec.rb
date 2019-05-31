@@ -1,167 +1,160 @@
 describe PersonSearcher do
-  it 'filters by first name' do
-    matching_person = create(:person)
-    _non_matching_person = create(:person)
-    filter_params = {
-      '0' => {
-        'type' => 'name',
-        'operator' => 'equal',
-        'value' => matching_person.first_name
-      }
-    }
+  subject { described_class.new(filter_params, matching_person.domain_country_context) }
 
-    result = described_class.new(
-      filter_params,
-      matching_person.domain_country_context
-    ).call
+  context 'filters by first name' do
+    let!(:matching_person) { create(:person) }
+    let!(:_non_matching_person) { create(:person) }
+    let!(:filter_params) do
+      {
+        filter: {
+          '0' => {
+            type: 'name',
+            operator: 'equal',
+            value: matching_person.first_name
+          }
+        }
+      }.deep_stringify_keys
+    end
 
-    expect(result.pluck(:id)).to eq([matching_person.id])
+    it { expect(subject.call.pluck(:id)).to eq([matching_person.id]) }
   end
 
-  it 'filters by last name' do
-    matching_person = create(:person)
-    _non_matching_person = create(:person)
-    filter_params = {
-      '0' => {
-        'type' => 'name',
-        'operator' => 'equal',
-        'value' => matching_person.last_name
-      }
-    }
+  context 'filters by last name' do
+    let!(:matching_person) { create(:person) }
+    let!(:_non_matching_person) { create(:person) }
+    let!(:filter_params) do
+      {
+        filter: {
+          '0' => {
+            type: 'name',
+            operator: 'equal',
+            value: matching_person.last_name
+          }
+        }
+      }.deep_stringify_keys
+    end
 
-    result = described_class.new(
-      filter_params,
-      matching_person.domain_country_context
-    ).call
-
-    expect(result.pluck(:id)).to eq([matching_person.id])
+    it { expect(subject.call.pluck(:id)).to eq([matching_person.id]) }
   end
 
-  it 'filters by full name' do
-    matching_person = create(:person)
-    _non_matching_person = create(:person)
-    filter_params = {
-      '0' => {
-        'type' => 'name',
-        'operator' => 'equal',
-        'value' => [
-          matching_person.first_name,
-          matching_person.last_name
-        ].join(' ')
-      }
-    }
+  context 'filters by full name' do
+    let!(:matching_person) { create(:person) }
+    let!(:_non_matching_person) { create(:person) }
+    let!(:filter_params) do
+      {
+        filter: {
+          '0' => {
+            type: 'name',
+            operator: 'equal',
+            value: [
+              matching_person.first_name,
+              matching_person.last_name
+            ].join(' ')
+          }
+        }
+      }.deep_stringify_keys
+    end
 
-    result = described_class.new(
-      filter_params,
-      matching_person.domain_country_context
-    ).call
-
-    expect(result.pluck(:id)).to eq([matching_person.id])
+    it { expect(subject.call.pluck(:id)).to eq([matching_person.id]) }
   end
 
-  it 'filters by description' do
-    matching_person = create(:person, bio: 'first')
-    _non_matching_person = create(:person, bio: 'second')
-    filter_params = {
-      '0' => {
-        'type' => 'bio',
-        'operator' => 'contains',
-        'value' => matching_person.description
-      }
-    }
+  context 'filters by description' do
+    let!(:matching_person) { create(:person, bio: 'first') }
+    let!(:_non_matching_person) { create(:person, bio: 'second') }
+    let!(:filter_params) do
+      {
+        filter: {
+          '0' => {
+            type: 'bio',
+            operator: 'contains',
+            value: matching_person.description
+          }
+        }
+      }.deep_stringify_keys
+    end
 
-    result = described_class.new(
-      filter_params,
-      matching_person.domain_country_context
-    ).call
-
-    expect(result.pluck(:id)).to eq([matching_person.id])
+    it { expect(subject.call.pluck(:id)).to eq([matching_person.id]) }
   end
 
-  it 'filters by gender' do
-    matching_person = create(:person, gender: Person::MALE)
-    _non_matching_person = create(:person, gender: Person::FEMALE)
-    filter_params = {
-      '0' => {
-        'type' => 'gender',
-        'operator' => 'equal',
-        'value' => matching_person.gender
-      }
-    }
+  context 'filters by gender' do
+    let!(:matching_person) { create(:person, gender: Person::MALE) }
+    let!(:_non_matching_person) { create(:person, gender: Person::FEMALE) }
+    let!(:filter_params) do
+      {
+        filter: {
+          '0' => {
+            type: 'gender',
+            operator: 'equal',
+            value: matching_person.gender
+          }
+        }
+      }.deep_stringify_keys
+    end
 
-    result = described_class.new(
-      filter_params,
-      matching_person.domain_country_context
-    ).call
-
-    expect(result.pluck(:id)).to eq([matching_person.id])
+    it { expect(subject.call.pluck(:id)).to eq([matching_person.id]) }
   end
 
-  it 'filters by occupation' do
-    matching_person = create(:person)
-    _non_matching_person = create(:person)
-    filter_params = {
-      '0' => {
-        'type' => 'occupation',
-        'operator' => 'equal',
-        'value' => matching_person.occupation
-      }
-    }
+  context 'filters by occupation' do
+    let!(:matching_person) { create(:person) }
+    let!(:_non_matching_person) { create(:person) }
+    let!(:filter_params) do
+      {
+        filter: {
+          '0' => {
+            type: 'occupation',
+            operator: 'equal',
+            value: matching_person.occupation
+          }
+        }
+      }.deep_stringify_keys
+    end
 
-    result = described_class.new(
-      filter_params,
-      matching_person.domain_country_context
-    ).call
-
-    expect(result.pluck(:id)).to eq([matching_person.id])
+    it { expect(subject.call.pluck(:id)).to eq([matching_person.id]) }
   end
 
-  it 'filters by multiple criteria' do
-    matching_person1 = create(
-      :person,
-      first_name: 'Fernando',
-      last_name: 'Almeida',
-      gender: Person::MALE
-    )
-    matching_person2 = create(
-      :person,
-      first_name: 'Fabio',
-      last_name: 'Almeida',
-      gender: Person::MALE
-    )
-    _non_matching_person1 = create(
-      :person,
-      first_name: 'Ana Sofia',
-      last_name: 'Almeida',
-      gender: Person::FEMALE
-    )
-    _non_matching_person2 = create(
-      :person,
-      first_name: 'Denise',
-      last_name: 'Cerqueira',
-      gender: Person::FEMALE
-    )
-    filter_params = {
-      '0' => {
-        'type' => 'gender',
-        'operator' => 'equal',
-        'value' => Person::MALE
-      },
-      '1' => {
-        'type' => 'name',
-        'operator' => 'contains',
-        'value' => 'Almeida'
-      }
-    }
+  context 'filters by multiple criteria' do
+    let!(:matching_person) do
+      create :person, first_name: 'Fernando',
+                      last_name: 'Almeida',
+                      gender: Person::MALE
+    end
 
-    result = described_class.new(
-      filter_params,
-      matching_person1.domain_country_context
-    ).call
+    let!(:matching_person2) do
+      create :person, first_name: 'Fabio',
+                      last_name: 'Almeida',
+                      gender: Person::MALE
+    end
 
-    expect(result.pluck(:id)).to match_array(
-      [matching_person1.id, matching_person2.id]
-    )
+    let!(:_non_matching_person1) do
+      create :person, first_name: 'Ana Sofia',
+                      last_name: 'Almeida',
+                      gender: Person::FEMALE
+    end
+
+    let!(:_non_matching_person2) do
+      create :person, first_name: 'Denise',
+                      last_name: 'Cerqueira',
+                      gender: Person::FEMALE
+    end
+
+    let!(:filter_params) do
+      {
+        filter: {
+          '0' => {
+            type: 'gender',
+            operator: 'equal',
+            value: Person::MALE
+          },
+          '1' => {
+            type: 'name',
+            operator: 'contains',
+            value: 'Almeida'
+          }
+        }
+      }.deep_stringify_keys
+    end
+
+    it { expect(subject.call.pluck(:id)).to match_array([matching_person.id, matching_person2.id]) }
   end
 
   context 'sorting' do

@@ -1,161 +1,159 @@
 describe Investors::Searcher do
-  it 'filters by status' do
-    matching_investor = create(:investor, status: Investor::ACTIVE)
-    _non_matching_investor = create(:investor, status: Investor::INACTIVE)
-    filter_params = {
-      '0' => {
-        'type' => 'status',
-        'operator' => 'equal',
-        'value' => matching_investor.status
-      }
-    }
+  subject { described_class.new(filter_params, matching_investor.domain_country_context) }
 
-    result = described_class.new(
-      filter_params,
-      matching_investor.domain_country_context
-    ).call
+  context 'filters by status' do
+    let!(:matching_investor) { create(:investor, status: Investor::ACTIVE) }
+    let!(:_non_matching_investor) { create(:investor, status: Investor::INACTIVE) }
+    let!(:filter_params) do
+      {
+        filter: {
+          '0' => {
+            type: 'status',
+            operator: 'equal',
+            value: matching_investor.status
+          }
+        }
+      }.deep_stringify_keys
+    end
 
-    expect(result.pluck(:id)).to eq([matching_investor.id])
+    it { expect(subject.call.pluck(:id)).to eq([matching_investor.id]) }
   end
 
-  it 'filters by tag' do
-    matching_investor = create(:investor, tag: Investor::ANGEL)
-    _non_matching_investor = create(:investor, tag: Investor::ACCELERATOR)
-    filter_params = {
-      '0' => {
-        'type' => 'tag',
-        'operator' => 'equal',
-        'value' => matching_investor.tag
-      }
-    }
+  context 'filters by tag' do
+    let!(:matching_investor) { create(:investor, tag: Investor::ANGEL) }
+    let!(:_non_matching_investor) { create(:investor, tag: Investor::ACCELERATOR) }
+    let!(:filter_params) do
+      {
+        filter: {
+          '0' => {
+            type: 'tag',
+            operator: 'equal',
+            value: matching_investor.tag
+          }
+        }
+      }.deep_stringify_keys
+    end
 
-    result = described_class.new(
-      filter_params,
-      matching_investor.domain_country_context
-    ).call
-
-    expect(result.pluck(:id)).to eq([matching_investor.id])
+    it { expect(subject.call.pluck(:id)).to eq([matching_investor.id]) }
   end
 
-  it 'filters by funding stage' do
-    matching_investor = create(:investor, stage: Investor::SEED)
-    _non_matching_investor = create(:investor, stage: Investor::IPO)
-    filter_params = {
-      '0' => {
-        'type' => 'stage',
-        'operator' => 'equal',
-        'value' => matching_investor.stage
-      }
-    }
+  context 'filters by funding stage' do
+    let!(:matching_investor) { create(:investor, stage: Investor::SEED) }
+    let!(:_non_matching_investor) { create(:investor, stage: Investor::IPO) }
+    let!(:filter_params) do
+      {
+        filter: {
+          '0' => {
+            type: 'stage',
+            operator: 'equal',
+            value: matching_investor.stage
+          }
+        }
+      }.deep_stringify_keys
+    end
 
-    result = described_class.new(
-      filter_params,
-      matching_investor.domain_country_context
-    ).call
-
-    expect(result.pluck(:id)).to eq([matching_investor.id])
+    it { expect(subject.call.pluck(:id)).to eq([matching_investor.id]) }
   end
 
-  it 'filters by number of deals' do
-    matching_investor = create(:investor)
-    non_matching_investor = create(:investor)
-    create_list(:deal_investor, 2, investor: matching_investor)
-    create_list(:deal_investor, 1, investor: non_matching_investor)
+  context 'filters by number of deals' do
+    let!(:matching_investor) { create(:investor) }
+    let!(:non_matching_investor) { create(:investor) }
+    let!(:filter_params) do
+      {
+        filter: {
+          '0' => {
+            type: 'number_of_deals',
+            operator: 'equal',
+            value: '2'
+          }
+        }
+      }.deep_stringify_keys
+    end
 
-    filter_params = {
-      '0' => {
-        'type' => 'number_of_deals',
-        'operator' => 'equal',
-        'value' => '2'
-      }
-    }
+    before do
+      create_list(:deal_investor, 2, investor: matching_investor)
+      create_list(:deal_investor, 1, investor: non_matching_investor)
+    end
 
-    result = described_class.new(
-      filter_params,
-      matching_investor.domain_country_context
-    ).call
-
-    expect(result.pluck(:id)).to eq([matching_investor.id])
+    it { expect(subject.call.pluck(:id)).to eq([matching_investor.id]) }
   end
 
-  it 'filters by total funds invested' do
-    matching_investor = create(:investor)
-    non_matching_investor = create(:investor)
-    deal_1 = create :deal, amount_cents: 200_000
-    deal_2 = create :deal, amount_cents: 2_000_000
-    deal_3 = create :deal, amount_cents: 800_000
+  context 'filters by total funds invested' do
+    let!(:deal_1) { create :deal, amount_cents: 200_000 }
+    let!(:deal_2) { create :deal, amount_cents: 2_000_000 }
+    let!(:deal_3) { create :deal, amount_cents: 800_000 }
 
-    create :deal_investor, deal: deal_1, investor: matching_investor
-    create :deal_investor, deal: deal_2, investor: matching_investor
-    create :deal_investor, deal: deal_3, investor: non_matching_investor
+    let!(:matching_investor) { create(:investor) }
+    let!(:non_matching_investor) { create(:investor) }
+    let!(:filter_params) do
+      {
+        filter: {
+          '0' => {
+            type: 'total_funds_invested',
+            operator: 'equal',
+            value: ((deal_1.amount_cents + deal_2.amount_cents).to_i / 100).to_s
+          }
+        }
+      }.deep_stringify_keys
+    end
 
-    filter_params = {
-      '0' => {
-        'type' => 'total_funds_invested',
-        'operator' => 'equal',
-        'value' => ((deal_1.amount_cents + deal_2.amount_cents).to_i / 100).to_s
-      }
-    }
+    before do
+      create :deal_investor, deal: deal_1, investor: matching_investor
+      create :deal_investor, deal: deal_2, investor: matching_investor
+      create :deal_investor, deal: deal_3, investor: non_matching_investor
+    end
 
-    result = described_class.new(
-      filter_params,
-      matching_investor.domain_country_context
-    ).call
-
-    expect(result.pluck(:id)).to eq([matching_investor.id])
+    it { expect(subject.call.pluck(:id)).to eq([matching_investor.id]) }
   end
 
-  it 'filters by multiple criteria' do
-    matching_investor1 = create(
-      :investor,
-      status: Investor::ACTIVE,
-      tag: Investor::ANGEL,
-      stage: Investor::SEED
-    )
-    matching_investor2 = create(
-      :investor,
-      status: Investor::ACTIVE,
-      tag: Investor::ANGEL,
-      stage: Investor::SEED
-    )
-    _non_matching_investor1 = create(
-      :investor,
-      status: Investor::INACTIVE,
-      tag: Investor::ANGEL,
-      stage: Investor::SEED
-    )
-    _non_matching_investor2 = create(
-      :investor,
-      status: Investor::ACTIVE,
-      tag: Investor::ACCELERATOR,
-      stage: Investor::SEED
-    )
-    filter_params = {
-      '0' => {
-        'type' => 'status',
-        'operator' => 'equal',
-        'value' => Investor::ACTIVE
-      },
-      '1' => {
-        'type' => 'tag',
-        'operator' => 'contains',
-        'value' => Investor::ANGEL
-      },
-      '2' => {
-        'type' => 'stage',
-        'operator' => 'contains',
-        'value' => Investor::SEED
-      }
-    }
+  context 'filters by multiple criteria' do
+    let!(:matching_investor) do
+      create :investor, status: Investor::ACTIVE,
+                        tag: Investor::ANGEL,
+                        stage: Investor::SEED
+    end
 
-    result = described_class.new(
-      filter_params,
-      matching_investor1.domain_country_context
-    ).call
+    let!(:matching_investor2) do
+      create :investor, status: Investor::ACTIVE,
+                        tag: Investor::ANGEL,
+                        stage: Investor::SEED
+    end
 
-    expect(result.pluck(:id)).to match_array(
-      [matching_investor1.id, matching_investor2.id]
-    )
+    let!(:_non_matching_investor1) do
+      create :investor, status: Investor::INACTIVE,
+                        tag: Investor::ANGEL,
+                        stage: Investor::SEED
+    end
+
+    let!(:_non_matching_investor2) do
+      create :investor, status: Investor::ACTIVE,
+                        tag: Investor::ACCELERATOR,
+                        stage: Investor::SEED
+    end
+
+    let!(:filter_params) do
+      {
+        filter: {
+          '0' => {
+            type: 'status',
+            operator: 'equal',
+            value: Investor::ACTIVE
+          },
+          '1' => {
+            type: 'tag',
+            operator: 'contains',
+            value: Investor::ANGEL
+          },
+          '2' => {
+            type: 'stage',
+            operator: 'contains',
+            value: Investor::SEED
+          }
+        }
+      }.deep_stringify_keys
+    end
+
+    it { expect(subject.call.pluck(:id)).to match_array([matching_investor.id, matching_investor2.id]) }
   end
 
   context 'sorting' do
