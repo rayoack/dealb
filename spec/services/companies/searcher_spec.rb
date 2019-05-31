@@ -1,9 +1,9 @@
-describe CompanySearcher do
+describe Companies::Searcher do
   subject { described_class.new(filter_params, matching_company.domain_country_context) }
 
   context 'filters by name' do
     let!(:matching_company) { create(:company) }
-    let!(:_non_matching_company) { create(:company) }
+    let!(:non_matching_company) { create(:company) }
     let!(:filter_params) do
       {
         filter: {
@@ -21,7 +21,7 @@ describe CompanySearcher do
 
   context 'filters by description' do
     let!(:matching_company) { create(:company, description: "Pucca's Inc") }
-    let!(:_non_matching_company) { create(:company) }
+    let!(:non_matching_company) { create(:company) }
     let!(:filter_params) do
       {
         filter: {
@@ -39,7 +39,7 @@ describe CompanySearcher do
 
   context 'filters by status' do
     let!(:matching_company) { create(:company, status: :active) }
-    let!(:_non_matching_company) { create(:company, status: :acquired) }
+    let!(:non_matching_company) { create(:company, status: :acquired) }
     let!(:filter_params) do
       {
         filter: {
@@ -57,7 +57,7 @@ describe CompanySearcher do
 
   context 'filters by employees count' do
     let!(:matching_company) { create(:company, employees_count: 100) }
-    let!(:_non_matching_company) { create(:company, employees_count: 1_000) }
+    let!(:non_matching_company) { create(:company, employees_count: 1_000) }
     let!(:filter_params) do
       {
         filter: {
@@ -124,14 +124,14 @@ describe CompanySearcher do
                        description: 'The best company for deep learning and neural networks.'
     end
 
-    let!(:_non_matching_company_1) do
+    let!(:non_matching_company_1) do
       create :company, name: "Pucca's Corp",
                        description: 'Network provider',
                        employees_count: 100,
                        status: :active
     end
 
-    let!(:_non_matching_company_2) do
+    let!(:non_matching_company_2) do
       create :company, name: "Bahia's Inc", description: 'Artifial intelligence'
     end
 
@@ -153,6 +153,43 @@ describe CompanySearcher do
     end
 
     it { expect(subject.call.pluck(:id)).to match_array([matching_company.id, matching_company_2.id]) }
+  end
+
+  context 'filters by funds raised' do
+    let!(:matching_company) { create :company }
+    let!(:non_matching_company) { create :company }
+    let(:operator) { 'equal' }
+    let(:value) { 500 }
+
+    let(:filter_params) do
+      {
+        filter: {
+          '0' => {
+            type: 'funds_raised',
+            operator: operator,
+            value: value
+          }
+        }
+      }.deep_stringify_keys
+    end
+
+    before do
+      create :deal, company: matching_company, amount_cents: 200
+      create :deal, company: matching_company, amount_cents: 300
+
+      create :deal, company: non_matching_company, amount_cents: 300
+    end
+
+    context 'with exact amount' do
+      it { expect(subject.call.pluck(:id)).to eq([matching_company.id]) }
+    end
+
+    context 'with greater than' do
+      let(:operator) { 'greater_than' }
+      let(:value) { 301 }
+
+      it { expect(subject.call.pluck(:id)).to eq([matching_company.id]) }
+    end
   end
 
   context 'sorting' do

@@ -6,10 +6,8 @@ class CompaniesController < ApplicationController
   before_action :load_company, only: %i[show edit update widget]
 
   def index
-    @companies = CompanySearcher.new(
-      filter_params,
-      domain_country_context
-    ).call
+    @companies = Companies::Searcher.new(filter_params,
+                                         domain_country_context).call
 
     @companies_paginated = @companies.page(params[:page])
   end

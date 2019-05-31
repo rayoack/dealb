@@ -44,6 +44,6 @@ class BaseSearcher
   end
 
   def bypass(name, _operator, _value)
-    Rails.logger.info("unknown filter by name '#{name}'")
+    Rails.logger.info("Unknown filter by name '#{name}'")
   end
 end
