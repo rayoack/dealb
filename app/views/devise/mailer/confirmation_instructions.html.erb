@@ -1,7 +1,17 @@
-<div class="dealbook-header">Dealbook</div>
+<div class="dealbook-card__title">
+  <%= I18n.t('auth.registration.mail.title') %>
+</div>
 
-<p><%= I18n.t('auth.registration.mail.title') %></p>
+<div class="dealbook-card__body">
+  <p> <%= I18n.t('auth.registration.mail.thank_you') %> </p>
+  <p> <%= I18n.t('auth.registration.mail.complete_registration') %> </p>
 
-<p><%= I18n.t('auth.registration.mail.body') %></p>
 
-<p><%= link_to I18n.t('auth.registration.mail.confirm'), user_confirmation_url(confirmation_token: @token) %></p>
+  <p class="dealbook-card__actions">
+    <%= link_to I18n.t('auth.registration.mail.confirm'), user_confirmation_url(confirmation_token: @token),
+                                                          class: 'dealbook-card__btn'%>
+  </p>
+
+  <p> <%= I18n.t('auth.registration.mail.greetings') %>,</p>
+  <p> <%= I18n.t('auth.registration.mail.team') %>. </p>
+</div>

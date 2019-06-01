@@ -2,9 +2,12 @@ pt-br:
   auth:
     registration:
       mail:
-        title: 'Bem vindo ao Dealbook!'
-        body: 'Voce pode confirmar sua conta de email atraves do link abaixo:'
-        confirm: 'Confirmar minha conta'
+        title: 'Olá, seja bem-vindo(a)'
+        thank_you: 'Obrigado por se cadastrar no DealBook.'
+        complete_registration: 'Falta apenas um clique para completar seu cadastro.'
+        confirm: 'Confirmar meu e-mail'
+        greetings: 'Atenciosamente'
+        team: 'Equipe Dealbook'
   header:
     search_box: 'Encontre organizações, investidores e pessoas'
     companies: 'Organizações'

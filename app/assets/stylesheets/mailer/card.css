@@ -1,0 +1,21 @@
+.dealbook-card__title {
+  color: #374F97;
+  font-weight: 600;
+  font-size: 22px;
+
+  margin: 3rem 0;
+}
+
+.dealbook-card__btn {
+  font-family: Helvetica;
+  background-color: #2CC9C2;
+  color: white;
+  text-decoration: none;
+
+  border-radius: 4px;
+  padding: 18px;
+}
+
+.dealbook-card__actions {
+  margin: 3rem 0;
+}

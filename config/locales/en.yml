@@ -2,9 +2,12 @@ en:
   auth:
     registration:
       mail:
-        title: 'Welcome to Dealbook!'
-        body: 'You can confirm your account email through the link below:'
-        confirm: 'Confirm my account'
+        title: 'Hello, welcome!'
+        thank_you: 'Thank you to sign-up on DealBook.'
+        complete_registration: 'Just one click is needed to complete your registration.'
+        confirm: 'Confirm my e-mail'
+        greetings: 'Greetings'
+        team: 'Dealbook Team'
   header:
     search_box: 'Find organizations, investors and people'
     companies: 'Organizations'
