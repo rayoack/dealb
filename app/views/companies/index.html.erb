@@ -67,7 +67,7 @@
                   <td class="status-active"><span class="circulo"></span> <%= company.status %></td>
                   <td class="column-location"><%= company.locations.pluck(:city, :country).join(', ') %></td>
                   <td><%= company.deals.map(&:category).uniq.map { |category| I18n.t("deals.model.categories.#{category}") }.join(', ') %></td>
-                  <td><a href="/companies/<%= company.permalink %>"><img src="/img/seta-dir.svg" alt=""></a></td>
+                  <td><a href="<%= companies_path(id: company.permalink) %>"><img src="/img/seta-dir.svg" alt=""></a></td>
                 </tr>
               <% end %>
             </tbody>

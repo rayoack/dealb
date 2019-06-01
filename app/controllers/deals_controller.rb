@@ -4,26 +4,21 @@ class DealsController < ApplicationController
   before_action :authenticate_user!, only: %i[edit update destroy]
   before_action :only_admin_or_moderator!, only: %i[edit update destroy]
 
+  before_action :load_companies, only: %i[new create edit update]
+  before_action :load_investors, only: %i[new create edit update]
+  before_action :load_deal, only: %i[edit show update destroy]
+
   def index
-    @deals = DealSearcher.new(
-      filter_params,
-      domain_country_context
-    ).call
+    @deals = DealSearcher.new(filter_params, domain_country_context).call
 
     @deals_paginated = @deals.page(params[:page])
   end
 
   def new
-    @companies = Company.where(domain_country_context: domain_country_context)
-    @investors = Investor.where(domain_country_context: domain_country_context)
-
     @deal = Deal.new
   end
 
   def create
-    @companies = Company.where(domain_country_context: domain_country_context)
-    @investors = Investor.where(domain_country_context: domain_country_context)
-
     @deal = Deal.new(deal_params)
 
     if @deal.save
@@ -33,23 +28,11 @@ class DealsController < ApplicationController
     end
   end
 
-  def edit
-    @companies = Company.where(domain_country_context: domain_country_context)
-    @investors = Investor.where(domain_country_context: domain_country_context)
+  def edit; end
 
-    @deal = Deal.find(params[:id])
-  end
-
-  def show
-    @deal = Deal.find(params[:id])
-  end
+  def show; end
 
   def update
-    @companies = Company.where(domain_country_context: domain_country_context)
-    @investors = Investor.where(domain_country_context: domain_country_context)
-
-    @deal = Deal.find(params[:id])
-
     if @deal.update(deal_params)
       redirect_to deals_path, notice: 'Successfully updated'
     else
@@ -58,8 +41,6 @@ class DealsController < ApplicationController
   end
 
   def destroy
-    @deal = Deal.find(params[:id])
-
     if @deal.delete
       redirect_to deals_path, notice: 'Successfully deleted.'
     else
@@ -73,7 +54,6 @@ class DealsController < ApplicationController
     close_date company_id category round amount_currency
     amount_cents pre_valuation_cents source_url status
   ].freeze
-  private_constant :DEAL_PARAMS
 
   def filter_params
     return {} unless params[:filter] || params[:order]
@@ -110,5 +90,17 @@ class DealsController < ApplicationController
 
     flash[:error] = 'Unauthorized'
     redirect_to root_path
+  end
+
+  def load_companies
+    @companies = Company.where(domain_country_context: domain_country_context)
+  end
+
+  def load_investors
+    @investors = Investor.where(domain_country_context: domain_country_context)
+  end
+
+  def load_deal
+    @deal = Deal.find(params[:id])
   end
 end
