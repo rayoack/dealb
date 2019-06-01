@@ -467,6 +467,7 @@ en:
     value: 'Value'
     employees_count: 'Employees Count'
     rounds_count: 'Deal Rounds'
+    funds_raised: 'Total Raised'
     status: 'Status'
     category: 'Category'
     tag: 'Tag'

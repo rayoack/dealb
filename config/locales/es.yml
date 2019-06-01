@@ -461,6 +461,7 @@ es:
     description: 'Descripción'
     employees_count: 'Empleados'
     rounds_count: 'Rodadas'
+    funds_raised: 'Total Recaudado'
     status: 'Status'
     category: 'Categoría'
     tag: 'Tag'

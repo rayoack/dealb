@@ -464,6 +464,7 @@ pt-br:
     description: 'Descrição'
     employees_count: 'Empregados'
     rounds_count: 'Rodadas'
+    funds_raised: 'Total Captado'
     status: 'Status'
     category: 'Categoria'
     tag: 'Tag'
