@@ -2,12 +2,19 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <style>
-      /* Email styles need to be inline */
-    </style>
+
+    <%= stylesheet_link_tag "mailer" %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="dealbook-container">
+      <div class="dealbook-header">
+        Deal<strong>book</strong>
+      </div>
+
+      <div class="dealbook-container__card">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

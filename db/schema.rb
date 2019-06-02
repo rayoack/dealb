@@ -182,6 +182,11 @@ ActiveRecord::Schema.define(version: 20190325025143) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "person_id"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["person_id"], name: "index_users_on_person_id"
     t.index ["provider"], name: "index_users_on_provider"

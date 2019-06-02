@@ -1,0 +1,15 @@
+.dealbook-container {
+  background-color: #F9F9F9;
+  color: #170C3A;
+
+  padding: 64px 16rem;
+  font-family: Helvetica;
+}
+
+.dealbook-container__card {
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid #DCDBE1;
+
+  padding: 0 4rem;
+}
