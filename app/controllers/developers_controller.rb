@@ -1,8 +1,6 @@
-require('integrations/github')
-
 class DevelopersController < ApplicationController
   def index
-    @developers = Github.all_contributors(except: users_to_ignore)
+    @developers = Integrations::Github.all_contributors(except: users_to_ignore)
   end
 
   private
