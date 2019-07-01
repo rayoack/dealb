@@ -15,6 +15,8 @@ module ApplicationHelper
       Deal::BRL => 'R$'
     }.fetch(currency, currency)
 
-    number_to_currency(number_to_human(amount, precision: 2), unit: unit)
+    unit ||= 'USD'
+
+    number_to_currency(number_to_human(amount || 0.0, precision: 2), unit: unit)
   end
 end

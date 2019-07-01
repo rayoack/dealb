@@ -2,6 +2,8 @@
 
 module DealsHelper
   def investors_link(deal)
+    return if deal.investors.blank?
+
     deal.investors.map do |investor|
       if investor.investable_type == 'Company'
         link_to(investor.name, "/companies/#{investor.investable.permalink}")

@@ -37,7 +37,11 @@
 
             <h2 class="category category-text">
               <img src="/img/description.svg" alt="">
-              <%= t('deals.show.source') %>: <%= link_to @deal.source_url, @deal.source_url, target: "_blank" %>
+              <%= t('deals.show.source') %>:
+
+              <% if @deal.source_url.present? %>
+                <%= link_to @deal.source_url, @deal.source_url, target: "_blank" %>
+              <% end %>
             </h2>
 
             <% if user_admin? || user_moderator? %>
