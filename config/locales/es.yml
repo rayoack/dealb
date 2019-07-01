@@ -319,6 +319,7 @@ es:
       description: 'Descripción'
       founded: 'Fundada'
       media: 'Medios Sociales'
+      media_empty: 'No se han agregado perfiles de redes sociales'
       status:
         active: 'Activa'
         inactive: 'Inactiva'

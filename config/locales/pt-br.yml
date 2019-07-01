@@ -322,6 +322,7 @@ pt-br:
       description: 'Descrição'
       founded: 'Fundada'
       media: 'Mídias Sociais'
+      media_empty: 'Sem informações de mídias sociais'
       status:
         active: 'Ativa'
         inactive: 'Inativa'

@@ -19,7 +19,7 @@
             <img src="/img/clock.svg" alt="">
             <%= t('investor.show.tag') %>: <%= t("investor.show.categories.#{@investor.tag}") %>
             <% if user_admin? || user_moderator? %>
-              <a href="/investors/<%= @investor.permalink %>/edit" 
+              <a href="/investors/<%= @investor.permalink %>/edit"
                  class="btn btn-default"><%= t('deals.show.edit') %></a>
             <% end %>
           </h2>
@@ -71,31 +71,36 @@
           </ul>
           <div class="social">
             <h1><%= t('investor.show.media') %></h1>
-            <ul>
-              <% if @investor.investable.facebook_url %>
-                <li>
-                  <a href="<%= @investor.investable.facebook_url %>" target="_blank">
-                    <img src="/img/facebook-colorido.svg" alt="">
-                  </a>
-                </li>
-              <% end %>
 
-              <% if @investor.investable.twitter_url %>
-                <li>
-                  <a href="<%= @investor.investable.twitter_url %>" target="_blank">
-                    <img src="/img/twitter-colorido.svg" alt="">
-                  </a>
-                </li>
-              <% end %>
+            <% if @investor.investable.social_media? %>
+              <ul>
+                <% if @investor.investable.facebook_url %>
+                  <li>
+                    <a href="<%= @investor.investable.facebook_url %>" target="_blank">
+                      <img src="/img/facebook-colorido.svg" alt="">
+                    </a>
+                  </li>
+                <% end %>
 
-              <% if @investor.investable.linkedin_url %>
-                <li>
-                  <a href="<%= @investor.investable.linkedin_url %>" target="_blank">
-                    <img src="/img/linkedin-colorido.svg" alt="">
-                  </a>
-                </li>
-              <% end %>
-            </ul>
+                <% if @investor.investable.twitter_url %>
+                  <li>
+                    <a href="<%= @investor.investable.twitter_url %>" target="_blank">
+                      <img src="/img/twitter-colorido.svg" alt="">
+                    </a>
+                  </li>
+                <% end %>
+
+                <% if @investor.investable.linkedin_url %>
+                  <li>
+                    <a href="<%= @investor.investable.linkedin_url %>" target="_blank">
+                      <img src="/img/linkedin-colorido.svg" alt="">
+                    </a>
+                  </li>
+                <% end %>
+              </ul>
+            <% else %>
+              <%= t('investor.show.media_empty') %>
+            <% end %>
           </div>
         </div>
       </div>

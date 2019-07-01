@@ -322,6 +322,7 @@ en:
       description: 'Description'
       founded: 'Born'
       media: 'Social Media'
+      media_empty: 'No social media information added'
       status:
         active: 'Active'
         inactive: 'Inactive'

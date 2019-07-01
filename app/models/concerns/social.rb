@@ -16,5 +16,9 @@ module Social
       new_attributes[:clearbit_synchronized_at] = Time.zone.now
       update!(new_attributes)
     end
+
+    def social_media?
+      try(:facebook_url) || try(:twitter_url) || try(:linkedin_url)
+    end
   end
 end
