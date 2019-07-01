@@ -79,39 +79,44 @@
           </ul>
           <div class="social">
             <h1><%= t('people.show.media') %></h1>
-            <ul>
-              <% if @person.facebook_url %>
-                <li>
-                  <a href="<%= @person.facebook_url %>" target="_blank">
-                    <img src="/img/facebook-colorido.svg" alt="">
-                  </a>
-                </li>
-              <% end %>
 
-              <% if @person.twitter_url %>
-                <li>
-                  <a href="<%= @person.twitter_url %>" target="_blank">
-                    <img src="/img/twitter-colorido.svg" alt="">
-                  </a>
-                </li>
-              <% end %>
+            <% if @person.social_media? %>
+              <ul>
+                <% if @person.facebook_url %>
+                  <li>
+                    <a href="<%= @person.facebook_url %>" target="_blank">
+                      <img src="/img/facebook-colorido.svg" alt="">
+                    </a>
+                  </li>
+                <% end %>
 
-              <% if @person.google_plus_url %>
-                <li>
-                  <a href="<%= @person.google_plus_url %>" target="_blank">
-                    <img src="/img/google-colorido.svg" alt="">
-                  </a>
-                </li>
-              <% end %>
+                <% if @person.twitter_url %>
+                  <li>
+                    <a href="<%= @person.twitter_url %>" target="_blank">
+                      <img src="/img/twitter-colorido.svg" alt="">
+                    </a>
+                  </li>
+                <% end %>
 
-              <% if @person.linkedin_url %>
-                <li>
-                  <a href="<%= @person.linkedin_url %>" target="_blank">
-                    <img src="/img/linkedin-colorido.svg" alt="">
-                  </a>
-                </li>
-              <% end %>
-            </ul>
+                <% if @person.google_plus_url %>
+                  <li>
+                    <a href="<%= @person.google_plus_url %>" target="_blank">
+                      <img src="/img/google-colorido.svg" alt="">
+                    </a>
+                  </li>
+                <% end %>
+
+                <% if @person.linkedin_url %>
+                  <li>
+                    <a href="<%= @person.linkedin_url %>" target="_blank">
+                      <img src="/img/linkedin-colorido.svg" alt="">
+                    </a>
+                  </li>
+                <% end %>
+              </ul>
+            <% else %>
+              <%= t('investor.show.media_empty') %>
+            <% end %>
           </div>
         </div>
       </div>
