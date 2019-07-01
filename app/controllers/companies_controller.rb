@@ -9,7 +9,8 @@ class CompaniesController < ApplicationController
     @companies = Companies::Searcher.new(filter_params,
                                          domain_country_context).call
 
-    @companies_paginated = @companies.page(params[:page])
+    @companies_paginated = @companies.preload(:locations, :deals)
+                                     .page(params[:page])
   end
 
   def show
