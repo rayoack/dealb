@@ -489,6 +489,7 @@ pt-br:
     stage: 'Estágio'
     number_of_deals: 'Número de negócios'
     total_funds_invested: 'Total Investido'
+    tags: 'Tags'
     labels:
       status:
         active: 'Ativa'

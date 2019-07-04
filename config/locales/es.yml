@@ -486,6 +486,7 @@ es:
     stage: 'Etapa'
     number_of_deals: 'Número de Negocios'
     total_funds_invested: 'Total Invertido'
+    tags: 'Tags'
     labels:
       status:
         active: 'Activa'
