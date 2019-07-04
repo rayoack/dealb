@@ -6,7 +6,7 @@ module Devise
 
     helper :application
 
-    default from: "dontreply@#{ENV.fetch('DEALBOOK_MAILGUN_DOMAIN')}"
+    default from: "Dealbook <dontreply@#{ENV.fetch('DEALBOOK_MAILGUN_DOMAIN')}>"
 
     def confirmation_instructions(record, token, opts = {})
       super
