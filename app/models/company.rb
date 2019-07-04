@@ -39,6 +39,7 @@ class Company < ApplicationRecord
   has_many :company_markets, dependent: :destroy
   has_many :markets, through: :company_markets
   has_many :deals, dependent: :destroy
+  has_many :tags, dependent: :destroy
 
   # Nested
   accepts_nested_attributes_for :locations
