@@ -24,7 +24,8 @@ module Companies
         employees_count: :filter_by_number,
         location: :filter_by_location,
         rounds_count: :filter_by_rounds,
-        funds_raised: :filter_by_funds
+        funds_raised: :filter_by_funds,
+        tag: :filter_by_tag
       }
     end
 
@@ -51,8 +52,14 @@ module Companies
 
     def filter_by_funds(_name, operator, value)
       @filter = @filter.joins(:deals)
-                        .having("SUM(amount_cents) #{operator} #{value}")
-                        .group(:id)
+                       .having("SUM(amount_cents) #{operator} #{value}")
+                       .group(:id)
+    end
+
+    def filter_by_tag(_name, operator, value)
+      @filter = @filter.joins(:tags)
+                       .where("tags.name #{operator} ?", value)
+                       .group(:id)
     end
 
     def format(operator, value)

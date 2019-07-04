@@ -192,6 +192,34 @@ describe Companies::Searcher do
     end
   end
 
+  context 'filters by tags' do
+    let!(:matching_company) { create :company }
+    let!(:non_matching_company) { create :company }
+    let(:operator) { 'equal' }
+    let(:value) { 'SAAS' }
+
+    let(:filter_params) do
+      {
+        filter: {
+          '0' => {
+            type: 'tag',
+            operator: operator,
+            value: value
+          }
+        }
+      }.deep_stringify_keys
+    end
+
+    before do
+      create :tag, company: matching_company, name: 'SAAS'
+      create :tag, company: non_matching_company, name: 'NON_SAAS'
+    end
+
+    context 'with exact amount' do
+      it { expect(subject.call.pluck(:id)).to eq([matching_company.id]) }
+    end
+  end
+
   context 'sorting' do
     subject { described_class.new(filter_params, company_1.domain_country_context) }
 

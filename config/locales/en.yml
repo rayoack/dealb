@@ -490,6 +490,7 @@ en:
     stage: 'Stage'
     number_of_deals: 'Number of Deals'
     total_funds_invested: 'Total Funds Invested'
+    tags: 'Tags'
     labels:
       status:
         active: 'Active'
