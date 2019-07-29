@@ -7,9 +7,9 @@ class InvestorsController < ApplicationController
   def index
     @investors = Investors::Searcher.new(filter_params, domain_country_context)
                                     .call
+    @investors = @investors.preload(:deal_investors)
 
-    @investors_paginated = @investors.preload(:deal_investors)
-                                     .page(params[:page])
+    @investors_paginated = @investors.page(params[:page])
   end
 
   def show; end

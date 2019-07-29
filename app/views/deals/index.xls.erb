@@ -13,14 +13,15 @@
 		<Cell><Data ss:Type="String"><%= t('deals.index.column_investors') %></Data></Cell>
 		<Cell><Data ss:Type="String"><%= t('deals.index.column_amount') %></Data></Cell>
 	    </Row>
+
 	    <% @deals.each do |deal| %>
-		<Row>
-		    <Cell><Data ss:Type="String"><%= deal.company.name %></Data></Cell>
-		    <Cell><Data ss:Type="String"><%= deal.close_date %></Data></Cell>
-		    <Cell><Data ss:Type="String"><%= deal.category %></Data></Cell>
-		    <Cell><Data ss:Type="String"><%= deal.deal_investors.map(&:investor).map(&:name).join(', ') %></Data></Cell>
-		    <Cell><Data ss:Type="String"><%= format_amount(deal.amount, deal.amount_currency) %></Data></Cell>
-		</Row>
+        <Row>
+            <Cell><Data ss:Type="String"><%= deal.company.name %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= deal.close_date %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= deal.category %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= deal.deal_investors.map(&:investor).map(&:name).join(', ') %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= format_amount(deal.amount, deal.amount_currency) %></Data></Cell>
+        </Row>
 	    <% end %>
 	</Table>
     </Worksheet>
