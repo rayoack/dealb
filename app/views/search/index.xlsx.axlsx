@@ -1,0 +1,15 @@
+workbook = xlsx_package.workbook
+
+workbook.add_worksheet(name: "search") do |sheet|
+  sheet.add_row([I18n.t('search.index.column_name'),
+                 I18n.t('search.index.column_status'),
+                 I18n.t('search.index.column_location'),
+                 I18n.t('search.index.column_deals')])
+
+  @results.each do |result|
+    sheet.add_row([result.name,
+                   result.try(:status),
+                   result.locations.pluck(:city, :country).join(', '),
+                   result.try(:investor).try(:tag)])
+  end
+end

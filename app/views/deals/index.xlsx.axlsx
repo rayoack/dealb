@@ -1,0 +1,17 @@
+workbook = xlsx_package.workbook
+
+workbook.add_worksheet(name: "deals") do |sheet|
+  sheet.add_row([I18n.t('deals.index.column_company'),
+                 I18n.t('deals.index.column_close_date'),
+                 I18n.t('deals.index.column_deal_type'),
+                 I18n.t('deals.index.column_investors'),
+                 I18n.t('deals.index.column_amount')])
+
+  @deals.each do |deal|
+    sheet.add_row([deal.company.name,
+                   deal.close_date,
+                   deal.category,
+                   deal.deal_investors.map(&:investor).map(&:name).join(', '),
+                   format_amount(deal.amount, deal.amount_currency)])
+  end
+end

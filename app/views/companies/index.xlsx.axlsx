@@ -1,0 +1,15 @@
+workbook = xlsx_package.workbook
+
+workbook.add_worksheet(name: "organizations") do |sheet|
+  sheet.add_row([I18n.t('companies.index.column_company'),
+                 I18n.t('companies.index.column_status'),
+                 I18n.t('companies.index.column_location'),
+                 I18n.t('companies.index.column_deals')])
+
+  @companies.each do |company|
+    sheet.add_row([company.name,
+                   company.status,
+                   company.locations.pluck(:city, :country).join(', '),
+                   company.deals.map(&:category).uniq.join(', ')])
+  end
+end

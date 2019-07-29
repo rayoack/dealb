@@ -1,0 +1,15 @@
+workbook = xlsx_package.workbook
+
+workbook.add_worksheet(name: "people") do |sheet|
+sheet.add_row([I18n.t('people.index.column_name'),
+               I18n.t('people.index.column_occupation'),
+               I18n.t('people.index.column_local'),
+               I18n.t('people.index.column_category')])
+
+  @people.each do |person|
+    sheet.add_row([person.name,
+                   person.occupation,
+                   person.locations.pluck(:city, :country).join(', '),
+                   latest_company(person)])
+  end
+end

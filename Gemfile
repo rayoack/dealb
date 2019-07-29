@@ -28,6 +28,12 @@ gem 'omniauth-linkedin-oauth2'
 gem 'octokit', '~> 4.0'
 gem 'premailer-rails'
 
+# Generates new spreadsheets in XLSX
+gem 'zip-zip'
+gem 'rubyzip', '1.1.0'
+gem 'axlsx'
+gem 'axlsx_rails'
+
 group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'dotenv-rails'
