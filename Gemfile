@@ -30,7 +30,6 @@ gem 'premailer-rails'
 
 # Generates new spreadsheets in XLSX
 gem 'zip-zip'
-gem 'rubyzip', '1.1.0'
 gem 'axlsx'
 gem 'axlsx_rails'
 
