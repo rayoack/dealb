@@ -5,3 +5,6 @@
     per_page:      number of items to fetch per page
     remote:        data-remote
 -%>
+<li class='disabled'>
+  <%= content_tag :a, raw(t 'views.pagination.truncate') %>
+</li>

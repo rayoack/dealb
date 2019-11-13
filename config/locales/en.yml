@@ -73,8 +73,9 @@ en:
       view_all: 'view all'
   companies:
     index:
+      display: 'organization'
       companies: 'Organizations'
-      company: 'organization'
+      company: 'Organization'
       new: 'Create new'
       filter: 'Filter organizations'
       apply_filter: 'Apply filter'
@@ -148,6 +149,7 @@ en:
         was_acquired_by: 'Acquired'
         shutdown: 'shutdown'
     index:
+      display: 'deal'
       deals: 'Deals'
       new: 'Create Deal'
       filter: 'Filter deals'
@@ -222,6 +224,7 @@ en:
         failure: 'Failed to create deal'
   people:
     index:
+      display: 'people'
       people: 'People'
       add_filter: 'Add filter People'
       filter_people: 'Filter People'
@@ -287,6 +290,7 @@ en:
       send: 'Send'
   markets:
     index:
+      display: 'mercado'
       markets: 'Markets'
       new: 'Create new'
       column_name: 'Name'
@@ -299,6 +303,7 @@ en:
       send: 'Send'
   investor:
     index:
+      display: 'investor'
       investor: 'Investor'
       investors: 'Investors'
       new: 'Create new'

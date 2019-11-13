@@ -1,8 +1,6 @@
 .dealbook-container {
   background-color: #F9F9F9;
   color: #170C3A;
-
-  padding: 64px 16rem;
   font-family: Helvetica;
 }
 
@@ -10,6 +8,20 @@
   background-color: white;
   border-radius: 4px;
   border: 1px solid #DCDBE1;
+  padding: 1rem 4rem;
+  padding-bottom: 1.4rem;
+}
 
-  padding: 0 4rem;
+.dealbook-container { 
+  padding: 60px 2rem !important;
+}
+.dealbook-container__card {
+  margin: 0 auto;
+  max-width: 576px !important;
+}
+
+/* MEDIA QUERIES */
+@media all and (max-width:639px){
+  .dealbook-container { padding: 30px 1rem !important; }
+  .dealbook-container__card { padding: 0.8rem 2rem; }
 }

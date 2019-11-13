@@ -2,7 +2,7 @@ pt-br:
   auth:
     registration:
       mail:
-        title: 'Olá, seja bem-vindo(a)'
+        title: 'Olá, seja bem-vindo(a)!'
         thank_you: 'Obrigado por se cadastrar no DealBook.'
         complete_registration: 'Falta apenas um clique para completar seu cadastro.'
         confirm: 'Confirmar meu e-mail'
@@ -73,6 +73,7 @@ pt-br:
       view_all: 'Ver tudo'
   companies:
     index:
+      display: 'organização'
       companies: 'Organizações'
       company: 'organização'
       new: 'Criar nova'
@@ -148,6 +149,7 @@ pt-br:
         was_acquired_by: 'Adquirido'
         shutdown: 'Fechado'
     index:
+      display: 'negócio'
       deals: 'Negócios'
       new: 'Criar negócio'
       filter: 'Filtrar negócios'
@@ -222,6 +224,7 @@ pt-br:
         failure: 'Falha ao criar negócio'
   people:
     index:
+      display: 'pessoa'
       people: 'Pessoas'
       add_filter: 'Adicionar Filtro'
       filter_people: 'Filtrar Pessoas'
@@ -287,6 +290,7 @@ pt-br:
       send: 'Enviar'
   markets:
     index:
+      display: 'mercado'
       markets: 'Mercados'
       new: 'Criar novo'
       column_name: 'Nome'
@@ -299,6 +303,7 @@ pt-br:
       send: 'Enviar'
   investor:
     index:
+      display: 'investidor'
       investor: 'Investidor'
       investors: 'Investidores'
       new: 'Criar novo'

@@ -73,8 +73,9 @@ es:
       view_all: 'ver todo'
   companies:
     index:
+      display: 'organización'
       companies: 'Organizaciones'
-      company: 'organización'
+      company: 'Organización'
       new: 'Crear nueva'
       filter: 'Filtrar Organizaciones'
       apply_filter: 'Aplicar filtros'
@@ -148,6 +149,7 @@ es:
         was_acquired_by: 'Adquirido'
         shutdown: 'Cierrado'
     index:
+      display: 'transaccion'
       deals: 'Transacciones'
       new: 'Crear transaccion'
       filter: 'Filtrar transacciones'
@@ -222,6 +224,7 @@ es:
         failure: 'Error al crear negócio'
   people:
     index:
+      display: 'persona'
       people: 'Personas'
       add_filter: 'Adicionar Filtro'
       filter_people: 'Filtrar Personas'
@@ -287,6 +290,7 @@ es:
       send: 'enviar'
   markets:
     index:
+      display: 'mercado'
       markets: 'Mercado'
       new: 'Crear nuevo'
       column_name: 'Nombre'
@@ -299,15 +303,19 @@ es:
       send: 'enviar'
   investor:
     index:
+      display: 'inversor'
+      investor: 'Inversor'
       investors: 'Inversionistas'
       new: 'Crear nuevo'
       filter: 'Filtrar inversionistas'
+      order: 'Ordenar Inversionistas'
       apply: 'Aplicar filtros'
       add_filter: 'Adicionar filtro'
       export: 'Exporta tus resultados'
       column_name: 'Nombre del Inversionista'
       column_number_of_investments: 'Número de inversiones'
       column_number_of_exited_companies: 'Número de organizaciones salidas'
+      column_invested_capital: 'Capital invertido'
       column_location: 'Ubicación'
     show:
       back: 'Volver'

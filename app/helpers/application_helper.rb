@@ -16,7 +16,8 @@ module ApplicationHelper
     }.fetch(currency, currency)
 
     unit ||= 'USD'
-
+    # puts amount
+    # number_to_human(amount || 0.0, precision: 2)
     number_to_currency(number_to_human(amount || 0.0, precision: 2), unit: unit)
   end
 end

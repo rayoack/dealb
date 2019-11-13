@@ -1122,7 +1122,7 @@ header .header-mobile {
 }
 @media (min-width: 890px) {
   .swiper-updates {
-    padding-right: 130px;
+    /*padding-right: 130px;*/
   }
 }
 .s-updates .container-updates .swiper-updates .swiper-wrapper .swiper-slide {
@@ -1955,7 +1955,7 @@ footer .copyright p a {
   background: transparent;
   color: #ccd0dc;
   border: 1px solid transparent;
-  width: 40px;
+  /*width: 40px;*/
   text-align: center;
   margin: 0px 5px;
 }
@@ -1992,7 +1992,7 @@ footer .copyright p a {
     font-size: 14px;
   }
   .s-table-results nav .pagination li a {
-    width: 25px;
+    /*width: 25px;*/
     padding: 5px 0px;
     line-height: 20px;
   }

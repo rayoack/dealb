@@ -25,6 +25,8 @@ gem 'devise', '~> 4.4'
 gem 'omniauth'
 gem 'omniauth-linkedin-oauth2'
 
+gem 'figaro'
+
 gem 'octokit', '~> 4.0'
 gem 'premailer-rails'
 
