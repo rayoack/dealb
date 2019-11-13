@@ -21,3 +21,4 @@
 .env.local
 
 /vendor/bundle
+config/application.yml
