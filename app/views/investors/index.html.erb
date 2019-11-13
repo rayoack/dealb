@@ -51,7 +51,7 @@
             <tbody>
               <% @investors_paginated.each do |investor| %>
                 <tr class="clickable-row" data-href=<%= "/investors/#{investor.permalink}" %>>
-                  <td><img src="/img/logo-investors.png" alt=""> <%= investor.investable.name %></td>
+                  <td><img src="/img/investors.svg" alt=""> <%= investor.investable.name %></td>
                   <td><%= investor.deals.count %></td>
                   <td class="column-location"><%= investor.investable.locations.pluck(:city, :country).map { |c| c.join(', ') }.join('/ ') %></td>
                   <td><a href="/investors/<%= investor.permalink %>"><img src="/img/seta-dir.svg" alt=""></a></td>

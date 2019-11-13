@@ -4,7 +4,7 @@
         <img src="/img/img-featured-contact.png" class="img-featured" alt="">
     </div>
     <div class="s-right">
-        <a href="/" class="btn-back"><%= t('contact.index.back') %> <img src="/img/close.svg" alt=""></a>
+        <a href="<%= url_for(:back) %>" class="btn-back"><%= t('contact.index.back') %> <img src="/img/close.svg" alt=""></a>
         <div class="form">
             <h1>Talk Us</h1>
             <form action="/contact" method="post">

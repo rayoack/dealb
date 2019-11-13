@@ -64,7 +64,7 @@
               <% @deals_paginated.each do |deal| %>
                   <tr class="clickable-row" data-href=<%= "/deals/#{deal.id}" %>>
                       <td>
-                        <img src=<%= deal.company&.profile_image_url || '/img/logo-investors.png' %> alt="">
+                        <img src=<%= deal.company&.profile_image_url || '/img/companies.svg' %> alt="">
                         <%= link_to(deal.company.name, company_path(deal.company.permalink)) %>
                       </td>
                       <td><%= I18n.l(deal.close_date, format: :default) %></td>

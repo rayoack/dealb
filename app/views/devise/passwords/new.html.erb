@@ -2,7 +2,7 @@
   <%= render partial: 'devise/shared/summary' %>
 
   <div class="s-right">
-    <a href="/"
+    <a href="<%= url_for(:back) %>"
        class="btn-back">
       <%= t('sessions.back_button') %> <img src="/img/close.svg" alt="">
     </a>

@@ -31,7 +31,7 @@
                 <th>Provider</th>
                 <th>Role</th>
                 <th>Created at</th>
-                <th></th>
+                <th style="width: 200px;"></th>
               </tr>
             </thead>
             <tbody>
@@ -41,23 +41,23 @@
                   <td><%= user.provider || 'Through signup' %></td>
                   <td><%= user.role %></td>
                   <td><%= I18n.l(user.created_at, format: :default) %></td>
-                  <td>
+                  <td class="user_control_actions">
                     <% if user.role == User::MODERATOR %>
-                      <a href="/users/<%= user.id %>/become_user" class="btn btn-default">Set as user</a>
-                      <a href="/users/<%= user.id %>/become_admin" class="btn btn-default">Set as admin</a>
+                      <a href="/users/<%= user.id %>/become_user" class="btn btn-sm btn-default btn-block">Set as user</a>
+                      <a href="/users/<%= user.id %>/become_admin" class="btn btn-sm btn-default btn-block">Set as admin</a>
                     <% elsif user.role == User::ADMIN && current_user != user %>
-                      <a href="/users/<%= user.id %>/become_user" class="btn btn-default">Set as user</a>
-                      <a href="/users/<%= user.id %>/become_moderator" class="btn btn-default">Set as moderator</a>
+                      <a href="/users/<%= user.id %>/become_user" class="btn btn-sm btn-default btn-block">Set as user</a>
+                      <a href="/users/<%= user.id %>/become_moderator" class="btn btn-sm btn-default btn-block">Set as moderator</a>
                     <% elsif user.role == User::USER %>
-                      <a href="/users/<%= user.id %>/become_admin" class="btn btn-default">Set as admin</a>
-                      <a href="/users/<%= user.id %>/become_moderator" class="btn btn-default">Set as moderator</a>
+                      <a href="/users/<%= user.id %>/become_admin" class="btn btn-sm btn-default btn-block">Set as admin</a>
+                      <a href="/users/<%= user.id %>/become_moderator" class="btn btn-sm btn-default btn-block">Set as moderator</a>
                     <% end %>
 
                     <% unless current_user == user %>
                       <% if user.status == User::ACTIVE %>
-                        <a href="/users/<%= user.id %>/block" class="btn btn-danger">Block</a>
+                        <a href="/users/<%= user.id %>/block" class="btn btn-sm btn-danger btn-block">Block</a>
                       <% else %>
-                        <a href="/users/<%= user.id %>/unblock" class="btn btn-primary">Unblock</a>
+                        <a href="/users/<%= user.id %>/unblock" class="btn btn-sm btn-primary btn-block">Unblock</a>
                       <% end %>
                     <% end %>
                   </td>

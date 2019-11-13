@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12">
-        <a href="/deals" class="btn-back">
+        <a href="<%= url_for(:back) %>" class="btn-back">
         <img src="/img/seta-esq-cinza.svg" alt=""> <%= t('deals.show.back') %></a>
       </div>
     </div>
@@ -12,8 +12,8 @@
         <div class="detail-investor-geral">
           <div class="status-name">
             <div>
-              <img src=<%= @deal.company&.profile_image_url || '/img/logo-company.png' %> width=64px />
-              <h1> <%= @deal.company.name %></h1>
+              <img src=<%= @deal.company&.profile_image_url || '/img/companies.svg' %> width=64px />
+              <h1><%= @deal.company.name %></h1>
             </div>
 
             <% if @deal.status == 'verified' %>
