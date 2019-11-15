@@ -10,8 +10,6 @@ class DealsController < ApplicationController
 
   def index
     @deals = DealSearcher.new(filter_params, domain_country_context).call
-    @deals = @deals.preload(:investors, :deal_investors, :company)
-
     @deals_paginated = @deals.page(params[:page])
   end
 

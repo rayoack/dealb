@@ -3,6 +3,9 @@ class DealSearcher < BaseSearcher
   def initialize(filter_params, domain_country_context)
     super(filter_params, domain_country_context)
     @filter = Deal
+    #preload para agilizar load e melhorar ordenação
+    @filter = @filter.preload(:investors, :deal_investors, :company)
+    @filter = @filter.includes(:investors => :investable)
   end
 
   def call
@@ -57,6 +60,7 @@ class DealSearcher < BaseSearcher
   def order_criteria
     return { close_date: :desc } if order_direction.blank? || order_type.blank?
     return "companies.#{order_type} #{order_direction}" if order_type == :name
+    return "coalesce(deals.#{order_type}, 0) #{order_direction}" if order_type == :amount_cents
 
     { order_type => order_direction }
   end
