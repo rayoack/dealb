@@ -35,7 +35,7 @@
         <%= render partial: 'shared/flash_messages' %>
 
         <div class="table-responsive">
-          <table class="table">
+          <table class="table table-hover">
             <thead>
               <tr>
                 <%= render partial: 'shared/sortable_header',
@@ -62,10 +62,10 @@
               <% @companies_paginated.each do |company| %>
                 <tr class="clickable-row" data-href=<%= "/companies/#{company.permalink}" %>>
                   <td>
-                    <img src="<%= company.profile_image_url || '/img/logo-company.png' %>">
+                    <img src="<%= company.profile_image_url || '/img/companies.svg' %>">
                     <%= company.name %>
                   </td>
-                  <td class="status-active"><span class="circulo"></span> <%= company.status %></td>
+                  <td class="status-active"><%= company.status %></td>
                   <td class="column-location"><%= company.locations.pluck(:city, :country).join(', ') %></td>
                   <td><%= company.deals.map(&:category).uniq.map { |category| I18n.t("deals.model.categories.#{category}") }.join(', ') %></td>
                   <td><a href=<%= "/companies/#{company.permalink}" %>><img src="/img/seta-dir.svg" alt=""></a></td>

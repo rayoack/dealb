@@ -65,4 +65,8 @@ class Person < ApplicationRecord
   def country
     locations.first&.country
   end
+
+  def locations_plain
+    locations.pluck(:city, :country).join(', ')
+  end
 end

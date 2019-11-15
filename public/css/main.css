@@ -762,7 +762,7 @@ header .header-mobile {
   float: left;
   font-family: 'museo_sans700';
   font-size: 32px;
-  color: #32d6cc;
+  color: #38c9c1;
   text-align: right;
   width: 80px;
 }
@@ -5299,7 +5299,7 @@ a.menu-button:hover .menu-icon::after {
 .voce-topa {
   display: table;
   margin: 0 auto;
-  background: #32d6cc;
+  background: #38c9c1;
   width: 360px;
   padding: 38px 0px;
   margin-top: 20px;
@@ -5321,4 +5321,11 @@ a.menu-button:hover .menu-icon::after {
 }
 .select2 {
   width: 50%;
+}
+
+.status-active {
+  color: #32d6cc;
+}
+.status-active .circle {
+  background: #32d6cc;
 }

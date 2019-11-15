@@ -5,7 +5,7 @@ module HomeHelper
 
   def formatted_updates(deals)
     deals.map do |deal|
-      description = "#{deal.company&.name} raised " \
+      description = "#{deal&.company_name} raised " \
         "#{format_amount(deal.amount, deal.amount_currency)} " \
         "from #{deal.investors.map(&:name).join(', ')}"
 

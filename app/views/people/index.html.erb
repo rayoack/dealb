@@ -34,7 +34,7 @@
         <%= render partial: 'shared/flash_messages' %>
 
         <div class="table-responsive">
-          <table class="table">
+          <table class="table table-hover">
             <thead>
               <tr>
                 <%= render 'shared/sortable_header', url: people_path,
@@ -59,8 +59,17 @@
                     <%= person.name %>
                   </td>
                   <td><%= person.occupation %></td>
-                  <td><%= person.locations.pluck(:city, :country).join(', ') %></td>
-                  <td><img src="/img/logo-company-lg.png" alt=""><strong> <%= latest_company(person) %></strong></td>
+                  <td><%= person.locations_plain %></td>
+                  <td>
+                    <div class="row">
+                      <div class="col-md-3">
+                        <img src="/img/companies.svg" alt="">
+                      </div>
+                      <div class="col-md-9">
+                        <strong><%= latest_company(person) %></strong>
+                      </div>
+                    </div>
+                  </td>
                   <td><a href="/people/<%= person.permalink %>"><img src="/img/seta-dir.svg" alt=""></a></td>
                 </tr>
               <% end %>
