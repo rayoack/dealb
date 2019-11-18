@@ -5,6 +5,8 @@ module Companies
       super(filter_params, domain_country_context)
 
       @filter = Company
+      #preload para agilizar load e melhorar ordenação
+      @filter = @filter.preload(:locations, :deals)
     end
 
     def call

@@ -1,9 +1,10 @@
 # Person Searcher Service
 class PersonSearcher < BaseSearcher
   def initialize(filter_params, domain_country_context)
-    @filter_params = filter_params
-    @domain_country_context = domain_country_context
+    super(filter_params, domain_country_context)
     @filter = Person
+    # preload para acelerar load das pessoas
+    @filter = @filter.preload(:locations, :person_companies => :company)
   end
 
   def call

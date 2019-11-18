@@ -8,8 +8,6 @@ class CompaniesController < ApplicationController
   def index
     @companies = Companies::Searcher.new(filter_params,
                                          domain_country_context).call
-    @companies = @companies.preload(:locations, :deals)
-
     @companies_paginated = @companies.page(params[:page])
   end
 

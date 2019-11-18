@@ -1,9 +1,6 @@
 class PeopleController < ApplicationController
   def index
     @people = PersonSearcher.new(filter_params, domain_country_context).call
-    
-    # preload para acelerar load das pessoas
-    @people = @people.preload(:locations, :person_companies => :company)
     @people_paginated = @people.page(params[:page])
   end
 
