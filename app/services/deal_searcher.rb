@@ -3,9 +3,9 @@ class DealSearcher < BaseSearcher
   def initialize(filter_params, domain_country_context)
     super(filter_params, domain_country_context)
     @filter = Deal
-    #preload para agilizar load e melhorar ordenação
+    # preload para agilizar load e melhorar ordenacao
     @filter = @filter.preload(:investors, :deal_investors, :company)
-    @filter = @filter.includes(:investors => :investable)
+    @filter = @filter.includes(investors: :investable)
   end
 
   def call

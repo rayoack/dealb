@@ -1,6 +1,5 @@
 require 'csv'
 
-# rubocop:disable Metrics/BlockLength
 namespace :deals do
   task amount_fix: :environment do |_task, _args|
     puts('---- Starting Deals update from CSV ----')
@@ -27,4 +26,3 @@ namespace :deals do
     puts('---- Finished Deals update from CSV ----')
   end
 end
-# rubocop:enable Metrics/BlockLength
