@@ -100,7 +100,8 @@ class ImportOldDatabaseService
 
       deal.source_url.presence.delete(' ').strip
     end
-
+    
+    =begin
     def convert_to_usd_from(deal, curency)
       date = deal.close_date.strftime('%Y-%m-%d')
       dolar_rate = JSON.parse(
@@ -110,6 +111,7 @@ class ImportOldDatabaseService
       ).fetch('rates').fetch('USD')
       ((deal.amount * dolar_rate) * 100).to_i
     end
+    =end
 
     def convert_to_usd(deal)
       date = deal.close_date.strftime('%Y-%m-%d')
