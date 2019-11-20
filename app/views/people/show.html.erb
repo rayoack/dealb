@@ -68,12 +68,14 @@
             </li>
             <li>
               <p>
-                <strong><%= t('people.show.born') %>:</strong> <%= @person.born_on %>
+                <strong><%= t('people.show.born') %>:</strong> 
+                <%= I18n.l(@person.born_on, format: :default) %>
               </p>
             </li>
             <li>
               <p>
-                <strong><%= t('people.show.gender') %>:</strong> <%= @person.gender %>
+                <strong><%= t('people.show.gender') %>:</strong>
+                <%= I18n.t("filters.labels.gender.#{@person.gender}") %>
               </p>
             </li>
           </ul>
