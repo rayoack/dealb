@@ -17,6 +17,11 @@
 <section class="s-table-results">
   <div class="container">
     <div class="row">
+      <div class="col-md-12">
+        <%= render partial: 'shared/flash_messages' %>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-6">
         <p class="results">
           <%= page_entries_info @deals_paginated, entry_name: t('deals.index.display') %>
@@ -31,8 +36,6 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <%= render partial: 'shared/flash_messages' %>
-
         <div class="table-responsive">
           <table class="table table-hover">
             <thead>
