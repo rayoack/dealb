@@ -1332,7 +1332,10 @@ footer .copyright {
   background: #1d2c5b;
   text-align: center;
   color: #fff;
-  padding: 24px 0px;
+  padding: 2em 0;
+}
+footer .copyright .container {
+  margin: 0;
 }
 footer .copyright p {
   margin-bottom: 0px;

@@ -2,9 +2,9 @@
 
 .powered_by {
   display: table;
-  float: initial;
+  float: right;
   width: initial;
-  margin-left: 64px;
+  /*margin-left: 64px;*/
 }
 
 .made-by-bossabox {
@@ -84,6 +84,7 @@
 
 @media screen and (max-width: 996px) {
   .powered_by {
+    float: none;
     margin: auto;
   }
 }
