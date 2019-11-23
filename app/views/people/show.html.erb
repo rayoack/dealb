@@ -76,8 +76,8 @@
             <li>
               <p>
                 <strong><%= t('people.show.gender') %>:</strong>
-                <%= @person.gender %>
-                <!--<%= @person.gender ? I18n.t("filters.labels.gender.#{@person.gender}") : '' %>-->
+                <!--<%= @person.gender %>-->
+                <%= @person.gender ? I18n.t("filters.labels.gender.#{@person.gender}") : '' %>
               </p>
             </li>
           </ul>
