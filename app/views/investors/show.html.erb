@@ -12,12 +12,12 @@
         <div class="detail-investor-geral">
           <div class="status-name">
             <div class="status active">
-            <span class="circle"></span> <%= t("investor.show.status.#{@investor.status}") %>
+            <span class="circle"></span> <%= @investor.status ? t("investor.show.status.#{@investor.status}") : '' %>
           </div>
           <h1> <%= @investor.investable.name %></h1>
           <h2 class="tag">
             <img src="/img/clock.svg" alt="">
-            <%= t('investor.show.tag') %>: <%= t("investor.show.categories.#{@investor.tag}") %>
+            <%= t('investor.show.tag') %>: <%= @investor.tag ? t("investor.show.categories.#{@investor.tag}") : '' %>
             <% if user_admin? || user_moderator? %>
               <a href="/investors/<%= @investor.permalink %>/edit"
                  class="btn btn-default"><%= t('deals.show.edit') %></a>
