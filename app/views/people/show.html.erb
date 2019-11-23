@@ -69,13 +69,15 @@
             <li>
               <p>
                 <strong><%= t('people.show.born') %>:</strong> 
-                <%= @person.born_on ? I18n.l(@person.born_on, format: :default) : '' %>
+                <%= @person.born_on %>
+                <!--<%= @person.born_on ? I18n.l(@person.born_on, format: :default) : '' %>-->
               </p>
             </li>
             <li>
               <p>
                 <strong><%= t('people.show.gender') %>:</strong>
-                <%= @person.gender ? I18n.t("filters.labels.gender.#{@person.gender}") : '' %>
+                <%= @person.gender %>
+                <!--<%= @person.gender ? I18n.t("filters.labels.gender.#{@person.gender}") : '' %>-->
               </p>
             </li>
           </ul>
