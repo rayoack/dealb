@@ -733,7 +733,7 @@ header .header-mobile {
 }
 .s-about-us .database .title img {
   float: right;
-  margin-left: 40px;
+  /*margin-left: 40px;*/
   margin-top: 2px;
 }
 .s-about-us .database .info-geral {
