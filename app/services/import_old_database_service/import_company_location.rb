@@ -26,12 +26,10 @@ class ImportOldDatabaseService
         Rails.logger.debug(e)
       end
 
-      warn "\nImported companies_locations - final statistics"
+      puts "\nImported companies_locations - final statistics"
 
-      warn(
-        "old_count: #{::ImportOldDatabaseService::Entities::CompanyLocation.count} " \
-        "new_count: #{::Localizable.count} companies_locations"
-      )
+      puts "old_count: #{::ImportOldDatabaseService::Entities::CompanyLocation.count} "
+      puts "new_count: #{::Localizable.count} companies_locations"
     end
     # rubocop:enable Metrics/MethodLength
   end

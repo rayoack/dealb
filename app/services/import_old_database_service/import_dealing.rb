@@ -44,8 +44,8 @@ class ImportOldDatabaseService
         @deal_investor.save!
       end
 
-      warn "\nImported deal_investor - final statistics"
-      warn("count: #{::DealInvestor.count} deal_investors")
+      puts "\nImported deal_investor - final statistics"
+      puts "count: #{::DealInvestor.count} deal_investors"
     rescue StandardError
       raise
     end

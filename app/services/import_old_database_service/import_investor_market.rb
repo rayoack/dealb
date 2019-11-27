@@ -29,11 +29,9 @@ class ImportOldDatabaseService
         @company_mkt.save!
       end
 
-      warn "\nImported investor_market - final statistics"
-      warn(
-        "before count: #{@company_market_count_before} " \
-        "count: #{::CompanyMarket.count} investor_markets"
-      )
+      puts "\nImported investor_market - final statistics"
+      puts "before count: #{@company_market_count_before} "
+      puts "count: #{::CompanyMarket.count} investor_markets"
     rescue StandardError
       raise
     end

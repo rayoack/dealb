@@ -32,8 +32,8 @@ class ImportOldDatabaseService
         new_user.save!
       end
 
-      warn "\nImported user - final statistics"
-      warn("count: #{::User.count} users")
+      puts "\nImported user - final statistics"
+      puts "count: #{::User.count} users"
     rescue StandardError
       raise
     end

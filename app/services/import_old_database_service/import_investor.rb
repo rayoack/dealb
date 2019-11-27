@@ -91,8 +91,8 @@ class ImportOldDatabaseService
         raise
       end
 
-      warn "\nImported investor - final statistics"
-      warn "count: #{::Investor.count} investors"
+      puts "\nImported investor - final statistics"
+      puts "count: #{::Investor.count} investors"
       # rubocop:enable Metrics/BlockLength
     end
     # rubocop:enable Metrics/MethodLength

@@ -9,8 +9,8 @@ class ImportOldDatabaseService
         ::Location.create!(country: location.country, city: location.city)
       end
 
-      warn "\nImported location - final statistics"
-      warn "count: #{::Location.count} locations"
+      puts "\nImported location - final statistics"
+      puts "count: #{::Location.count} locations"
     end
   end
 end

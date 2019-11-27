@@ -33,11 +33,9 @@ class ImportOldDatabaseService
         @localizable.save!
       end
 
-      warn "\nImported investor_location - final statistics"
-      warn(
-        "before count: #{@localizable_count_before} " \
-        "count: #{::Localizable.count} investor_locations"
-      )
+      puts "\nImported investor_location - final statistics"
+      puts "before count: #{@localizable_count_before} "
+      puts "count: #{::Localizable.count} investor_locations"
     rescue StandardError
       raise
     end

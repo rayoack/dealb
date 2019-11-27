@@ -9,8 +9,8 @@ class ImportOldDatabaseService
         ::Market.create!(name: market.name)
       end
 
-      warn "\nImported market - final statistics"
-      warn "count: #{::Market.count} markets"
+      puts "\nImported market - final statistics"
+      puts "count: #{::Market.count} markets"
     end
   end
 end

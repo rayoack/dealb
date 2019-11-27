@@ -22,12 +22,10 @@ class ImportOldDatabaseService
         ::CompanyMarket.create!(market: new_market, company: new_company)
       end
 
-      warn "\nImported companies_markets - final statistics"
+      puts "\nImported companies_markets - final statistics"
 
-      warn(
-        "old_count: #{::ImportOldDatabaseService::Entities::CompanyMarket.count} " \
-        "new_count: #{::CompanyMarket.count} companies_markets"
-      )
+      puts "old_count: #{::ImportOldDatabaseService::Entities::CompanyMarket.count} "
+      puts "new_count: #{::CompanyMarket.count} companies_markets"
     end
     # rubocop:enable Metrics/MethodLength
   end

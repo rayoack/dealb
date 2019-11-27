@@ -33,6 +33,43 @@ class ImportOldDatabaseService
     end
   end
 
+  def safe_run
+    handle_errors do
+      puts 'market\n'
+      iMarket = ImportOldDatabaseService::ImportMarket.new.run
+      iMarket.present? 
+        puts 'location\n'
+        iLocation = ImportOldDatabaseService::ImportLocation.new.run
+        iLocation.present?
+          puts 'user\n'
+          iUser = ImportOldDatabaseService::ImportUser.new.run
+          iUser.present?
+            puts 'company\n'
+            iCompany = ImportOldDatabaseService::ImportCompany.new.run
+            iCompany.present?
+              puts 'companyMarket\n'
+              iCompanyMarket = ImportOldDatabaseService::ImportCompanyMarket.new.run
+              iCompanyMarket.present?
+                puts 'companyLocation\n'
+                iCompanyLocation = ImportOldDatabaseService::ImportCompanyLocation.new.run
+                iCompanyLocation.present?
+                  puts 'investor\n'
+                  iInvestor = ImportOldDatabaseService::ImportInvestor.new.run
+                  iInvestor.present?
+                    puts 'investorLocation\n'
+                    iInvestorLocation = ImportOldDatabaseService::ImportInvestorLocation.new.run
+                    iInvestorLocation.present?
+                      puts 'investorMarket\n'
+                      iInvestorMarket = ImportOldDatabaseService::ImportInvestorMarket.new.run
+                      iInvestorMarket.present?   
+                        puts 'deal\n'
+                        ideal = ImportOldDatabaseService::ImportDeal.new.run
+                        ideal.present?
+                          puts 'dealing\n'
+                          iDealing = ImportOldDatabaseService::ImportDealing.new.run   
+    end
+  end
+
   def handle_errors
     ActiveRecord::Base.transaction do
       yield

@@ -7,10 +7,11 @@ class ImportOldDatabaseService
         printf('.')
 
         @company = company
-
+        
         ::Company.create!(
           name: company.name.presence,
-          permalink: company.slug.presence,
+          # permalink: company.slug.presence,
+          permalink: SecureRandom.uuid,
           description: company.description.presence,
           # employees_count - is not present in the old version
           # born_date - is not present in the old version
@@ -25,10 +26,10 @@ class ImportOldDatabaseService
         )
       end
 
-      warn "\nImported company - final statistics"
-      warn "count: #{::Company.count} companies"
-    rescue StandardError
-      'oi'
+      puts "\nImported company - final statistics"
+      puts "count: #{::Company.count} companies"
+    # rescue StandardError
+    #  'oi'
     end
 
     private

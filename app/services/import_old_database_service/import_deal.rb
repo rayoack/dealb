@@ -33,8 +33,8 @@ class ImportOldDatabaseService
                        source_url: source_url(deal))
       end
 
-      warn "\nImported deal - final statistics"
-      warn "count: #{::Deal.count} deals"
+      puts "\nImported deal - final statistics"
+      puts "count: #{::Deal.count} deals"
     end
 
     private
