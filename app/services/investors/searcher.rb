@@ -49,11 +49,11 @@ module Investors
     end
 
     def filter_by_total_funds_invested(_name, operator, value)
-      parsed_value = value.gsub(/[^\d]+/, '').to_i * 100
+      parsed_value = value.gsub(/[^\d]+/, '').to_i
 
       @filter = @filter.joins(:deals)
                        .group('investors.id')
-                       .having("SUM(amount_cents) #{operator} ?",
+                       .having("SUM(amount) #{operator} ?",
                                format(operator, parsed_value))
     end
 

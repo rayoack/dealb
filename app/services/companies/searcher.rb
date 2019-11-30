@@ -54,7 +54,7 @@ module Companies
 
     def filter_by_funds(_name, operator, value)
       @filter = @filter.joins(:deals)
-                       .having("SUM(amount_cents) #{operator} #{value}")
+                       .having("SUM(amount) #{operator} #{value}")
                        .group(:id)
     end
 

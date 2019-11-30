@@ -15,7 +15,7 @@ module Investors
               .joins(:deals)
               .preload(:investable)
               .where(deals: { category: :raised_funds_from })
-              .where.not(deals: { amount_cents: nil })
+              .where.not(deals: { amount: nil })
               .group(:id, :amount_currency)
               .order(order_criteria)
               .select(:id,
@@ -40,8 +40,7 @@ module Investors
     end
 
     def invested_capital_selection
-      'SUM(CASE WHEN amount_cents = NULL THEN 0 ELSE (amount_cents/100) END) ' \
-      'as invested_capital'
+      'SUM(coalesce(amount, 0))  as invested_capital'
     end
 
     def order

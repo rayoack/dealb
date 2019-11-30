@@ -176,6 +176,7 @@ pt-br:
     form:
       new: 'Criar novo negócio'
       back: 'voltar'
+      edit: 'Editar negócio'
       featured_title: ''
       featured_subtitle: ''
       select_company: 'Selecione uma organização'
@@ -218,6 +219,9 @@ pt-br:
         merged_with: 'Fundido'
         was_acquired_by: 'Adquirido'
         shutdown: 'Fechado'
+      status:
+        verified: 'Verificado'
+        unverified: 'Não verificado'
     messages:
       create:
         success: 'Criado com sucesso'

@@ -54,7 +54,7 @@ class SearchService
   end
 
   def field_of_query(field)
-    return 'amount_cents' if field == 'Amount'
+    return 'amount' if field == 'Amount'
 
     field.downcase.tr(' ', '_')
   end

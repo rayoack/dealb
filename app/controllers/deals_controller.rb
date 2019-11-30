@@ -51,7 +51,7 @@ class DealsController < ApplicationController
 
   DEAL_PARAMS = %i[
     close_date company_id category round amount_currency
-    amount_cents pre_valuation_cents source_url status
+    amount pre_valuation source_url status
   ].freeze
 
   def filter_params

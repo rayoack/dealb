@@ -9,5 +9,5 @@ json.company do
     json.country location.country
   end
   json.last_funding_type @last_deal&.round ? I18n.t("filters.labels.funding_type.#{@last_deal.round}") : nil
-  json.last_funding_value format_amount(@last_deal&.amount_cents)
+  json.last_funding_value format_amount(@last_deal&.amount)
 end

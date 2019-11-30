@@ -34,7 +34,7 @@ class DealSearcher < BaseSearcher
   end
 
   def filter_by_amount(_name, operator, value)
-    filter_by_number(:amount_cents, operator, value.to_f * 100)
+    filter_by_number(:amount, operator, value.to_f)
   end
 
   def filter_by_funding_type(_name, operator, value)
@@ -60,7 +60,7 @@ class DealSearcher < BaseSearcher
   def order_criteria
     return { close_date: :desc } if order_direction.blank? || order_type.blank?
     return "companies.#{order_type} #{order_direction}" if order_type == :name
-    return "coalesce(deals.#{order_type}, 0) #{order_direction}" if order_type == :amount_cents
+    return "coalesce(deals.#{order_type}, 0) #{order_direction}" if order_type == :amount
 
     { order_type => order_direction }
   end

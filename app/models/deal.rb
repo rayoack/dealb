@@ -53,14 +53,14 @@ class Deal < ApplicationRecord
   validates :round, inclusion: { in: ROUNDS }, allow_nil: true
   validates :amount_currency, inclusion: { in: CURRENCIES }, allow_nil: true
   validates(
-    :amount_cents,
+    :amount,
     numericality: { only_integer: true, greater_than: 0, allow_nil: true }
   )
   validates(
     :pre_valuation_currency, inclusion: { in: CURRENCIES }, allow_nil: true
   )
   validates(
-    :pre_valuation_cents,
+    :pre_valuation,
     numericality: { only_integer: true, greater_than: 0, allow_nil: true }
   )
   validates :source_url, url: true, allow_nil: true
@@ -82,18 +82,4 @@ class Deal < ApplicationRecord
                 .order('number_of_deals desc')
                 .limit(amount)
   }
-
-  def amount
-    return unless amount_cents
-
-    Float(amount_cents / 100)
-    # amount_cents
-  end
-
-  def pre_valuation
-    return unless pre_valuation_cents
-
-    Float(pre_valuation_cents / 100)
-    # pre_valuation_cents
-  end
 end

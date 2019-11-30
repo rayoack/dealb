@@ -176,6 +176,7 @@ es:
     form:
       new: 'Crear nueva Transaccion'
       back: 'atrás'
+      edit: 'Editar transaccion'
       featured_title: ''
       featured_subtitle: ''
       select_company: 'Seleccione una Organización'
@@ -218,6 +219,9 @@ es:
         merged_with: 'Fusionado con'
         was_acquired_by: 'Adquirido'
         shutdown: 'Cierrado'
+      status:
+        verified: 'Verificado'
+        unverified: 'No Verificado'
     messages:
       create:
         success: 'Creado com sucesso'

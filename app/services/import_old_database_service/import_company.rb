@@ -3,37 +3,24 @@
 class ImportOldDatabaseService
   class ImportCompany
     def run
+      puts '-- company'
       ImportOldDatabaseService::Entities::Company.find_each do |company|
         printf('.')
-
         @company = company
-        
         ::Company.create!(
           name: company.name.presence,
-          # permalink: company.slug.presence,
-          permalink: SecureRandom.uuid,
           description: company.description.presence,
-          # employees_count - is not present in the old version
-          # born_date - is not present in the old version
-          # phone_number - is not present in the old version
-          # email - is not present in the old version
-          # facebook_url - is not present in the old version
-          # twitter_url - is not present in the old version
-          # google_plus_url - is not present in the old version
           homepage_url: normalize(company.website),
           linkedin_url: normalize(company.linkedin),
-          status: company.status.presence || ::Company::ACTIVE
+          status: company.status.presence || ::Company::ACTIVE,
+          created_at: company.created_at.presence,
+          updated_at: company.updated_at.presence,
+          permalink: company.slug.presence.parameterize || nil
         )
       end
-
-      puts "\nImported company - final statistics"
-      puts "count: #{::Company.count} companies"
-    # rescue StandardError
-    #  'oi'
+      puts "-- imported #{::Company.count} companies"
     end
-
     private
-
     def normalize(url)
       ActiveSupport::Inflector.transliterate(
         String(

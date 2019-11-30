@@ -176,6 +176,7 @@ en:
     form:
       new: 'Create new deal'
       back: 'back'
+      edit: 'Edit deal'
       featured_title: ''
       featured_subtitle: ''
       select_company: 'Select an organization'

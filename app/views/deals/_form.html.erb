@@ -39,12 +39,14 @@
                                  { class: 'select-currency' }) %>
 </div>
 <div class="form-group">
-  <%= f.text_field :amount_cents, placeholder: t('deals.form.total_amount'),
+  <%= f.text_field :amount, placeholder: t('deals.form.total_amount'),
                                   class: 'input-total-amount',
                                   data: { type: 'money' } %>
 </div>
 <div class="form-group">
-  <%= f.text_field :pre_valuation_cents, placeholder: t('deals.form.pre_valuation'), class: 'input-money' %>
+  <%= f.text_field :pre_valuation, 
+    placeholder: t('deals.form.pre_valuation'),
+    class: 'input-money' %>
 </div>
 <div class="form-group">
   <%= f.text_field :source_url, placeholder: t('deals.form.source_url'), pattern: 'https?://.+', title: 'Only valid URLs' %>

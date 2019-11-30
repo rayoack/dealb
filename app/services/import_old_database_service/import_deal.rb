@@ -15,28 +15,34 @@ class ImportOldDatabaseService
       nil => nil
     }.freeze
 
+    CURRENCIES = [
+      'USD' => Deal::USD,
+      'BRL' => Deal::BRL,
+      nil => nil
+    ].freeze
+
+    # TODO o que é esse ENV?
     ACCESS_KEY = ENV['FIXER_IO_API_KEY']
 
     def run
+      puts '-- deal'
       ImportOldDatabaseService::Entities::Deal.find_each do |deal|
         printf('.')
-
         ::Deal.create!(close_date: deal.close_date,
                        company_id: company(deal).id,
                        status: status(deal),
                        category: category(deal),
                        round: round(deal),
-                       amount_currency: ::Deal::USD,
+                       amount_currency: currency(deal),
                        amount_cents: amount_cents(deal),
-                       pre_valuation_currency: ::Deal::USD,
+                       # pre_valuation_currency: ::Deal::USD,
+                       pre_valuation_currency: currency(deal),
                        pre_valuation_cents: pre_valuation_cents(deal),
                        source_url: source_url(deal))
       end
-
-      puts "\nImported deal - final statistics"
-      puts "count: #{::Deal.count} deals"
-    end
-
+      puts "-- imported #{::Deal.count} deals"
+    
+      
     private
 
     def company(deal)
@@ -59,17 +65,19 @@ class ImportOldDatabaseService
       end
     end
 
+    def currency(deal)
+      CURRENCIES.fetch(deal.currency.presence)
+    end
+
     def round(deal)
       ROUNDS.fetch(deal.round.presence)
     end
 
-    def amount_cents(deal)
+    def amount_cents_old(deal)
       if deal.currency.blank? || deal.amount.nil? # nil ou ""
         @amount_value_cents = nil # don't touch
-
       elsif deal.currency == 'BRL'
         convert_to_usd(deal)
-
       elsif deal.currency == 'USD'
         (deal.amount * 100).to_i
       else
@@ -77,39 +85,51 @@ class ImportOldDatabaseService
       end
     end
 
-    def pre_valuation_cents(deal)
+    def pre_valuation_cents_old(deal)
       return if deal.currency.blank? || deal.amount.nil? # nil ou ""
       return unless deal.pre_valuation
-
       if deal.currency == 'BRL'
         # TODO: preciso ver o que fazer nesse caso aqui com o Diego
         dolar_quote = 3.5
-
         return ((deal.pre_valuation * dolar_quote) * 100).to_i
       elsif deal.currency == 'USD'
         @amount_value_cents = (deal.amount * 100).to_i
-
         return (deal.pre_valuation * 100).to_i
       else
         raise 'deu ruim'
       end
     end
 
+    # amount_cents ignore transformation to cents
+    def amount_cents(deal)
+      if deal.currency.blank? || deal.amount.nil? # nil ou ""
+        @amount_value_cents = nil # don't touch
+      else
+        deal.amount.to_i
+      end
+    end
+
+    # pre_valuation_cents ignore transformation to cents
+    def pre_valuation_cents(deal)
+      if deal.currency.blank? || deal.pre_valuation.nil? # nil ou ""
+       @pre_valuation_cents = nil
+      else
+        deal.pre_valuation.to_i
+      end
+    end
+
     def source_url(deal)
       return unless deal.source_url.presence
-
       deal.source_url.presence.delete(' ').strip
     end
 
     def convert_to_usd(deal)
       date = deal.close_date.strftime('%Y-%m-%d')
-
       dolar_rate = JSON.parse(
         Faraday.get(
           "https://exchangeratesapi.io/api/#{date}?&base=USD&symbols=USD"
         ).body
       ).fetch('rates').fetch('USD')
-
       ((deal.amount * dolar_rate) * 100).to_i
     end
   end
