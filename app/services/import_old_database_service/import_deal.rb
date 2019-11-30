@@ -41,8 +41,8 @@ class ImportOldDatabaseService
                        source_url: source_url(deal))
       end
       puts "-- imported #{::Deal.count} deals"
+    end
     
-      
     private
 
     def company(deal)
@@ -125,11 +125,7 @@ class ImportOldDatabaseService
 
     def convert_to_usd(deal)
       date = deal.close_date.strftime('%Y-%m-%d')
-      dolar_rate = JSON.parse(
-        Faraday.get(
-          "https://exchangeratesapi.io/api/#{date}?&base=USD&symbols=USD"
-        ).body
-      ).fetch('rates').fetch('USD')
+      dolar_rate = JSON.parse(Faraday.get("https://exchangeratesapi.io/api/#{date}?&base=USD&symbols=USD").body).fetch('rates').fetch('USD')
       ((deal.amount * dolar_rate) * 100).to_i
     end
   end
