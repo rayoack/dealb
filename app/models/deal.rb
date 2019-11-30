@@ -76,8 +76,7 @@ class Deal < ApplicationRecord
 
   # Scopes
   scope :top_contributors, lambda { |amount|
-    joins(:user).select('users.id as user_id',
-                        'COUNT(*) as number_of_deals')
+    joins(:user).select('users.id as user_id', 'COUNT(*) as number_of_deals')
                 .group('users.id')
                 .order('number_of_deals desc')
                 .limit(amount)
