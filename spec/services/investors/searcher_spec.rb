@@ -91,7 +91,7 @@ describe Investors::Searcher do
           '0' => {
             type: 'total_funds_invested',
             operator: 'equal',
-            value: ((deal_1.amount + deal_2.amount).to_i).to_s
+            value: (deal_1.amount + deal_2.amount).to_i.to_s
           }
         }
       }.deep_stringify_keys
