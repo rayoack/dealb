@@ -59,8 +59,8 @@ describe DealSearcher do
   end
 
   context 'by amount' do
-    let!(:matching_deal) { create(:deal, amount_cents: '100_000_00'.to_i) }
-    let!(:non_matching_deal) { create(:deal, amount_cents: '1_000_000_00'.to_i) }
+    let!(:matching_deal) { create(:deal, amount: '100_000_00'.to_i) }
+    let!(:non_matching_deal) { create(:deal, amount: '1_000_000_00'.to_i) }
 
     let(:filter_params) do
       {
@@ -68,7 +68,7 @@ describe DealSearcher do
           '0' => {
             type: 'amount',
             operator: 'equal',
-            value: (matching_deal.amount_cents.to_f / 100).to_s
+            value: (matching_deal.amount.to_f).to_s
           }
         }
       }.deep_stringify_keys
@@ -172,8 +172,8 @@ describe DealSearcher do
 
     let!(:company_1) { create :company, name: 'Bossa', description: 'Only devops' }
     let!(:company_2) { create :company, name: 'Box', description: 'For UXes' }
-    let!(:deal_1) { create :deal, company: company_1, amount_cents: 4000, close_date: 2.days.ago }
-    let!(:deal_2) { create :deal, company: company_2, amount_cents: 200, close_date: 1.hour.ago }
+    let!(:deal_1) { create :deal, company: company_1, amount: 4000, close_date: 2.days.ago }
+    let!(:deal_2) { create :deal, company: company_2, amount: 200, close_date: 1.hour.ago }
     let(:filter_params) { {} }
 
     context 'order by desc' do
@@ -190,7 +190,7 @@ describe DealSearcher do
       end
 
       context 'amount' do
-        let(:filter_params) { { type: 'amount_cents', order: 'desc' } }
+        let(:filter_params) { { type: 'amount', order: 'desc' } }
 
         it { expect(subject.call.to_a).to match_array([deal_1, deal_2]) }
       end
@@ -210,7 +210,7 @@ describe DealSearcher do
       end
 
       context 'amount' do
-        let(:filter_params) { { type: 'amount_cents', order: 'asc' } }
+        let(:filter_params) { { type: 'amount', order: 'asc' } }
 
         it { expect(subject.call.to_a).to match_array([deal_2, deal_1]) }
       end

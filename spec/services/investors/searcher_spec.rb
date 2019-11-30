@@ -79,9 +79,9 @@ describe Investors::Searcher do
   end
 
   context 'filters by total funds invested' do
-    let!(:deal_1) { create :deal, amount_cents: 200_000 }
-    let!(:deal_2) { create :deal, amount_cents: 2_000_000 }
-    let!(:deal_3) { create :deal, amount_cents: 800_000 }
+    let!(:deal_1) { create :deal, amount: 200_000 }
+    let!(:deal_2) { create :deal, amount: 2_000_000 }
+    let!(:deal_3) { create :deal, amount: 800_000 }
 
     let!(:matching_investor) { create(:investor) }
     let!(:non_matching_investor) { create(:investor) }
@@ -91,7 +91,7 @@ describe Investors::Searcher do
           '0' => {
             type: 'total_funds_invested',
             operator: 'equal',
-            value: ((deal_1.amount_cents + deal_2.amount_cents).to_i / 100).to_s
+            value: ((deal_1.amount + deal_2.amount).to_i / 100).to_s
           }
         }
       }.deep_stringify_keys

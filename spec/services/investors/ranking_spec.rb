@@ -17,31 +17,31 @@ describe Investors::Ranking do
     before do
       # First investor
       create :deal_investor, investor: investor_1,
-                             deal: create(:deal, amount_cents: 100)
+                             deal: create(:deal, amount: 100)
 
       # Second investor
       create :deal_investor, investor: investor_2,
-                             deal: create(:deal, amount_cents: 200)
+                             deal: create(:deal, amount: 200)
       create :deal_investor, investor: investor_2,
-                             deal: create(:deal, amount_cents: 200)
+                             deal: create(:deal, amount: 200)
       create :deal_investor, investor: investor_2,
-                             deal: create(:deal, amount_cents: 200)
+                             deal: create(:deal, amount: 200)
 
       # Third investor
       create :deal_investor, investor: investor_3,
-                             deal: create(:deal, amount_cents: 300)
+                             deal: create(:deal, amount: 300)
       create :deal_investor, investor: investor_3,
-                             deal: create(:deal, amount_cents: 300)
+                             deal: create(:deal, amount: 300)
       create :deal_investor, investor: investor_3,
-                             deal: create(:deal, amount_cents: 300)
+                             deal: create(:deal, amount: 300)
       create :deal_investor, investor: investor_3,
-                             deal: create(:deal, amount_cents: 300)
+                             deal: create(:deal, amount: 300)
 
       # Fourth investor
       create :deal_investor, investor: investor_4,
-                             deal: create(:deal, amount_cents: 400)
+                             deal: create(:deal, amount: 400)
       create :deal_investor, investor: investor_4,
-                             deal: create(:deal, amount_cents: 400)
+                             deal: create(:deal, amount: 400)
     end
 
     context 'without order priority' do

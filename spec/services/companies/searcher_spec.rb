@@ -174,10 +174,10 @@ describe Companies::Searcher do
     end
 
     before do
-      create :deal, company: matching_company, amount_cents: 200
-      create :deal, company: matching_company, amount_cents: 300
+      create :deal, company: matching_company, amount: 200
+      create :deal, company: matching_company, amount: 300
 
-      create :deal, company: non_matching_company, amount_cents: 300
+      create :deal, company: non_matching_company, amount: 300
     end
 
     context 'with exact amount' do

@@ -67,7 +67,7 @@ describe Deal do
 
     it do
       is_expected.to(
-        validate_numericality_of(:amount_cents).only_integer.allow_nil
+        validate_numericality_of(:amount).only_integer.allow_nil
       )
     end
 
@@ -81,7 +81,7 @@ describe Deal do
 
     it do
       is_expected.to(
-        validate_numericality_of(:pre_valuation_cents)
+        validate_numericality_of(:pre_valuation)
           .only_integer
           .is_greater_than(0)
           .allow_nil
@@ -116,7 +116,7 @@ describe Deal do
   end
 
   describe '#amount' do
-    let(:deal) { build(:deal, amount_cents: 100_00) }
+    let(:deal) { build(:deal, amount: 100_00) }
 
     subject(:amount) { deal.amount }
 
@@ -124,8 +124,8 @@ describe Deal do
       is_expected.to eq(100.00)
     end
 
-    context 'when theres no amount_cents' do
-      let(:deal) { build(:deal, amount_cents: nil) }
+    context 'when theres no amount' do
+      let(:deal) { build(:deal, amount: nil) }
 
       it 'returns nil' do
         is_expected.to eq(nil)
@@ -134,7 +134,7 @@ describe Deal do
   end
 
   describe '#pre_valuation' do
-    let(:deal) { build(:deal, pre_valuation_cents: 100_00) }
+    let(:deal) { build(:deal, pre_valuation: 100_00) }
 
     subject(:pre_valuation) { deal.pre_valuation }
 
@@ -142,8 +142,8 @@ describe Deal do
       is_expected.to eq(100.00)
     end
 
-    context 'when theres no pre_valuation_cents' do
-      let(:deal) { build(:deal, pre_valuation_cents: nil) }
+    context 'when theres no pre_valuation' do
+      let(:deal) { build(:deal, pre_valuation: nil) }
 
       it 'returns nil' do
         is_expected.to eq(nil)
