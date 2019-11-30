@@ -44,8 +44,7 @@ class ImportOldDatabaseService
         @deal_investor.save!
       end
 
-      puts "\nImported deal_investor - final statistics"
-      puts "count: #{::DealInvestor.count} deal_investors"
+      Rails.logger.info("-- imported #{::DealInvestor.count} deal_investors")
     rescue StandardError
       raise
     end

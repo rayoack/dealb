@@ -33,9 +33,7 @@ class ImportOldDatabaseService
         @localizable.save!
       end
 
-      puts "\nImported investor_location - final statistics"
-      puts "before count: #{@localizable_count_before} "
-      puts "count: #{::Localizable.count} investor_locations"
+      Rails.logger.info("-- imported #{::Localizable.count} investor_locations")
     rescue StandardError
       raise
     end

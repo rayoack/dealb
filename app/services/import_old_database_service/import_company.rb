@@ -3,7 +3,7 @@
 class ImportOldDatabaseService
   class ImportCompany
     def run
-      puts '-- company'
+      Rails.logger.info('-- company')
       ImportOldDatabaseService::Entities::Company.find_each do |company|
         printf('.')
         @company = company
@@ -18,9 +18,11 @@ class ImportOldDatabaseService
           permalink: company.slug.presence.parameterize || nil
         )
       end
-      puts "-- imported #{::Company.count} companies"
+      Rails.logger.info("-- imported #{::Company.count} companies")
     end
+
     private
+
     def normalize(url)
       ActiveSupport::Inflector.transliterate(
         String(

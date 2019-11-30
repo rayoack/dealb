@@ -91,8 +91,7 @@ class ImportOldDatabaseService
         raise
       end
 
-      puts "\nImported investor - final statistics"
-      puts "count: #{::Investor.count} investors"
+      Rails.logger.info("-- imported #{::Investor.count} investors")
       # rubocop:enable Metrics/BlockLength
     end
     # rubocop:enable Metrics/MethodLength

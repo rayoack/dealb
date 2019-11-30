@@ -8,7 +8,7 @@ class ImportOldDatabaseService
   class ImportUser
     # rubocop:disable Metrics/MethodLength
     def run
-      puts '-- user'
+      Rails.logger.info('-- user')
       ImportOldDatabaseService::Entities::User.find_each do |user|
         printf('.')
         @user = user
@@ -27,7 +27,7 @@ class ImportOldDatabaseService
         )
         new_user.save!
       end
-      puts "-- imported #{::User.count} users"
+      Rails.logger.info("-- imported #{::User.count} users")
     end
     # rubocop:enable Metrics/MethodLength
   end

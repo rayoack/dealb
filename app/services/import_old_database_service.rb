@@ -33,37 +33,33 @@ class ImportOldDatabaseService
     end
   end
 
-  # rubocop:disable Metrics/MethodLength
   def run
     handle_errors do
       i_merket = ImportOldDatabaseService::ImportMarket.new.run
       i_merket.present?
-        i_location = ImportOldDatabaseService::ImportLocation.new.run
-        i_location.present?
-          i_user = ImportOldDatabaseService::ImportUser.new.run
-          i_user.present?
-            i_company = ImportOldDatabaseService::ImportCompany.new.run
-            i_company.present?
-              i_company_market = ImportOldDatabaseService::ImportCompanyMarket.new.run
-              i_company_market.present?
-                i_company_location = ImportOldDatabaseService::ImportCompanyLocation.new.run
-                i_company_location.present?
-                  i_deal = ImportOldDatabaseService::ImportDeal.new.run
-=begin
-                  i_deal.present?
-                    i_investor = ImportOldDatabaseService::ImportInvestor.new.run
-                    i_investor.present?
-                      i_investor_location = ImportOldDatabaseService::ImportInvestorLocation.new.run
-                      i_investor_location.present?
-                        i_investor_market = ImportOldDatabaseService::ImportInvestorMarket.new.run
-                        i_investor_market.present?
-                          i_dealing = ImportOldDatabaseService::ImportDealing.new.run
-=end
+      i_location = ImportOldDatabaseService::ImportLocation.new.run
+      i_location.present?
+      i_user = ImportOldDatabaseService::ImportUser.new.run
+      i_user.present?
+      i_company = ImportOldDatabaseService::ImportCompany.new.run
+      i_company.present?
+      i_company_market = ImportOldDatabaseService::ImportCompanyMarket.new.run
+      i_company_market.present?
+      i_company_location = ImportOldDatabaseService::ImportCompanyLocation.new.run
+      i_company_location.present?
+      ImportOldDatabaseService::ImportDeal.new.run
+
+      # i_deal.present?
+      # i_investor = ImportOldDatabaseService::ImportInvestor.new.run
+      # i_investor.present?
+      # i_investor_location = ImportOldDatabaseService::ImportInvestorLocation.new.run
+      # i_investor_location.present?
+      # i_investor_market = ImportOldDatabaseService::ImportInvestorMarket.new.run
+      # i_investor_market.present?
+      # i_dealing = ImportOldDatabaseService::ImportDealing.new.run
     end
   end
-  # rubocop:enable Metrics/MethodLength
 
-  # rubocop:disable Metrics/MethodLength
   def handle_errors
     ActiveRecord::Base.transaction do
       yield
@@ -73,5 +69,4 @@ class ImportOldDatabaseService
       raise
     end
   end
-  # rubocop:enable Metrics/MethodLength
 end

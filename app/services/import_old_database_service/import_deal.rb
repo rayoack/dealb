@@ -21,11 +21,11 @@ class ImportOldDatabaseService
       nil => nil
     ].freeze
 
-    # TODO o que é esse ENV?
+    # TODO, o que eh esse ENV?
     ACCESS_KEY = ENV['FIXER_IO_API_KEY']
 
     def run
-      puts '-- deal'
+      Rails.logger.info('-- deal')
       ImportOldDatabaseService::Entities::Deal.find_each do |deal|
         printf('.')
         ::Deal.create!(close_date: deal.close_date,
@@ -40,9 +40,9 @@ class ImportOldDatabaseService
                        pre_valuation_cents: pre_valuation_cents(deal),
                        source_url: source_url(deal))
       end
-      puts "-- imported #{::Deal.count} deals"
+      Rails.logger.info("-- imported #{::Deal.count} deals")
     end
-    
+
     private
 
     def company(deal)
@@ -112,7 +112,7 @@ class ImportOldDatabaseService
     # pre_valuation_cents ignore transformation to cents
     def pre_valuation_cents(deal)
       if deal.currency.blank? || deal.pre_valuation.nil? # nil ou ""
-       @pre_valuation_cents = nil
+        @pre_valuation_cents = nil
       else
         deal.pre_valuation.to_i
       end
@@ -125,7 +125,11 @@ class ImportOldDatabaseService
 
     def convert_to_usd(deal)
       date = deal.close_date.strftime('%Y-%m-%d')
-      dolar_rate = JSON.parse(Faraday.get("https://exchangeratesapi.io/api/#{date}?&base=USD&symbols=USD").body).fetch('rates').fetch('USD')
+      dolar_rate = JSON.parse(
+        Faraday.get("https://exchangeratesapi.io/api/#{date}?&base=USD&symbols=USD").body
+      )
+      .fetch('rates')
+      .fetch('USD')
       ((deal.amount * dolar_rate) * 100).to_i
     end
   end

@@ -3,12 +3,12 @@
 class ImportOldDatabaseService
   class ImportLocation
     def run
-      puts '-- location'
+      Rails.logger.info('-- location')
       ImportOldDatabaseService::Entities::Location.find_each do |location|
         printf('.')
         ::Location.create!(country: location.country, city: location.city)
       end
-      puts "-- imported #{::Location.count} locations"
+      Rails.logger.info("-- imported #{::Location.count} locations")
     end
   end
 end

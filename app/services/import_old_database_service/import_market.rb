@@ -3,12 +3,12 @@
 class ImportOldDatabaseService
   class ImportMarket
     def run
-      puts '-- market'
+      Rails.logger.info('-- market')
       ImportOldDatabaseService::Entities::Market.find_each do |market|
         printf('.')
         ::Market.create!(name: market.name)
       end
-      puts "-- imported #{::Market.count} markets"
+      Rails.logger.info("-- imported #{::Market.count} markets")
     end
   end
 end

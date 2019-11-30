@@ -29,9 +29,7 @@ class ImportOldDatabaseService
         @company_mkt.save!
       end
 
-      puts "\nImported investor_market - final statistics"
-      puts "before count: #{@company_market_count_before} "
-      puts "count: #{::CompanyMarket.count} investor_markets"
+      Rails.logger.info("-- imported #{::CompanyMarket.count} investor_markets")
     rescue StandardError
       raise
     end

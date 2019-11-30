@@ -2,9 +2,8 @@
 
 class ImportOldDatabaseService
   class ImportCompanyLocation
-    # rubocop:disable Metrics/MethodLength
     def run
-      puts '-- company location'
+      Rails.logger.info('-- company location')
       ImportOldDatabaseService::Entities::CompanyLocation.all.each do |company_location|
         printf('.')
         old_location = ImportOldDatabaseService::Entities::Location.find(
@@ -19,8 +18,7 @@ class ImportOldDatabaseService
         new_company = ::Company.find_by!(name: old_company.name)
         ::Localizable.create!(location: new_location, localizable: new_company)
       end
-      puts "-- imported #{::Localizable.count} companies locations"
+      Rails.logger.info("-- imported #{::Localizable.count} companies locations")
     end
-    # rubocop:enable Metrics/MethodLength
   end
 end

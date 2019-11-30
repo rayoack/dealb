@@ -2,9 +2,8 @@
 
 class ImportOldDatabaseService
   class ImportCompanyMarket
-    # rubocop:disable Metrics/MethodLength
     def run
-      puts '-- company'
+      Rails.logger.info('-- company')
       ImportOldDatabaseService::Entities::CompanyMarket.all.each do |company_market|
         printf('.')
         old_market = ImportOldDatabaseService::Entities::Market.find(
@@ -17,8 +16,7 @@ class ImportOldDatabaseService
         new_company = ::Company.find_by!(name: old_company.name)
         ::CompanyMarket.create!(market: new_market, company: new_company)
       end
-      puts "-- imported #{::CompanyMarket.count} company markets"
+      Rails.logger.info("-- imported #{::CompanyMarket.count} company markets")
     end
-    # rubocop:enable Metrics/MethodLength
   end
 end
