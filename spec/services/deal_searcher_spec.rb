@@ -68,7 +68,7 @@ describe DealSearcher do
           '0' => {
             type: 'amount',
             operator: 'equal',
-            value: (matching_deal.amount.to_f).to_s
+            value: matching_deal.amount.to_f.to_s
           }
         }
       }.deep_stringify_keys
