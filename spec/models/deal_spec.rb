@@ -121,7 +121,7 @@ describe Deal do
     subject(:amount) { deal.amount }
 
     it 'returns the value' do
-      is_expected.to eq(100.00)
+      is_expected.to eq(100_00)
     end
 
     context 'when theres no amount' do
@@ -139,7 +139,7 @@ describe Deal do
     subject(:pre_valuation) { deal.pre_valuation }
 
     it 'returns the value' do
-      is_expected.to eq(100.00)
+      is_expected.to eq(100_00)
     end
 
     context 'when theres no pre_valuation' do
