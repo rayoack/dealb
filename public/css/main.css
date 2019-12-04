@@ -1093,7 +1093,7 @@ header .header-mobile {
   overflow: hidden;
 }
 .s-updates .container-updates {
-  padding-left: 153px;
+  padding: 0 9em;
 }
 .s-updates .container-updates h1 {
   margin: 0px;
