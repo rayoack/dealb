@@ -27,16 +27,24 @@ module DealsHelper
       rates = exchange_rates(deal.close_date)
       deal.exchange_rates = rates
       deal.pre_valuation_dolar =
-        if deal.pre_valuation_currency != 'USD'
-          deal.pre_valuation * (1 / rates)
+        if deal.pre_valuation_currency.present?
+          if deal.pre_valuation_currency != 'USD'
+            deal.pre_valuation * (1 / rates)
+          else
+            deal.pre_valuation
+          end
         else
-          deal.pre_valuation
+          nil
         end
       deal.amount_dolar =
-        if deal.amount_currency != 'USD'
-          deal.amount * (1 / rates)
+        if deal.amount_currency.present?
+          if deal.amount_currency != 'USD'
+            deal.amount * (1 / rates)
+          else
+            deal.amount
+          end
         else
-          deal.amount
+          nil
         end
       deal.save
     rescue
