@@ -19,8 +19,8 @@ class DealsController < ApplicationController
   end
 
   def create
-    @deal = Deal.new( deal_params.merge(amount_dolar: amount_dolar(@deal), pre_valuation_dolar: pre_valuation_dolar(@deal)) )
-
+    @deal = Deal.new(deal_params.merge(amount_dolar: amount_dolar(@deal),
+      pre_valuation_dolar: pre_valuation_dolar(@deal)))
     if @deal.save
       redirect_to deals_path, notice: I18n.t('deals.messages.create.success')
     else
@@ -33,7 +33,8 @@ class DealsController < ApplicationController
   def show; end
 
   def update
-    if @deal.update( deal_params.merge(amount_dolar: amount_dolar(@deal), pre_valuation_dolar: pre_valuation_dolar(@deal)) )
+    if @deal.update(deal_params.merge(amount_dolar: amount_dolar(@deal),
+        pre_valuation_dolar: pre_valuation_dolar(@deal)))
       redirect_to deals_path, notice: 'Successfully updated'
     else
       render :edit
