@@ -27,6 +27,17 @@ module DealsHelper
     # sprintf("%0.010f", dolar_rate)
   end
 
+  def pre_valuation_dolar(deal)
+    rates = exchange_rates(deal)
+    puts rates
+    puts sprintf("%0.010f", rates)
+    if deal.pre_valuation_currency == 'USD' then
+      deal.pre_valuation
+    else
+      deal.pre_valuation * (1 / rates)
+    end
+  end
+
   def amount_dolar(deal)
     rates = exchange_rates(deal)
     puts rates

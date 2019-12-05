@@ -81,10 +81,4 @@ class Deal < ApplicationRecord
                 .order('number_of_deals desc')
                 .limit(amount)
   }
-
-  # before_save do
-    # self.exchange_rates = ActionController::Base.helpers.exchange_rates(self) if !self.exchange_rates.present?
-    # self.amount_dolar = self.amount * self.exchange_rates if self.amount_currency == 'BRL'
-    # self.pre_valuation_dolar = 
-  # end
 end

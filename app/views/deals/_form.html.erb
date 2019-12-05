@@ -7,7 +7,9 @@
 <div class="form-group">
   <%= f.select(:company_id, @companies.collect { |c| [c.name, c.id] },
                             { prompt: t('deals.form.select_company') },
-                            { class: 'select-category' }) %>
+                            class: 'select2',
+                            data: { label: t('deals.form.select_company') },
+                            multiple: false ) %>
 </div>
 <div class="form-group">
   <div class="input-group date-close">
@@ -32,21 +34,30 @@
 <div class="form-group">
   <%= f.select(:round, Deal::ROUNDS.collect { |round| [t("deals.form.rounds.#{round}"), round] },
                        { prompt: t('deals.form.select_round') },
-                       { class: 'select-round' }) %>
+                       { class: 'select-round', style: 'width: 100%;' }) %>
+</div>
+<div class="form-group">
+  <%= f.select(:amount_currency,
+    Deal::CURRENCIES.collect { |currency| [currency, currency] },
+    { prompt: t('deals.form.select_currency') },
+    { class: 'select-currency', style: 'width: 22%;' }) %>
 
-  <%= f.select(:amount_currency, Deal::CURRENCIES.collect { |currency| [currency, currency] },
+  <%= f.text_field :amount, 
+    placeholder: t('deals.form.total_amount'),
+    class: 'input-total-amount',
+    style: 'float: left; width: 75%; margin-left: 1em;',
+    data: { type: 'money' } %>
+</div>
+<div class="form-group">
+  <%= f.select(:pre_valuation_currency, Deal::CURRENCIES.collect { |currency| [currency, currency] },
                                  { prompt: t('deals.form.select_currency') },
-                                 { class: 'select-currency' }) %>
-</div>
-<div class="form-group">
-  <%= f.text_field :amount, placeholder: t('deals.form.total_amount'),
-                                  class: 'input-total-amount',
-                                  data: { type: 'money' } %>
-</div>
-<div class="form-group">
-  <%= f.text_field :pre_valuation, 
+                                 { class: 'select-currency', style: 'width: 22%;' }) %>
+
+  <%= f.text_field :pre_valuation,
     placeholder: t('deals.form.pre_valuation'),
-    class: 'input-money' %>
+    style: 'float: left; width: 75%; margin-left: 1em;',
+    class: 'input-money',
+    data: { type: 'money' } %>
 </div>
 <div class="form-group">
   <%= f.text_field :source_url, placeholder: t('deals.form.source_url'), pattern: 'https?://.+', title: 'Only valid URLs' %>

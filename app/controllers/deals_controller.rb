@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class DealsController < ApplicationController
+  include DealsHelper
   before_action :authenticate_user!, only: %i[edit update destroy]
   before_action :only_admin_or_moderator!, only: %i[edit update destroy]
 
@@ -18,7 +19,7 @@ class DealsController < ApplicationController
   end
 
   def create
-    @deal = Deal.new(deal_params)
+    @deal = Deal.new( deal_params.merge(amount_dolar: amount_dolar(@deal), pre_valuation_dolar: pre_valuation_dolar(@deal)) )
 
     if @deal.save
       redirect_to deals_path, notice: I18n.t('deals.messages.create.success')
@@ -32,7 +33,7 @@ class DealsController < ApplicationController
   def show; end
 
   def update
-    if @deal.update(deal_params)
+    if @deal.update( deal_params.merge(amount_dolar: amount_dolar(@deal), pre_valuation_dolar: pre_valuation_dolar(@deal)) )
       redirect_to deals_path, notice: 'Successfully updated'
     else
       render :edit
@@ -50,8 +51,8 @@ class DealsController < ApplicationController
   private
 
   DEAL_PARAMS = %i[
-    close_date company_id category round amount_currency
-    amount pre_valuation source_url status
+    close_date company_id category round amount_currency pre_valuation_currency
+    amount pre_valuation source_url status amount_dolar pre_valuation_dolar
   ].freeze
 
   def filter_params

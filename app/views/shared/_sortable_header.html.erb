@@ -1,4 +1,4 @@
-<th>
+<th style="<%= style ||= '' %>">
   <% if order.present? && order == 'DESC' && params[:type] == type %>
     <%= link_to label, params.permit!.merge(order: 'ASC', type: type),
                        class: 'sortable-header' %>

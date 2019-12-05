@@ -44,17 +44,23 @@
                 <%= render 'shared/sortable_header', url: deals_path,
                                                      label: t('deals.index.column_close_date'),
                                                      type: 'close_date',
+                                                     style: 'width: 9em;',
                                                      order: params[:order] %>
                 <th><%= t('deals.index.column_deal_type') %> </th>
                 <th><%= t('deals.index.column_investors') %> </th>
                 <%= render 'shared/sortable_header', url: deals_path,
                                                      label: t('deals.index.column_amount'),
                                                      type: 'amount',
+                                                     style: 'width: 9em;',
+                                                     order: params[:order] %>
+                <%= render 'shared/sortable_header', url: deals_path,
+                                                     label: t('deals.index.column_amount') + ' $',
+                                                     type: 'amount_dolar',
+                                                     style: 'width: 9em;',
                                                      order: params[:order] %>
                 <th></th>
 
                 <% if user_admin? || user_moderator? %>
-                  <th></th>
                   <th></th>
                 <% end %>
               </tr>
@@ -63,26 +69,33 @@
               <% @deals_paginated.each do |deal| %>
                   <tr class="clickable-row" data-href=<%= "/deals/#{deal.id}" %>>
                       <td>
-                        <img src=<%= deal.company&.profile_image_url || '/img/companies.svg' %> alt="">
-                        <%= link_to(deal.company.name, company_path(deal.company.permalink)) %>
+                        <div class="row">
+                          <div class="col-md-3">
+                            <img src=<%= deal.company&.profile_image_url || '/img/companies.svg' %> alt="">
+                          </div>
+                          <div class="col-md-9">
+                            <%= link_to(deal.company.name, company_path(deal.company.permalink)) %>
+                          </div>
+                        </div>
                       </td>
                       <td><%= I18n.l(deal.close_date, format: :default) %></td>
                       <td><%= I18n.t("deals.model.categories.#{deal.category}") %></td>
                       <td><%= investors_link(deal) %></td>
                       <td><%= format_amount(deal.amount, deal.amount_currency) %></td>
+                      <td><%= format_amount(deal.amount_dolar, 'USD') %></td>
                       <td>
                         <a href="/deals/<%= deal.id %>">
                           <img src="/img/seta-dir.svg" alt="">
                         </a>
                       </td>
                       <% if user_admin? || user_moderator? %>
-                        <td>
+                        <td class="user_control_actions">
                           <%= link_to 'Delete', deal_path(deal.id),
-                                                class: 'btn btn-danger',
+                                                class: 'btn btn-danger btn-sm btn-block',
                                                 method: :delete,
                                                 data: { confirm: "Are you sure you want to delete?" } %>
+                          <a href="/deals/<%= deal.id %>/edit" class="btn btn-default btn-sm btn-block">Edit</a>
                         </td>
-                        <td><a href="/deals/<%= deal.id %>/edit" class="btn btn-default">Edit</a></td>
                       <% end %>
                   </tr>
               <% end %>

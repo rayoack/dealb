@@ -184,7 +184,7 @@ es:
       select_category: 'Seleccione una categoría'
       select_investor: 'Seleccione un inversionista'
       select_round: 'Seleccione una ronda'
-      select_currency: 'Seleccione moneda'
+      select_currency: 'Moneda'
       total_amount: 'Total'
       pre_valuation: 'Pre valoración'
       source_url: 'URL de origen - http://www.example.com'

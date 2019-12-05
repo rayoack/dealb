@@ -3584,7 +3584,7 @@ footer .copyright p a {
   background: url("/img/seta-baixo-select.png") no-repeat right;
   background-position-x: 95%;
   background-position-y: 20px;
-  margin-bottom: 16px;
+  /*margin-bottom: 16px;*/
 }
 .form-create form .form-group .select-round,
 .form-create form .form-group .select-category-investor {
@@ -5323,7 +5323,45 @@ a.menu-button:hover .menu-icon::after {
   }
 }
 .select2 {
-  width: 50%;
+  width: 100% !important;
+}
+
+.select2-container--default .select2-selection--multiple,
+.select2-container--default .select2-selection--single {
+  height: 48px !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  background: url(/img/seta-baixo-select.png) no-repeat right;
+  height: 100% !important;
+  margin-right: 1em;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+  display: none !important;
+}
+
+.select2-container .select2-search--inline .select2-search__field {
+  margin-top: 1em !important;
+  margin-left: 1em !important;
+}
+
+.select2-container .select2-search--inline .select2-search__field {
+  margin-top: 1em !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+  height: 80%;
+  line-height: 2.5em;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: 3em !important;
+  margin-left: 0.5em;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__rendered {
+  height: 100%;
 }
 
 .status-active {

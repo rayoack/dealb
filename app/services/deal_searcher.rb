@@ -60,7 +60,8 @@ class DealSearcher < BaseSearcher
   def order_criteria
     return { close_date: :desc } if order_direction.blank? || order_type.blank?
     return "companies.#{order_type} #{order_direction}" if order_type == :name
-    return "coalesce(deals.#{order_type}, 0) #{order_direction}" if order_type == :amount
+    return "coalesce(deals.#{order_type}, 0) #{order_direction}" if order_type == :amount_dolar
+    return "coalesce(deals.amount_dolar, 0) #{order_direction}" if order_type == :amount
 
     { order_type => order_direction }
   end
