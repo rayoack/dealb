@@ -58,7 +58,7 @@ describe DealsController do
       sign_in create(:user)
 
       expect { create_deal }.to change {
-        [Deal.all.count, DealInvestor.all.count]  
+        [Deal.all.count, DealInvestor.all.count]
       }.from([0, 0]).to([1, 1])
     end
 

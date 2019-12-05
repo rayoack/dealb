@@ -1,4 +1,5 @@
 require 'csv'
+include DealsHelper
 
 namespace :deals do
   task amount_fix: :environment do |_task, _args|
@@ -24,5 +25,11 @@ namespace :deals do
     end
 
     puts('---- Finished Deals update from CSV ----')
+  end
+
+  task exchange_rate: :environment do |_task, _args|
+    Deal.find_each do |deal|
+      convert_to_dolar(deal)
+    end
   end
 end
