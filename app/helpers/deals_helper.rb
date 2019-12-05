@@ -13,8 +13,8 @@ module DealsHelper
     end.join('/ ').html_safe # rubocop:disable Rails/OutputSafety
   end
 
-  def exchange_rates(deal)
-    date = deal.close_date.strftime('%Y-%m-%d')
+  def exchange_rates(date)
+    date = date.strftime('%Y-%m-%d')
     dolar_rate = JSON.parse(
       # https://api.exchangeratesapi.io/2016-04-09?&base=USD&symbols=BRL
       Faraday.get("https://api.exchangeratesapi.io/#{date}", { base: 'USD', symbols: 'BRL' }).body
@@ -23,30 +23,19 @@ module DealsHelper
     return dolar_rate
   end
 
-  def pre_valuation_dolar(deal)
-    rates = exchange_rates(deal)
-    if deal.pre_valuation_currency == 'USD'
-      deal.pre_valuation
+  def convert_to_dolar(deal)
+    rates = exchange_rates(deal.close_date)
+    deal.exchange_rates = rates
+    if deal.pre_valuation_currency != 'USD'
+      deal.pre_valuation_dolar = deal.pre_valuation * (1 / rates)
     else
-      deal.pre_valuation * (1 / rates)
+      deal.pre_valuation_dolar = deal.pre_valuation
     end
-  end
-
-  def amount_dolar(deal)
-    rates = exchange_rates(deal)
-    if deal.amount_currency == 'USD'
-      deal.amount
+    if deal.amount_currency != 'USD'
+      deal.amount_dolar = deal.amount * (1 / rates)
     else
-      deal.amount * (1 / rates)
+      deal.amount_dolar = deal.amount
     end
-  end
-
-  def amount_real(deal)
-    rates = exchange_rates(deal)
-    if deal.amount_currency == 'BRL'
-      deal.amount
-    else
-      deal.amount * rates
-    end
+    deal.save
   end
 end
