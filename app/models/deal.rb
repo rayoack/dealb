@@ -51,13 +51,13 @@ class Deal < ApplicationRecord
   validates :category, inclusion: { in: CATEGORIES }
   validates :status, inclusion: { in: STATUSES }
   validates :round, inclusion: { in: ROUNDS }, allow_nil: true
-  validates :amount_currency, inclusion: { in: CURRENCIES }, allow_nil: false
+  validates :amount_currency, inclusion: { in: CURRENCIES }, allow_nil: true
   validates(
     :amount,
     numericality: { only_integer: true, greater_than: 0, allow_nil: true }
   )
   validates(
-    :pre_valuation_currency, inclusion: { in: CURRENCIES }, allow_nil: false
+    :pre_valuation_currency, inclusion: { in: CURRENCIES }, allow_nil: true
   )
   validates(
     :pre_valuation,
