@@ -25,16 +25,18 @@ module DealsHelper
   def convert_to_dolar(deal)
     rates = exchange_rates(deal.close_date)
     deal.exchange_rates = rates
-    deal.pre_valuation_dolar = if deal.pre_valuation_currency != 'USD'
-      deal.pre_valuation * (1 / rates)
-    else
-      deal.pre_valuation
-    end
-    deal.amount_dolar = if deal.amount_currency != 'USD'
-      deal.amount * (1 / rates)
-    else
-      deal.amount
-    end
+    deal.pre_valuation_dolar =
+      if deal.pre_valuation_currency != 'USD'
+        deal.pre_valuation * (1 / rates)
+      else
+        deal.pre_valuation
+      end
+    deal.amount_dolar =
+      if deal.amount_currency != 'USD'
+        deal.amount * (1 / rates)
+      else
+        deal.amount
+      end
     deal.save
   end
 end
