@@ -61,7 +61,6 @@ describe Deal do
       is_expected.to(
         validate_inclusion_of(:amount_currency)
           .in_array(described_class::CURRENCIES)
-          .allow_nil
       )
     end
 
@@ -75,7 +74,6 @@ describe Deal do
       is_expected.to(
         validate_inclusion_of(:pre_valuation_currency)
           .in_array(described_class::CURRENCIES)
-          .allow_nil
       )
     end
 
