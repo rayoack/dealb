@@ -14,6 +14,9 @@ module DealsHelper
   end
 
   def exchange_rates(date)
+    if date < Date.parse('1999-01-04')
+      raise 'There is no data for date older then 1999-01-04'
+    end
     date = date.strftime('%Y-%m-%d')
     JSON.parse(
       # https://api.exchangeratesapi.io/2016-04-09?&base=USD&symbols=BRL
@@ -26,26 +29,22 @@ module DealsHelper
     begin
       rates = exchange_rates(deal.close_date)
       deal.exchange_rates = rates
-      deal.pre_valuation_dolar =
-        if deal.pre_valuation_currency.present?
+      if deal.pre_valuation_currency.present?
+        deal.pre_valuation_dolar =
           if deal.pre_valuation_currency != 'USD'
             deal.pre_valuation * (1 / rates)
           else
             deal.pre_valuation
           end
-        else
-          nil
-        end
-      deal.amount_dolar =
-        if deal.amount_currency.present?
+      end
+      if deal.amount_currency.present?
+        deal.amount_dolar =
           if deal.amount_currency != 'USD'
             deal.amount * (1 / rates)
           else
             deal.amount
           end
-        else
-          nil
-        end
+      end
       deal.save
     rescue
       nil
