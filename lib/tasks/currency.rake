@@ -2,7 +2,7 @@ require "#{Rails.root}/app/helpers/deals_helper"
 include DealsHelper
 
 namespace :currency do
-  desc "convert values to dollar in exchange rate of clode date"
+  desc 'convert values to dollar in exchange rate of clode date'
   task exchange_rate: :environment do
     Rails.logger.info('-- currency:exchange_rate')
     # update deals set pre_valuation_currency = 'USD' where pre_valuation_currency is null;

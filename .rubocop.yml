@@ -72,3 +72,6 @@ AllCops:
     - "bin/**"
     - "**/*.axlsx"
     - 'app/services/import_old_database_service/**/*'
+    - 'lib/tasks/db_import.rake'
+    - 'lib/tasks/debug.rake'
+    - 'lib/tasks/currency.rake'

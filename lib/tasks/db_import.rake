@@ -1,40 +1,40 @@
 namespace :db_import do
-  desc "update markets from old db"
+  desc 'update markets from old db'
   task market: :environment do
     ImportOldDatabaseService::ImportMarket.new.update
   end
 
-  desc "import old db location"
+  desc 'import old db location'
   task location: :environment do
     ImportOldDatabaseService::ImportLocation.new.update
   end
 
-  desc "import old db user"
+  desc 'import old db user'
   task user: :environment do
     ImportOldDatabaseService::ImportUser.new.update
   end
 
-  desc "import old db company"
+  desc 'import old db company'
   task company: :environment do
     ImportOldDatabaseService::ImportCompany.new.update
   end
 
-  desc "import old db company market"
+  desc 'import old db company market'
   task company_market: :environment do
     ImportOldDatabaseService::ImportCompanyMarket.new.update
   end
 
-  desc "import old db company location"
+  desc 'import old db company location'
   task company_location: :environment do
     ImportOldDatabaseService::ImportCompanyLocation.new.update
   end
 
-  desc "import old db deal"
+  desc 'import old db deal'
   task deal: :environment do
     ImportOldDatabaseService::ImportDeal.new.update
   end
 
-  desc "import old db all"
+  desc 'import old db all'
   task all: :environment do
     Rails.logger.info('IMPORT - update db with old data')
     user = ImportOldDatabaseService::ImportUser.new.update

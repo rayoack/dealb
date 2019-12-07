@@ -14,9 +14,7 @@ module DealsHelper
   end
 
   def exchange_rates(date)
-    if date < Date.parse('1999-01-04')
-      raise 'There is no data for date older then 1999-01-04'
-    end
+    raise 'There is no data for date older then 1999-01-04' if date < Date.parse('1999-01-04')
     date = date.strftime('%Y-%m-%d')
     JSON.parse(
       # https://api.exchangeratesapi.io/2016-04-09?&base=USD&symbols=BRL
