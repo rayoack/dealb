@@ -29,6 +29,28 @@ class ImportOldDatabaseService
       end
       Rails.logger.info("-- imported #{::User.count} users")
     end
+
+    def update
+      Rails.logger.info('-- update user')
+      ImportOldDatabaseService::Entities::User.find_each do |user|
+        if !::MyUser.exists?(email: user.email)
+          new_user = ::MyUser.new(
+            email: user.email,
+            encrypted_password: user.encrypted_password,
+            sign_in_count: user.sign_in_count,
+            provider: user.provider,
+            uid: user.uid,
+            role: (user.role == 'normal' ? 'user' : user.role),
+            last_sign_in_at: user.last_sign_in_at,
+            last_sign_in_ip: user.last_sign_in_ip,
+            created_at: user.created_at,
+            updated_at: user.updated_at
+          )
+          new_user.save
+        end
+      end
+      Rails.logger.info('-- end update user')
+    end
     # rubocop:enable Metrics/MethodLength
   end
 end

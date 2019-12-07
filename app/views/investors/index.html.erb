@@ -45,7 +45,9 @@
                              type: 'number_of_deals',
                              order: params[:order]
                            } %>
-                <th colspan="2"><%= t('investor.index.column_location') %> </th>
+                <th><%= t('investor.index.column_location') %> </th>
+                <th><%= t('investor.show.tag') %></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -54,6 +56,7 @@
                   <td><img src="/img/investors.svg" alt=""> <%= investor.investable.name %></td>
                   <td><%= investor.deals.count %></td>
                   <td class="column-location"><%= investor.investable.locations.pluck(:city, :country).map { |c| c.join(', ') }.join('/ ') %></td>
+                  <td><%= investor.tag ? t("investor.show.categories.#{investor.tag}") : '' %></td>
                   <td><a href="/investors/<%= investor.permalink %>"><img src="/img/seta-dir.svg" alt=""></a></td>
                 </tr>
               <% end %>

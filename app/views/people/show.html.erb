@@ -41,7 +41,7 @@
           <% if @person.investor %>
             <div class="categorie">
               <span><%= t('people.show.category') %></span>
-              <span class="name-categorie"><%= investor_category(@person) %></span>
+              <span class="name-categorie"><%= t("filters.labels.tag.#{investor_category(@person)}") %></span>
             </div>
           <% end %>
         </div>
