@@ -17,6 +17,7 @@ Metrics/BlockLength:
     - 'spec/**/*.rb'
     - 'config/routes.rb'
     - 'config/environments/production.rb'
+    - 'app/services/import_old_database_service/**/*'
 
 Metrics/ModuleLength:
   Enabled: true

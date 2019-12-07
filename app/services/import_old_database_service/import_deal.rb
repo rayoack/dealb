@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+class MyDeal < ActiveRecord::Base
+  self.table_name = 'deals'
+end
+
 class ImportOldDatabaseService
   class ImportDeal
     ROUNDS = {
@@ -43,6 +47,56 @@ class ImportOldDatabaseService
       Rails.logger.info("-- imported #{::Deal.count} deals")
     end
 
+    def update
+      Rails.logger.info('-- update deal')
+      # Activate only the phone
+      ActiveValidators.activate(:phone)
+      
+      ImportOldDatabaseService::Entities::Deal.find_each do |deal|
+        close_date = deal.close_date
+        company_id = company(deal).id
+        status = status(deal)
+        category = category(deal)
+        round = round(deal)
+        currency = currency(deal)
+        amount = amount_cents(deal)
+        pre_valuation = pre_valuation_cents(deal)
+        source_url = source_url(deal)
+        if ::Deal.exists?(close_date: close_date, company_id: company_id)
+          new_deal = ::MyDeal.find_by(
+            close_date: close_date,
+            company_id: company_id
+          )
+          if new_deal.present?
+            new_deal.status = status
+            new_deal.category = category
+            new_deal.round = round
+            new_deal.amount_currency = currency
+            new_deal.pre_valuation_currency = currency
+            new_deal.amount = amount
+            new_deal.pre_valuation = pre_valuation
+            new_deal.save!
+          end
+        else
+          ::MyDeal.create!(
+            close_date: close_date,
+            company_id: company_id,
+            status: status,
+            category: category,
+            round: round,
+            amount_currency: currency,
+            pre_valuation_currency: currency,
+            amount: amount,
+            pre_valuation: pre_valuation,
+            source_url: source_url
+          )
+        end
+      end
+      Rails.logger.info('-- end update deal')
+      # Activate only the phone
+      ActiveValidators.activate(:all)
+    end
+
     private
 
     def company(deal)
@@ -66,7 +120,16 @@ class ImportOldDatabaseService
     end
 
     def currency(deal)
-      CURRENCIES.fetch(deal.currency.presence)
+      if deal.currency.present?
+        currency = deal.currency
+        if currency == 'BRL'
+          Deal::BRL
+        elsif currency == 'USD'
+          Deal::USD
+        else
+          nil
+        end
+      end
     end
 
     def round(deal)

@@ -29,6 +29,11 @@ namespace :db_import do
     ImportOldDatabaseService::ImportCompanyLocation.new.update
   end
 
+  desc "import old db deal"
+  task deal: :environment do
+    ImportOldDatabaseService::ImportDeal.new.update
+  end
+
   desc "import old db all"
   task all: :environment do
     Rails.logger.info('IMPORT - update db with old data')
@@ -43,8 +48,8 @@ namespace :db_import do
     location = ImportOldDatabaseService::ImportLocation.new.update
     location.present?
     company_location = ImportOldDatabaseService::ImportCompanyLocation.new.update
-    # company_location.present?
-    # ImportOldDatabaseService::ImportDeal.new.run
+    company_location.present?
+    deal = ImportOldDatabaseService::ImportDeal.new.update
 
     # deal.present?
     # investor = ImportOldDatabaseService::ImportInvestor.new.run

@@ -42,7 +42,7 @@
               <% @results_paginated.each do |result| %>
                 <tr class="clickable-row" data-href=<%= search_table_ref(result) %>>
                   <td>
-                    <img src=<%= result.try(:profile_image_url) || "/img/logo-investors.png" %>>
+                    <img src=<%= result.try(:profile_image_url) || "/img/alvo.svg" %>>
                     <%= result.try(:name) || result.try(:company).try(:name) || ''%></td>
                   <td><%= t("search.index.types.#{result&.class&.to_s&.downcase}") %></td>
                   <td class="status-active">
