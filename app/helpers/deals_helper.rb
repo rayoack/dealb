@@ -13,6 +13,8 @@ module DealsHelper
     end.join('/ ').html_safe # rubocop:disable Rails/OutputSafety
   end
 
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/PerceivedComplexity
   def exchange_rates(date)
     raise 'There is no data for date older then 1999-01-04' if date < Date.parse('1999-01-04')
     date = date.strftime('%Y-%m-%d')
@@ -48,4 +50,6 @@ module DealsHelper
       nil
     end
   end
+  # rubocop:enable Metrics/PerceivedComplexity
+  # rubocop:enable Metrics/MethodLength
 end
