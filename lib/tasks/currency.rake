@@ -18,21 +18,4 @@ namespace :currency do
     end
     Rails.logger.info('-- currency:exchange_rate end')
   end
-
-  desc 'convert values to dollar in exchange rate of clode date'
-  task rates: :environment do
-    Rails.logger.info('-- currency:exchange_rate')
-    # update deals set pre_valuation_currency = 'USD' where pre_valuation_currency is null;
-    Deal.where('pre_valuation_currency is null').update_all(pre_valuation_currency: 'USD')
-    # update deals set amount_dolar = amount where amount_currency = 'USD' and amount is not null;
-    Deal.where("amount_currency = 'USD' and amount is not null").update_all('amount_dolar = amount')
-    # update deals set pre_valuation_dolar = pre_valuation where pre_valuation_currency = 'USD' and pre_valuation is not null;
-    Deal.where("pre_valuation_currency = 'USD' and pre_valuation is not null").update_all('pre_valuation_dolar = pre_valuation')
-    # update all Deals where currency is BRL and value is not null
-    Deal.where("(pre_valuation_currency = 'BRL' and pre_valuation is not null and pre_valuation_dolar is null) or (amount_currency = 'BRL' and amount is not null and amount_dolar is null)").find_each do |deal|
-      printf('.')
-      convert_to_dolar(deal)
-    end
-    Rails.logger.info('-- currency:exchange_rate end')
-  end
 end
