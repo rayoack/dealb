@@ -37,6 +37,32 @@ class ImportOldDatabaseService
     rescue StandardError
       raise
     end
+
+    def update
+      Rails.logger.info('-- update investor location')
+      ImportOldDatabaseService::Entities::InvestorLocation.all.each do |investor_location|
+        @investor_location = investor_location
+        @old_location = Entities::Location.find(investor_location.location_id)
+        @old_investor = Entities::Investor.find(investor_location.investor_id)
+        @person = ::Person.find_by(permalink: @old_investor.slug.strip.parameterize.presence)
+        @company = ::Company.find_by(permalink: @old_investor.slug.strip.parameterize.presence)
+        @investable = (@person || @company)
+        
+        @location = ::Location.find_by!(
+          city: @old_location.city, country: @old_location.country
+        )
+        @localizable = ::Localizable.find_by(
+          localizable: @person.present? ? @person : @company,
+          location: @location,
+        )
+        @localizable ||= ::Localizable.create!(
+          localizable: @person.present? ? @person : @company,
+          location: @location,
+          localizable_type: @person.present? ? 'Person' : 'Company'
+        )
+      end
+      Rails.logger.info('-- end update investor location')
+    end
     # rubocop:enable Metrics/MethodLength
   end
 end

@@ -34,6 +34,34 @@ namespace :db_import do
     ImportOldDatabaseService::ImportDeal.new.update
   end
 
+  desc 'import old db investor'
+  task investor: :environment do
+    investor = ImportOldDatabaseService::ImportInvestor.new.update
+    investor.present?
+    investor_location = ImportOldDatabaseService::ImportInvestorLocation.new.update
+    investor_location.present?
+    investor_market = ImportOldDatabaseService::ImportInvestorMarket.new.update
+    investor_market.present?
+    ImportOldDatabaseService::ImportDealing.new.update
+  end
+
+  desc 'import old db first'
+  task base: :environment do
+    user = ImportOldDatabaseService::ImportUser.new.update
+    user.present?
+    market = ImportOldDatabaseService::ImportMarket.new.update
+    market.present?
+    company = ImportOldDatabaseService::ImportCompany.new.update
+    company.present?
+    company_market = ImportOldDatabaseService::ImportCompanyMarket.new.update
+    company_market.present?
+    location = ImportOldDatabaseService::ImportLocation.new.update
+    location.present?
+    company_location = ImportOldDatabaseService::ImportCompanyLocation.new.update
+    company_location.present?
+    ImportOldDatabaseService::ImportDeal.new.update
+  end
+
   desc 'import old db all'
   task all: :environment do
     Rails.logger.info('IMPORT - update db with old data')
@@ -50,16 +78,14 @@ namespace :db_import do
     company_location = ImportOldDatabaseService::ImportCompanyLocation.new.update
     company_location.present?
     deal = ImportOldDatabaseService::ImportDeal.new.update
-
-    # deal.present?
-    # investor = ImportOldDatabaseService::ImportInvestor.new.run
-    # investor.present?
-    # investor_location = ImportOldDatabaseService::ImportInvestorLocation.new.run
-    # investor_location.present?
-    # investor_market = ImportOldDatabaseService::ImportInvestorMarket.new.run
-    # investor_market.present?
-    # dealing = ImportOldDatabaseService::ImportDealing.new.run
-
+    deal.present?
+    investor = ImportOldDatabaseService::ImportInvestor.new.update
+    investor.present?
+    investor_location = ImportOldDatabaseService::ImportInvestorLocation.new.update
+    investor_location.present?
+    investor_market = ImportOldDatabaseService::ImportInvestorMarket.new.update
+    investor_market.present?
+    ImportOldDatabaseService::ImportDealing.new.update
     Rails.logger.info('END IMPORT')
 
     # Rails.logger.debug('-- debug')
