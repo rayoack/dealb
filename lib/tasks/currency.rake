@@ -4,6 +4,7 @@ include DealsHelper
 namespace :currency do
   desc 'convert values to dollar in exchange rate of clode date'
   task exchange_rate: :environment do
+    Rails.logger.level = Logger::DEBUG
     Rails.logger.info('-- currency:exchange_rate')
     # update deals set pre_valuation_currency = 'USD' where pre_valuation_currency is null;
     Deal.where('pre_valuation_currency is null').update_all(pre_valuation_currency: 'USD')

@@ -27,8 +27,11 @@ module DealsHelper
 
   def convert_to_dolar(deal)
     begin
+      puts 'DEAL ' + deal.id.to_s
+      puts deal.close_date
       rates = exchange_rates(deal.close_date)
       deal.exchange_rates = rates
+      deal.save
       if deal.pre_valuation_currency.present? && deal.pre_valuation.present?
         deal.pre_valuation_dolar =
           if deal.pre_valuation_currency.strip != 'USD'
@@ -45,8 +48,14 @@ module DealsHelper
             deal.amount
           end
       end
-      deal.save
-    rescue
+      puts deal.exchange_rates
+      puts deal.amount_dolar
+      puts deal.pre_valuation_dolar
+      puts '- save'
+      deal.save(validate: false)
+    rescue StandardError => e  
+      puts e.message  
+      # puts e.backtrace.inspect 
       nil
     end
   end
