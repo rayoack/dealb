@@ -151,7 +151,6 @@ class ImportOldDatabaseService
       @person ||= ::MyPerson.create!(
         first_name: investor.name,
         permalink: investor.slug.strip.parameterize.presence,
-        description: investor.description.presence,
         website_url: investor.website.try(:strip).presence,
         linkedin_url: investor.linkedin.try(:strip).presence,
       )
