@@ -58,7 +58,7 @@ class InvestorsController < ApplicationController
   end
 
   def filter_params
-    return {} unless params[:filter]
+    return {} unless params[:filter] || params[:order]
 
     params.permit(:order, :type, filter: {})
   end

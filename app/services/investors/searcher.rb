@@ -1,6 +1,7 @@
 module Investors
   class Searcher < ::BaseSearcher
     def initialize(filter_params, domain_country_context)
+      #super(filter_params, domain_country_context)
       @filter_params = filter_params
       @domain_country_context = domain_country_context
       @filter = Investor
@@ -9,8 +10,19 @@ module Investors
     def call
       filter_by_domain_country_context
       filter_by_params
+      @filter = @filter.joins(:deals)
+        .preload(:investable)
+        .preload(investable: :locations)
+        .group(:id)
+        .order(order_criteria)
+        .select(:id,
+          :investable_type,
+          :investable_id,
+          :tag)
+        .select('COUNT(investor_id) as number_of_deals')
+        
 
-      @filter.order(order_criteria)
+      #@filter.order(order_criteria)
     end
 
     private
@@ -43,9 +55,7 @@ module Investors
     end
 
     def filter_by_number_of_deals(_name, operator, value)
-      @filter = @filter.joins(:deal_investors)
-                       .group('investors.id')
-                       .having("COUNT(investor_id) #{operator} ?", format(operator, value))
+      @filter = @filter.having("COUNT(investor_id) #{operator} ?", format(operator, value))
     end
 
     def filter_by_total_funds_invested(_name, operator, value)
@@ -68,15 +78,16 @@ module Investors
     end
 
     def order_criteria
-      return { type => order } if order_direction.present? && order_type.present?
-
-      { created_at: :asc }
+      return { created_at: :desc } if order_direction.blank? || order_type.blank?
+      return "number_of_deals #{order_direction}" if order_type == :number_of_deals
+      
+      { order_type => order_direction }
     end
 
     def order_direction
       @order_direction ||= filter_params.fetch('order', nil)
     end
-
+  
     def order_type
       @order_type ||= filter_params.fetch('type', nil)&.to_sym
     end

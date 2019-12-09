@@ -29,7 +29,7 @@
     </a>
 
     <p class="text-information">
-      <%= t('sessions.doesnt_have_account') %> <a href="<%= new_registration_path(resource) %>"><strong><%= t('sessions.sign_up') %></strong></a>
+      <a href="<%= new_registration_path(resource) %>"><small><%= t('sessions.doesnt_have_account') %></small> <strong><%= t('sessions.sign_up') %></strong></a>
     </p>
 
     <div class="container-signup">

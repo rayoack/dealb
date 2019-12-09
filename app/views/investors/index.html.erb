@@ -5,7 +5,7 @@
         <h1><%= t('investor.index.investors') %></h1>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-5">
-        <h2><%= @investors.count %> <%= t('investor.index.investors') %></h2>
+        <h2><%= t('investor.index.investors') %></h2>
       </div>
     </div>
   </div>
@@ -18,7 +18,7 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-6">
         <p class="results">
-          <%= page_entries_info @investors_paginated, entry_name: t('investor.index.display') %>
+          <%= pluralize @investors.length, t('investor.index.investor'), t('investor.index.investors') %>
         </p>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-6">
@@ -37,14 +37,10 @@
             <thead>
               <tr>
                 <th><%= t('investor.index.column_name') %></th>
-
-                <%= render partial: 'shared/sortable_header',
-                           locals: {
-                             url: investors_path,
-                             label: t('investor.index.column_number_of_investments'),
-                             type: 'number_of_deals',
-                             order: params[:order]
-                           } %>
+                <%= render 'shared/sortable_header', url: investors_path,
+                                                     label: t('investor.index.column_number_of_investments'),
+                                                     type: 'number_of_deals',
+                                                     order: params[:order] %>
                 <th><%= t('investor.index.column_location') %> </th>
                 <th><%= t('investor.show.tag') %></th>
                 <th></th>
@@ -54,7 +50,7 @@
               <% @investors_paginated.each do |investor| %>
                 <tr class="clickable-row" data-href=<%= "/investors/#{investor.permalink}" %>>
                   <td><img src="/img/investors.svg" alt=""> <%= investor.investable.name %></td>
-                  <td><%= investor.deals.count %></td>
+                  <td><%= investor.number_of_deals %></td>
                   <td class="column-location"><%= investor.investable.locations.pluck(:city, :country).map { |c| c.join(', ') }.join('/ ') %></td>
                   <td><%= investor.tag ? t("investor.show.categories.#{investor.tag}") : '' %></td>
                   <td><a href="/investors/<%= investor.permalink %>"><img src="/img/seta-dir.svg" alt=""></a></td>

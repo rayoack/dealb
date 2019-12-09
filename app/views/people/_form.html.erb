@@ -70,7 +70,7 @@
 <div class="form-group">
   <div class="input-group date-close">
     <span class="input-group-addon"><img src="/img/calendar.svg" alt=""></span>
-    <%= f.text_field :born_on, placeholder: t('people.form.born_date'), 'aria-label' => 'Username', class: 'datepicker' %>
+    <%= f.text_field :born_on, placeholder: t('people.form.born_date'), 'aria-label' => 'Username', class: 'datepicker', style: 'position:relative; z-index: 100' %>
   </div>
 
   <div class="form-status form-gender">
