@@ -69,7 +69,10 @@
                     <%= investor.investable.name %>
                   </td>
                   <td><%= investor.deals_count %></td>
-                  <td><%= format_amount(investor.invested_capital, investor.amount_currency) %></td>
+                  <td style="text-align: center;">
+                    <%= format_amount(investor.invested_capital, investor.amount_currency) %><br>
+                    <small style="font-size: 75%;"><%= format_amount(investor.invested_capital_dolar, 'USD') %></small>
+                  </td>
 
                   <%# TODO: Add reviews invformation when finished %>
                   <%# <td>Número de avaliações - I18n</td> %>
