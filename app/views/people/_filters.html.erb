@@ -50,7 +50,7 @@
                       <%= '> ' if filter[:operator] == 'greater_than' %>
                       <%= '< ' if filter[:operator] == 'less_than' %>
                     <% end %>
-                    <% if filter[:type].in?(%w[status category funding_type]) %>
+                    <% if filter[:type].in?(%w[gender]) %>
                       <%= filter[:value].present? ? t("filters.labels.#{filter[:type]}.#{filter[:value]}") : '' %>
                     <% elsif filter[:type].in?(%w[amount]) %>
                       <%= format_amount(filter[:value],  Deal::USD) %>
