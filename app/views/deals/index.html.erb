@@ -3,9 +3,9 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-7">
         <h1><%= t('deals.index.deals') %></h1>
+        <h2><%= @deals.count %> <%= t('deals.index.deals') %></h2>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-5">
-        <h2><%= @deals.count %> <%= t('deals.index.deals') %></h2>
         <a href="/deals/new"><%= t('deals.index.new') %></a>
       </div>
     </div>
@@ -24,7 +24,7 @@
       </div>
       <div class="col-xs-12 col-sm-6 col-md-6">
         <a href="/deals.xlsx" class="btn-export">
-          <img src="/img/export.svg" alt="">
+          <img src="/img/download.svg" alt="" style="width: 23px; height: 23px;">
           <%= t('deals.index.export') %>
         </a>
       </div>
@@ -33,7 +33,7 @@
       <div class="col-md-12">
         <%= render partial: 'shared/flash_messages' %>
         <div class="table-responsive">
-          <table class="table table-hover">
+          <table id="deals_table" class="table table-hover table-striped">
             <thead>
               <tr>
                 <th></th>
@@ -47,7 +47,8 @@
                                                      type: 'close_date',
                                                      style: 'width: 9em;',
                                                      order: params[:order] %>
-                <th><%= t('deals.index.column_deal_type') %> </th>
+                <!--<th><%= t('deals.index.column_deal_type') %> </th>-->
+                <th><%= t('filters.category') %></th>
                 <th><%= t('deals.index.column_investors') %> </th>
                 <%= render 'shared/sortable_header', url: deals_path,
                                                      label: t('deals.index.column_amount'),
@@ -103,3 +104,8 @@
     </div>
   </div>
 </section>
+<script>
+$(document).ready(function() {
+  // $('#deals_table').DataTable({ responsive: true });
+});
+</script>

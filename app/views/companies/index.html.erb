@@ -38,6 +38,7 @@
           <table class="table table-hover">
             <thead>
               <tr>
+                <th style="width: 25px;"></th>
                 <%= render partial: 'shared/sortable_header',
                            locals: {
                              url: companies_path,
@@ -55,16 +56,15 @@
                            } %>
 
                 <th> <%= t('companies.index.column_location') %>  </th>
-                <th colspan="2"> <%= t('companies.index.column_deals') %>  </th>
+                <th> <%= t('companies.index.column_deals') %>  </th>
+                <th style="width: 25px;"></th>
               </tr>
             </thead>
             <tbody>
               <% @companies_paginated.each do |company| %>
                 <tr class="clickable-row" data-href=<%= "/companies/#{company.permalink}" %>>
-                  <td>
-                    <img src="<%= company.profile_image_url || '/img/companies.svg' %>">
-                    <%= company.name %>
-                  </td>
+                  <td><img src="<%= company.profile_image_url || '/img/companies.svg' %>"></td>
+                  <td><%= company.name %></td>
                   <td class="status-active"><%= t("companies.show.status.#{company.status}") %></td>
                   <td class="column-location"><%= company.locations.pluck(:city, :country).join(', ') %></td>
                   <td><%= company.deals.map(&:category).uniq.map { |category| I18n.t("deals.model.categories.#{category}") }.join(', ') %></td>

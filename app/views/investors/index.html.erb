@@ -36,21 +36,24 @@
           <table class="table table-hover">
             <thead>
               <tr>
+                <th style="width: 25px;"></th>
                 <th><%= t('investor.index.column_name') %></th>
                 <%= render 'shared/sortable_header', url: investors_path,
                                                      label: t('investor.index.column_number_of_investments'),
+                                                     style: 'width: 16em;',
                                                      type: 'number_of_deals',
                                                      order: params[:order] %>
                 <th><%= t('investor.index.column_location') %> </th>
                 <th><%= t('investor.show.tag') %></th>
-                <th></th>
+                <th style="width: 25px;"></th>
               </tr>
             </thead>
             <tbody>
               <% @investors_paginated.each do |investor| %>
                 <tr class="clickable-row" data-href=<%= "/investors/#{investor.permalink}" %>>
-                  <td><img src="/img/investors.svg" alt=""> <%= investor.investable.name %></td>
-                  <td><%= investor.number_of_deals %></td>
+                  <td><img src="/img/investors.svg" alt=""></td>
+                  <td><%= investor.investable.name %></td>
+                  <td style="text-align: center;"><%= investor.number_of_deals %></td>
                   <td class="column-location"><%= investor.investable.locations.pluck(:city, :country).map { |c| c.join(', ') }.join('/ ') %></td>
                   <td><%= investor.tag ? t("investor.show.categories.#{investor.tag}") : '' %></td>
                   <td><a href="/investors/<%= investor.permalink %>"><img src="/img/seta-dir.svg" alt=""></a></td>

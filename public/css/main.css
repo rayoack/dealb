@@ -1918,7 +1918,7 @@ footer .copyright p a {
   color: #363c49;
 }
 .s-table-results table tbody tr td img {
-  margin-right: 15px;
+  /*margin-right: 15px;*/
   max-width: 25px;
 }
 .s-table-results table tbody tr td.status-active {

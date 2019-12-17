@@ -1,0 +1,251 @@
+.s-title-page {
+    background: #274490;
+    padding: 60px 0px 100px 0px;
+    margin-top: 80px;
+}
+.s-title-page h2 {
+    margin: 0;
+    margin-left: 0;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 18px;
+    letter-spacing: 4px;
+    float: left;
+    margin-top: 14px;
+}
+
+.filter-block, .s-table-results {
+  background: #F7F7F9;
+  padding-bottom: 0;
+}
+.table-responsive {
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.16);
+  margin-bottom: 60px;
+}
+.table { 
+  background: white;
+  margin-bottom: 0;
+}
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 12px -10px;
+}
+.pills {
+  display: contents;
+}
+.filter-clear {
+  font-size: 1em;
+  padding: 15px;
+  margin: 10px;
+  align-content: center;
+  border-radius: 5px;
+}
+.filter-clear i { 
+  margin-right: 10px;
+  color: #00DACE;
+}
+.filter-pill, .filter-pill:active {
+  font-size: 1em;
+  padding: 15px;
+  background: #2C4792;
+  color: #FFF;
+  margin: 10px;
+  align-content: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.filter-pill:hover {
+  color:#00DACE;
+}
+.filter-pill small {
+  color: #00DACE;
+  margin-right: 8px;
+}
+.filter-pill i {
+  width:16px;
+  height:16px;
+  border-radius:100%;
+  position:relative;
+  margin-left: 8px;
+  display:inline-block;
+  vertical-align:middle;
+}
+.filter-pill i:before,
+.filter-pill i:after {
+  transform: rotateY(0deg) rotate(45deg);
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:#00DACE;
+}
+.filter-pill i:before{
+  width: 2px;
+  margin: 0 auto;
+}
+.filter-pill i:after{
+  margin: auto 0;
+  height: 2px;
+}
+
+.filter-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 12px -10px;
+}
+.filter-card {
+  font-size: 1.16em;
+  flex: 1;
+  padding: 24px;
+  background: white;
+  margin: 10px;
+  min-width: 200px;
+  min-height: 90px;
+  align-content: center;
+  line-height: 42px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.16);
+  border-radius: 5px;
+  border: .2em solid white;
+}
+.filter-card:hover {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.32);
+}
+
+.filter-card i{
+  width:32px;
+  height:32px;
+  border-radius:100%;
+  background: #00DACE;
+  position:relative;
+  margin-right: 16px;
+  display:inline-block;
+  vertical-align:middle;
+}
+.filter-card i:before,
+.filter-card i:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:white;
+}
+.filter-card i:before{
+  width: 2px;
+  margin: 8px auto;
+}
+.filter-card i:after{
+  margin: auto 8px;
+  height: 2px;
+}
+
+.filter-active {
+  border: .2em solid #00DACE;
+}
+
+.cta {
+  background-color: #00DACE;
+  border-color: #00DACE;
+  border-width: 2px;
+}
+.cta:hover {
+  background-color: #00E6D9;
+  border-color: #00E6D9;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.16);
+}
+.acta {
+  background-color: white;
+  border-color: #00DACE;
+  color: #00DACE;
+  border-width: 2px;
+}
+.acta:hover {
+  background-color: #DAF2F1;
+  border-color: #00E6D9;
+  color: #00E6D9;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.16);
+}
+
+.checkbox,
+.radio {
+  margin: 0;
+}
+.radio+.radio, .checkbox+.checkbox {
+    margin-top: 15px;
+}
+.checkbox label,
+.radio label {
+  padding-left: 0px;
+  line-height: 32px;
+  font-size: 1.2em;
+}
+.checkbox label:after,
+.radio label:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.checkbox .cr,
+.radio .cr {
+  position: relative;
+  display: inline-block;
+  border: 2px solid #00DACE;
+  border-radius: .5em;
+  width: 32px;
+  height: 32px;
+  float: left;
+  margin-right: .5em;
+}
+.radio .cr {
+  border-radius: 50%;
+}
+.checkbox .cr i,
+.radio .cr i {
+  position: absolute;
+  font-size: 1.2em;
+  line-height: 0;
+  top: 50%;
+  left: 15%;
+  color: #00DACE;
+}
+.checkbox label input[type="checkbox"],
+.radio label input[type="radio"] {
+  display: none;
+}
+.checkbox label input[type="checkbox"]+.cr>i,
+.radio label input[type="radio"]+.cr>i {
+  opacity: 0;
+}
+.checkbox label input[type="checkbox"]:checked+.cr>i,
+.radio label input[type="radio"]:checked+.cr>i {
+  opacity: 1;
+}
+.checkbox label input[type="checkbox"]:disabled+.cr,
+.radio label input[type="radio"]:disabled+.cr {
+  opacity: .5;
+}
+@media (max-width: 1200px) {
+  .s-title-page {
+    margin-top: 70px;
+    padding: 30px 0px 70px 0px;
+  }
+}
+@media (max-width: 769px) {
+  .s-title-page h2 {
+    text-align: center;
+    float: none;
+    margin-bottom: 14px;
+  }
+  .s-title-page {
+    margin-top: 70px;
+    padding: 30px 0px 70px 0px;
+  }
+}

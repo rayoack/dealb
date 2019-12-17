@@ -1,9 +1,23 @@
+<style>
+.fade_horizon {
+  width: calc(100% - 18em);
+  height: 400px;
+  display: block;
+  position: absolute;
+  z-index: 20;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&1+0,0+20,0+80,1+100 */
+  background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(255,255,255,0) 20%, rgba(255,255,255,0) 80%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 20%,rgba(255,255,255,0) 80%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 20%,rgba(255,255,255,0) 80%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+}
+</style>
 <section class="s-updates">
   <div class="container-updates">
-    <h1><%= t('home.updates.get_all_recent_news') %></h1>
+    <h1 style="z-index: 30; position: relative;"><%= t('home.updates.get_all_recent_news') %></h1>
 
     <a href="/deals" class="view-all"><%= t('home.updates.view_all') %> <span class="linha"></span></a>
-
+    <div class="fade_horizon"></div>
     <div class="swiper-updates">
       <div class="swiper-container">
         <!-- Additional required wrapper -->
@@ -22,7 +36,7 @@
           <% end %>
         </div>
       </div>
-    </div>
+    </div>    
   </div>
   <div class="arrows-controls">
     <div class="arrow-left">

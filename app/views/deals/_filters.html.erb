@@ -1,135 +1,139 @@
+<style></style>
 <section class="filter-block">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="container-filter">
-          <h3><img src="/img/seta-baixo.svg" alt=""> <%= t('deals.index.filter') %></h3>
-          <div class="filter-result">
-            <form id="filter-form" action="/deals">
-              <div class="filter-complete">
-                <% if params[:filter] %>
-                  <% params[:filter].values.each_with_index do |filter, index| %>
-                    <div class="item-filter">
-                      <ul>
-                        <li class="primary-nivel-filter-secondary"><button><%= t("filters.#{filter[:type]}") %></button></li>
-                        <li class="second-nivel-filter"><button><%= t("filters.operators.#{filter[:operator]}") %></button></li>
-                        <li class="last-nivel-filter">
-                          <input type="hidden" name="filter[<%= index %>][type]" value="<%= filter[:type] %>" />
-                          <input type="hidden" name="filter[<%= index %>][operator]" value="<%= filter[:operator] %>" />
+      <div class="col-md-12">
+        <h3><%= t('deals.index.filter') %></h3>
+        <div class="filter-cards">
 
-                          <% if filter[:type].in?(%w[status category funding_type]) %>
-                            <input type="text"
-                                   class="text-lock"
-                                   value="<%= filter[:value].present? ? t("filters.labels.#{filter[:type]}.#{filter[:value]}") : '' %>" />
-                            <input type="hidden"
-                                   name="filter[<%= index %>][value]"
-                                   data-subcategory="<%= filter[:type] %>"
-                                   data-type="<%= filter[:operator] %>"
-                                   value="<%= filter[:value] %>" />
-                          <% else %>
-                            <input type="text"
-                                   name="filter[<%= index %>][value]"
-                                   data-subcategory="<%= filter[:type] %>"
-                                   data-type="<%= filter[:operator] %>"
-                                   value="<%= filter[:value] %>" />
-                          <% end %>
-                        </li>
-                      </ul>
-                      <div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div>
-                    </div>
-                  <% end %>
-                <% end %>
-              </div>
-              <div class="filter-empty">
-                <a href="#" class="btn-add-filter-modal" data-toggle="modal" data-target="#modalFilter"><img src="/img/add.svg" alt=""> <%= t('deals.index.add_filter') %></a>
-                <button class="btn-app-filter"><%= t('deals.index.apply_filter') %></button>
-              </div>
-            </form>
-          </div>
+          <a class="filter-card <%= filter_active('status')%>"
+            data-toggle="modal"
+            data-target="#filterModal"
+            data-subcategory="status"
+            data-type="radio"
+            data-modal-title="<%= t('filters.status') %>"
+            data-autocomplete-data="<%= Hash[Deal::STATUSES.map { |s| [s, t("filters.labels.status.#{s}")] }].to_json %>"
+            href="#"><i></i><%= t('filters.status') %></a>
+          
+          <a class="filter-card <%= filter_active('category')%>"
+            data-toggle="modal"
+            data-target="#filterModal"
+            data-subcategory="category"
+            data-type="select"
+            data-modal-title="<%= t('filters.category') %>"
+            data-autocomplete-data="<%= Hash[Deal::CATEGORIES.map { |s| [s, t("filters.labels.category.#{s}")] }].to_json %>"
+            href="#"><i></i><%= t('filters.category') %></a>
+          
+          <a class="filter-card <%= filter_active('funding_type')%>"
+            style="flex-grow: 1;"
+            data-toggle="modal"
+            data-target="#filterModal"
+            data-subcategory="funding_type"
+            data-type="select"
+            data-modal-title="Funding type"
+            data-autocomplete-data="<%= Hash[Deal::ROUNDS.map { |s| [s, t("filters.labels.funding_type.#{s}")] }].to_json %>"
+            href="#"><i></i><%= t('filters.funding_type') %></a>
+
+          <a class="filter-card <%= filter_active('amount')%>"
+            data-toggle="modal"
+            data-target="#filterModal"
+            data-subcategory="amount"
+            data-type="range_amount"
+            data-modal-title="<%= t('filters.amount') %>"
+            href="#"><i></i><%= t('filters.amount') %></a>
+          
+          <!--<a class="filter-card <%= filter_active('date')%>"
+            data-toggle="modal"
+            data-target="#filterModal"
+            data-subcategory="date"
+            data-type="text"
+            data-modal-title="Close data"
+            href="#"><i></i>Close date</a>-->
         </div>
+        <% if params[:filter] %>
+          <form id="filter-pills-form" action="/deals">
+            <h4>Filtros selecionados</h4>
+            <div class="filter-pills">
+              <span class="pills">
+                <% params[:filter].values.each_with_index do |filter, index| %>
+                  <span class="filter-pill" href="#">
+                    <small><%= t('filters.'+filter[:type]) %></small>
+                    <% if filter[:operator].present? %>
+                      <%= '> ' if filter[:operator] == 'greater_than' %>
+                      <%= '< ' if filter[:operator] == 'less_than' %>
+                    <% end %>
+                    <% if filter[:type].in?(%w[status category funding_type]) %>
+                      <%= filter[:value].present? ? t("filters.labels.#{filter[:type]}.#{filter[:value]}") : '' %>
+                    <% elsif filter[:type].in?(%w[amount]) %>
+                      <%= format_amount(filter[:value],  Deal::USD) %>
+                    <% else %>
+                      <%= filter[:value] %>
+                    <% end %>
+                    <i></i>
+                    <input
+                      type="hidden"
+                      name="filter[<%= index %>][type]"
+                      value="<%= filter[:type] %>" />
+                    <input 
+                      type="hidden"
+                      name="filter[<%= index %>][operator]"
+                      value="<%= filter[:operator] %>" />
+                    <input
+                      type="hidden"
+                      name="filter[<%= index %>][value]"
+                      value="<%= filter[:value] %>"
+                      data-subcategory="<%= filter[:type] %>"
+                      data-type="<%= filter[:operator] %>" />
+                  </span>
+                <% end %>
+              </span>
+              <a class="filter-clear" href="#"><i class="far fa-trash-alt"></i>Clear all filters</a>
+            </div>
+          </form>
+        <% end %>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Modal -->
-<div id="modalFilter" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
+<div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <h1 class="modal-title"><%= t('filters.add') %></h1>
       <div class="modal-header">
-        <div class="control-breadcrumbs">
-          <div class="controls">
-            <button class="arrow-left disabled">
-              <img src="/img/seta-esq-modal-filter.svg" alt="">
-            </button>
-            <button class="arrow-right disabled">
-              <img src="/img/seta-dir-modal-filter.svg" alt="">
-            </button>
-          </div>
-          <ul class="bread">
-            <li class="one-category"></li>
-            <li class="two-category"></li>
-            <li class="three-category"></li>
-            <li class="last-category"></li>
-          </ul>
-        </div>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="filterModalLabel">Modal title</h3>
       </div>
       <div class="modal-body">
-        <div class="filter-geral">
-          <div class="level-filter sub-category">
-            <ul>
-              <li><a href="" data-category="basic"><%= t('filters.basic') %><i class="glyphicon glyphicon-chevron-right"></i></a></li>
-            </ul>
+        <form id="filterModalForm">
+
+          <div class="radio">
+            <label>
+              <input type="radio" name="o3" value="">
+              <span class="cr"><i class="fa fa-circle"></i></span>
+              Option one
+            </label>
           </div>
-          <div class="level-filter last-sub-category">
-            <ul>
-              <li>
-                <a href="" data-subcategory="status"
-                           data-type="select"
-                           data-autocomplete-category="Status"
-                           data-autocomplete-data="<%= Hash[Deal::STATUSES.map { |s| [s, t("filters.labels.status.#{s}")] }].to_json %>">
-                  <%= t('filters.status') %> <i class="glyphicon glyphicon-chevron-right"></i>
-                </a>
-              </li>
-              <li>
-                <a href="" data-subcategory="category"
-                           data-type="select"
-                           data-autocomplete-category="Category"
-                           data-autocomplete-data="<%= Hash[Deal::CATEGORIES.map { |s| [s, t("filters.labels.category.#{s}")] }].to_json %>">
-                  <%= t('filters.category') %> <i class="glyphicon glyphicon-chevron-right"></i>
-                </a>
-              </li>
-              <li>
-                <a href="" data-subcategory="funding_type"
-                           data-type="select"
-                           data-autocomplete-category="Funding type"
-                           data-autocomplete-data="<%= Hash[Deal::ROUNDS.map { |s| [s, t("filters.labels.funding_type.#{s}")] }].to_json %>">
-                  <%= t('filters.funding_type') %> <i class="glyphicon glyphicon-chevron-right"></i>
-                </a>
-              </li>
-              <li>
-                <a href=""  data-subcategory="amount" data-type="number">
-                  <%= t('filters.amount') %> <i class="glyphicon glyphicon-chevron-right"></i>
-                </a>
-              </li>
-              <li>
-                <a href="" data-subcategory="date" data-type="text">
-                  <%= t('filters.date') %> <i class="glyphicon glyphicon-chevron-right"></i>
-                </a>
-              </li>
-            </ul>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" value="cat1" name="category">
+              <span class="cr"><i class="fas fa-check"></i></span>
+              Categoria
+            </label>
           </div>
-          <div class="level-filter last-level-filter">
-            <ul>
-              <li><a href="" data-type="equal"><%= t('filters.operators.equal') %></a></li>
-              <li><a href="" data-type="contains"><%= t('filters.operators.contains') %></a></li>
-              <li><a href="" data-type="greater_than"><%= t('filters.operators.greater_than') %></a></li>
-              <li><a href="" data-type="less_than"><%= t('filters.operators.less_than') %></a></li>
-            </ul>
-          </div>
-        </div>
+
+          <%# <p>
+            <label for="amount">Price range:</label>
+            <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
+          </p>
+          
+          <div id="slider-range"></div> %>
+
+        </form>
+      </div>
+      <div class="modal-footer" style="text-align: left;">
+        <button type="button" class="btn btn-default acta" data-dismiss="modal">Clear filter</button>
+        <button id="filterModalApplyButton" type="button" class="btn btn-primary cta"><%= t('deals.index.apply_filter') %></button>
       </div>
     </div>
   </div>
