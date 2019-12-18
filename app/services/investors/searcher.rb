@@ -38,7 +38,7 @@ module Investors
 
     def filters
       {
-        status: :filter_by_column,
+        status: :filter_by_status,
         tag: :filter_by_column,
         stage: :filter_by_column,
         number_of_deals: :filter_by_number_of_deals,
@@ -52,6 +52,10 @@ module Investors
 
     def filter_by_column(name, operator, value)
       @filter = @filter.where("#{name} #{operator} ?", format(operator, value))
+    end
+
+    def filter_by_status(name, operator, value)
+      @filter = @filter.where("investors.#{name} #{operator} ?", format(operator, value))
     end
 
     def filter_by_number_of_deals(_name, operator, value)

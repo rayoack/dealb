@@ -1,4 +1,5 @@
 pt-br:
+  filter: 'Filtrar'
   auth:
     registration:
       mail:

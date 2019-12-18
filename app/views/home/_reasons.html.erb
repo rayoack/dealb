@@ -18,7 +18,9 @@
           <p><%= t('home.reasons.completely_free') %></p>
         </li>
       </ul>
-      <a href="/signup" class="btn-join"><%= t('home.reasons.join_now') %></a>
+      <% if !user_signed_in? %>
+        <a href="/signup" class="btn-join"><%= t('home.reasons.join_now') %></a>
+      <% end %>
     </div>
   </div>
 </section>

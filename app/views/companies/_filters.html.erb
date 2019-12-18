@@ -1,64 +1,134 @@
 <section class="filter-block">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="container-filter">
-          <h3><img src="/img/seta-baixo.svg" alt=""> <%= t('companies.index.filter') %></h3>
-          <div class="filter-result">
-            <form id="filter-form" action="/companies">
-              <div class="filter-complete">
-                <% if params[:filter] %>
-                  <% params[:filter].values.each_with_index do |filter, index| %>
-                    <div class="item-filter">
-                      <ul>
-                        <li class="primary-nivel-filter-secondary"><button><%= t("filters.#{filter[:type]}") %></button></li>
-                        <li class="second-nivel-filter"><button><%= t("filters.operators.#{filter[:operator]}") %></button></li>
-                        <li class="last-nivel-filter">
-                          <input type="hidden" name="filter[<%= index %>][type]" value="<%= filter[:type] %>" />
-                          <input type="hidden" name="filter[<%= index %>][operator]" value="<%= filter[:operator] %>" />
+      <div class="col-md-12">
+        <h3><%= t('filter') %></h3>
+        <div class="filter-cards">
 
-                          <% if filter[:type] == 'status' %>
-                            <input type="text"
-                                   class="text-lock"
-                                   value="<%= filter[:value].present? ? t("filters.labels.status.#{filter[:value]}") : '' %>" />
-                            <input type="hidden"
-                                   name="filter[<%= index %>][value]"
-                                   data-subcategory="<%= filter[:type] %>"
-                                   data-type="<%= filter[:operator] %>"
-                                   value="<%= filter[:value] %>" />
-                          <% else %>
-                            <input type="text"
-                                   name="filter[<%= index %>][value]"
-                                   data-subcategory="<%= filter[:type] %>"
-                                   data-type="<%= filter[:operator] %>"
-                                   value="<%= filter[:value] %>" />
-                          <% end %>
-                        </li>
-                      </ul>
-                      <div class="button btn-remove-filter"><img src="/img/img-close-filter.png" alt=""></div>
-                    </div>
-                  <% end %>
-                  <script>
-                    window.onload = function() {
-                      $(".filter-result").show();
-                    };
-                  </script>
-                <% end %>
-              </div>
-              <div class="filter-empty">
-                <a href="#" class="btn-add-filter-modal"
-                            data-toggle="modal"
-                            data-target="#modalFilter">
-                  <img src="/img/add.svg" alt=""> <%= t('companies.index.add_filter') %></a>
-                <button class="btn-app-filter"><%= t('companies.index.apply_filter') %></button>
-              </div>
-            </form>
-          </div>
+          <a class="filter-card <%= filter_active('name')%>"
+            data-toggle="modal"
+            data-target="#filterModal"
+            data-subcategory="name"
+            data-type="text"
+            data-modal-title="<%= t('filters.name') %>"
+            href="#"><i></i><%= t('filters.name') %></a>
+          
+          <a class="filter-card <%= filter_active('location')%>"
+            data-toggle="modal"
+            data-target="#filterModal"
+            data-subcategory="location"
+            data-type="text"
+            data-modal-title="<%= t('filters.location') %>"
+            href="#"><i></i><%= t('filters.location') %></a>
+          
+          <a class="filter-card <%= filter_active('description')%>"
+            style="flex-grow: 1;"
+            data-toggle="modal"
+            data-target="#filterModal"
+            data-subcategory="description"
+            data-type="text"
+            data-modal-title="<%= t('filters.description') %>"
+            href="#"><i></i><%= t('filters.description') %></a>
+
+          <a class="filter-card <%= filter_active('employees_count')%>"
+            data-toggle="modal"
+            data-target="#filterModal"
+            data-subcategory="employees_count"
+            data-type="range"
+            data-modal-title="<%= t('filters.employees_count') %>"
+            href="#"><i></i><%= t('filters.employees_count') %></a>
+
+          <a class="filter-card <%= filter_active('status')%>"
+            data-toggle="modal"
+            data-target="#filterModal"
+            data-subcategory="status"
+            data-type="select"
+            data-modal-title="<%= t('filters.status') %>"
+            data-autocomplete-data=<%= Hash[Company::STATUSES.map { |s| [s, t("filters.labels.status.#{s}")] }].to_json %>
+            href="#"><i></i><%= t('filters.status') %></a>
+          
+          <a class="filter-card <%= filter_active('rounds_count')%>"
+            data-toggle="modal"
+            data-target="#filterModal"
+            data-subcategory="rounds_count"
+            data-type="range"
+            data-modal-title="<%= t('filters.rounds_count') %>"
+            href="#"><i></i><%= t('filters.rounds_count') %></a>
+          
+          <a class="filter-card <%= filter_active('funds_raised')%>"
+            data-toggle="modal"
+            data-target="#filterModal"
+            data-subcategory="funds_raised"
+            data-type="range_amount"
+            data-modal-title="<%= t('filters.funds_raised') %>"
+            href="#"><i></i><%= t('filters.funds_raised') %></a>
+            
         </div>
+        <% if params[:filter] %>
+          <form id="filter-pills-form" action="/companies">
+            <h4>Filtros selecionados</h4>
+            <div class="filter-pills">
+              <span class="pills">
+                <% params[:filter].values.each_with_index do |filter, index| %>
+                  <span class="filter-pill" href="#">
+                    <small><%= t('filters.'+filter[:type]) %></small>
+                    <% if filter[:operator].present? %>
+                      <%= '> ' if filter[:operator] == 'greater_than' %>
+                      <%= '< ' if filter[:operator] == 'less_than' %>
+                    <% end %>
+                    <% if filter[:type].in?(%w[status]) %>
+                      <%= filter[:value].present? ? t("filters.labels.#{filter[:type]}.#{filter[:value]}") : '' %>
+                    <% elsif filter[:type].in?(%w[funds_raised]) %>
+                      <%= format_amount(filter[:value],  Deal::USD) %>
+                    <% else %>
+                      <%= filter[:value] %>
+                    <% end %>
+                    <i></i>
+                    <input
+                      type="hidden"
+                      name="filter[<%= index %>][type]"
+                      value="<%= filter[:type] %>" />
+                    <input 
+                      type="hidden"
+                      name="filter[<%= index %>][operator]"
+                      value="<%= filter[:operator] %>" />
+                    <input
+                      type="hidden"
+                      name="filter[<%= index %>][value]"
+                      value="<%= filter[:value] %>"
+                      data-subcategory="<%= filter[:type] %>"
+                      data-type="<%= filter[:operator] %>" />
+                  </span>
+                <% end %>
+              </span>
+              <a class="filter-clear" href="#"><i class="far fa-trash-alt"></i>Clear all filters</a>
+            </div>
+          </form>
+        <% end %>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="filterModalLabel">Modal title</h3>
+      </div>
+      <div class="modal-body">
+        <form id="filterModalForm"></form>
+      </div>
+      <div class="modal-footer" style="text-align: left;">
+        <button type="button" class="btn btn-default acta" data-dismiss="modal">Clear filter</button>
+        <button id="filterModalApplyButton" type="button" class="btn btn-primary cta"><%= t('deals.index.apply_filter') %></button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- Modal -->
 <div id="modalFilter" class="modal fade" role="dialog">
