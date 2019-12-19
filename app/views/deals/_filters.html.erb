@@ -30,7 +30,7 @@
             data-target="#filterModal"
             data-subcategory="funding_type"
             data-type="select"
-            data-modal-title="Funding type"
+            data-modal-title="<%= t('filters.funding_type') %>"
             data-autocomplete-data="<%= Hash[Deal::ROUNDS.map { |s| [s, t("filters.labels.funding_type.#{s}")] }].to_json %>"
             href="#"><i></i><%= t('filters.funding_type') %></a>
 
