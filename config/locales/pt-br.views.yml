@@ -13,8 +13,8 @@ pt-br:
     page_entries_info:
       one_page:
         display_entries:
-          zero: "Nenhum %{entry_name} encontrado(a)"
-          one: "Exibindo <b>1</b> %{entry_name}"
-          other: "Exibindo <b>%{count}</b> %{entry_name}"
+          zero: "Nenhum resultado encontrado"
+          one: "Exibindo <b>1</b> resultado"
+          other: "Exibindo <b>%{count}</b> resultados"
       more_pages:
-        display_entries: "Exibindo %{entry_name} <b>%{first}&nbsp;-&nbsp;%{last}</b> de <b>%{total}</b> no total"
+        display_entries: "Exibindo <b>%{first}&nbsp;-&nbsp;%{last}</b> resultados de <b>%{total}</b> no total"

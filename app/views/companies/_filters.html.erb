@@ -21,6 +21,7 @@
             data-modal-title="<%= t('filters.location') %>"
             href="#"><i></i><%= t('filters.location') %></a>
           
+          <!--
           <a class="filter-card <%= filter_active('description')%>"
             style="flex-grow: 1;"
             data-toggle="modal"
@@ -29,6 +30,7 @@
             data-type="text"
             data-modal-title="<%= t('filters.description') %>"
             href="#"><i></i><%= t('filters.description') %></a>
+          -->
 
           <a class="filter-card <%= filter_active('employees_count')%>"
             data-toggle="modal"
@@ -66,7 +68,7 @@
         </div>
         <% if params[:filter] %>
           <form id="filter-pills-form" action="/companies">
-            <h4>Filtros selecionados</h4>
+            <h4><%= t('filter_selected') %></h4>
             <div class="filter-pills">
               <span class="pills">
                 <% params[:filter].values.each_with_index do |filter, index| %>

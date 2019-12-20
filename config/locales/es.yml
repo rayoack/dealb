@@ -1,5 +1,6 @@
 es:
-  filter: 'Filtrar'
+  filter: 'Filtra los resultados'
+  filter_selected: 'Filtros seleccionados'
   auth:
     registration:
       mail:

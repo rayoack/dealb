@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-7">
         <h1><%= t('people.index.people') %></h1>
-        <h2><%= @people.count %> <%= t('people.index.people') %></h2>
+        <h2><%= @people.count %> <%= t('index.itens') %></h2>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-5">
         <a href="/people/new"><%= t('people.index.new') %></a>
@@ -63,7 +63,7 @@
                   <td><%= person.locations_plain %></td>
                   <td><img src="/img/companies.svg" alt=""></td>
                   <td><strong><%= latest_company(person) %></strong></td>
-                  <td><a href="/people/<%= person.permalink %>"><img src="/img/seta-dir.svg" alt=""></a></td>
+                  <td><a href="/people/<%= person.permalink %>"><i class="fas fa-arrow-right"></i></a></td>
                 </tr>
               <% end %>
             </tbody>

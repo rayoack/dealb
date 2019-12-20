@@ -40,7 +40,7 @@
         </div>
         <% if params[:filter] %>
           <form id="filter-pills-form" action="/people">
-            <h4>Filtros selecionados</h4>
+            <h4><%= t('filter_selected') %></h4>
             <div class="filter-pills">
               <span class="pills">
                 <% params[:filter].values.each_with_index do |filter, index| %>

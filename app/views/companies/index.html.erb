@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-7">
         <h1><%= t('companies.index.companies') %></h1>
-        <h2><%= @companies.length %> <%= t('companies.index.companies').downcase %></h2>
+        <h2><%= @companies.length %> <%= t('index.itens') %></h2>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-5">
         <a href="/companies/new"><%= t('companies.index.new') %></a>
@@ -24,7 +24,7 @@
       </div>
       <div class="col-xs-12 col-sm-6 col-md-6">
         <a href="/companies.xlsx" class="btn-export">
-          <img src="/img/export.svg" alt="">
+          <img src="/img/download.svg" alt="">
           <%= t('companies.index.export') %>
         </a>
       </div>
@@ -68,7 +68,7 @@
                   <td class="status-active"><%= t("companies.show.status.#{company.status}") %></td>
                   <td class="column-location"><%= company.locations.pluck(:city, :country).join(', ') %></td>
                   <td><%= company.deals.map(&:category).uniq.map { |category| I18n.t("deals.model.categories.#{category}") }.join(', ') %></td>
-                  <td><a href=<%= "/companies/#{company.permalink}" %>><img src="/img/seta-dir.svg" alt=""></a></td>
+                  <td><a href=<%= "/companies/#{company.permalink}" %>><i class="fas fa-arrow-right"></i></a></td>
                 </tr>
               <% end %>
             </tbody>
