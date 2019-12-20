@@ -56,35 +56,69 @@
             <div class="filter-pills">
               <span class="pills">
                 <% params[:filter].values.each_with_index do |filter, index| %>
-                  <span class="filter-pill" href="#">
-                    <small><%= t('filters.'+filter[:type]) %></small>
-                    <% if filter[:operator].present? %>
-                      <%= '> ' if filter[:operator] == 'greater_than' %>
-                      <%= '< ' if filter[:operator] == 'less_than' %>
+                  <% if filter[:operator] == 'in' %>
+                    <% filter[:value].each do |value| %>
+                      <span class="filter-pill" href="#">
+                        <small><%= t('filters.'+filter[:type]) %></small>
+                        <% if filter[:operator].present? %>
+                          <%= '> ' if filter[:operator] == 'greater_than' %>
+                          <%= '< ' if filter[:operator] == 'less_than' %>
+                        <% end %>
+                        <% if filter[:type].in?(%w[status category funding_type]) %>
+                          <%= value.present? ? t("filters.labels.#{filter[:type]}.#{value}") : '' %>
+                        <% elsif filter[:type].in?(%w[amount]) %>
+                          <%= format_amount(value,  Deal::USD) %>
+                        <% else %>
+                          <%= value %>
+                        <% end %>
+                        <i></i>
+                        <input
+                          type="hidden"
+                          name="filter[<%= index %>][type]"
+                          value="<%= filter[:type] %>" />
+                        <input 
+                          type="hidden"
+                          name="filter[<%= index %>][operator]"
+                          value="<%= filter[:operator] %>" />
+                        <input
+                          type="hidden"
+                          name="filter[<%= index %>][value][]"
+                          value="<%= value %>"
+                          data-subcategory="<%= filter[:type] %>"
+                          data-type="<%= filter[:operator] %>" />
+                      </span>
                     <% end %>
-                    <% if filter[:type].in?(%w[status category funding_type]) %>
-                      <%= filter[:value].present? ? t("filters.labels.#{filter[:type]}.#{filter[:value]}") : '' %>
-                    <% elsif filter[:type].in?(%w[amount]) %>
-                      <%= format_amount(filter[:value],  Deal::USD) %>
-                    <% else %>
-                      <%= filter[:value] %>
-                    <% end %>
-                    <i></i>
-                    <input
-                      type="hidden"
-                      name="filter[<%= index %>][type]"
-                      value="<%= filter[:type] %>" />
-                    <input 
-                      type="hidden"
-                      name="filter[<%= index %>][operator]"
-                      value="<%= filter[:operator] %>" />
-                    <input
-                      type="hidden"
-                      name="filter[<%= index %>][value]"
-                      value="<%= filter[:value] %>"
-                      data-subcategory="<%= filter[:type] %>"
-                      data-type="<%= filter[:operator] %>" />
-                  </span>
+                  <% else %>
+                    <span class="filter-pill" href="#">
+                      <small><%= t('filters.'+filter[:type]) %></small>
+                      <% if filter[:operator].present? %>
+                        <%= '> ' if filter[:operator] == 'greater_than' %>
+                        <%= '< ' if filter[:operator] == 'less_than' %>
+                      <% end %>
+                      <% if filter[:type].in?(%w[status category funding_type]) %>
+                        <%= filter[:value].present? ? t("filters.labels.#{filter[:type]}.#{filter[:value]}") : '' %>
+                      <% elsif filter[:type].in?(%w[amount]) %>
+                        <%= format_amount(filter[:value],  Deal::USD) %>
+                      <% else %>
+                        <%= filter[:value] %>
+                      <% end %>
+                      <i></i>
+                      <input
+                        type="hidden"
+                        name="filter[<%= index %>][type]"
+                        value="<%= filter[:type] %>" />
+                      <input 
+                        type="hidden"
+                        name="filter[<%= index %>][operator]"
+                        value="<%= filter[:operator] %>" />
+                      <input
+                        type="hidden"
+                        name="filter[<%= index %>][value]"
+                        value="<%= filter[:value] %>"
+                        data-subcategory="<%= filter[:type] %>"
+                        data-type="<%= filter[:operator] %>" />
+                    </span>
+                  <% end %>
                 <% end %>
               </span>
               <a class="filter-clear" href="#"><i class="far fa-trash-alt"></i>Clear all filters</a>

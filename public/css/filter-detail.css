@@ -37,14 +37,19 @@
 .pills {
   display: contents;
 }
+.filter-clear, .btn-export { 
+  color: #596276;
+}
 .filter-clear {
   font-size: 1em;
   padding: 15px;
   margin: 10px;
   align-content: center;
   border-radius: 5px;
+  line-height: 37px;
 }
-.filter-clear i { 
+.filter-clear i {
+  font-size: 1.6em; 
   margin-right: 10px;
   color: #00DACE;
 }
@@ -64,6 +69,7 @@
 .filter-pill small {
   color: #00DACE;
   margin-right: 8px;
+  display: block;
 }
 .filter-pill i {
   width:16px;
@@ -101,6 +107,7 @@
   margin: 12px -10px;
 }
 .filter-card {
+  font-weight: bold;
   font-size: 1.16em;
   flex: 1;
   padding: 24px;
@@ -232,6 +239,11 @@
 .radio label input[type="radio"]:disabled+.cr {
   opacity: .5;
 }
+
+.modal-footer, .modal-body, .modal-header {
+  border: none;
+}
+
 @media (max-width: 1200px) {
   .s-title-page {
     margin-top: 70px;

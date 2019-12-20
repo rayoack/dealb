@@ -12,8 +12,8 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-5">
-		<%= form_for @person, url: { action: 'update' , id: @person.permalink }, method: :put do |f| %>
-		    <%= render partial: 'form', locals: { f: f } %>
+		        <%= form_for @person, url: { action: 'update' , id: @person.permalink }, method: :put do |f| %>
+		            <%= render partial: 'form', locals: { f: f } %>
                 <% end %>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-7">

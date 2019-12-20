@@ -39,7 +39,7 @@ $('#filterModal').on('show.bs.modal', function (event) {
     })
   } else {
     if (type == 'text') {
-      $('<div class="form-group"><label for="' + subcategory + '">' + title + '</label><input type="text" class="form-control" id="' + subcategory + '" name="' + subcategory + '" placeholder="' + title + '"></div>')
+      $('<div class="form-group"><label for="' + subcategory + '" style="display: none;">' + title + '</label><input type="text" class="form-control" id="' + subcategory + '" name="' + subcategory + '" placeholder="' + title + '"></div>')
         .keypress(function (event) {
           var key = event.which;
           if(key == 13) { // the enter key code
@@ -163,6 +163,14 @@ $('#filterModal').on('show.bs.modal', function (event) {
         url.searchParams.append('filter['+index+'][operator]', 'contains')
         url.searchParams.append('filter['+index+'][value]', i.value)
         index++
+      })
+    } else if (type == 'select') {
+      formData.forEach(function(i) {
+        url.searchParams.append('filter['+index+'][type]', subcategory)
+        url.searchParams.append('filter['+index+'][operator]', 'in')
+        url.searchParams.append('filter['+index+'][value][]', i.value)
+        console.log(i)
+        // index++
       })
     } else {
       formData.forEach(function(i) {

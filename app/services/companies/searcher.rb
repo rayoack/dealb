@@ -33,7 +33,7 @@ module Companies
 
     def filter_by_column(name, operator, value)
       @filter = @filter.where(
-        "companies.#{name} #{operator} ?",
+        "companies.#{name} #{operator} (?)",
         format(operator, value)
       )
     end

@@ -13,10 +13,12 @@ class BaseSearcher
     equal: '=',
     contains: 'ILIKE',
     greater_than: '>=',
-    less_than: '<='
+    less_than: '<=',
+    in: 'IN'
   }.with_indifferent_access.freeze
 
   def filter_by_params
+    puts filter_params
     data = Hash(filter_params).fetch('filter', nil)
 
     return if data.blank?

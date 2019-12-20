@@ -28,7 +28,7 @@ class DealSearcher < BaseSearcher
 
   def filter_by_column(name, operator, value)
     @filter = @filter.where(
-      "#{name} #{operator} ?",
+      "#{name} #{operator} (?)",
       format(operator, value)
     )
   end
