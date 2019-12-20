@@ -205,6 +205,7 @@
   position: relative;
   display: inline-block;
   border: 2px solid #00DACE;
+  background: white;
   border-radius: .5em;
   width: 32px;
   height: 32px;
@@ -221,7 +222,7 @@
   line-height: 0;
   top: 50%;
   left: 15%;
-  color: #00DACE;
+  color: white;
 }
 .checkbox label input[type="checkbox"],
 .radio label input[type="radio"] {
@@ -238,6 +239,10 @@
 .checkbox label input[type="checkbox"]:disabled+.cr,
 .radio label input[type="radio"]:disabled+.cr {
   opacity: .5;
+}
+.checkbox label input[type="checkbox"]:checked+.cr {
+  opacity: 1;
+  background: #00DACE;
 }
 
 .modal-footer, .modal-body, .modal-header {
