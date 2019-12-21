@@ -7,11 +7,11 @@ $('#filterModal').on('show.bs.modal', function (event) {
   var data = button.data('autocomplete-data')
   var index = $('.filter-pill').length
   // control not supress index
-  if (index > 0) {
-    var last = $('.filter-pill').last().find('input[type="hidden"]').last().attr("name")
-    console.log("last " + last)
-    index = parseInt( last.split('[')[1].replace(']', '') ) + 1
-  }
+  // if (index > 0) {
+  //   var last = $('.filter-pill').last().find('input[type="hidden"]').last().attr("name")
+  //   console.log("last " + last)
+  //   index = parseInt( last.split('[')[1].replace(']', '') ) + 1
+  // }
   console.log( $('.filter-pill'))
   console.group('SHOW MODAL')
   console.log(subcategory)
@@ -135,48 +135,48 @@ $('#filterModal').on('show.bs.modal', function (event) {
     console.log(formData)
     if (type == 'range') {
       if (formData[0].value != 0) {
-        url.searchParams.append('filter['+index+'][type]', subcategory)
-        url.searchParams.append('filter['+index+'][operator]', 'greater_than')
-        url.searchParams.append('filter['+index+'][value]', formData[0].value)
+        url.searchParams.append('filter['+subcategory+'][type]', subcategory)
+        url.searchParams.append('filter['+subcategory+'][operator]', 'greater_than')
+        url.searchParams.append('filter['+subcategory+'][value]', formData[0].value)
         index++
       }
       if (formData[1].value != 1000) {
-        url.searchParams.append('filter['+index+'][type]', subcategory)
-        url.searchParams.append('filter['+index+'][operator]', 'less_than')
-        url.searchParams.append('filter['+index+'][value]', formData[1].value)
+        url.searchParams.append('filter['+subcategory+'][type]', subcategory)
+        url.searchParams.append('filter['+subcategory+'][operator]', 'less_than')
+        url.searchParams.append('filter['+subcategory+'][value]', formData[1].value)
       }
     } else if (type == 'range_amount') {
       if (formData[0].value != 0) {
-        url.searchParams.append('filter['+index+'][type]', subcategory)
-        url.searchParams.append('filter['+index+'][operator]', 'greater_than')
-        url.searchParams.append('filter['+index+'][value]', formData[0].value * 1000000)
+        url.searchParams.append('filter['+subcategory+'][type]', subcategory)
+        url.searchParams.append('filter['+subcategory+'][operator]', 'greater_than')
+        url.searchParams.append('filter['+subcategory+'][value]', formData[0].value * 1000000)
         index++
       }
       if (formData[1].value != 1000) {
-        url.searchParams.append('filter['+index+'][type]', subcategory)
-        url.searchParams.append('filter['+index+'][operator]', 'less_than')
-        url.searchParams.append('filter['+index+'][value]', formData[1].value * 1000000)
+        url.searchParams.append('filter['+subcategory+'][type]', subcategory)
+        url.searchParams.append('filter['+subcategory+'][operator]', 'less_than')
+        url.searchParams.append('filter['+subcategory+'][value]', formData[1].value * 1000000)
       }
     } else if (type == 'text') {
       formData.forEach(function(i) {
-        url.searchParams.append('filter['+index+'][type]', subcategory)
-        url.searchParams.append('filter['+index+'][operator]', 'contains')
-        url.searchParams.append('filter['+index+'][value]', i.value)
+        url.searchParams.append('filter['+subcategory+'][type]', subcategory)
+        url.searchParams.append('filter['+subcategory+'][operator]', 'contains')
+        url.searchParams.append('filter['+subcategory+'][value]', i.value)
         index++
       })
     } else if (type == 'select') {
       formData.forEach(function(i) {
-        url.searchParams.append('filter['+index+'][type]', subcategory)
-        url.searchParams.append('filter['+index+'][operator]', 'in')
-        url.searchParams.append('filter['+index+'][value][]', i.value)
+        url.searchParams.append('filter['+subcategory+'][type]', subcategory)
+        url.searchParams.append('filter['+subcategory+'][operator]', 'in')
+        url.searchParams.append('filter['+subcategory+'][value][]', i.value)
         console.log(i)
         // index++
       })
     } else {
       formData.forEach(function(i) {
-        url.searchParams.append('filter['+index+'][type]', subcategory)
-        url.searchParams.append('filter['+index+'][operator]', 'equal')
-        url.searchParams.append('filter['+index+'][value]', i.value)
+        url.searchParams.append('filter['+subcategory+'][type]', subcategory)
+        url.searchParams.append('filter['+subcategory+'][operator]', 'equal')
+        url.searchParams.append('filter['+subcategory+'][value]', i.value)
         console.log(i)
         index++
       })

@@ -51,11 +51,14 @@ module Investors
     end
 
     def filter_by_column(name, operator, value)
-      @filter = @filter.where("#{name} #{operator} ?", format(operator, value))
+      @filter = @filter.where(
+        "#{name} #{operator} (?)",
+        format(operator, value)
+      )
     end
 
     def filter_by_status(name, operator, value)
-      @filter = @filter.where("investors.#{name} #{operator} ?", format(operator, value))
+      @filter = @filter.where("investors.#{name} #{operator} (?)", format(operator, value))
     end
 
     def filter_by_number_of_deals(_name, operator, value)

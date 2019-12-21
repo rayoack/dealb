@@ -71,7 +71,7 @@
             <h4><%= t('filter_selected') %></h4>
             <div class="filter-pills">
               <span class="pills">
-                <% params[:filter].values.each_with_index do |filter, index| %>
+                <% params[:filter].each do |index, filter| %>
                   <% if filter[:operator] == 'in' %>
                     <% filter[:value].each do |value| %>
                       <span class="filter-pill" href="#">
