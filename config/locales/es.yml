@@ -1,6 +1,8 @@
 es:
   filter: 'Filtra los resultados'
   filter_selected: 'Filtros seleccionados'
+  filter_apply: 'Aplicar filtro'
+  filter_clear: 'Eliminar filtro'
   auth:
     registration:
       mail:

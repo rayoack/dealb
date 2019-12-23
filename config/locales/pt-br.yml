@@ -1,6 +1,8 @@
 pt-br:
   filter: 'Filtre os resultados'
   filter_selected: 'Filtros selecionados'
+  filter_apply: 'Aplicar filtro'
+  filter_clear: 'Limpar filtro'
   auth:
     registration:
       mail:

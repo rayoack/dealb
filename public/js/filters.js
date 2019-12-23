@@ -5,19 +5,7 @@ $('#filterModal').on('show.bs.modal', function (event) {
   var subcategory = button.data('subcategory')
   var type = button.data('type')
   var data = button.data('autocomplete-data')
-  var index = $('.filter-pill').length
-  // control not supress index
-  // if (index > 0) {
-  //   var last = $('.filter-pill').last().find('input[type="hidden"]').last().attr("name")
-  //   console.log("last " + last)
-  //   index = parseInt( last.split('[')[1].replace(']', '') ) + 1
-  // }
-  console.log( $('.filter-pill'))
-  console.group('SHOW MODAL')
-  console.log(subcategory)
-  console.log(type)
-  console.log(data)
-  console.log(index)
+  var url = new URL(window.location.href)
 
   var form = $('#filterModalForm')
   if(data && Object.keys(data).length > 5) {
@@ -25,16 +13,19 @@ $('#filterModal').on('show.bs.modal', function (event) {
   } else {
     form.css("column-count", "1");
   }
-  // form.find('input[type="hidden"]').remove()
   form.empty()
   
   if (data && (type == 'radio' || type == 'select')) {
     Object.keys(data).forEach(function(key) {
       if (type == 'radio') {
-        $('<div class="radio"><label><input type="radio" name="' + subcategory + '" value="' + key + '"><span class="cr"><i class="fa fa-circle"></i></span>' + data[key] + '</label></div>').appendTo(form);
+        var old_value = url.searchParams.get('filter[' + subcategory + '][value]')
+        var checked = old_value == key ? 'checked' : ''
+        $('<div class="radio"><label><input type="radio" name="' + subcategory + '" value="' + key + '" ' + checked + '><span class="cr"><i class="fa fa-circle"></i></span>' + data[key] + '</label></div>').appendTo(form);
       }
       if (type == 'select') {
-        $('<div class="checkbox"><label><input type="checkbox" name="' + subcategory + '" value="' + key + '"><span class="cr"><i class="fas fa-check"></i></span>' + data[key] + '</label></div>').appendTo(form);
+        var old_value = url.searchParams.getAll('filter[' + subcategory + '][value][]')
+        var checked = old_value.includes(key) ? 'checked' : ''
+        $('<div class="checkbox"><label><input type="checkbox" name="' + subcategory + '" value="' + key + '" ' + checked + '><span class="cr"><i class="fas fa-check"></i></span>' + data[key] + '</label></div>').appendTo(form);
       }
     })
   } else {
@@ -53,6 +44,15 @@ $('#filterModal').on('show.bs.modal', function (event) {
     }
 
     if (type == 'range') {
+      var old_value_min = url.searchParams.get('filter[' + subcategory + '_min][value]')
+      if (!old_value_min) {
+        old_value_min = 0
+      }
+      var old_value = url.searchParams.get('filter[' + subcategory + '][value]')
+      if (!old_value) {
+        old_value = 1000
+      }
+      if (old_value_min == 0 && old_value == 1000) old_value = 500
       $('<input>').attr({
         type: 'hidden',
         id: 'min',
@@ -70,7 +70,7 @@ $('#filterModal').on('show.bs.modal', function (event) {
         step: 5,
         min: 0,
         max: 1000,
-        values: [ 0, 500 ],
+        values: [ old_value_min, old_value ],
         slide: function( event, ui ) {
           var min = ui.values[0]
           var max = ui.values[1]
@@ -88,6 +88,19 @@ $('#filterModal').on('show.bs.modal', function (event) {
     }
 
     if (type == 'range_amount') {
+      var old_value_min = url.searchParams.get('filter[' + subcategory + '_min][value]')
+      if (!old_value_min) {
+        old_value_min = 0
+      } else {
+        old_value_min = old_value_min / 1000000
+      }
+      var old_value = url.searchParams.get('filter[' + subcategory + '][value]')
+      if (!old_value) {
+        old_value = 1000
+      } else {
+        old_value = old_value / 1000000
+      }
+      if (old_value_min == 0 && old_value == 1000) old_value = 500
       $('<input>').attr({
         type: 'hidden',
         id: 'min',
@@ -105,7 +118,7 @@ $('#filterModal').on('show.bs.modal', function (event) {
         step: 5,
         min: 0,
         max: 1000,
-        values: [ 0, 500 ],
+        values: [ old_value_min, old_value ],
         slide: function( event, ui ) {
           var min = ui.values[0]
           var max = ui.values[1]
@@ -124,61 +137,80 @@ $('#filterModal').on('show.bs.modal', function (event) {
     }
   }
 
-  var url = new URL(window.location.href)
+  var clear = function(subcategory) {
+    url.searchParams.delete('filter['+subcategory+'][type]')
+    url.searchParams.delete('filter['+subcategory+'][operator]')
+    url.searchParams.delete('filter['+subcategory+'][value]')
+    url.searchParams.delete('filter['+subcategory+'][value][]')
+  }
+  
 
   var modal = $(this)
   modal.find('.modal-title').text(title)
   console.log(modal.find('#filterModalApplyButton'))
+  modal.find('#filterModalClearButton').unbind()
+  modal.find('#filterModalClearButton').click(function(event) {
+    // url.searchParams.delete('filter['+subcategory+'][type]')
+    // url.searchParams.delete('filter['+subcategory+'][operator]')
+    // url.searchParams.delete('filter['+subcategory+'][value]')
+    // url.searchParams.delete('filter['+subcategory+'][value][]')
+    clear(subcategory)
+    window.location = url
+  })
   modal.find('#filterModalApplyButton').unbind()
   modal.find('#filterModalApplyButton').click(function(event) {
     var formData = $('#filterModalForm').serializeArray()
     console.log(formData)
     if (type == 'range') {
       if (formData[0].value != 0) {
-        url.searchParams.append('filter['+subcategory+'][type]', subcategory)
-        url.searchParams.append('filter['+subcategory+'][operator]', 'greater_than')
-        url.searchParams.append('filter['+subcategory+'][value]', formData[0].value)
-        index++
+        url.searchParams.set('filter['+subcategory+'_min][type]', subcategory)
+        url.searchParams.set('filter['+subcategory+'_min][operator]', 'greater_than')
+        url.searchParams.set('filter['+subcategory+'_min][value]', formData[0].value)
+      } else {
+        clear(subcategory+'_min')
       }
       if (formData[1].value != 1000) {
-        url.searchParams.append('filter['+subcategory+'][type]', subcategory)
-        url.searchParams.append('filter['+subcategory+'][operator]', 'less_than')
-        url.searchParams.append('filter['+subcategory+'][value]', formData[1].value)
+        url.searchParams.set('filter['+subcategory+'][type]', subcategory)
+        url.searchParams.set('filter['+subcategory+'][operator]', 'less_than')
+        url.searchParams.set('filter['+subcategory+'][value]', formData[1].value)
+      } else {
+        clear(subcategory)
       }
     } else if (type == 'range_amount') {
       if (formData[0].value != 0) {
-        url.searchParams.append('filter['+subcategory+'][type]', subcategory)
-        url.searchParams.append('filter['+subcategory+'][operator]', 'greater_than')
-        url.searchParams.append('filter['+subcategory+'][value]', formData[0].value * 1000000)
-        index++
+        url.searchParams.set('filter['+subcategory+'_min][type]', subcategory)
+        url.searchParams.set('filter['+subcategory+'_min][operator]', 'greater_than')
+        url.searchParams.set('filter['+subcategory+'_min][value]', formData[0].value * 1000000)
+      } else {
+        clear(subcategory+'_min')
       }
       if (formData[1].value != 1000) {
-        url.searchParams.append('filter['+subcategory+'][type]', subcategory)
-        url.searchParams.append('filter['+subcategory+'][operator]', 'less_than')
-        url.searchParams.append('filter['+subcategory+'][value]', formData[1].value * 1000000)
+        url.searchParams.set('filter['+subcategory+'][type]', subcategory)
+        url.searchParams.set('filter['+subcategory+'][operator]', 'less_than')
+        url.searchParams.set('filter['+subcategory+'][value]', formData[1].value * 1000000)
+      } else {
+        clear(subcategory)
       }
     } else if (type == 'text') {
       formData.forEach(function(i) {
-        url.searchParams.append('filter['+subcategory+'][type]', subcategory)
-        url.searchParams.append('filter['+subcategory+'][operator]', 'contains')
-        url.searchParams.append('filter['+subcategory+'][value]', i.value)
-        index++
+        url.searchParams.set('filter['+subcategory+'][type]', subcategory)
+        url.searchParams.set('filter['+subcategory+'][operator]', 'contains')
+        url.searchParams.set('filter['+subcategory+'][value]', i.value)
       })
     } else if (type == 'select') {
+      clear(subcategory)
       formData.forEach(function(i) {
         url.searchParams.append('filter['+subcategory+'][type]', subcategory)
         url.searchParams.append('filter['+subcategory+'][operator]', 'in')
         url.searchParams.append('filter['+subcategory+'][value][]', i.value)
         console.log(i)
-        // index++
       })
     } else {
       formData.forEach(function(i) {
-        url.searchParams.append('filter['+subcategory+'][type]', subcategory)
-        url.searchParams.append('filter['+subcategory+'][operator]', 'equal')
-        url.searchParams.append('filter['+subcategory+'][value]', i.value)
+        url.searchParams.set('filter['+subcategory+'][type]', subcategory)
+        url.searchParams.set('filter['+subcategory+'][operator]', 'equal')
+        url.searchParams.set('filter['+subcategory+'][value]', i.value)
         console.log(i)
-        index++
       })
     }
     console.log(url)
