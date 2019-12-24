@@ -27,7 +27,8 @@ module Companies
         location: :filter_by_location,
         rounds_count: :filter_by_rounds,
         funds_raised: :filter_by_funds,
-        tag: :filter_by_tag
+        tag: :filter_by_tag,
+        funding_type: :filter_by_funding_type
       }
     end
 
@@ -61,6 +62,12 @@ module Companies
     def filter_by_tag(_name, operator, value)
       @filter = @filter.joins(:tags)
                        .where("tags.name #{operator} ?", value)
+                       .group(:id)
+    end
+
+    def filter_by_funding_type(_name, operator, value)
+      @filter = @filter.joins(:deals)
+                       .where("deals.round #{operator} (?)", value)
                        .group(:id)
     end
 

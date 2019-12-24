@@ -57,7 +57,8 @@
             <tbody>
               <% @people_paginated.each do |person| %>
                 <tr class="clickable-row" data-href=<%= "/people/#{person.permalink}" %>>
-                  <td><img src="<%= person.profile_image_url || "/img/photo-people.png" %>" alt=""></td>
+                  <!--<td><img src="<%= person.profile_image_url || "/img/photo-people.png" %>" alt=""></td>-->
+                  <td><img src="/img/photo-people.png" alt=""></td>
                   <td><%= person.name %></td>
                   <td><%= person.occupation %></td>
                   <td><%= person.locations_plain %></td>

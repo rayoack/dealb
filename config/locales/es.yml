@@ -295,7 +295,7 @@ es:
       female: 'Fem'
       phone_number: 'Teléfono +00 (00) 00000 - 0000'
       email: 'Email'
-      send: 'enviar'
+      send: 'Crear'
   markets:
     index:
       display: 'mercado'
@@ -308,7 +308,7 @@ es:
       back: 'Atrás'
       name: 'Nombre'
       email: 'Email'
-      send: 'enviar'
+      send: 'Crear'
   investor:
     index:
       display: 'inversor'
@@ -374,7 +374,7 @@ es:
       merged: 'fusionado'
       select_category: 'Seleccione una categoría'
       select_stage: 'Seleccione una etapa'
-      send: 'enviar'
+      send: 'Crear'
   embassador:
     index:
       title:  'Programa de embajador:'
@@ -488,6 +488,9 @@ es:
     name: 'Nombre'
     location: 'Ubicación'
     description: 'Descripción'
+    gender: 'Género'
+    occupation: 'Ocupación'
+    value: 'Valor'
     employees_count: 'Empleados'
     rounds_count: 'Rodadas'
     funds_raised: 'Total Recaudado'
@@ -497,8 +500,6 @@ es:
     funding_type: 'Tipo de Inversion'
     amount: 'Cantidad'
     date: 'Fecha'
-    gender: 'Género'
-    occupation: 'Ocupación'
     stage: 'Etapa'
     number_of_deals: 'Número de Negocios'
     total_funds_invested: 'Total Invertido'
@@ -737,17 +738,17 @@ es:
   number:
     currency:
       format:
-        delimiter: "."
+        delimiter: ","
         format: "%n %u"
         precision: 2
-        separator: ","
+        separator: "."
         significant: false
         strip_insignificant_zeros: false
-        unit: "€"
+        unit: "USD"
     format:
-      delimiter: "."
+      delimiter: ","
       precision: 3
-      separator: ","
+      separator: "."
       significant: false
       strip_insignificant_zeros: false
     human:

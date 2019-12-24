@@ -34,14 +34,15 @@ module Investors
       type = options[:type]&.to_sym
 
       return "deals_count #{order}" if type == :deals
-      return "invested_capital_dolar #{order}" if type == :capital
+      return "invested_capital #{order}" if type == :capital
 
-      type.presence || 'invested_capital_dolar DESC'
+      type.presence || 'invested_capital DESC'
     end
 
     def invested_capital_selection
       # 'SUM(coalesce(amount, 0))  as invested_capital'
-      'SUM(coalesce(amount, 0))  as invested_capital, SUM(coalesce(amount_dolar, 0))  as invested_capital_dolar'
+      # 'SUM(coalesce(amount, 0))  as invested_capital, SUM(coalesce(amount_dolar, 0))  as invested_capital_dolar'
+      'SUM(coalesce(amount_dolar, 0))  as invested_capital'
     end
 
     def order

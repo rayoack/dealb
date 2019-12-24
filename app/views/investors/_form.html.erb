@@ -32,13 +32,13 @@
 </div>
 
 <div class="form-group">
-  <%= f.select(:tag, Investor::TAGS.collect { |tag| [tag, tag] },
+  <%= f.select(:tag, Investor::TAGS.collect { |tag| [t("filters.labels.tag.#{tag}"), tag] },
                      { prompt: t('investor.form.select_category') },
                      { class: 'select-category-investor' }) %>
 </div>
 
 <div class="form-group">
-  <%= f.select(:stage, Investor::STAGES.collect { |stage| [stage, stage] },
+  <%= f.select(:stage, Investor::STAGES.collect { |stage| [t("filter.labes.stage.#{stage}"), stage] },
                        { prompt: t('investor.form.select_stage') },
                        { class: 'select-category-investor' }) %>
 </div>

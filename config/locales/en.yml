@@ -142,7 +142,7 @@ en:
       add_facebook: 'add facebook'
       add_twitter: 'add twitter'
       add_linkedin: 'add linkedin'
-      send: 'Send'
+      send: 'Save'
       market: 'Market Segment'
   deals:
     model:
@@ -192,7 +192,7 @@ en:
       total_amount: 'Total'
       pre_valuation: 'Pre valuation'
       source_url: 'Source URL - http://www.example.com'
-      send: 'Send'
+      send: 'Save'
       rounds:
         acceleration: 'Acceleration'
         series_seed: 'Series seed'
@@ -305,7 +305,7 @@ en:
       back: 'back'
       name: 'Name'
       email: 'Email'
-      send: 'Send'
+      send: 'Save'
   investor:
     index:
       display: 'investor'
@@ -371,7 +371,7 @@ en:
       merged: 'merged'
       select_category: 'Select a category'
       select_stage: 'Select a stage'
-      send: 'Send'
+      send: 'Save'
   embassador:
     index:
       title: 'Ambassador Program:'

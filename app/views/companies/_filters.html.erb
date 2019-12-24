@@ -13,6 +13,7 @@
             data-modal-title="<%= t('filters.name') %>"
             href="#"><i></i><%= t('filters.name') %></a>
           
+          <!--
           <a class="filter-card <%= filter_active('location')%>"
             data-toggle="modal"
             data-target="#filterModal"
@@ -20,6 +21,7 @@
             data-type="text"
             data-modal-title="<%= t('filters.location') %>"
             href="#"><i></i><%= t('filters.location') %></a>
+          -->
           
           <!--
           <a class="filter-card <%= filter_active('description')%>"
@@ -32,6 +34,7 @@
             href="#"><i></i><%= t('filters.description') %></a>
           -->
 
+          <!--
           <a class="filter-card <%= filter_active('employees_count')%>"
             data-toggle="modal"
             data-target="#filterModal"
@@ -39,6 +42,7 @@
             data-type="range"
             data-modal-title="<%= t('filters.employees_count') %>"
             href="#"><i></i><%= t('filters.employees_count') %></a>
+          -->
 
           <a class="filter-card <%= filter_active('status')%>"
             data-toggle="modal"
@@ -49,6 +53,7 @@
             data-autocomplete-data=<%= Hash[Company::STATUSES.map { |s| [s, t("filters.labels.status.#{s}")] }].to_json %>
             href="#"><i></i><%= t('filters.status') %></a>
           
+          <!--
           <a class="filter-card <%= filter_active('rounds_count')%>"
             data-toggle="modal"
             data-target="#filterModal"
@@ -56,6 +61,7 @@
             data-type="range"
             data-modal-title="<%= t('filters.rounds_count') %>"
             href="#"><i></i><%= t('filters.rounds_count') %></a>
+          -->
           
           <a class="filter-card <%= filter_active('funds_raised')%>"
             data-toggle="modal"
@@ -64,7 +70,17 @@
             data-type="range_amount"
             data-modal-title="<%= t('filters.funds_raised') %>"
             href="#"><i></i><%= t('filters.funds_raised') %></a>
-            
+
+          <a class="filter-card <%= filter_active('funding_type')%>"
+            style="flex-grow: 1;"
+            data-toggle="modal"
+            data-target="#filterModal"
+            data-subcategory="funding_type"
+            data-type="select"
+            data-modal-title="<%= t('filters.funding_type') %>"
+            data-autocomplete-data="<%= Hash[Deal::ROUNDS.map { |s| [s, t("filters.labels.funding_type.#{s}")] }].to_json %>"
+            href="#"><i></i><%= t('filters.funding_type') %></a>
+
         </div>
         <% if params[:filter] %>
           <form id="filter-pills-form" action="/companies">
@@ -80,7 +96,7 @@
                           <%= '> ' if filter[:operator] == 'greater_than' %>
                           <%= '< ' if filter[:operator] == 'less_than' %>
                         <% end %>
-                        <% if filter[:type].in?(%w[status]) %>
+                        <% if filter[:type].in?(%w[status funding_type]) %>
                           <%= value.present? ? t("filters.labels.#{filter[:type]}.#{value}") : '' %>
                         <% elsif filter[:type].in?(%w[funds_raised]) %>
                           <%= format_amount(value,  Deal::USD) %>
@@ -111,7 +127,7 @@
                         <%= '> ' if filter[:operator] == 'greater_than' %>
                         <%= '< ' if filter[:operator] == 'less_than' %>
                       <% end %>
-                      <% if filter[:type].in?(%w[status]) %>
+                      <% if filter[:type].in?(%w[status funding_type]) %>
                         <%= filter[:value].present? ? t("filters.labels.#{filter[:type]}.#{filter[:value]}") : '' %>
                       <% elsif filter[:type].in?(%w[funds_raised]) %>
                         <%= format_amount(filter[:value],  Deal::USD) %>

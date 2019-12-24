@@ -142,7 +142,7 @@ pt-br:
       add_facebook: 'facebook'
       add_twitter: 'twitter'
       add_linkedin: 'linkedin'
-      send: 'Enviar'
+      send: 'Salvar'
       market: 'Segmento de Mercado'
   deals:
     model:
@@ -192,7 +192,7 @@ pt-br:
       total_amount: 'Total'
       pre_valuation: 'Pre avaliação'
       source_url: 'URL da fonte - http://www.example.com'
-      send: 'Enviar'
+      send: 'Salvar'
       rounds:
         acceleration: 'Aceleração'
         series_seed: 'Série semente'
@@ -296,7 +296,7 @@ pt-br:
       female: 'fem'
       phone_number: 'Telefone +00 (00) 00000 - 0000'
       email: 'Email'
-      send: 'Enviar'
+      send: 'Salvar'
   markets:
     index:
       display: 'mercado'
@@ -309,7 +309,7 @@ pt-br:
       back: 'voltar'
       name: 'Nome'
       email: 'Email'
-      send: 'Enviar'
+      send: 'Salvar'
   investor:
     index:
       display: 'investidor'
@@ -375,7 +375,7 @@ pt-br:
       merged: 'fundido'
       select_category: 'Selecione uma categoria'
       select_stage: 'Selecione um estágio'
-      send: 'Enviar'
+      send: 'Salvar'
   embassador:
     index:
       title: 'Programa Embaixador:'
@@ -489,6 +489,9 @@ pt-br:
     name: 'Nome'
     location: 'Localização'
     description: 'Descrição'
+    gender: 'Gênero'
+    occupation: 'Ocupação'
+    value: 'Valor'
     employees_count: 'Empregados'
     rounds_count: 'Rodadas'
     funds_raised: 'Total Captado'
@@ -498,8 +501,6 @@ pt-br:
     funding_type: 'Tipo de investimento'
     amount: 'Montante'
     date: 'Data'
-    gender: 'Gênero'
-    occupation: 'Ocupação'
     stage: 'Estágio'
     number_of_deals: 'Número de negócios'
     total_funds_invested: 'Total Investido'
@@ -738,17 +739,17 @@ pt-br:
   number:
     currency:
       format:
-        delimiter: "."
+        delimiter: ","
         format: "%u %n"
         precision: 2
-        separator: ","
+        separator: "."
         significant: false
         strip_insignificant_zeros: false
         unit: R$
     format:
-      delimiter: "."
+      delimiter: ","
       precision: 3
-      separator: ","
+      separator: "."
       significant: false
       strip_insignificant_zeros: false
     human:
