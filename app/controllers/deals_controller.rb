@@ -94,11 +94,11 @@ class DealsController < ApplicationController
   end
 
   def load_companies
-    @companies = Company.where(domain_country_context: domain_country_context)
+    @companies = Company.select(:id, :name).where(domain_country_context: domain_country_context).order(:name)
   end
 
   def load_investors
-    @investors = Investor.where(domain_country_context: domain_country_context)
+    @investors = Investor.where(domain_country_context: domain_country_context).preload(:investable)
   end
 
   def load_deal
