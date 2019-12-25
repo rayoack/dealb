@@ -22,16 +22,18 @@
                           { prompt: t('deals.form.select_category') },
                           { class: 'select-category' }) %>
 </div>
+
 <div class="form-group">
   <%= f.fields_for :deal_investors_attributes do |investor_form| %>
     <%= investor_form.select( :investor_id, 
                               @investors.collect { |c| [c.investable&.name, c.id] },
-                              {},
+                              { :selected=>@deal.investor_ids },
                               class: 'select2',
                               data: { label: t('deals.form.select_investor') },
                               multiple: true ) %>
   <% end %>
 </div>
+
 <div class="form-group">
   <%= f.select(:round, Deal::ROUNDS.collect { |round| [t("deals.form.rounds.#{round}"), round] },
                        { prompt: t('deals.form.select_round') },
