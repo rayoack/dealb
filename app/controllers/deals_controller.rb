@@ -54,6 +54,7 @@ class DealsController < ApplicationController
   DEAL_PARAMS = %i[
     close_date company_id category round amount_currency pre_valuation_currency
     amount pre_valuation source_url status amount_dolar pre_valuation_dolar
+    investor_ids
   ].freeze
 
   def filter_params
@@ -64,19 +65,23 @@ class DealsController < ApplicationController
 
   def alloweds
     params.require(:deal).permit(
-      *DEAL_PARAMS, deal_investor_attributes: [:investor_id]
-    ).merge(investor_ids: params.require(:deal)
-                                .require(:deal_investors_attributes)[:investor_id])
+      *DEAL_PARAMS, :investor_ids => []
+    )
+    # params.require(:deal).permit(
+    #  *DEAL_PARAMS, deal_investor_attributes: [:investor_id]
+    # )
+    # .merge(investor_ids: params.require(:deal)
+    # .require(:deal_investors_attributes)[:investor_id])
   end
 
   def deal_params
     @deal_params ||=
       begin
-        allowed_deal.merge(
-          user_id: current_user.id,
-          deal_investors_attributes: alloweds[:investor_ids].select(&:present?)
-                                                            .map { |id| { investor_id: id } }
-        )
+        allowed_deal.merge(user_id: current_user.id)
+        # allowed_deal.merge(
+        #   user_id: current_user.id,
+        #   deal_investors_attributes: alloweds[:investor_ids].select(&:present?).map { |id| { investor_id: id } }
+        # )
       end
   end
 

@@ -1,24 +1,21 @@
 class PeopleController < ApplicationController
+  before_action :load_companies, only: %i[new create edit update]
+  before_action :load_person, only: %i[edit show update destroy]
+
   def index
     @people = PersonSearcher.new(filter_params, domain_country_context).call
     @people_paginated = @people.page(params[:page])
   end
 
   def show
-    @person = Person.find_by!(permalink: params[:id])
-
     @deals = Array(@person.investor.try(:deal_investors)).map(&:deal)
   end
 
   def new
-    @companies = Company.where(domain_country_context: domain_country_context)
-
     @person = Person.new
   end
 
   def create
-    @companies = Company.where(domain_country_context: domain_country_context)
-
     @person = Person.new(person_params)
 
     if @person.save
@@ -33,17 +30,9 @@ class PeopleController < ApplicationController
     end
   end
 
-  def edit
-    @companies = Company.where(domain_country_context: domain_country_context)
-
-    @person = Person.find_by!(permalink: params[:id])
-  end
+  def edit; end
 
   def update
-    @companies = Company.where(domain_country_context: domain_country_context)
-
-    @person = Person.find_by!(permalink: params[:id])
-
     if @person.update(person_params)
       redirect_to people_path, notice: 'Successfully updated'
     else
@@ -124,5 +113,15 @@ class PeopleController < ApplicationController
     Investor.create!(
       investable: person, tag: Investor::ANGEL, stage: Investor::SEED
     )
+  end
+
+  def load_companies
+    @companies = Company # .select(:id, :name)
+      .where(domain_country_context: domain_country_context)
+      .order(:name)
+  end
+
+  def load_person
+    @person = Person.find_by!(permalink: params[:id])
   end
 end

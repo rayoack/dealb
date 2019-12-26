@@ -39,7 +39,7 @@
     <%= person_company_form.select(:company_id,
                                    @companies.collect { |c| [c.name, c.id] },
                                    { prompt: t('people.form.select_company') },
-                                   { class: 'select-category' }) %>
+                                   { class: 'select-category select2' }) %>
 <% end %>
 </div>
 

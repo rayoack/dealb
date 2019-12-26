@@ -24,14 +24,12 @@
 </div>
 
 <div class="form-group">
-  <%= f.fields_for :deal_investors_attributes do |investor_form| %>
-    <%= investor_form.select( :investor_id, 
-                              @investors.collect { |c| [c.investable&.name, c.id] },
-                              { :selected=>@deal.investor_ids },
-                              class: 'select2',
-                              data: { label: t('deals.form.select_investor') },
-                              multiple: true ) %>
-  <% end %>
+  <%= f.select( :investor_ids, 
+                @investors.collect { |c| [c.investable&.name, c.id] },
+                { },
+                class: 'select2',
+                data: { label: t('deals.form.select_investor') },
+                multiple: true ) %>
 </div>
 
 <div class="form-group">
