@@ -5,9 +5,10 @@
 <% end %>
 
 <div class="form-group">
-  <%= f.select(:permalink, possible_new_investors,
-                           { prompt: t('investor.form.select_investor') },
-                           { class: 'select-category' }) %>
+  <%= f.select(:permalink, 
+    possible_new_investors,
+    { prompt: t('investor.form.select_investor') },
+    { class: 'select-category select2' }) %>
 <small><%= t('investor.form.select_investor_explain') %></small>
 </div>
 

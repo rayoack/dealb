@@ -14,7 +14,8 @@
           <% @company.person_companies.select(:person_id, :job_title).distinct.each do |person_company| %>
             <tr>
               <td>
-                <img class="profile-img__sm" src="<%= person_company.person.profile_image_url || "/img/photo-people.png" %>" alt="">
+                <!--<img class="profile-img__sm" src="<%= person_company.person.profile_image_url || "/img/photo-people.png" %>" alt="">-->
+                <img class="profile-img__sm" src="/img/photo-people.png" alt="">
                 <strong><%= person_company.person.name %></strong>
               </td>
               <td><%= person_company.job_title %></td>
