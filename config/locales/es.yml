@@ -142,7 +142,7 @@ es:
       add_facebook: 'agregar facebook'
       add_twitter: 'agregar twitter'
       add_linkedin: 'agregar linkedin'
-      send: 'Enviar'
+      send: 'Guardar'
       market: 'Segmento de Mercado'
   deals:
     model:
@@ -192,7 +192,7 @@ es:
       total_amount: 'Total'
       pre_valuation: 'Pre valoración'
       source_url: 'URL de origen - http://www.example.com'
-      send: 'Enviar'
+      send: 'Guardar'
       rounds:
         acceleration: 'Aceleración'
         series_seed: 'Serie de semillas'
@@ -295,7 +295,7 @@ es:
       female: 'Fem'
       phone_number: 'Teléfono +00 (00) 00000 - 0000'
       email: 'Email'
-      send: 'Crear'
+      send: 'Guardar'
   markets:
     index:
       display: 'mercado'
@@ -308,7 +308,7 @@ es:
       back: 'Atrás'
       name: 'Nombre'
       email: 'Email'
-      send: 'Crear'
+      send: 'Guardar'
   investor:
     index:
       display: 'inversor'
@@ -374,7 +374,7 @@ es:
       merged: 'fusionado'
       select_category: 'Seleccione una categoría'
       select_stage: 'Seleccione una etapa'
-      send: 'Crear'
+      send: 'Guardar'
   embassador:
     index:
       title:  'Programa de embajador:'

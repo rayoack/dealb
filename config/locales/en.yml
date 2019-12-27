@@ -292,7 +292,7 @@ en:
       female: 'female'
       phone_number: 'Phone +00 (00) 00000 - 0000'
       email: 'Email'
-      send: 'Send'
+      send: 'Save'
   markets:
     index:
       display: 'mercado'
