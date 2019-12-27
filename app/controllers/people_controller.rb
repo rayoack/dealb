@@ -45,15 +45,21 @@ class PeopleController < ApplicationController
   PERSON_PARAMS = %i[
     first_name last_name bio occupation born_on gender phone_number
     email website_url facebook_url twitter_url google_plus_url linkedin_url
+    company_ids
   ].freeze
   private_constant :PERSON_PARAMS
 
   def alloweds
     params.require(:person).permit(
-      *PERSON_PARAMS,
-      person_companies_attributes: [:company_id],
-      locations_attributes: %i[city country]
-    )
+        *PERSON_PARAMS,
+        locations_attributes: %i[city country],
+        :company_ids => []
+      )
+    # params.require(:person).permit(
+    #   *PERSON_PARAMS,
+    #   person_companies_attributes: [:company_id],
+    #   locations_attributes: %i[city country]
+    # )
   end
 
   def investor?
@@ -76,7 +82,7 @@ class PeopleController < ApplicationController
   def person_params
     @person_params ||= allowed_person
       .merge(locations_attributes)
-      .merge(person_companies_attributes)
+      # .merge(person_companies_attributes)
   end
 
   def locations_attributes

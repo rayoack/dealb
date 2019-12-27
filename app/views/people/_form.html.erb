@@ -34,13 +34,14 @@
 <div class="form-group">
   <%= f.text_field :occupation, placeholder: t('people.form.occupation') %>
 </div>
+
 <div class="form-group">
-  <%= f.fields_for :person_companies_attributes do |person_company_form| %>
-    <%= person_company_form.select(:company_id,
-                                   @companies.collect { |c| [c.name, c.id] },
-                                   { prompt: t('people.form.select_company') },
-                                   { class: 'select-category select2' }) %>
-<% end %>
+  <%= f.select( :company_ids, 
+                @companies.collect { |c| [c.name, c.id] },
+                { prompt: t('people.form.select_company') },
+                class: 'select2',
+                data: { label: t('deals.form.select_company') },
+                multiple: true ) %>
 </div>
 
 <div class="form-group">

@@ -20,6 +20,7 @@ class Person < ApplicationRecord
 
   # Relations
   has_many :person_companies, dependent: :destroy
+  has_many :company, through: :person_companies
   has_many(
     :localizables,
     as: :localizable, dependent: :destroy, inverse_of: :localizables

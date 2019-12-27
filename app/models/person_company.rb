@@ -2,7 +2,8 @@
 
 class PersonCompany < ApplicationRecord
   # Validations
-  validates :person, :company, :job_title, presence: true
+  # validates :person, :company, :job_title, presence: true
+  validates :person, :company, presence: true
 
   validates :started_at, date: true, allow_nil: true
   validates :ended_at, date: true, allow_nil: true
