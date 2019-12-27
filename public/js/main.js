@@ -186,8 +186,14 @@ $(function() {
   });
 });
 
-$('.select2').select2({
-  placeholder: ($('.select2').data() && $('.select2').data().label),
+// $('.select2').select2({
+//   placeholder: ($('.select2').data() && $('.select2').data().label),
+// });
+
+$('.select2').each(function( index ) {
+  $( this ).select2({
+    placeholder: ($( this ).data() && $( this ).data().label),
+  });
 });
 
 $(document).ready(function() {

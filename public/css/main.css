@@ -3291,7 +3291,6 @@ footer .copyright p a {
 .form-create form .form-group {
   float: left;
   width: 100%;
-  position: relative;
 }
 .form-create form .form-group.form-status {
   margin-top: 50px;
@@ -3453,8 +3452,10 @@ footer .copyright p a {
 }
 .form-create form .form-group .date-close input[type="text"] {
   box-shadow: none;
+  /*
   border-radius: 0px 3px 3px 0px;
   border-left: none;
+  */
 }
 .form-create form .form-group .date-close input[type="password"] {
   box-shadow: none;
