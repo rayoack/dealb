@@ -5,9 +5,11 @@
       <thead>
         <tr>
           <th><%= t('people.show.companies.name') %></th>
-          <th><%= t('people.show.companies.status') %></th>
+          <!--<th><%= t('people.show.companies.status') %></th>-->
+          <th><%= t('companies.show.people.job') %></th>
           <th><%= t('people.show.companies.location') %></th>
-          <td colspan="2"><%= t('people.show.companies.deals') %></td>
+          <!--<td colspan="2"><%= t('people.show.companies.deals') %></td>-->
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -17,9 +19,10 @@
               <img src=<%= person_company.company&.profile_image_url || '/img/logo-company.png' %> width=38px />
               <strong> <%= person_company.company.name %></strong>
             </td>
-            <td class="status-active"><span class="circle"></span> <%= person_company.company.status %></td>
+            <!--<td class="status-active"><span class="circle"></span> <%= person_company.company.status %></td>-->
+            <td><%= person_company.job_title %></td>
             <td><%= person_company.company.locations.pluck(:city, :country).map { |c| c.join(', ') }.join('/ ') %></td>
-            <td><%= t('people.show.companies.location') %></td>
+            <!--<td><%= t('people.show.companies.location') %></td>-->
             <td><a href="/companies/<%= person_company.company.permalink %>"><img src="/img/seta-dir.svg" alt=""></a></td>
           </tr>
         <% end %>

@@ -34,6 +34,7 @@ class PeopleController < ApplicationController
 
   def update
     if @person.update(person_params)
+    # if @person.update(alloweds)
       redirect_to people_path, notice: 'Successfully updated'
     else
       render :edit
@@ -45,7 +46,6 @@ class PeopleController < ApplicationController
   PERSON_PARAMS = %i[
     first_name last_name bio occupation born_on gender phone_number
     email website_url facebook_url twitter_url google_plus_url linkedin_url
-    company_ids
   ].freeze
   private_constant :PERSON_PARAMS
 
@@ -53,6 +53,7 @@ class PeopleController < ApplicationController
     params.require(:person).permit(
         *PERSON_PARAMS,
         locations_attributes: %i[city country],
+        person_companies_attributes: [:company_id, :job_title, :_destroy],
         :company_ids => []
       )
     # params.require(:person).permit(
@@ -82,6 +83,7 @@ class PeopleController < ApplicationController
   def person_params
     @person_params ||= allowed_person
       .merge(locations_attributes)
+      .merge(params.require(:person).permit(person_companies_attributes: [:id, :company_id, :job_title, :_destroy]))
       # .merge(person_companies_attributes)
   end
 
@@ -109,7 +111,8 @@ class PeopleController < ApplicationController
       person_companies_attributes: [
         {
           company_id: person_companies_attributes[:company_id].presence,
-          job_title: alloweds[:occupation].presence
+          job_title: person_companies_attributes[:job_title].presence,
+          _destroy: person_companies_attributes[:_destroy].presence
         }
       ]
     }

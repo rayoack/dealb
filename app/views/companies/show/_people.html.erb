@@ -6,19 +6,19 @@
         <thead>
           <tr>
             <th><%= t('companies.show.people.name') %></th>
-            <!--<th><%= t('companies.show.people.job') %></th>-->
+            <th><%= t('companies.show.people.job') %></th>
             <th colspan="2"><%= t('companies.show.people.company') %></th>
           </tr>
         </thead>
         <tbody>
-          <% @company.person_companies.select(:person_id).distinct.each do |person_company| %>
+          <% @company.person_companies.select(:person_id, :job_title).distinct.each do |person_company| %>
             <tr>
               <td>
                 <!--<img class="profile-img__sm" src="<%= person_company.person.profile_image_url || "/img/photo-people.png" %>" alt="">-->
                 <img class="profile-img__sm" src="/img/photo-people.png" alt="">
                 <strong><%= person_company.person.name %></strong>
               </td>
-              <%# <td><%= person_company.job_title %#></td> %>
+              <td><%= person_company.job_title %></td>
               <td><%= @company.name %></td>
               <td><a href="/people/<%= person_company.person.permalink %>"><%= t('companies.show.profile') %></a></td>
             </tr>

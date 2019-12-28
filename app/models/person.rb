@@ -30,7 +30,7 @@ class Person < ApplicationRecord
   has_one :investor, as: :investable, dependent: :destroy
 
   # Nested
-  accepts_nested_attributes_for :person_companies
+  accepts_nested_attributes_for :person_companies, allow_destroy: true
   accepts_nested_attributes_for :locations
 
   alias_attribute :description, :bio
