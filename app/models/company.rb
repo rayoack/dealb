@@ -82,4 +82,8 @@ class Company < ApplicationRecord
   def all_headquarters
     locations&.pluck(:city, :country)&.join(', ') || ''
   end
+
+  def locations_plain
+    locations.pluck(:city, :country).map { |c| c.join(', ') }.join('/ ')
+  end
 end

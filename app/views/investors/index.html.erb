@@ -15,8 +15,8 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-6">
-        <p class="results">
-          <%= pluralize @investors.length, t('investor.index.investor'), t('investor.index.investors') %>
+        <p class="results">&nbsp;
+          <%= page_entries_info @investors_paginated, entry_name: t('companies.index.investor') %>
         </p>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-6">
@@ -52,7 +52,7 @@
                   <td><img src="/img/investors.svg" alt=""></td>
                   <td><%= investor.investable.name %></td>
                   <td style="text-align: center;"><%= investor.number_of_deals %></td>
-                  <td class="column-location"><%= investor.investable.locations.pluck(:city, :country).map { |c| c.join(', ') }.join('/ ') %></td>
+                  <td class="column-location"><%= investor.investable.locations_plain %></td>
                   <td><%= investor.tag ? t("investor.show.categories.#{investor.tag}") : '' %></td>
                   <td><a href="/investors/<%= investor.permalink %>"><i class="fas fa-arrow-right"></i></a></td>
                 </tr>
