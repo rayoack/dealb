@@ -7,6 +7,7 @@ module Companies
       @filter = Company
       # preload para agilizar load e melhorar ordenacao
       @filter = @filter.preload(:locations, :deals)
+      @filter = @filter.group(:id).joins(:deals)
     end
 
     def call
@@ -78,12 +79,18 @@ module Companies
     end
 
     def order_criteria
-      order = filter_params.fetch('order', nil)
-      type = filter_params.fetch('type', nil)&.to_sym
+      return { name: :asc } if order_direction.blank? || order_type.blank?
+      return "sum(coalesce(deals.amount_dolar,0)) #{order_direction}" if order_type == :funds_raised
+  
+      { order_type => order_direction }
+    end
 
-      return { type => order } if order.present? && type.present?
-
-      { name: :asc }
+    def order_direction
+      @order_direction ||= filter_params.fetch('order', nil)
+    end
+  
+    def order_type
+      @order_type ||= filter_params.fetch('type', nil)&.to_sym
     end
   end
 end

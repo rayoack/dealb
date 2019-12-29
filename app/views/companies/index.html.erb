@@ -57,7 +57,14 @@
 
                 <th> <%= t('companies.index.column_location') %>  </th>
                 <th> <%= t('companies.index.column_deals') %>  </th>
-                <th><%= t('filters.funds_raised') %></th>
+                <!--<th><%= t('filters.funds_raised') %></th>-->
+                <%= render partial: 'shared/sortable_header',
+                           locals: {
+                             url: companies_path,
+                             label: t('filters.funds_raised'),
+                             type: 'funds_raised',
+                             order: params[:order]
+                           } %>
                 <th style="width: 25px;"></th>
               </tr>
             </thead>
