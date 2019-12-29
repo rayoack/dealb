@@ -21,7 +21,7 @@
             </td>
             <!--<td class="status-active"><span class="circle"></span> <%= person_company.company.status %></td>-->
             <td><%= person_company.job_title %></td>
-            <td><%= person_company.company.locations.pluck(:city, :country).map { |c| c.join(', ') }.join('/ ') %></td>
+            <td><%= person_company.company.locations_plain %></td>
             <!--<td><%= t('people.show.companies.location') %></td>-->
             <td><a href="/companies/<%= person_company.company.permalink %>"><img src="/img/seta-dir.svg" alt=""></a></td>
           </tr>
