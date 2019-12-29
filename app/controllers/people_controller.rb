@@ -52,15 +52,9 @@ class PeopleController < ApplicationController
   def alloweds
     params.require(:person).permit(
         *PERSON_PARAMS,
-        locations_attributes: %i[city country],
         person_companies_attributes: [:company_id, :job_title, :_destroy],
-        :company_ids => []
+        person_locations_attributes: [:location_id, :_destroy],
       )
-    # params.require(:person).permit(
-    #   *PERSON_PARAMS,
-    #   person_companies_attributes: [:company_id],
-    #   locations_attributes: %i[city country]
-    # )
   end
 
   def investor?
@@ -82,40 +76,8 @@ class PeopleController < ApplicationController
 
   def person_params
     @person_params ||= allowed_person
-      .merge(locations_attributes)
       .merge(params.require(:person).permit(person_companies_attributes: [:id, :company_id, :job_title, :_destroy]))
-      # .merge(person_companies_attributes)
-  end
-
-  def locations_attributes
-    locations_attributes = alloweds[:locations_attributes]
-
-    return {} if locations_attributes.to_h.values.all?(&:empty?)
-
-    {
-      locations_attributes: [
-        {
-          city: locations_attributes[:city].presence,
-          country: locations_attributes[:country].presence
-        }
-      ]
-    }
-  end
-
-  def person_companies_attributes
-    person_companies_attributes = alloweds[:person_companies_attributes]
-
-    return {} if person_companies_attributes.to_h.values.all?(&:empty?)
-
-    {
-      person_companies_attributes: [
-        {
-          company_id: person_companies_attributes[:company_id].presence,
-          job_title: person_companies_attributes[:job_title].presence,
-          _destroy: person_companies_attributes[:_destroy].presence
-        }
-      ]
-    }
+      .merge(params.require(:person).permit(person_locations_attributes: [:id, :location_id, :_destroy]))
   end
 
   def create_investor(person)

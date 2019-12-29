@@ -21,17 +21,16 @@ class Person < ApplicationRecord
   # Relations
   has_many :person_companies, dependent: :destroy
   has_many :company, through: :person_companies
-  has_many(
-    :localizables,
-    as: :localizable, dependent: :destroy, inverse_of: :localizables
-  )
-  has_many :locations, through: :localizables
+
+  has_many :person_locations, dependent: :destroy
+  has_many :location, through: :person_locations
+  
   has_many :users, dependent: :nullify
   has_one :investor, as: :investable, dependent: :destroy
 
   # Nested
   accepts_nested_attributes_for :person_companies, allow_destroy: true
-  accepts_nested_attributes_for :locations
+  accepts_nested_attributes_for :person_locations, allow_destroy: true
 
   alias_attribute :description, :bio
   alias_attribute :born_date, :born_on
@@ -68,6 +67,6 @@ class Person < ApplicationRecord
   end
 
   def locations_plain
-    locations.pluck(:city, :country).join(', ')
+    person_locations.includes(:location).pluck(:city, :country).map { |c| c.join(', ') }.join(' / ')
   end
 end

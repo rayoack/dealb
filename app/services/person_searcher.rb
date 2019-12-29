@@ -4,7 +4,7 @@ class PersonSearcher < BaseSearcher
     super(filter_params, domain_country_context)
     @filter = Person
     # preload para acelerar load das pessoas
-    @filter = @filter.preload(:locations, person_companies: :company)
+    @filter = @filter.preload(person_locations: :location, person_companies: :company)
   end
 
   def call
