@@ -1,0 +1,12 @@
+<div style="border-radius: 3px; padding: 10px; display: flow-root; box-shadow: 1px 4px 10px lightgrey; margin: 10px 0; margin-bottom: 20px;">
+  <div class="form-group">
+    <%= f.select( :location_id, 
+                  Location.all.collect { |c| [c.full, c.id] }, 
+                  {}, 
+                  class: 'select2', 
+                  data: { label: 'Select Location' }, 
+                  multiple: false )%>
+  </div>
+  <%= f.hidden_field :_destroy %>
+  <button type="button" class="close remove_fields" aria-label="Close">remove <span aria-hidden="true">&times;</span></button>
+</div>

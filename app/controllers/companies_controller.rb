@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CompaniesController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[names locations]
+  skip_before_action :authenticate_user!, only: %i[names]
 
   before_action :load_company, only: %i[show edit update widget]
 
@@ -56,22 +56,6 @@ class CompaniesController < ApplicationController
     render(json: autocomplete(:name) || [params[:term]], status: :ok)
   end
 
-  def locations
-    location = "CONCAT(locations.country, ' - ', locations.city) AS location"
-    location_names = begin
-      Company.joins(:locations)
-             .select(location)
-             .where(
-               'locations.city ILIKE :term OR locations.country ILIKE :term',
-               term: "%#{params[:term]}%"
-             ).limit(20)
-              .pluck(location)
-              .presence
-    end
-
-    render(json: location_names || [params[:term]], status: :ok)
-  end
-
   def widget
     @last_deal = @company&.deals&.last
     @last_funding_type = I18n.t("filters.labels.funding_type.#{@last_deal.round}") if @last_deal&.round.present?
@@ -116,7 +100,7 @@ class CompaniesController < ApplicationController
   def alloweds
     params.require(:company).permit(
       *COMPANY_PARAMS,
-      locations_attributes: %i[city country],
+      company_locations_attributes: [:location_id, :_destroy],
       company_markets_attributes: { market_id: [] }
     )
   end
@@ -140,18 +124,8 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    @company_params ||= begin
-      locations_attributes = alloweds[:locations_attributes]
-
-      return allowed_company if locations_attributes.to_h.values.all?(&:empty?)
-
-      allowed_company.merge(
-        locations_attributes: [{
-          city: locations_attributes[:city].presence,
-          country: locations_attributes[:country].presence
-        }]
-      )
-    end
+    @company_params ||= allowed_company
+      .merge(params.require(:company).permit(company_locations_attributes: [:id, :location_id, :_destroy]))
   end
 
   def allowed_company

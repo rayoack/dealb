@@ -52,7 +52,7 @@
           </li>
           <li>
             <strong><%= t('companies.show.locations') %></strong>
-            <span><%= @company.locations.pluck(:city, :country).join(', ') %></span>
+            <span><%= @company.locations_plain %></span>
           </li>
           <li>
             <strong><%= t('companies.show.tags') %></strong>

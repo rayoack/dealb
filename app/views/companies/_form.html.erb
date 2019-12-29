@@ -27,12 +27,6 @@
   </div>
 </div>
 <div class="form-group">
-  <%= f.fields_for :locations_attributes do |location_form| %>
-    <%= location_form.select :country, [], { prompt: t('companies.form.country') }, { class: 'select-category', style: 'width: 100%' } %>
-    <%= location_form.select :city, [], { prompt: t('companies.form.city') }, { class: 'select-category', style: 'width: 100%' } %>
-  <% end %>
-</div>
-<div class="form-group">
   <%= f.text_field :phone_number, placeholder: t('companies.form.phone_number'), class: 'input-city' %>
   <%= f.text_field :homepage_url, placeholder: t('companies.form.website_url'), class: 'input-date' %>
 </div>
@@ -69,13 +63,15 @@
     <%= f.text_field :linkedin_url, placeholder: t('companies.form.add_linkedin'), class: 'form-control', 'aria-label' => 'Username', pattern: 'https?://.+', title: 'Only valid URLs' %>
   </div>
 </div>
+
+<h1 class="title-social"><%= t('companies.show.locations') %></h1>
+<div>
+  <%= f.fields_for :company_locations do |builder| %>
+    <%= render 'company_location_fields', f: builder %>
+  <% end %>
+  <%= link_to_add_fields "Add location", f, :company_locations %>
+</div>
+
 <div class="form-group">
   <%= f.submit t('companies.form.send') %>
 </div>
-
-<script>
-populateCountries(
-  "company_locations_attributes_country",
-  "company_locations_attributes_city"
-);
-</script>

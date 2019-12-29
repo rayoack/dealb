@@ -28,21 +28,19 @@ class Company < ApplicationRecord
   validates :google_plus_url, url: true, allow_nil: true
 
   # Relations
+  has_many :tags, dependent: :destroy
   has_many :deals, dependent: :destroy
   has_many :person_companies, dependent: :destroy
-  has_many(
-    :localizables,
-    as: :localizable, dependent: :destroy, inverse_of: :localizables
-  )
-  has_many :locations, through: :localizables
   has_one :investor, as: :investable, dependent: :destroy
+
+  has_many :company_locations, dependent: :destroy
+  has_many :location, through: :company_locations
+
   has_many :company_markets, dependent: :destroy
   has_many :markets, through: :company_markets
-  has_many :deals, dependent: :destroy
-  has_many :tags, dependent: :destroy
-
+  
   # Nested
-  accepts_nested_attributes_for :locations
+  accepts_nested_attributes_for :company_locations, allow_destroy: true
   accepts_nested_attributes_for :company_markets
 
   alias_attribute :website_url, :homepage_url
@@ -76,14 +74,14 @@ class Company < ApplicationRecord
   end
 
   def headquarter_country
-    locations.first&.country
+    ""
   end
 
   def all_headquarters
-    locations&.pluck(:city, :country)&.join(', ') || ''
+    locations_plain
   end
 
   def locations_plain
-    locations.pluck(:city, :country).map { |c| c.join(', ') }.join('/ ')
+    company_locations.includes(:location).pluck(:city, :country).map { |c| c.join(', ') }.join(' / ')
   end
 end
