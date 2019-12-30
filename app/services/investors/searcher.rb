@@ -12,7 +12,6 @@ module Investors
       filter_by_params
       @filter = @filter.joins(:deals)
         .preload(:investable)
-        .preload(investable: :locations)
         .group(:id)
         .order(order_criteria)
         .select(:id,
@@ -20,9 +19,6 @@ module Investors
           :investable_id,
           :tag)
         .select('COUNT(investor_id) as number_of_deals')
-        
-
-      #@filter.order(order_criteria)
     end
 
     private

@@ -8,26 +8,16 @@
   <%= f.text_field :first_name, placeholder: t('people.form.first_name') %>
   <%= f.text_field :last_name, placeholder: t('people.form.last_name') %>
 </div>
-<!--<div class="checkbox">
-  <label>
-    <input type="checkbox" name="investor-checkbox" value="true">
-    <span class="cr"><i class="fas fa-check"></i></span><%= 'Investor' %>
-  </label>
-</div>-->
-<div class="form-group">
-  <div class="form-status form-gender">
-    <span class="label-status"><%= 'Investor' %></span>
 
-    <p class="investor-radio-inline">
-    <%= f.radio_button :investor, true, id: 'investor-radio-active' %>
-    <label for="investor-radio-active">Yes</label>
-    </p>
-    <p class="investor-radio-inline">
-    <%= f.radio_button :investor, false, id: 'investor-radio-inactive' %>
-    <label for="investor-radio-inactive">No</label>
-    </p>
+<div class="form-group">
+  <div class="checkbox">
+    <label>
+      <%= f.check_box(:investor, { checked: @person.investor?, disabled: @person.persisted? && @person.investor? }, true, false ) %>
+      <span class="cr"><i class="fas fa-check"></i></span><%= 'Investor' %>
+    </label>
   </div>
 </div>
+
 <div class="form-group">
   <%= f.text_area :description, rows: 6, placeholder: t('people.form.description') %>
 </div>

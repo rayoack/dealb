@@ -84,4 +84,8 @@ class Company < ApplicationRecord
   def locations_plain
     company_locations.includes(:location).pluck(:city, :country).map { |c| c.join(', ') }.join(' / ')
   end
+
+  def investor?
+    investor.present?
+  end
 end

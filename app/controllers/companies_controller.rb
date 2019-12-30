@@ -28,7 +28,7 @@ class CompaniesController < ApplicationController
 
     if @company.save
       create_company_markets
-      create_investor(@company)
+      create_investor(@company) if investor?
 
       Integrations::Clearbit.new(@company).enrich
 
@@ -46,6 +46,7 @@ class CompaniesController < ApplicationController
     @markets = Market.all
 
     if @company.update(company_params)
+      create_investor(@company) if investor?
       redirect_to companies_path, notice: 'Successfully updated'
     else
       render :edit

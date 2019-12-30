@@ -69,4 +69,8 @@ class Person < ApplicationRecord
   def locations_plain
     person_locations.includes(:location).pluck(:city, :country).map { |c| c.join(', ') }.join(' / ')
   end
+
+  def investor?
+    investor.present?
+  end
 end

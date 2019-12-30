@@ -34,6 +34,7 @@ class PeopleController < ApplicationController
 
   def update
     if @person.update(person_params)
+      create_investor(@person) if investor?
     # if @person.update(alloweds)
       redirect_to people_path, notice: 'Successfully updated'
     else

@@ -256,7 +256,8 @@
 }
 .checkbox label input[type="checkbox"]:disabled+.cr,
 .radio label input[type="radio"]:disabled+.cr {
-  opacity: .5;
+  opacity: .4 !important;
+  cursor: not-allowed;
 }
 .checkbox label input[type="checkbox"]:checked+.cr {
   opacity: 1;
