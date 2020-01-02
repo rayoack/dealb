@@ -13,7 +13,7 @@ module PeopleHelper
 
       link_to(company.name, company_path(company.permalink))
     else
-      'Unknown'
+      '-'
     end
   end
 

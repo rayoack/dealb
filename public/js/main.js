@@ -206,11 +206,24 @@ $(".add_fields").click(function(event) {
   let regexp = new RegExp($(this).data('id'), 'g')
   $(this).before($(this).data('fields').replace(regexp, time))
 
-  $('.select2').each(function( index ) {
-    $( this ).select2({
-      placeholder: ($( this ).data() && $( this ).data().label),
+  $(this).before( () => {
+    $('.select2').each(function( index ) {
+      $( this ).select2({
+        placeholder: ($( this ).data() && $( this ).data().label),
+      });
+    });
+    $(".remove_fields").click(function(event) {
+      event.preventDefault()
+      $(this).prev('input[type=hidden]').val('1')
+      $(this).closest('div').hide()
     });
   });
+
+  // $('.select2').each(function( index ) {
+  //   $( this ).select2({
+  //     placeholder: ($( this ).data() && $( this ).data().label),
+  //   });
+  // });
 })
 
 $(".remove_fields").click(function(event) {
