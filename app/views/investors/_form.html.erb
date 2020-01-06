@@ -5,45 +5,55 @@
 <% end %>
 
 <div class="form-group">
+  <%= f.label :permalink, t('investor.form.select_investor') %>
   <%= f.select(:permalink, 
     possible_new_investors,
     { prompt: t('investor.form.select_investor') },
-    { class: 'select-category select2' }) %>
-<small><%= t('investor.form.select_investor_explain') %></small>
+    { class: 'select-category select2', disabled: true }) %>
+  <small><%= t('investor.form.select_investor_explain') %></small>
 </div>
-
+<div class="form-group">
+  <%= f.label :status, t('investor.form.status') %>
+  <%= f.select(:status,
+      Investor::STATUSES.collect { |status| [t("investor.form.#{status}"), status] },
+      { prompt: t('investor.form.status') },
+      { class: 'select-category form-control', style: 'width: 100%;' }) %>
+</div>
+<!--
 <div class="form-group form-status">
   <span class="label-status"><%= t('investor.form.status') %></span>
   <p class="radio-inline">
-  <%= f.radio_button :status, 'active', id: 'radio-active', checked: true %>
+  <%#= f.radio_button :status, 'active', id: 'radio-active', checked: true %>
   <label for="radio-active"><%= t('investor.form.active') %></label>
   </p>
   <p class="radio-inline">
-    <%= f.radio_button :status, 'inactive', id: 'radio-inactive' %>
+    <%#= f.radio_button :status, 'inactive', id: 'radio-inactive' %>
     <label for="radio-inactive"><%= t('investor.form.inactive') %></label>
   </p>
   <p class="radio-inline">
-    <%= f.radio_button :status, 'acquired', id: 'radio-acquired' %>
+    <%#= f.radio_button :status, 'acquired', id: 'radio-acquired' %>
     <label for="radio-acquired"><%= t('investor.form.acquired') %></label>
   </p>
   <p class="radio-inline">
-    <%= f.radio_button :status, 'merged', id: 'radio-merged' %>
+    <%#= f.radio_button :status, 'merged', id: 'radio-merged' %>
     <label for="radio-merged"><%= t('investor.form.merged') %></label>
   </p>
 </div>
-
+-->
 <div class="form-group">
-  <%= f.select(:tag, Investor::TAGS.collect { |tag| [t("filters.labels.tag.#{tag}"), tag] },
-                     { prompt: t('investor.form.select_category') },
-                     { class: 'select-category-investor' }) %>
+  <%= f.label :tag, t('investor.show.tag') %>
+  <%= f.select(:tag, 
+    Investor::TAGS.collect { |tag| [t("filters.labels.tag.#{tag}"), tag] },
+    { prompt: t('investor.form.select_category') },
+    { class: 'select-category-investor form-control', style: 'width: 100%;' }) %>
 </div>
-
 <div class="form-group">
-  <%= f.select(:stage, Investor::STAGES.collect { |stage| [t("filter.labes.stage.#{stage}"), stage] },
-                       { prompt: t('investor.form.select_stage') },
-                       { class: 'select-category-investor' }) %>
+  <%= f.label :stage, t('investor.form.select_stage') %>
+  <%= f.select(:stage, 
+    Investor::STAGES.collect { |stage| [t("filter.labes.stage.#{stage}"), stage] },
+    { prompt: t('investor.form.select_stage') },
+    { class: 'select-category-investor form-control', style: 'width: 100%;' }) %>
 </div>
-
 <div class="form-group">
   <%= f.submit t('investor.form.send') %>
 </div>

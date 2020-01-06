@@ -60,8 +60,8 @@
                   <!--<td><img src="<%= person.profile_image_url || "/img/photo-people.png" %>" alt=""></td>-->
                   <td><img src="/img/photo-people.png" alt=""></td>
                   <td><%= person.name %></td>
-                  <td><%= person.occupation %></td>
-                  <td><%= person.locations_plain %></td>
+                  <td><%= person.occupation ? person.occupation : t("empty_state")%></td>
+                  <td><%= person.locations_plain %><%= t("empty_state") if person.locations_plain.blank? %></td>
                   <td><img src="/img/companies.svg" alt=""></td>
                   <td><strong><%= latest_company(person) %></strong></td>
                   <td><a href="/people/<%= person.permalink %>"><i class="fas fa-arrow-right"></i></a></td>

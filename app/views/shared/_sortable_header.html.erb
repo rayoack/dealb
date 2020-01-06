@@ -2,11 +2,11 @@
   <% if order.present? && order == 'DESC' && params[:type] == type %>
     <%= link_to label, params.permit!.merge(order: 'ASC', type: type),
                        class: 'sortable-header' %>
-    <i class="fas fa-chevron-up"></i>
+    <i class="fas fa-sort-amount-down"></i>
   <% elsif params[:type] == type %>
     <%= link_to label, params.permit!.merge(order: 'DESC', type: type),
                        class: 'sortable-header' %>
-    <i class="fas fa-chevron-down"></i>
+    <i class="fas fa-sort-amount-down-alt"></i>
   <% else %>
     <%= link_to label, params.permit!.merge(order: 'DESC', type: type),
                        class: 'sortable-header' %>

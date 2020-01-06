@@ -8,14 +8,14 @@ $('#filterModal').on('show.bs.modal', function (event) {
   var url = new URL(window.location.href)
 
   var form = $('#filterModalForm')
-  if(data && Object.keys(data).length > 5) {
-    form.css("column-count", "2");
-  } else {
-    form.css("column-count", "1");
-  }
   form.empty()
   
   if (data && (type == 'radio' || type == 'select')) {
+    if(data && Object.keys(data).length > 5) {
+      form.css("column-count", "2");
+    } else {
+      form.css("column-count", "1");
+    }
     Object.keys(data).forEach(function(key) {
       if (type == 'radio') {
         var old_value = url.searchParams.get('filter[' + subcategory + '][value]')
@@ -29,6 +29,20 @@ $('#filterModal').on('show.bs.modal', function (event) {
       }
     })
   } else {
+    if (type == 'select2') {
+      var old_value = url.searchParams.getAll('filter[' + subcategory + '][value][]')
+      console.log(old_value)
+      $('<div class="form-group"><select  id="filter_' + subcategory + '" name="' + subcategory + '" class="select2" style="width:100%;" multiple></select></div>').appendTo(form);
+      Object.keys(data).forEach(function(key) {
+        if (old_value.includes(key)) {
+          $('#filter_' + subcategory).append($('<option/>', { value: key, text : key , selected: true}));
+        } else {
+          $('#filter_' + subcategory).append($('<option/>', { value: key, text : key }));
+        }
+      })
+      $('#filter_' + subcategory).select2({ allowClear: true });
+    }
+
     if (type == 'text') {
       $('<div class="form-group"><label for="' + subcategory + '" style="display: none;">' + title + '</label><input type="text" class="form-control" id="' + subcategory + '" name="' + subcategory + '" placeholder="' + title + '"></div>')
         .keypress(function (event) {
@@ -89,51 +103,75 @@ $('#filterModal').on('show.bs.modal', function (event) {
 
     if (type == 'range_amount') {
       var old_value_min = url.searchParams.get('filter[' + subcategory + '_min][value]')
-      if (!old_value_min) {
-        old_value_min = 0
-      } else {
-        old_value_min = old_value_min / 1000000
-      }
       var old_value = url.searchParams.get('filter[' + subcategory + '][value]')
-      if (!old_value) {
-        old_value = 1000
-      } else {
-        old_value = old_value / 1000000
-      }
-      if (old_value_min == 0 && old_value == 1000) old_value = 500
-      $('<input>').attr({
-        type: 'hidden',
-        id: 'min',
-        name: 'min'
-      }).appendTo(form);
-      $('<input>').attr({
-        type: 'hidden',
-        id: 'max',
-        name: 'max'
-      }).appendTo(form);
-      $('<p><input type="text" id="amount" readonly style="border:0; color:#00DACE; font-weight:bold; width: 100%;"></p>').appendTo(form)
-      $('<div id="slider-range"></div>').appendTo(form)
-      $( "#slider-range" ).slider({
-        range: true,
-        step: 5,
-        min: 0,
-        max: 1000,
-        values: [ old_value_min, old_value ],
-        slide: function( event, ui ) {
-          var min = ui.values[0]
-          var max = ui.values[1]
-          $('#min').val(min)
-          $('#max').val(max)
-          if (max == 1000) {
-            max = 'infinity'
+      $('<div class="form-group"><label for="' + subcategory + '_min" style="display: none;">' + title + ' min</label><input type="number" class="form-control" id="' + subcategory + '_min" name="' + subcategory + '_min" placeholder="' + title + ' min" value="' + old_value_min + '"></div>')
+        .keypress(function (event) {
+          var key = event.which;
+          if(key == 13) { // the enter key code
+            event.preventDefault()
+            // $('#filterModalApplyButton').click();
+            return false 
           }
-          var tail = max != 'infinity' ? 'mi' : ''
-          $( "#amount" ).val( "$" + min + "mi - $" + max + tail);
-        }
-      });
-      $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + "mi - $" + $( "#slider-range" ).slider( "values", 1 ) + "mi");
-      $('#min').val($( "#slider-range" ).slider( "values", 0 ))
-      $('#max').val($( "#slider-range" ).slider( "values", 1 ))
+        })
+        .appendTo(form)
+        .focus()
+      $('<div class="form-group"><label for="' + subcategory + '_max" style="display: none;">' + title + ' max</label><input type="number" class="form-control" id="' + subcategory + '_max" name="' + subcategory + '_max" placeholder="' + title + ' max" value="' + old_value + '"></div>')
+        .keypress(function (event) {
+          var key = event.which;
+          if(key == 13) { // the enter key code
+            event.preventDefault()
+            // $('#filterModalApplyButton').click();
+            return false 
+          }
+        })
+        .appendTo(form)
+        .focus()
+      // var old_value_min = url.searchParams.get('filter[' + subcategory + '_min][value]')
+      // if (!old_value_min) {
+      //   old_value_min = 0
+      // } else {
+      //   old_value_min = old_value_min / 1000000
+      // }
+      // var old_value = url.searchParams.get('filter[' + subcategory + '][value]')
+      // if (!old_value) {
+      //   old_value = 1000
+      // } else {
+      //   old_value = old_value / 1000000
+      // }
+      // if (old_value_min == 0 && old_value == 1000) old_value = 500
+      // $('<input>').attr({
+      //   type: 'hidden',
+      //   id: 'min',
+      //   name: 'min'
+      // }).appendTo(form);
+      // $('<input>').attr({
+      //   type: 'hidden',
+      //   id: 'max',
+      //   name: 'max'
+      // }).appendTo(form);
+      // $('<p><input type="text" id="amount" readonly style="border:0; color:#00DACE; font-weight:bold; width: 100%;"></p>').appendTo(form)
+      // $('<div id="slider-range"></div>').appendTo(form)
+      // $( "#slider-range" ).slider({
+      //   range: true,
+      //   step: 5,
+      //   min: 0,
+      //   max: 1000,
+      //   values: [ old_value_min, old_value ],
+      //   slide: function( event, ui ) {
+      //     var min = ui.values[0]
+      //     var max = ui.values[1]
+      //     $('#min').val(min)
+      //     $('#max').val(max)
+      //     if (max == 1000) {
+      //       max = 'infinity'
+      //     }
+      //     var tail = max != 'infinity' ? 'mi' : ''
+      //     $( "#amount" ).val( "$" + min + "mi - $" + max + tail);
+      //   }
+      // });
+      // $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + "mi - $" + $( "#slider-range" ).slider( "values", 1 ) + "mi");
+      // $('#min').val($( "#slider-range" ).slider( "values", 0 ))
+      // $('#max').val($( "#slider-range" ).slider( "values", 1 ))
     }
   }
 
@@ -180,14 +218,16 @@ $('#filterModal').on('show.bs.modal', function (event) {
       if (formData[0].value != 0) {
         url.searchParams.set('filter['+subcategory+'_min][type]', subcategory)
         url.searchParams.set('filter['+subcategory+'_min][operator]', 'greater_than')
-        url.searchParams.set('filter['+subcategory+'_min][value]', formData[0].value * 1000000)
+        url.searchParams.set('filter['+subcategory+'_min][value]', formData[0].value)
+        // url.searchParams.set('filter['+subcategory+'_min][value]', formData[0].value * 1000000)
       } else {
         clear(subcategory+'_min')
       }
-      if (formData[1].value != 1000) {
+      if (formData[1].value != 0) {
         url.searchParams.set('filter['+subcategory+'][type]', subcategory)
         url.searchParams.set('filter['+subcategory+'][operator]', 'less_than')
-        url.searchParams.set('filter['+subcategory+'][value]', formData[1].value * 1000000)
+        url.searchParams.set('filter['+subcategory+'][value]', formData[1].value)
+        // url.searchParams.set('filter['+subcategory+'][value]', formData[1].value * 1000000)
       } else {
         clear(subcategory)
       }
@@ -203,7 +243,13 @@ $('#filterModal').on('show.bs.modal', function (event) {
         url.searchParams.append('filter['+subcategory+'][type]', subcategory)
         url.searchParams.append('filter['+subcategory+'][operator]', 'in')
         url.searchParams.append('filter['+subcategory+'][value][]', i.value)
-        console.log(i)
+      })
+    } else if (type == 'select2') {
+      clear(subcategory)
+      formData.forEach(function(i){
+        url.searchParams.append('filter['+subcategory+'][type]', subcategory)
+        url.searchParams.append('filter['+subcategory+'][operator]', 'in')
+        url.searchParams.append('filter['+subcategory+'][value][]', i.value)  
       })
     } else {
       formData.forEach(function(i) {

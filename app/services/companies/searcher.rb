@@ -62,8 +62,8 @@ module Companies
     end
 
     def filter_by_tag(_name, operator, value)
-      @filter = @filter.joins(:tags)
-                       .where("tags.name #{operator} ?", value)
+      @filter = @filter.joins(:markets)
+                       .where("markets.name #{operator} (?)", value)
                        .group(:id)
     end
 

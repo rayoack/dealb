@@ -41,7 +41,7 @@
           <% if @person.investor %>
             <div class="categorie">
               <span><%= t('people.show.category') %></span>
-              <span class="name-categorie"><%= investor_category(@person) ? t("filters.labels.tag.#{investor_category(@person)}") : '' %></span>
+              <span class="name-categorie"><%= investor_category(@person) ? t("filters.labels.tag.#{investor_category(@person)}") : t("empty_state") %></span>
             </div>
           <% end %>
         </div>
@@ -58,7 +58,10 @@
             <img src="/img/person-details.svg" alt="">
             <%= t('people.show.details') %>
           </h1>
-          <p><%= @person.description %></p>
+          <p>
+            <%= @person.description %>
+            <%= t("empty_state") if @person.description.blank? %>
+          </p>
           <ul class="info-contact">
             <li>
               <p>
@@ -70,14 +73,14 @@
               <p>
                 <strong><%= t('people.show.born') %>:</strong> 
                 <!--<%= @person.born_on %>-->
-                <%= @person.born_on ? I18n.l(@person.born_on, format: :default) : '' %>
+                <%= @person.born_on ? I18n.l(@person.born_on, format: :default) : t("empty_state") %>
               </p>
             </li>
             <li>
               <p>
                 <strong><%= t('people.show.gender') %>:</strong>
                 <!--<%= @person.gender %>-->
-                <%= @person.gender ? I18n.t("filters.labels.gender.#{@person.gender}") : '' %>
+                <%= @person.gender ? I18n.t("filters.labels.gender.#{@person.gender}") : t("empty_state") %>
               </p>
             </li>
           </ul>

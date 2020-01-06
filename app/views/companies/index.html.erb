@@ -74,10 +74,10 @@
                   <td><img src="<%= company.profile_image_url || '/img/companies.svg' %>"></td>
                   <td><%= company.name %></td>
                   <td class="status-active"><%= t("companies.show.status.#{company.status}") %></td>
-                  <td class="column-location"><%= company.locations_plain %></td>
+                  <td class="column-location"><%= company.locations_plain %><%= t("empty_state") if company.locations_plain.blank? %></td>
                   <td>
                     <%= company.deals.map(&:category).uniq.map { |category| I18n.t("deals.model.categories.#{category}") }.join(', ') %><br>
-                    <%= company.deals.map(&:round).uniq.map { |round| I18n.t("deals.form.rounds.#{round}") if round.present? }.compact.join(', ') %>
+                    <%#= company.deals.map(&:round).uniq.map { |round| I18n.t("deals.form.rounds.#{round}") if round.present? }.compact.join(', ') %>
                   </td>
                   <td><%= format_amount(company.deals.sum(:amount_dolar), 'USD') %></td>
                   <td><a href=<%= "/companies/#{company.permalink}" %>><i class="fas fa-arrow-right"></i></a></td>

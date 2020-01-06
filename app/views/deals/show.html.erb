@@ -28,7 +28,7 @@
             </h2>
             <h2 class="category">
               <img src="/img/description.svg" alt="">
-              <%= t('deals.show.round') %>: <%= @deal.round ? I18n.t("deals.form.rounds.#{@deal.round}") : '' %>
+              <%= t('deals.show.round') %>: <%= @deal.round ? I18n.t("deals.form.rounds.#{@deal.round}") : t("empty_state") %>
             </h2>
             <h2 class="category">
               <img src="/img/description.svg" alt="">

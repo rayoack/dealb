@@ -5,6 +5,14 @@
         <h3><%= t('filter') %></h3>
         <div class="filter-cards">
 
+          <a class="filter-card <%= filter_active('name')%>"
+            data-toggle="modal"
+            data-target="#filterModal"
+            data-subcategory="name"
+            data-type="text"
+            data-modal-title="<%= t('filters.name') %>"
+            href="#"><i></i><%= t('filters.name') %></a>
+
           <a class="filter-card <%= filter_active('status')%>"
             style="flex-grow: 1;"
             data-toggle="modal"

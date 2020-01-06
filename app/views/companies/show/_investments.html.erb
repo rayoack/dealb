@@ -19,7 +19,7 @@
               <td><strong><%= I18n.l(deal.close_date, format: :default) %></strong></td>
               <td><a href="/companies/<%= @company.permalink %>" style="float: none;"><%= @company.name %></a></td>
               <td><%= I18n.t("deals.model.categories.#{deal.category}") %></td>
-              <td><%= deal.round ? I18n.t("deals.form.rounds.#{deal.round}") : '' %></td>
+              <td><%= deal.round ? I18n.t("deals.form.rounds.#{deal.round}") : t("empty_state") %></td>
               <td><%= format_amount(deal.amount, deal.amount_currency) %></td>
               <td><%= format_amount(deal.pre_valuation, deal.pre_valuation_currency) %></td>
               <td><a href="/deals/<%= deal.id %>"><img src="/img/seta-dir.svg" alt=""></a></td>

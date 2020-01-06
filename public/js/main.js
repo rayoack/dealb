@@ -183,6 +183,7 @@ $(function() {
     dateFormat: 'dd/mm/yy',
     changeMonth: true,
     changeYear: true,
+    yearRange: "-100:+0", // 100 year range
   });
 });
 
@@ -193,6 +194,7 @@ $(function() {
 $('.select2').each(function( index ) {
   $( this ).select2({
     placeholder: ($( this ).data() && $( this ).data().label),
+    allowClear: true,
   });
 });
 
@@ -210,6 +212,7 @@ $(".add_fields").click(function(event) {
     $('.select2').each(function( index ) {
       $( this ).select2({
         placeholder: ($( this ).data() && $( this ).data().label),
+        allowClear: true,
       });
     });
     $(".remove_fields").click(function(event) {

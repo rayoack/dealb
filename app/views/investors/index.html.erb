@@ -16,7 +16,7 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-6">
         <p class="results">&nbsp;
-          <%= page_entries_info @investors_paginated, entry_name: t('companies.index.investor') %>
+          <%#= page_entries_info @investors_paginated, entry_name: t('companies.index.investor') %>
         </p>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-6">
@@ -52,8 +52,8 @@
                   <td><img src="/img/investors.svg" alt=""></td>
                   <td><%= investor.investable.name %></td>
                   <td style="text-align: center;"><%= investor.number_of_deals %></td>
-                  <td class="column-location"><%= investor.investable.locations_plain %></td>
-                  <td><%= investor.tag ? t("investor.show.categories.#{investor.tag}") : '' %></td>
+                  <td class="column-location"><%= investor.investable.locations_plain %><%=t("empty_state") if investor.investable.locations_plain.blank? %></td>
+                  <td><%= investor.tag ? t("investor.show.categories.#{investor.tag}") : t("empty_state") %></td>
                   <td><a href="/investors/<%= investor.permalink %>"><i class="fas fa-arrow-right"></i></a></td>
                 </tr>
               <% end %>

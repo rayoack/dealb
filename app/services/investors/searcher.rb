@@ -38,7 +38,8 @@ module Investors
         tag: :filter_by_column,
         stage: :filter_by_column,
         number_of_deals: :filter_by_number_of_deals,
-        total_funds_invested: :filter_by_total_funds_invested
+        total_funds_invested: :filter_by_total_funds_invested,
+        name: :filter_by_name
       }
     end
 
@@ -68,6 +69,16 @@ module Investors
                        .group('investors.id')
                        .having("SUM(amount) #{operator} ?",
                                format(operator, parsed_value))
+    end
+
+    def filter_by_name(name, operator, value)
+      @filter = @filter
+        .joins(" LEFT JOIN companies ON companies.id = investors.investable_id AND investors.investable_type = 'Company'")
+        .joins(" LEFT JOIN people ON people.id = investors.investable_id AND investors.investable_type = 'Person'")
+        .where("(companies.name #{operator} ? OR people.first_name #{operator} ? OR people.last_name #{operator} ?)",
+          format(operator, value),
+          format(operator, value),
+          format(operator, value))
     end
 
     def bypass(name, _operator, _value)

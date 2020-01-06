@@ -5,6 +5,7 @@
 <% end %>
 
 <div class="form-group">
+  <%= f.label :company_id, t('deals.form.select_company') %>
   <%= f.select(:company_id, @companies.collect { |c| [c.name, c.id] },
                             { prompt: t('deals.form.select_company') },
                             class: 'select2',
@@ -12,24 +13,23 @@
                             multiple: false ) %>
 </div>
 <div class="form-group input-group">
-  <div class="has-float-label">
-    <!--<span class="input-group-addon"><img src="/img/calendar.svg" alt=""></span>-->
+  <span style="padding-right: 1em; display: table-cell; position: relative;">
+    <%= f.label :close_date, t('deals.form.close_date') %>
     <%= f.text_field :close_date, 
       placeholder: t('deals.form.close_date'),
       class: 'form-control datepicker',
       'aria-label' => t('deals.form.close_date') %>
-    <label for="deal_close_date"><%= t('deals.form.close_date') %></label>
-  </div>
-  <div class="has-float-label">
+  </span>
+  <span>
+    <%= f.label(:category, t('deals.form.select_category') )%>
     <%= f.select(:category,
       Deal::CATEGORIES.collect { |category| [t("deals.form.categories.#{category}"), category] },
       { prompt: t('deals.form.select_category') },
       { class: 'select-category form-control', style: 'width: 100%;' }) %>
-    <label for="deal_category"><%= t('deals.form.select_category') %></label>
-  </div>
+  </span>
 </div>
-
 <div class="form-group">
+  <%= f.label :investor_ids, t('deals.form.select_investor') %>
   <%= f.select( :investor_ids, 
                 @investors.collect { |c| [c.investable&.name, c.id] },
                 { },
@@ -37,22 +37,23 @@
                 data: { label: t('deals.form.select_investor') },
                 multiple: true ) %>
 </div>
-
-<div class="form-group has-float-label">
+<div class="form-group">
+  <%= f.label :round, t('deals.form.select_round') %>
   <%= f.select(:round, 
     Deal::ROUNDS.collect { |round| [t("deals.form.rounds.#{round}"), round] },
     { prompt: t('deals.form.select_round') },
     { class: 'select-round form-control', style: 'width: 100%;' }) %>
-  <label for="deal_round"><%= t('deals.form.select_round') %></label>
 </div>
 <div class="form-group input-group">
   <span style="padding-right: 1em; display: table-cell; position: relative;">
-  <%= f.select(:amount_currency,
-    Deal::CURRENCIES.collect { |currency| [currency, currency] },
-    { prompt: t('deals.form.select_currency') },
-    { class: 'select-currency', style: 'width: 100%; min-width: 70px;' }) %>
+    <%= f.label :amount_currency, t('deals.form.select_currency') %>
+    <%= f.select(:amount_currency,
+      Deal::CURRENCIES.collect { |currency| [currency, currency] },
+      { prompt: t('deals.form.select_currency') },
+      { class: 'select-currency', style: 'width: 100%; min-width: 70px;' }) %>
   </span>
-  <span class="has-float-label">
+  <span>
+    <%= f.label :amount, t('deals.form.total_amount') %>
     <%= f.text_field :amount, 
       placeholder: t('deals.form.total_amount'),
       class: 'input-total-amount form-control',
@@ -63,28 +64,35 @@
 </div>
 <div class="form-group input-group">
   <span style="padding-right: 1em; display: table-cell; position: relative;">
-  <%= f.select(:pre_valuation_currency, 
-    Deal::CURRENCIES.collect { |currency| [currency, currency] },
-    { prompt: t('deals.form.select_currency') },
-    { class: 'select-currency', style: 'width: 100%;' }) %>
+    <%= f.label :pre_valuation, t('deals.form.select_currency') %>
+    <%= f.select(:pre_valuation_currency, 
+      Deal::CURRENCIES.collect { |currency| [currency, currency] },
+      {  },
+      { class: 'select-currency', style: 'width: 100%; min-width: 70px;' }) %>
   </span>
-  <span class="has-float-label">
+  <span>
+    <%= f.label :pre_valuation, t('deals.form.pre_valuation') %>
     <%= f.text_field :pre_valuation,
       placeholder: t('deals.form.pre_valuation'),
       style: 'float: left;',
       class: 'input-money form-control',
       data: { type: 'money' } %>
-    <label for="deal_pre_valuation"><%= t('deals.form.pre_valuation') %></label>
   </span>
 </div>
-<div class="form-group has-float-label">
-  <%= f.text_field :source_url, placeholder: t('deals.form.source_url'), pattern: 'https?://.+', title: 'Only valid URLs', class: 'form-control' %>
-  <label for="deal_source_url"><%= t('deals.form.source_url') %></label>
+<div class="form-group">
+  <%= f.label :source_url, t('deals.form.source_url') %>
+  <%= f.text_field :source_url, 
+    placeholder: t('deals.form.source_url'), 
+    pattern: 'https?://.+', 
+    title: 'Only valid URLs', 
+    class: 'form-control' %>
 </div>
 <div class="form-group">
-  <%= f.select(:status, Deal::STATUSES.collect { |status| [t("deals.form.status.#{status}"), status] },
-                        { prompt: t('deals.form.select_status') },
-                        { class: 'select-currency' }) %>
+  <%= f.label :status, t('deals.form.select_status') %>
+  <%= f.select(:status, 
+        Deal::STATUSES.collect { |status| [t("deals.form.status.#{status}"), status] },
+        { prompt: t('deals.form.select_status') },
+        { class: 'select-round form-control', style: 'width: 100%;' }) %>
 </div>
 <div class="form-group">
   <%= f.submit t('deals.form.send') %>

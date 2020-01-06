@@ -6,6 +6,7 @@ class CompaniesController < ApplicationController
   before_action :load_company, only: %i[show edit update widget]
 
   def index
+    @markets = Market.all
     @companies = Companies::Searcher.new(filter_params,
                                          domain_country_context).call
     @companies_paginated = @companies.page(params[:page])
@@ -27,11 +28,9 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
 
     if @company.save
-      create_company_markets
+      # create_company_markets
       create_investor(@company) if investor?
-
       Integrations::Clearbit.new(@company).enrich
-
       redirect_to(companies_path, notice: 'Successfully saved')
     else
       render :new
@@ -84,6 +83,7 @@ class CompaniesController < ApplicationController
   COMPANY_PARAMS = %i[
     name employees_count founded_on description contact_email homepage_url
     facebook_url linkedin_url twitter_url google_plus_url phone_number
+    market_ids
   ].freeze
   private_constant :COMPANY_PARAMS
 
@@ -102,7 +102,7 @@ class CompaniesController < ApplicationController
     params.require(:company).permit(
       *COMPANY_PARAMS,
       company_locations_attributes: [:location_id, :_destroy],
-      company_markets_attributes: { market_id: [] }
+      :market_ids => []
     )
   end
 

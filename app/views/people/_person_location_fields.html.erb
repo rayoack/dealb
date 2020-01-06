@@ -2,7 +2,7 @@
   <div class="form-group">
     <%= f.select( :location_id, 
                   Location.all.collect { |c| [c.full, c.id] }, 
-                  {}, 
+                  { prompt: ' ' }, 
                   class: 'select2', 
                   data: { label: 'Select Location' }, 
                   multiple: false )%>

@@ -3,11 +3,15 @@ workbook = xlsx_package.workbook
 workbook.add_worksheet(name: "investors") do |sheet|
   sheet.add_row([I18n.t("investor.index.column_name"),
                  I18n.t("investor.index.column_number_of_investments"),
-                 I18n.t("investor.index.column_location")])
+                 I18n.t('investor.show.tag'),
+                 I18n.t("investor.index.column_location")
+                 ])
 
   @investors.each do |investor|
     sheet.add_row([investor.investable&.name,
                    investor.deals&.count,
-                   investor.investable&.locations&.pluck(:city, :country)&.join(", ")])
+                   investor.tag ? I18n.t("investor.show.categories.#{investor.tag}") : I18n.t("empty_state"),
+                   investor.investable&.locations_plain
+                   ])
   end
 end

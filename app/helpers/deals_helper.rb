@@ -2,7 +2,7 @@
 
 module DealsHelper
   def investors_link(deal)
-    return if deal.investors.blank?
+    return t("empty_state") if deal.investors.blank?
 
     deal.investors.map do |investor|
       if investor.investable_type == 'Company'
@@ -10,7 +10,7 @@ module DealsHelper
       elsif investor.investable_type == 'Person'
         link_to(investor.name, "/people/#{investor.investable.permalink}")
       end
-    end.join('/ ').html_safe # rubocop:disable Rails/OutputSafety
+    end.join(' / ').html_safe # rubocop:disable Rails/OutputSafety
   end
 
   # rubocop:disable Metrics/MethodLength

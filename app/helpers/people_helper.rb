@@ -2,19 +2,11 @@
 
 module PeopleHelper
   def latest_company(person, person_companies = person.person_companies)
-    current_person_company = person_companies.detect(&:current?)
+    return t("empty_state") if person_companies.empty?
 
-    if current_person_company
-      company = current_person_company.company
-
-      link_to(company.name, company_path(company.permalink))
-    elsif person_companies.last
-      company = person_companies.last.company
-
-      link_to(company.name, company_path(company.permalink))
-    else
-      '-'
-    end
+    person_companies.map do |company|
+        link_to(company.company.name, "/companies/#{company.company.permalink}")
+    end.join(' / ').html_safe # rubocop:disable Rails/OutputSafety
   end
 
   def investor_category(person)

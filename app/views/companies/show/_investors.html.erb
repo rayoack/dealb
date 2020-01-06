@@ -17,7 +17,7 @@
                   <a href="/investors/<%= investor.permalink %>" style="float: none;"><%= investor.name %></a>
                 </strong>
               </td>
-              <td><%= investor.stage %></td>
+              <td><%= investor.stage ? investor.stage : t("empty_state") %></td>
               <td><a href="/investors/<%= investor.permalink %>"><%= t('companies.show.profile') %></a></td>
             </tr>
           <% end %>

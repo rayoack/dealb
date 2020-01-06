@@ -1,4 +1,5 @@
 pt-br:
+  empty_state: 'Não informado'
   filter: 'Filtre os resultados'
   filter_selected: 'Filtros selecionados'
   filter_apply: 'Aplicar filtro'
@@ -322,7 +323,7 @@ pt-br:
       add_filter: 'Adicionar filtro'
       export: 'Exportar resultados'
       column_name: 'Nome do investidor'
-      column_number_of_investments: 'Número de investimentos'
+      column_number_of_investments: 'Número de negócios'
       column_number_of_exited_companies: 'Número de saídas'
       column_invested_capital: 'Capital investido'
       column_location: 'Localização'

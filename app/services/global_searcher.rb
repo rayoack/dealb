@@ -25,7 +25,7 @@ class GlobalSearcher
           investor_by_company.to_a +
           investor_by_person.to_a +
           investor_by_tag.to_a +
-          deals_by_company.to_a)
+          deals_by_company.to_a).uniq
   end
 
   private

@@ -80,6 +80,16 @@
             data-modal-title="<%= t('filters.funding_type') %>"
             data-autocomplete-data="<%= Hash[Deal::ROUNDS.map { |s| [s, t("filters.labels.funding_type.#{s}")] }].to_json %>"
             href="#"><i></i><%= t('filters.funding_type') %></a>
+          
+          <a class="filter-card <%= filter_active('tag')%>"
+            style="flex-grow: 1;"
+            data-toggle="modal"
+            data-target="#filterModal"
+            data-subcategory="tag"
+            data-type="select2"
+            data-modal-title="<%= t('filters.tag') %>"
+            data-autocomplete-data="<%= Hash[@markets.map { |market| [market.name, market.name] }].to_json %>"
+            href="#"><i></i><%= t('filters.tag') %></a>
 
         </div>
         <% if params[:filter] %>
