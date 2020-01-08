@@ -49,10 +49,11 @@
           <li>
             <strong><%= t('companies.show.site') %></strong>
             <a href="<%= @company.homepage_url %>" target="_blank"><%= @company.homepage_url %></a>
+            <%= t("empty_state") if @company.homepage_url.blank? %>
           </li>
           <li>
             <strong><%= t('companies.show.locations') %></strong>
-            <span><%= @company.locations_plain %></span>
+            <span><%= @company.locations_plain %><%= t("empty_state") if @company.locations_plain.blank? %></span>
           </li>
           <li>
             <strong><%= t('companies.show.tags') %></strong>

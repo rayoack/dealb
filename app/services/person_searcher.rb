@@ -30,8 +30,18 @@ class PersonSearcher < BaseSearcher
       name: :filter_by_name,
       bio: :filter_by_column,
       gender: :filter_by_column,
-      occupation: :filter_by_column
+      occupation: :filter_by_column,
+      location: :filter_by_location
     }
+  end
+
+  def filter_by_location(_name, operator, value)
+    @filter = @filter.joins(:location).where(
+      "locations.city #{operator} (:value) OR " \
+      "locations.country #{operator} (:value) OR "\
+      "locations.city || ', ' || locations.country #{operator} (:value) ",
+      value: format(operator, value)
+    )
   end
 
   def filter_by_domain_country_context

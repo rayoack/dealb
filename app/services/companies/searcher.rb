@@ -35,16 +35,17 @@ module Companies
     end
 
     def filter_by_column(name, operator, value)
-      @filter = @filter.where(
+      @filter = @filter.where(  
         "companies.#{name} #{operator} (?)",
         format(operator, value)
       )
     end
 
     def filter_by_location(_name, operator, value)
-      @filter = @filter.joins(:locations).where(
-        "locations.city #{operator} :value OR " \
-        "locations.country #{operator} :value",
+      @filter = @filter.joins(:location).where(
+        "locations.city #{operator} (:value) OR " \
+        "locations.country #{operator} (:value) OR "\
+        "locations.city || ', ' || locations.country #{operator} (:value) ",
         value: format(operator, value)
       )
     end

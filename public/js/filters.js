@@ -59,52 +59,75 @@ $('#filterModal').on('show.bs.modal', function (event) {
 
     if (type == 'range') {
       var old_value_min = url.searchParams.get('filter[' + subcategory + '_min][value]')
-      if (!old_value_min) {
-        old_value_min = 0
-      }
       var old_value = url.searchParams.get('filter[' + subcategory + '][value]')
-      if (!old_value) {
-        old_value = 1000
-      }
-      if (old_value_min == 0 && old_value == 1000) old_value = 500
-      $('<input>').attr({
-        type: 'hidden',
-        id: 'min',
-        name: 'min'
-      }).appendTo(form);
-      $('<input>').attr({
-        type: 'hidden',
-        id: 'max',
-        name: 'max'
-      }).appendTo(form);
-      $('<p><input type="text" id="amount" readonly style="border:0; color:#00DACE; font-weight:bold; width: 100%;"></p>').appendTo(form)
-      $('<div id="slider-range"></div>').appendTo(form)
-      $( "#slider-range" ).slider({
-        range: true,
-        step: 5,
-        min: 0,
-        max: 1000,
-        values: [ old_value_min, old_value ],
-        slide: function( event, ui ) {
-          var min = ui.values[0]
-          var max = ui.values[1]
-          $('#min').val(min)
-          $('#max').val(max)
-          if (max == 1000) {
-            max = 'infinity'
+      $('<div class="form-group"><label for="' + subcategory + '_min">' + title + ' [min]</label><input type="number" class="form-control" id="' + subcategory + '_min" name="' + subcategory + '_min" placeholder="' + title + ' [min]" value="' + old_value_min + '"></div>')
+        .keypress(function (event) {
+          var key = event.which;
+          if(key == 13) { // the enter key code
+            event.preventDefault()
+            // $('#filterModalApplyButton').click();
+            return false 
           }
-          $( "#amount" ).val( min + " - " + max );
-        }
-      });
-      $( "#amount" ).val( $( "#slider-range" ).slider( "values", 0 ) + " - " + $( "#slider-range" ).slider( "values", 1 ) );
-      $('#min').val($( "#slider-range" ).slider( "values", 0 ))
-      $('#max').val($( "#slider-range" ).slider( "values", 1 ))
+        })
+        .appendTo(form)
+        .focus()
+      $('<div class="form-group"><label for="' + subcategory + '_max">' + title + ' [max]</label><input type="number" class="form-control" id="' + subcategory + '_max" name="' + subcategory + '_max" placeholder="' + title + ' [max]" value="' + old_value + '"></div>')
+        .keypress(function (event) {
+          var key = event.which;
+          if(key == 13) { // the enter key code
+            event.preventDefault()
+            // $('#filterModalApplyButton').click();
+            return false 
+          }
+        })
+        .appendTo(form)
+      // var old_value_min = url.searchParams.get('filter[' + subcategory + '_min][value]')
+      // if (!old_value_min) {
+      //   old_value_min = 0
+      // }
+      // var old_value = url.searchParams.get('filter[' + subcategory + '][value]')
+      // if (!old_value) {
+      //   old_value = 1000
+      // }
+      // if (old_value_min == 0 && old_value == 1000) old_value = 500
+      // $('<input>').attr({
+      //   type: 'hidden',
+      //   id: 'min',
+      //   name: 'min'
+      // }).appendTo(form);
+      // $('<input>').attr({
+      //   type: 'hidden',
+      //   id: 'max',
+      //   name: 'max'
+      // }).appendTo(form);
+      // $('<p><input type="text" id="amount" readonly style="border:0; color:#00DACE; font-weight:bold; width: 100%;"></p>').appendTo(form)
+      // $('<div id="slider-range"></div>').appendTo(form)
+      // $( "#slider-range" ).slider({
+      //   range: true,
+      //   step: 1,
+      //   min: 0,
+      //   max: 1000,
+      //   values: [ old_value_min, old_value ],
+      //   slide: function( event, ui ) {
+      //     var min = ui.values[0]
+      //     var max = ui.values[1]
+      //     $('#min').val(min)
+      //     $('#max').val(max)
+      //     if (max == 1000) {
+      //       max = 'infinity'
+      //     }
+      //     $( "#amount" ).val( min + " - " + max );
+      //   }
+      // });
+      // $( "#amount" ).val( $( "#slider-range" ).slider( "values", 0 ) + " - " + $( "#slider-range" ).slider( "values", 1 ) );
+      // $('#min').val($( "#slider-range" ).slider( "values", 0 ))
+      // $('#max').val($( "#slider-range" ).slider( "values", 1 ))
     }
 
     if (type == 'range_amount') {
       var old_value_min = url.searchParams.get('filter[' + subcategory + '_min][value]')
       var old_value = url.searchParams.get('filter[' + subcategory + '][value]')
-      $('<div class="form-group"><label for="' + subcategory + '_min" style="display: none;">' + title + ' min</label><input type="number" class="form-control" id="' + subcategory + '_min" name="' + subcategory + '_min" placeholder="' + title + ' min" value="' + old_value_min + '"></div>')
+      $('<div class="form-group"><label for="' + subcategory + '_min">' + title + ' [min](USD)</label><input type="number" class="form-control" id="' + subcategory + '_min" name="' + subcategory + '_min" placeholder="' + title + ' [min](USD)" value="' + old_value_min + '"></div>')
         .keypress(function (event) {
           var key = event.which;
           if(key == 13) { // the enter key code
@@ -115,7 +138,7 @@ $('#filterModal').on('show.bs.modal', function (event) {
         })
         .appendTo(form)
         .focus()
-      $('<div class="form-group"><label for="' + subcategory + '_max" style="display: none;">' + title + ' max</label><input type="number" class="form-control" id="' + subcategory + '_max" name="' + subcategory + '_max" placeholder="' + title + ' max" value="' + old_value + '"></div>')
+      $('<div class="form-group"><label for="' + subcategory + '_max">' + title + ' [max](USD)</label><input type="number" class="form-control" id="' + subcategory + '_max" name="' + subcategory + '_max" placeholder="' + title + ' [max](USD)" value="' + old_value + '"></div>')
         .keypress(function (event) {
           var key = event.which;
           if(key == 13) { // the enter key code
@@ -125,7 +148,6 @@ $('#filterModal').on('show.bs.modal', function (event) {
           }
         })
         .appendTo(form)
-        .focus()
       // var old_value_min = url.searchParams.get('filter[' + subcategory + '_min][value]')
       // if (!old_value_min) {
       //   old_value_min = 0
@@ -207,7 +229,7 @@ $('#filterModal').on('show.bs.modal', function (event) {
       } else {
         clear(subcategory+'_min')
       }
-      if (formData[1].value != 1000) {
+      if (formData[1].value != 0) {
         url.searchParams.set('filter['+subcategory+'][type]', subcategory)
         url.searchParams.set('filter['+subcategory+'][operator]', 'less_than')
         url.searchParams.set('filter['+subcategory+'][value]', formData[1].value)

@@ -9,22 +9,22 @@
             <img src="/img/description.svg" alt="">
             <%= t('companies.show.description') %>
           </h1>
-          <p><%= @company.description %></p>
+          <p><%= @company.description %><%= t("empty_state") if @company.description.blank? %></p>
           <ul class="info-contact">
             <li>
               <p>
-              <strong><%= t('companies.show.founded') %>:</strong> <%= @company.founded_on %>
-            </p>
+                <strong><%= t('companies.show.founded') %>:</strong> <%= @company.founded_on %><%= t("empty_state") if @company.founded_on.blank? %>
+              </p>
             </li>
             <li>
               <p>
-              <strong><%= t('companies.show.contact') %>:</strong> <%= @company.phone_number %>
-            </p>
+                <strong><%= t('companies.show.contact') %>:</strong> <%= @company.phone_number %><%= t("empty_state") if @company.phone_number.blank? %>
+              </p>
             </li>
             <li>
               <p>
-              <strong><%= t('companies.show.mail') %>:</strong> <%= @company.contact_email %>
-            </p>
+                <strong><%= t('companies.show.mail') %>:</strong> <%= @company.contact_email %><%= t("empty_state") if @company.contact_email.blank? %>
+              </p>
             </li>
           </ul>
           <div class="social">

@@ -60,6 +60,16 @@
             data-type="range_amount"
             data-modal-title="<%= t('filters.total_funds_invested') %>"
             href="#"><i></i><%= t('filters.total_funds_invested') %></a>
+          
+          <a class="filter-card <%= filter_active('location')%>"
+            style="flex-grow: 1;"
+            data-toggle="modal"
+            data-target="#filterModal"
+            data-subcategory="location"
+            data-type="select2"
+            data-modal-title="<%= t('filters.location') %>"
+            data-autocomplete-data="<%= Hash[Location.all.collect { |c| [c.full, c.full] }].to_json %>"
+            href="#"><i></i><%= t('filters.location') %></a>
         </div>
         <% if params[:filter] %>
           <form id="filter-pills-form" action="/investors">

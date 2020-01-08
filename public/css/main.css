@@ -2240,6 +2240,8 @@ footer .copyright p a {
   padding: 15px 19px 30px 19px;
   float: left;
   width: 100%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.16);
+  border-radius: 5px;
 }
 .details-gerals .description h1 {
   margin: 0;
@@ -2347,12 +2349,12 @@ footer .copyright p a {
   margin-right: 5px;
   margin-top: 10px;
 }
-.tables-info-company .item table tbody tr td img {
+/*.tables-info-company .item table tbody tr td img {
   margin-right: 10px;
-}
+}*/
 .tables-info-company .item table tbody tr td a {
   float: right;
-  margin-right: 20px;
+  /*margin-right: 20px;*/
   color: #596276;
 }
 .s-peoples h2 {

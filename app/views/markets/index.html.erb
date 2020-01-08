@@ -1,11 +1,11 @@
-<section class="s-title-page" style="padding: 53px 0px 40px 0px">
+<section class="s-title-page" style="padding: 60px 0px 90px 0px">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-md-7">
         <h1><%= t('markets.index.markets') %></h1>
+        <h2><%= @markets.count %> <%= t('markets.index.markets') %></h2>
       </div>
       <div class="col-xs-12 col-sm-6 col-md-5">
-        <h2><%= @markets.count %> <%= t('markets.index.markets') %></h2>
         <a href="/markets/new"><%= t('markets.index.new') %></a>
       </div>
     </div>

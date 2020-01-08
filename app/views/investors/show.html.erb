@@ -53,12 +53,13 @@
             <img src="/img/description.svg" alt="">
             <%= t('investor.show.description') %>
           </h1>
-          <p><%= @investor.investable.description %></p>
+          <p><%= @investor.investable.description %><%= t("empty_state") if @investor.investable.description.blank? %></p>
           <ul class="info-contact">
             <li>
               <p>
                 <strong><%= t('investor.show.site') %>:</strong>
                 <a href="<%= @investor.investable.website_url %>" target="_blank"><%= @investor.investable.website_url %></a>
+                <%= t("empty_state") if @investor.investable.website_url.blank? %>
               </p>
             </li>
 
@@ -66,6 +67,7 @@
               <p>
                 <strong><%= t('investor.show.founded') %>:</strong>
                 <%= @investor.investable.born_date %>
+                <%= t("empty_state") if @investor.investable.born_date.blank? %>
               </p>
             </li>
           </ul>

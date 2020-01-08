@@ -74,7 +74,7 @@ pt-br:
       completely_free: "É totalmente gratuito"
       join_now: 'cadastre-se agora'
     updates:
-      get_all_recent_news: 'Receba todas as atualizações'
+      get_all_recent_news: 'Receba todas as atualizações recentes'
       view_all: 'Ver tudo'
   companies:
     index:

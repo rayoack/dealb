@@ -23,7 +23,11 @@
             <td><%= person_company.job_title %></td>
             <td><%= person_company.company.locations_plain %></td>
             <!--<td><%= t('people.show.companies.location') %></td>-->
-            <td><a href="/companies/<%= person_company.company.permalink %>"><img src="/img/seta-dir.svg" alt=""></a></td>
+            <td>
+              <a href="/companies/<%= person_company.company.permalink %>">
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </td>
           </tr>
         <% end %>
       </tbody>

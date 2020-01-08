@@ -90,6 +90,16 @@
             data-modal-title="<%= t('filters.tag') %>"
             data-autocomplete-data="<%= Hash[@markets.map { |market| [market.name, market.name] }].to_json %>"
             href="#"><i></i><%= t('filters.tag') %></a>
+          
+          <a class="filter-card <%= filter_active('location')%>"
+            style="flex-grow: 1;"
+            data-toggle="modal"
+            data-target="#filterModal"
+            data-subcategory="location"
+            data-type="select2"
+            data-modal-title="<%= t('filters.location') %>"
+            data-autocomplete-data="<%= Hash[Location.all.collect { |c| [c.full, c.full] }].to_json %>"
+            href="#"><i></i><%= t('filters.location') %></a>
 
         </div>
         <% if params[:filter] %>

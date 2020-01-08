@@ -10,7 +10,7 @@ module Investors
     def call
       filter_by_domain_country_context
       filter_by_params
-      @filter = @filter.joins(:deals)
+      @filter = @filter.left_outer_joins(:deals)
         .preload(:investable)
         .group(:id)
         .order(order_criteria)
@@ -39,8 +39,20 @@ module Investors
         stage: :filter_by_column,
         number_of_deals: :filter_by_number_of_deals,
         total_funds_invested: :filter_by_total_funds_invested,
-        name: :filter_by_name
+        name: :filter_by_name,
+        location: :filter_by_location
       }
+    end
+
+    def filter_by_location(_name, operator, value)
+      @filter = @filter
+        .joins(" LEFT JOIN companies ON companies.id = investors.investable_id AND investors.investable_type = 'Company'")
+        .joins(" LEFT JOIN people ON people.id = investors.investable_id AND investors.investable_type = 'Person'")
+        .joins(" LEFT JOIN company_locations ON companies.id = company_locations.company_id")
+        .joins(" LEFT JOIN person_locations ON people.id = person_locations.person_id")
+        .joins(" LEFT JOIN locations ON locations.id = person_locations.location_id OR locations.id = company_locations.location_id")
+        .where("locations.city || ', ' || locations.country #{operator} (:value) ",
+          value: format(operator, value))
     end
 
     def filter_by_domain_country_context
@@ -65,7 +77,7 @@ module Investors
     def filter_by_total_funds_invested(_name, operator, value)
       parsed_value = value.gsub(/[^\d]+/, '').to_i
 
-      @filter = @filter.joins(:deals)
+      @filter = @filter.left_outer_joins(:deals)
                        .group('investors.id')
                        .having("SUM(amount) #{operator} ?",
                                format(operator, parsed_value))
