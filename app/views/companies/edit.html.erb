@@ -2,12 +2,12 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12">
-        <a href="<%= url_for(:back) %>" class="btn-back"><img src="/img/seta-esq-cinza.svg" alt=""> back</a>
+        <a href="<%= url_for(:back) %>" class="btn-back"><i class="fas fa-arrow-left"></i> <%= t('companies.show.back') %></a>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12">
-        <h1 class="title">Update the Company</h1>
+        <h1 class="title"><%= t('companies.form.edit_company') %></h1>
       </div>
     </div>
 

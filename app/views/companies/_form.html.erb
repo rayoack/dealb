@@ -80,7 +80,7 @@
   <%= f.fields_for :company_locations do |builder| %>
     <%= render 'company_location_fields', f: builder %>
   <% end %>
-  <%= link_to_add_fields "Add location", f, :company_locations %>
+  <%= link_to_add_fields t('add') + ' ' + t('location'), f, :company_locations %>
 </div>
 
 <div class="form-group">

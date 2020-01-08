@@ -4,6 +4,11 @@ pt-br:
   filter_selected: 'Filtros selecionados'
   filter_apply: 'Aplicar filtro'
   filter_clear: 'Limpar filtro'
+  filter_clear_all: 'Limpar todos os filtros'
+  add: 'Adicionar'
+  remove: 'remover'
+  location: 'localização'
+  organization: 'organização'
   auth:
     registration:
       mail:
@@ -130,6 +135,7 @@ pt-br:
       back: 'voltar'
       employees_count: 'Número de funcionários'
       create_company: 'Criar organização'
+      edit_company: 'Atualizar organização'
       featured_title: ''
       featured_subtitle: ''
       name: 'Nome'

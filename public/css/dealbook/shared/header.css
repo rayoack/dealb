@@ -6,7 +6,11 @@
 }
 
 .sortable-header {
-  color: white;
+  color: white !important;
+}
+.sortable-header:hover {
+  color: white !important;
+  opacity: 0.8;
 }
 
 header .header-desktop .container-menu .search {
@@ -53,7 +57,7 @@ header .header-desktop .container-menu .container-search .btn-close-search {
 }
 
 header .header-desktop .container-menu .container-search .btn-close-search:hover {
-  opacity: 0.2;
+  opacity: 0.8;
 }
 
 header .header-desktop .container-menu .container-search input[type="submit"] {
