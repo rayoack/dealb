@@ -9,12 +9,11 @@ $('#filterModal').on('show.bs.modal', function (event) {
 
   var form = $('#filterModalForm')
   form.empty()
+  form.css("column-count", "1");
   
   if (data && (type == 'radio' || type == 'select')) {
     if(data && Object.keys(data).length > 5) {
       form.css("column-count", "2");
-    } else {
-      form.css("column-count", "1");
     }
     Object.keys(data).forEach(function(key) {
       if (type == 'radio') {
@@ -53,8 +52,8 @@ $('#filterModal').on('show.bs.modal', function (event) {
             return false 
           }
         })
-        .appendTo(form)
-        .focus()
+        .appendTo(form);
+      $('#' + subcategory).focus();
     }
 
     if (type == 'range') {
@@ -69,8 +68,8 @@ $('#filterModal').on('show.bs.modal', function (event) {
             return false 
           }
         })
-        .appendTo(form)
-        .focus()
+        .appendTo(form);
+      $('#' + subcategory + '_min').focus()
       $('<div class="form-group"><label for="' + subcategory + '_max">' + title + ' [max]</label><input type="number" class="form-control" id="' + subcategory + '_max" name="' + subcategory + '_max" placeholder="' + title + ' [max]" value="' + old_value + '"></div>')
         .keypress(function (event) {
           var key = event.which;
@@ -136,8 +135,8 @@ $('#filterModal').on('show.bs.modal', function (event) {
             return false 
           }
         })
-        .appendTo(form)
-        .focus()
+        .appendTo(form);
+      $('#' + subcategory + '_min').focus();
       $('<div class="form-group"><label for="' + subcategory + '_max">' + title + ' [max](USD)</label><input type="number" class="form-control" id="' + subcategory + '_max" name="' + subcategory + '_max" placeholder="' + title + ' [max](USD)" value="' + old_value + '"></div>')
         .keypress(function (event) {
           var key = event.which;
