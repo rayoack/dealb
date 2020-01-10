@@ -94,3 +94,7 @@ header .header-desktop .container-menu .container-search input[type="submit"]:ho
 .search-form {
   margin-top: 16px;
 }
+
+header .header-mobile a {
+  color: #b7c2e7;
+}

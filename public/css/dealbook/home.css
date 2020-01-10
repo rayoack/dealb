@@ -1,3 +1,7 @@
 .btn-signup {
+  width: 40px;
+  height: 40px;
+  color: #b7c2e7;
+  margin-top: -12px;
   cursor: pointer;
 }

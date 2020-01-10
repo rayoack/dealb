@@ -59,7 +59,12 @@
 
 
         <% unless user_signed_in? %>
-          <li><a class="btn-signup"><%= t('header.sign_in') %> <img src="/img/seta.svg" alt=""></a></li>
+          <li>
+            <!--<a class="btn-signup">-->
+              <img src="/img/login.svg" class="img-responsive btn-signup" alt="<%= t('header.sign_in') %>">
+              <!--<%= t('header.sign_in') %> <img src="/img/seta.svg" alt="">-->
+            <!--</a>-->
+          </li>
           <div class="popup-login">
             <%= button_to(omniauth_authorize_path(resource_name, :linkedin), class: 'login-with-linkedin') do %>
               <%= image_tag '/img/linkedin-resume.svg' %>
@@ -96,7 +101,9 @@
       <% if user_signed_in? %>
         <a href="/logout" type="button" class="btn-join"><%= t('header.logout') %></a>
       <% else %>
+        <!-- signup is work on login float menu --
         <a href="/signup" type="button" class="btn-join"><%= t('header.join_us') %></a>
+        -->
       <% end %>
 
       <button type="button" class="btn-idioma">

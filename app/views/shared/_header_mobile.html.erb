@@ -5,9 +5,9 @@
     </a>
   </div>
   <div class="btns-menu">
-    <button class="btn-login">
+    <a href="/login" class="btn-login">
       <img src="/img/login.svg" class="btn-login-responsive img-responsive" class="img-responsive" alt="">
-    </button>
+    </a>
     <a id="js-open-menu" class="menu-button">
       <i class="menu-icon"></i>
     </a>
@@ -85,6 +85,7 @@
         </li>
 
         <% if user_signed_in? && user_admin? %>
+          <li><a href="/markets"><%= t('header.markets') %></a></li>
           <li><a href="/users"><%= t('header.users') %></a></li>
         <% end %>
 
@@ -95,6 +96,33 @@
         <% end %>
 
         <div class="language">
+          <span style="">
+          <!--<img src="/img/<%= language_flag %>" class="flag off" alt="">-->
+          <% if language_flag != 'flag-pt-br.svg' %>
+            <a href="/?language=pt-br">
+              <img src="/img/flag-pt-br.svg" class="flag" alt="">
+            </a>
+          <% else %>
+            <img src="/img/flag-pt-br.svg" class="flag off" alt="">
+          <% end %>
+
+          <% if language_flag != 'flag-en.svg' %>
+            <a href="/?language=en">
+              <img src="/img/flag-en.svg" alt="" class="flag">
+            </a>
+          <% else %>
+            <img src="/img/flag-en.svg" class="flag off" alt="">
+          <% end %>
+
+          <% if language_flag != 'flag-es.svg' %>
+            <a href="/?language=es">
+              <img src="/img/flag-es.svg" alt="" class="flag">
+            </a>
+          <% else %>
+            <img src="/img/flag-es.svg" class="flag off" alt="">
+          <% end %>
+          </span>
+          <!--
           <button type="button" class="btn-idioma">
             <img src="/img/<%= language_flag %>" alt="">
             <img src="/img/arrow-down.svg" class="arrow-down" alt="">
@@ -118,6 +146,7 @@
               </a>
             <% end %>
           </div>
+          -->
         </div>
       </ul>
     </div>

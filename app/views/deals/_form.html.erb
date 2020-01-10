@@ -11,6 +11,7 @@
                             class: 'select2',
                             data: { label: t('deals.form.select_company') },
                             multiple: false ) %>
+  <a href="/companies/new" class="create-new"><i class="fas fa-plus"></i> <%= t('companies.index.new') %> <%= t('companies.index.display') %></a>
 </div>
 <div class="form-group input-group">
   <span style="padding-right: 1em; display: table-cell; position: relative;">
@@ -36,6 +37,8 @@
                 class: 'select2',
                 data: { label: t('deals.form.select_investor') },
                 multiple: true ) %>
+  <a href="/companies/new" class="create-new"><i class="fas fa-plus"></i> <%= t('companies.index.new') %> <%= t('companies.index.display') %></a>
+  <a href="/people/new" class="create-new"><i class="fas fa-plus"></i> <%= t('people.form.new') %></a>
 </div>
 <div class="form-group">
   <%= f.label :round, t('deals.form.select_round') %>

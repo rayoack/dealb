@@ -2,11 +2,13 @@
 $(".btn-search").click(function(event) {
   $(this).parents(".container-menu").find('nav').hide();
   $(this).parents(".container-menu").find('.container-search').show();
+  $(this).parents(".container-menu").find('.container-search').find('input[type="text"]')[0].focus();
 });
 
 $(".bar-search").click(function(event) {
   $(this).parents(".container-menu").find('nav').hide();
   $(this).parents(".container-menu").find('.container-search').show();
+  $(this).parents(".container-menu").find('.container-search').find('input[type="text"]')[0].focus();
 });
 
 $(".btn-close-search").click(function(event) {
@@ -64,8 +66,4 @@ $(document).click(function(event) {
   if(!$target.parents('.popup-investors').length && $investorsPopup.is(':visible')) {
     $investorsPopup.removeClass('opened');
   }
-});
-
-$(".btn-login-responsive").click(function(event) {
-  $(this).parents(".btns-menu").find('.popup-login').toggleClass('open-popup');
 });
