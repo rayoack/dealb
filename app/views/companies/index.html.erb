@@ -63,9 +63,13 @@
                              url: companies_path,
                              label: t('filters.funds_raised'),
                              type: 'funds_raised',
+                             style: 'width: 10em;',
                              order: params[:order]
                            } %>
-                <th style="width: 25px;"></th>
+                <th style="width: 18px;"></th>
+                <% if user_admin? || user_moderator? %>
+                  <th style="width: 100px;"></th>
+                <% end %>
               </tr>
             </thead>
             <tbody>
@@ -81,6 +85,16 @@
                   </td>
                   <td><%= format_amount(company.deals.sum(:amount_dolar), 'USD') %></td>
                   <td><a href=<%= "/companies/#{company.permalink}" %>><i class="fas fa-arrow-right"></i></a></td>
+                  <% if user_admin? || user_moderator? %>
+                    <td class="user_control_actions">
+                      <%#= link_to 'Delete',
+                        deal_path(deal.id),
+                        class: 'btn btn-danger btn-sm btn-block',
+                        method: :delete,
+                        data: { confirm: "Are you sure you want to delete?" } %>
+                      <a href="/companies/<%= company.permalink %>/edit" class="btn btn-default btn-sm btn-block">Edit</a>
+                    </td>
+                  <% end %>
                 </tr>
               <% end %>
             </tbody>

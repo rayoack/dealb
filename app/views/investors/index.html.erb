@@ -43,7 +43,10 @@
                                                      order: params[:order] %>
                 <th><%= t('investor.index.column_location') %> </th>
                 <th><%= t('investor.show.tag') %></th>
-                <th style="width: 25px;"></th>
+                <th style="width: 18px;"></th>
+                <% if user_admin? || user_moderator? %>
+                  <th style="width: 100px;"></th>
+                <% end %>
               </tr>
             </thead>
             <tbody>
@@ -55,6 +58,16 @@
                   <td class="column-location"><%= investor.investable.locations_plain %><%=t("empty_state") if investor.investable.locations_plain.blank? %></td>
                   <td><%= investor.tag ? t("investor.show.categories.#{investor.tag}") : t("empty_state") %></td>
                   <td><a href="/investors/<%= investor.permalink %>"><i class="fas fa-arrow-right"></i></a></td>
+                  <% if user_admin? || user_moderator? %>
+                    <td class="user_control_actions">
+                      <%#= link_to 'Delete',
+                        deal_path(deal.id),
+                        class: 'btn btn-danger btn-sm btn-block',
+                        method: :delete,
+                        data: { confirm: "Are you sure you want to delete?" } %>
+                      <a href="/investors/<%= investor.permalink %>/edit" class="btn btn-default btn-sm btn-block">Edit</a>
+                    </td>
+                  <% end %>
                 </tr>
               <% end %>
             </tbody>
