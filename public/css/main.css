@@ -2985,6 +2985,7 @@ footer .copyright p a {
   bottom: 65px;
   font-size: 13px;
   color: #596276;
+  z-index: 2;
 }
 .s-signup .s-right .text-information a {
   font-size: 16px;

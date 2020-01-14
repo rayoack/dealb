@@ -18,7 +18,8 @@ Rails.application.routes.draw do
       omniauth_callbacks: 'users/omniauth_callbacks',
       registrations: 'users/registrations',
       confirmations: 'users/confirmations',
-      sessions: 'users/sessions'
+      sessions: 'users/sessions',
+      passwords: 'users/passwords'
     }
   )
 
