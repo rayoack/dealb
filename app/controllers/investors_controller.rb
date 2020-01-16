@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class InvestorsController < ApplicationController
-  before_action :authenticate_user!, except: %i[ranking index show]
-  before_action :load_investor, only: %i[show edit update]
+  before_action :authenticate_user!, except: %i[ranking index show destroy]
+  before_action :only_admin_or_moderator!, only: %i[destroy]
+  before_action :load_investor, only: %i[show edit update destroy]
 
   def index
     @investors = Investors::Searcher.new(filter_params, domain_country_context)
@@ -21,6 +22,14 @@ class InvestorsController < ApplicationController
       redirect_to investor_path, notice: 'Successfully updated'
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @investor.delete
+      redirect_to investors_path, notice: 'Successfully deleted.'
+    else
+      redirect_to investors_path
     end
   end
 
@@ -69,5 +78,12 @@ class InvestorsController < ApplicationController
 
   def investor_params
     params.require(:investor).permit(:permalink, :status, :tag, :stage)
+  end
+
+  def only_admin_or_moderator!
+    return if [User::ADMIN, User::MODERATOR].include?(current_user&.role)
+
+    flash[:error] = 'Unauthorized'
+    redirect_to root_path
   end
 end
