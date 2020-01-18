@@ -3,7 +3,7 @@
 class CompaniesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[names]
 
-  before_action :load_company, only: %i[show edit update widget]
+  before_action :load_company, only: %i[show edit update widget destroy]
 
   def index
     @markets = Market.all
@@ -45,7 +45,11 @@ class CompaniesController < ApplicationController
     @markets = Market.all
 
     if @company.update(company_params)
-      create_investor(@company) if investor?
+      if investor?
+        create_investor(@company) 
+      else
+        delete_investor(@company)
+      end
       redirect_to companies_path, notice: 'Successfully updated'
     else
       render :edit
@@ -144,6 +148,10 @@ class CompaniesController < ApplicationController
     Investor.create!(
       investable: company, tag: Investor::ANGEL, stage: Investor::SEED
     )
+  end
+
+  def delete_investor(company)
+    company.try(:investor).delete
   end
 
   def widget_content(last_deal, last_funding_type)

@@ -1,5 +1,6 @@
+<% if @company.investor? %>
 <!--<div class="item">-->
-  <h1 class="title-accordion"><img src="/img/investments.svg" alt=""> <%= t('people.show.deals.investments') %></h1>
+  <h1 class="title-accordion"><img src="/img/investments.svg" alt=""> <%= t('companies.show.deals.invested') %></h1>
   <div class="table-responsive">
     <table class="table">
       <thead>
@@ -14,7 +15,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @investor.deals.each do |deal| %>
+        <% @company.investor.deals.each do |deal| %>
           <tr>
             <td><strong><%= I18n.l(deal.close_date, format: "%Y/%m") %></strong></td>
             <td><a href="/companies/<%= deal.company.permalink %>" style="float: none;"><%= deal.company.name %></a></td>
@@ -33,3 +34,4 @@
     </table>
   </div>
 <!--</div>-->
+<% end %>

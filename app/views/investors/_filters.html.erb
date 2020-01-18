@@ -29,9 +29,9 @@
             data-target="#filterModal"
             data-subcategory="tag"
             data-type="select"
-            data-modal-title="<%= t('filters.tag') %>"
+            data-modal-title="<%= t('filters.investor_type') %>"
             data-autocomplete-data="<%= Hash[Investor::TAGS.map { |s| [s, t("filters.labels.tag.#{s}")] }].to_json %>"
-            href="#"><i></i><%= t('filters.tag') %></a>
+            href="#"><i></i><%= t('filters.investor_type') %></a>
           
           <!--<a class="filter-card <%= filter_active('stage')%>"
             style="flex-grow: 1;"

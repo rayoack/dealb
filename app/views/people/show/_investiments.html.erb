@@ -1,5 +1,6 @@
-<div class="item">
-  <h1><img src="/img/investments.svg" alt=""> <%= t('people.show.deals.investments') %></h1>
+<!--<div class="item">-->
+  <h1 class="title-accordion"><img src="/img/investments.svg" alt=""> <%= t('people.show.deals.investments') %></h1>
+<% if @deals.any? %>
   <div class="table-responsive">
     <table class="table">
       <thead>
@@ -31,4 +32,10 @@
       </tbody>
     </table>
   </div>
-</div>
+<% else %>
+  <div style="border-radius: 12px; background: white; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.16); margin-bottom: 60px;">
+    Don't have
+  </div>
+<% end %>
+<!--</div>-->
+

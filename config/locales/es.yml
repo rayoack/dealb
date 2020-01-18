@@ -511,6 +511,7 @@ es:
     number_of_deals: 'Número de Negocios'
     total_funds_invested: 'Total Invertido'
     tags: 'Tags'
+    investor_type: 'Investor type'
     labels:
       status:
         active: 'Activa'

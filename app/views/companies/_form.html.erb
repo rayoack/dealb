@@ -7,7 +7,8 @@
 <div class="form-group">
   <div class="checkbox">
     <label>
-      <%= f.check_box(:investor, { checked: @company.investor?, disabled: @company.persisted? && @company.investor? }, true, false ) %>
+      <%#= f.check_box(:investor, { checked: @company.investor?, disabled: @company.persisted? && @company.investor? }, true, false ) %>
+      <%= f.check_box(:investor, { checked: @company.investor? }, true, false ) %>
       <span class="cr"><i class="fas fa-check"></i></span><%= 'Investor' %>
     </label>
   </div>
@@ -41,7 +42,8 @@
   <%= f.text_field :contact_email, placeholder: t('companies.form.email'), class: 'form-control' %>
 </div>
 <div class="form-group">
-  <%= f.label :market_ids, t('companies.form.market') %>
+  <%#= f.label :market_ids, t('companies.form.market') %>
+  <%= f.label :market_ids, t('companies.show.tags') %>
   <%= f.select( :market_ids,
                 @markets.collect { |c| [c.name, c.id] },
                 { prompt: t('companies.form.market') },

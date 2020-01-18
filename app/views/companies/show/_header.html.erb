@@ -8,10 +8,13 @@
         <div class="company">
           <div class="name-company">
             <div class="logo">
-              <img src="<%= @company.profile_image_url || '/img/companies.svg' %>"
-                   class="img-responsive"
-                    style="width: 100%;"
-                   alt="">
+              <img
+                src="<%= @company.get_profile_avatar %>"
+                onerror="this.src='/img/companies.svg'"
+                class="img-responsive"
+                style="width:100%"
+                alt=""
+              />
             </div>
             <div class="text">
               <h1><%= @company.name %></h1>
@@ -63,3 +66,31 @@
     </div>
   </div>
 </section>
+<% if @company.investor? %>
+<section>
+  <div class="container" style="margin-top: 15px;">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <h2 class="tag">
+          <img src="/img/clock.svg" alt="">
+          <%= t('investor.show.investor_type') %>: <%= @company.investor.tag ? t("investor.show.categories.#{@company.investor.tag}") : t("empty_state") %>
+        </h2>
+        <div class="info-geral">
+          <div class="item">
+            <h3><%= @company.investor.deals.count %></h3>
+            <span><%= t('investor.show.investments') %></span>
+          </div>
+          <div class="item">
+            <h3><%= @company.investor.deals.map(&:company).uniq.count %></h3>
+            <span><%= t('investor.show.companies') %></span>
+          </div>
+          <div class="item">
+            <h3><%= format_amount(@company.investor.deals.map(&:amount).compact.sum) %></h3>
+            <span><%= t('investor.show.funds_raised') %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<% end %>

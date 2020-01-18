@@ -34,7 +34,11 @@ class PeopleController < ApplicationController
 
   def update
     if @person.update(person_params)
-      create_investor(@person) if investor?
+      if investor?
+        create_investor(@person) 
+      else
+        delete_investor(@person)
+      end
     # if @person.update(alloweds)
       redirect_to people_path, notice: 'Successfully updated'
     else
@@ -85,6 +89,10 @@ class PeopleController < ApplicationController
     Investor.create!(
       investable: person, tag: Investor::ANGEL, stage: Investor::SEED
     )
+  end
+
+  def delete_investor(person)
+    person.try(:investor).delete
   end
 
   def load_companies

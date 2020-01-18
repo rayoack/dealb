@@ -1,27 +1,13 @@
-<section class="top-section">
+<section class="details-company">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12">
         <a href="<%= url_for(:back) %>" class="btn-back">
-          <i class="fas fa-arrow-left"></i> <%= t('people.show.back') %>
+          <i class="fas fa-arrow-left"></i>  <%= t('companies.show.back') %>
         </a>
-        <% if user_signed_in? %>
-          <a href="/people/<%= @person.permalink %>/edit" class="btn-edit-page"> <img src="/img/edit.svg">
-            <%= t('people.show.edit') %>
-          </a>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="s-detail-people">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="details">
-          <div class="people">
-            <div style="margin-right: 20px; float: left;">
-              <!--<img src="<%= @person.profile_image_url || '/img/avatar.png' %>" class="img-responsive profile-img__md">-->
+        <div class="company">
+          <div class="name-company">
+            <div class="logo">
               <img src="/img/avatar.png" class="img-responsive profile-img__md">
             </div>
             <div class="text">
@@ -29,25 +15,66 @@
               <span><%= @person.occupation %></span>
             </div>
           </div>
-          <div class="location">
-            <img src="/img/location.svg" alt="">
-            <span><%= @person.locations_plain %></span>
-          </div>
-          <div class="site">
-            <img src="/img/site.svg" alt="">
-            <a href="<%= @person.website_url %>" target="_blank"><%= @person.website_url %></a>
-          </div>
-          <% if @person.investor %>
-            <div class="categorie">
-              <span><%= t('people.show.category') %></span>
-              <span class="name-categorie"><%= investor_category(@person) ? t("filters.labels.tag.#{investor_category(@person)}") : t("empty_state") %></span>
-            </div>
+          <% if user_signed_in? %>
+            <a href="/people/<%= @person.permalink %>/edit" class="btn-edit"> <img src="/img/edit.svg">
+              <%= t('people.show.edit') %>
+            </a>
           <% end %>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<section class="info-web-location">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <ul>
+          <li>
+            <!--<img src="/img/location.svg" alt="">-->
+            <strong><%= t('companies.show.locations') %></strong>
+            <span><%= @person.locations_plain %><%= t("empty_state") if @person.locations_plain.blank? %></span>
+          </li>
+          <li>
+            <!--<img src="/img/site.svg" alt="">-->
+            <strong><%= t('companies.show.site') %></strong>
+            <a href="<%= @person.website_url %>" target="_blank"><%= @person.website_url %></a>
+            <%= t("empty_state") if @person.website_url.blank? %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<% if @person.investor %>
+<section>
+  <div class="container" style="margin-top: 15px;">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <h2 class="tag">
+          <img src="/img/clock.svg" alt="">
+          <%= t('investor.show.investor_type') %>: <%= @person.investor.tag ? t("investor.show.categories.#{@person.investor.tag}") : t("empty_state") %>
+        </h2>
+        <div class="info-geral">
+          <div class="item">
+            <h3><%= @person.investor.deals.count %></h3>
+            <span><%= t('investor.show.investments') %></span>
+          </div>
+          <div class="item">
+            <h3><%= @person.investor.deals.map(&:company).uniq.count %></h3>
+            <span><%= t('investor.show.companies') %></span>
+          </div>
+          <div class="item">
+            <h3><%= format_amount(@person.investor.deals.map(&:amount).compact.sum) %></h3>
+            <span><%= t('investor.show.funds_raised') %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<% end %>
 <section class="details-gerals">
   <div class="container">
     <div class="row">
@@ -128,13 +155,8 @@
       </div>
       <div class="col-xs-12 col-sm-12 col-md-9">
         <div class="tables-info-company">
-          <% if @deals.any? %>
-            <%= render partial: 'people/show/investiments' %>
-          <% end %>
-
-          <% if @person.person_companies.any? %>
-            <%= render partial: 'people/show/companies' %>
-          <% end %>
+          <%= render partial: 'people/show/investiments' %>
+          <%= render partial: 'people/show/companies' %>
         </div>
       </div>
     </div>

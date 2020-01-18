@@ -70,15 +70,17 @@
             <tbody>
               <% @deals_paginated.each do |deal| %>
                 <tr class="clickable-row" data-href=<%= "/deals/#{deal.id}" %>>
-                  <td><img src=<%= deal.company&.profile_image_url || '/img/companies.svg' %> alt=""></td>
+                  <td><img src="<%= deal.company.get_profile_avatar %>" onerror="this.src='/img/companies.svg'" /></td>
                   <td>
                     <%= link_to(deal.company.name, company_path(deal.company.permalink)) %>
                   </td>
                     <td><%= I18n.l(deal.close_date, format: :default) %></td>
                     <td><%= I18n.t("deals.model.categories.#{deal.category}") %></td>
                     <td><%= investors_link(deal) %></td>
-                    <td style="text-align: center;"><%= format_amount(deal.amount, deal.amount_currency) %><br><small style="font-size: 75%;"><%= format_amount(deal.amount_dolar, 'USD') %></small></td>
-                    <td style="text-align: center;"><%= format_amount(deal.pre_valuation, deal.pre_valuation_currency) %><br><small style="font-size: 75%;"><%= format_amount(deal.pre_valuation_dolar, 'USD') %></small></td>
+                    <!--<td style="text-align: center;"><%= format_amount(deal.amount, deal.amount_currency) %><br><small style="font-size: 75%;"><%= format_amount(deal.amount_dolar, 'USD') %></small></td>-->
+                    <td style="text-align: center;"><%= format_amount(deal.amount_dolar, 'USD') %></td>
+                    <!--<td style="text-align: center;"><%= format_amount(deal.pre_valuation, deal.pre_valuation_currency) %><br><small style="font-size: 75%;"><%= format_amount(deal.pre_valuation_dolar, 'USD') %></small></td>-->
+                    <td style="text-align: center;"><%= format_amount(deal.pre_valuation_dolar, 'USD') %></td>
                     <td>
                       <a href="/deals/<%= deal.id %>">
                         <i class="fas fa-arrow-right"></i>

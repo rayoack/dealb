@@ -1,9 +1,11 @@
-<div class="item investors">
-  <h1><img src="/img/companies.svg" alt="">Organization</h1>
+<!--<div class="item investors">-->
+  <h1 class="title-accordion"><img src="/img/companies.svg" alt="">Organization</h1>
+<% if @person.person_companies.any? %>
   <div class="table-responsive">
     <table class="table">
       <thead>
         <tr>
+          <th style="width: 25px;"></th>
           <th><%= t('people.show.companies.name') %></th>
           <!--<th><%= t('people.show.companies.status') %></th>-->
           <th><%= t('companies.show.people.job') %></th>
@@ -16,7 +18,9 @@
         <% @person.person_companies.each do |person_company| %>
           <tr>
             <td>
-              <img src=<%= person_company.company&.profile_image_url || '/img/logo-company.png' %> width=38px />
+              <img src="<%= person_company.company.get_profile_avatar %>" onerror="this.src='/img/companies.svg'"  />
+            </td>
+            <td>
               <strong> <%= person_company.company.name %></strong>
             </td>
             <!--<td class="status-active"><span class="circle"></span> <%= person_company.company.status %></td>-->
@@ -33,4 +37,9 @@
       </tbody>
     </table>
   </div>
-</div>
+<% else %>
+  <div style="border-radius: 12px; background: white; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.16); margin-bottom: 60px;">
+    Don't have
+  </div>
+<% end %>
+<!--</div>-->

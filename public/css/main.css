@@ -259,7 +259,7 @@ header .header-desktop .container-menu nav ul li a {
   color: #8f98ae;
 }
 header .header-desktop .container-menu nav ul li a:hover {
-  color: #fff;
+  color: #C3C7D2;
 }
 header .header-desktop .container-menu nav ul li a img {
   margin-left: 5px;
@@ -2311,7 +2311,6 @@ footer .copyright p a {
 .tables-info-company .item {
   float: left;
   width: 100%;
-  margin-bottom: 55px;
 }
 .tables-info-company .item.investors table tbody tr td {
   padding: 15px 18px;
@@ -2329,27 +2328,28 @@ footer .copyright p a {
   margin-right: 10px;
   margin-top: -5px;
 }
-.tables-info-company .item table thead tr th {
+.tables-info-company table thead tr th {
   padding-bottom: 27px;
   padding-left: 18px;
   border-bottom: none;
 }
-.tables-info-company .item table tbody tr {
+.tables-info-company table tbody tr {
   background: #fff;
 }
-.tables-info-company .item table tbody tr td {
+.tables-info-company table tbody tr td {
   border-top: none;
-  padding: 27px 18px;
+  /*padding: 27px 18px;*/
+  padding: 15px 18px;
   color: #596276;
   border-bottom: 3px solid #f6f6f8;
 }
-.tables-info-company .item table tbody tr td.status-active {
+.tables-info-company table tbody tr td.status-active {
   color: #00DACE;
 }
-.tables-info-company .item table tbody tr td.status-active .circle {
+.tables-info-company table tbody tr td.status-active .circle {
   background: #00DACE;
 }
-.tables-info-company .item table tbody tr td .circle {
+.tables-info-company table tbody tr td .circle {
   float: left;
   width: 5px;
   height: 5px;
@@ -2361,7 +2361,7 @@ footer .copyright p a {
 /*.tables-info-company .item table tbody tr td img {
   margin-right: 10px;
 }*/
-.tables-info-company .item table tbody tr td a {
+.tables-info-company table tbody tr td a {
   float: right;
   /*margin-right: 20px;*/
   color: #596276;
@@ -5394,4 +5394,81 @@ a.menu-button:hover .menu-icon::after {
 }
 .status-active .circle {
   background: #00DACE;
+}
+
+.title-accordion {
+  margin: 0;
+  font-size: 19px;
+  color: #2e448b;
+  font-family: 'museo_sans900';
+  margin-bottom: 28px;
+}
+
+.title-accordion img {
+  float: left;
+  margin-right: 10px;
+  margin-top: -5px;
+}
+
+.tag {
+  font-size: 18px;
+  color: #596276;
+  font-family: 'museo_sans900';
+  float: left;
+}
+.tag img {
+  float: left;
+  margin-right: 10px;
+  margin-top: -5px;
+}
+
+.info-geral {
+  float: right;
+  padding-bottom: 20px;
+  display: flex;
+}
+.info-geral .item {
+  float: left;
+  width: 200px;
+  height: 155px;
+  text-align: center;
+  background: #f1f3fa;
+  margin-left: 12px;
+  color: #2e448b;
+  padding: 45px 0px;
+}
+.info-geral .item:first-child {
+  margin-left: 0px;
+}
+.info-geral .item h3 {
+  margin: 0px;
+  font-family: 'museo_sans900';
+  font-size: 30px;
+  margin-bottom: 6px;
+}
+.info-geral .item span {
+  display: block;
+  font-family: 'museo_sans500';
+  font-size: 18px;
+}
+@media (max-width: 991px) {
+  .info-geral {
+    float:left;
+    clear: both;
+  }
+}
+@media (max-width: 675px) {
+  .info-geral {
+    flex-direction: column;
+  }
+  .info-geral .item {
+    flex: 1;
+    float:none;
+    margin-left: 0;
+    margin-top: 12px;
+  }
+}
+
+table tbody tr td img {
+  max-width: 25px;
 }

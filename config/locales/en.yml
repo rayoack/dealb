@@ -120,7 +120,7 @@ en:
         company: 'Organization'
         deal_type: 'Deal Type'
         round: 'Round'
-        amount: 'value'
+        amount: 'Value'
         pre_money: 'Pre-money valuation'
       investors:
         investors: 'Investors'
@@ -331,7 +331,7 @@ en:
       column_location: 'Location'
     show:
       back: 'Back'
-      tag: 'Tag'
+      tag: 'Investor type'
       investments: 'Investments'
       companies: 'Organizations'
       funds_raised: 'Funds Raised'
@@ -508,6 +508,7 @@ en:
     number_of_deals: 'Number of Deals'
     total_funds_invested: 'Total Funds Invested'
     tags: 'Tags'
+    investor_type: 'Investor type'
     labels:
       status:
         active: 'Active'

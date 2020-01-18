@@ -7,7 +7,7 @@
 <div class="form-group">
   <div class="checkbox">
     <label>
-      <%= f.check_box(:investor, { checked: @person.investor?, disabled: @person.persisted? && @person.investor? }, true, false ) %>
+      <%= f.check_box(:investor, { checked: @person.investor?}, true, false ) %>
       <span class="cr"><i class="fas fa-check"></i></span><%= 'Investor' %>
     </label>
   </div>

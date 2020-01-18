@@ -1,6 +1,7 @@
+<%# if @company.person_companies.any? %>
+  <!--<div class="item investors">-->
+    <h1 class="title-accordion"><img src="/img/people.svg" alt=""><%= t('companies.show.people.people') %></h1>
 <% if @company.person_companies.any? %>
-  <div class="item investors">
-    <h1><img src="/img/people.svg" alt=""><%= t('companies.show.people.people') %></h1>
     <div class="table-responsive">
       <table class="table">
         <thead>
@@ -26,5 +27,9 @@
         </tbody>
       </table>
     </div>
+  <!--</div>-->
+<% else %>
+  <div style="border-radius: 12px; background: white; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.16); margin-bottom: 60px;">
+    Don't have
   </div>
 <% end %>

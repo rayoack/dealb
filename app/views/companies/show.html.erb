@@ -75,12 +75,15 @@
         </div>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-9">
-        <div class="tables-info-company">
+        <div class="tables-info-company" id="accordion">
           <%= render partial: 'companies/show/investments' %>
 
           <%= render partial: 'companies/show/investors' %>
 
           <%= render partial: 'companies/show/people' %>
+
+          <%= render partial: 'companies/show/invested' %>
+          
         </div>
       </div>
     </div>
