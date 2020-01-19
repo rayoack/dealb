@@ -12,8 +12,8 @@
         <div class="detail-investor-geral">
           <div class="status-name">
             <div>
-              <img src="<%= @deal.company.get_profile_avatar %>" onerror="this.src='/img/companies.svg'" width="64px" />
-              <h1><%= @deal.company.name %></h1>
+              <img src="<%= @deal.company.get_profile_avatar if !@deal.company.blank? %>" onerror="this.src='/img/companies.svg'" width="64px" />
+              <h1><%= !@deal.company.blank? ? @deal.company.name : t('empty_state') %>
             </div>
 
             <% if @deal.status == 'verified' %>
