@@ -46,6 +46,15 @@ class PeopleController < ApplicationController
     end
   end
 
+  def destroy
+    delete_investor(@person)
+    if @person.delete
+      redirect_to people_path, notice: 'Successfully deleted.'
+    else
+      redirect_to people_path
+    end
+  end
+
   private
 
   PERSON_PARAMS = %i[

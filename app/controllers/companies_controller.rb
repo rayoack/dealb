@@ -56,6 +56,15 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def destroy
+    delete_investor(@company)
+    if @company.delete
+      redirect_to companies_path, notice: 'Successfully deleted.'
+    else
+      redirect_to companies_path
+    end
+  end
+
   def names
     render(json: autocomplete(:name) || [params[:term]], status: :ok)
   end
@@ -151,7 +160,14 @@ class CompaniesController < ApplicationController
   end
 
   def delete_investor(company)
-    company.try(:investor).delete
+    company.investor.delete if company.investor.present?
+  end
+
+  def only_admin_or_moderator!
+    return if [User::ADMIN, User::MODERATOR].include?(current_user&.role)
+
+    flash[:error] = 'Unauthorized'
+    redirect_to root_path
   end
 
   def widget_content(last_deal, last_funding_type)

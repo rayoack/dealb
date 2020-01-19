@@ -87,8 +87,8 @@
                   <td><a href=<%= "/companies/#{company.permalink}" %>><i class="fas fa-arrow-right"></i></a></td>
                   <% if user_admin? || user_moderator? %>
                     <td class="user_control_actions">
-                      <%#= link_to 'Delete',
-                        deal_path(deal.id),
+                      <%= link_to 'Delete',
+                        company_path(company.permalink),
                         class: 'btn btn-danger btn-sm btn-block',
                         method: :delete,
                         data: { confirm: "Are you sure you want to delete?" } %>

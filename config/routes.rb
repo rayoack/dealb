@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     }
   )
 
-  resources :companies, only: %i[index new create show edit update] do
+  resources :companies, only: %i[index new create show edit update destroy] do
     collection do
       get :names, action: :names
       get :locations, action: :locations
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
 
   resources :deals, only: %i[index new create show edit update destroy]
 
-  resources :people, only: %i[index new create show edit update]
+  resources :people, only: %i[index new create show edit update destroy]
 
   resources :investors, only: %i[index show edit update destroy] do
     collection do
