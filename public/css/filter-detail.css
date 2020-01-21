@@ -20,7 +20,7 @@
   padding-bottom: 0;
 }
 .table-responsive {
-  border-radius: 12px 12px 0 0;
+  border-radius: 4px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.16);
   margin-bottom: 60px;
 }
@@ -53,7 +53,7 @@
   padding: 15px;
   margin: 10px;
   align-content: center;
-  border-radius: 5px;
+  border-radius: 4px;
   line-height: 37px;
 }
 .btn-export img {
@@ -132,7 +132,7 @@
   align-content: center;
   line-height: 42px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.16);
-  border-radius: 5px;
+  border-radius: 4px;
   border: .2em solid white;
 }
 .filter-card:hover {
@@ -221,11 +221,11 @@
   display: inline-block;
   border: 2px solid #00DACE;
   background: white;
-  border-radius: .5em;
+  border-radius: 4px;
   width: 32px;
   height: 32px;
   float: left;
-  margin-right: .5em;
+  margin-right: 15px;
 }
 .radio .cr {
   border-radius: 50%;

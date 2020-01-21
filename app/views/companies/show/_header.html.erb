@@ -18,10 +18,7 @@
             </div>
             <div class="text">
               <h1><%= @company.name %></h1>
-              <span class="status status-active">
-                <div class="circle"></div>
-                <span><%= t("companies.show.status.#{@company.status}") %></span>
-              </span>
+              <span><%= t("companies.show.status.#{@company.status}") %></span>
             </div>
           </div>
           <% if user_admin? || user_moderator? %>

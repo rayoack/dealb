@@ -8,6 +8,7 @@
           <tr>
             <th><%= t('companies.show.investors.name') %></th>
             <th><%= t('companies.show.investors.round') %></th>
+            <th style="width: 25px;"></th>
           </tr>
         </thead>
         <tbody>
@@ -27,7 +28,7 @@
     </div>
   <!--</div>-->
 <% else %>
-  <div style="border-radius: 12px; background: white; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.16); margin-bottom: 60px;">
-    Don't have
+  <div class="table-card">
+    <%= t("empty_state") %>
   </div>
 <% end %>

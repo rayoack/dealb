@@ -11,6 +11,7 @@
           <th><%= t('people.show.deals.round') %></th>
           <th><%= t('people.show.deals.amount') %></th>
           <th><%= t('people.show.deals.pre_money') %></th>
+          <th style="width: 25px;"></th>
         </tr>
       </thead>
       <tbody>
@@ -33,8 +34,8 @@
     </table>
   </div>
 <% else %>
-  <div style="border-radius: 12px; background: white; padding: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.16); margin-bottom: 60px;">
-    Don't have
+  <div class="table-card">
+    <%= t("empty_state") %>
   </div>
 <% end %>
 <!--</div>-->
