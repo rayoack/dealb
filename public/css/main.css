@@ -5524,3 +5524,7 @@ table tbody tr td .circulo {
   margin-top: 10px;
   margin-right: 10px;
 }
+
+footer a {
+  color: #00DACE;
+}
