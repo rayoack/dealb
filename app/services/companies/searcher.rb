@@ -8,7 +8,7 @@ module Companies
       # preload para agilizar load e melhorar ordenacao
       # @filter = @filter.preload(:locations, :deals)
       @filter = @filter.preload(:deals, company_locations: :location)
-      @filter = @filter.group(:id).joins(:deals)
+      @filter = @filter.group(:id).left_joins(:deals)
     end
 
     def call
