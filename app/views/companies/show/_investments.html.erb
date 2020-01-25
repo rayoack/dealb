@@ -10,8 +10,8 @@
             <th><%= t('companies.show.deals.company') %></th>
             <th><%= t('companies.show.deals.deal_type') %></th>
             <th><%= t('companies.show.deals.round') %></th>
-            <th><%= t('companies.show.deals.amount') %></th>
-            <th><%= t('companies.show.deals.pre_money') %></th>
+            <th style="text-align: center;"><%= t('companies.show.deals.amount') %></th>
+            <th style="text-align: center;"><%= t('companies.show.deals.pre_money') %></th>
             <th style="width: 25px;"></th>
           </tr>
         </thead>
@@ -22,8 +22,8 @@
               <td><a href="/companies/<%= @company.permalink %>" style="float: none;"><%= @company.name %></a></td>
               <td><%= I18n.t("deals.model.categories.#{deal.category}") %></td>
               <td><%= deal.round ? I18n.t("deals.form.rounds.#{deal.round}") : t("empty_state") %></td>
-              <td><%= format_amount(deal.amount, deal.amount_currency) %></td>
-              <td><%= format_amount(deal.pre_valuation, deal.pre_valuation_currency) %></td>
+              <td style="text-align: center;"><%= format_amount(deal.amount_dolar, 'USD') %></td>
+              <td style="text-align: center;"><%= format_amount(deal.pre_valuation_dolar, 'USD') %></td>
               <td><a href="/deals/<%= deal.id %>"><i class="fas fa-arrow-right"></i></a></td>
             </tr>
           <% end %>
