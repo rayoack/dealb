@@ -9,7 +9,7 @@
     <label>
       <%#= f.check_box(:investor, { checked: @company.investor?, disabled: @company.persisted? && @company.investor? }, true, false ) %>
       <%= f.check_box(:investor, { checked: @company.investor? }, true, false ) %>
-      <span class="cr"><i class="fas fa-check"></i></span><%= 'Investor' %>
+      <span class="cr"><i class="fas fa-check"></i></span><%= t('investor.index.investor') %>
     </label>
   </div>
 </div>

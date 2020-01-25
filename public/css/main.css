@@ -727,6 +727,7 @@ header .header-mobile {
   position: relative;
   z-index: 1;
   max-width: 345px;
+  border-radius: 4px;
 }
 .s-about-us .database .title {
   float: left;
@@ -750,6 +751,7 @@ header .header-mobile {
   width: 100%;
   padding: 50px 0px;
   box-shadow: 0px 20px 50px 0px #e6e7ea;
+  border-radius: 4px;
 }
 .s-about-us .database .info-geral ul {
   padding-left: 0px;
