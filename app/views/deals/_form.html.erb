@@ -40,48 +40,40 @@
   <a href="/companies/new" class="create-new"><i class="fas fa-plus"></i> <%= t('companies.index.new') %> <%= t('companies.index.display') %></a>
   <a href="/people/new" class="create-new"><i class="fas fa-plus"></i> <%= t('people.form.new') %></a>
 </div>
-<div class="form-group">
-  <%= f.label :round, t('deals.form.select_round') %>
-  <%= f.select(:round, 
-    Deal::ROUNDS.collect { |round| [t("deals.form.rounds.#{round}"), round] },
-    { prompt: t('deals.form.select_round') },
-    { class: 'select-round form-control', style: 'width: 100%;' }) %>
-</div>
 <div class="form-group input-group">
   <span style="padding-right: 1em; display: table-cell; position: relative;">
+    <%= f.label :round, t('deals.form.select_round') %>
+    <%= f.select(:round, 
+      Deal::ROUNDS.collect { |round| [t("deals.form.rounds.#{round}"), round] },
+      { prompt: t('deals.form.select_round') },
+      { class: 'select-round form-control', style: 'width: 100%;' }) %>
+  </span>
+  <span>
     <%= f.label :amount_currency, t('deals.form.select_currency') %>
     <%= f.select(:amount_currency,
       Deal::CURRENCIES.collect { |currency| [currency, currency] },
       { prompt: t('deals.form.select_currency') },
       { class: 'select-currency', style: 'width: 100%; min-width: 70px;' }) %>
   </span>
-  <span>
-    <%= f.label :amount, t('deals.form.total_amount') %>
-    <%= f.text_field :amount, 
-      placeholder: t('deals.form.total_amount'),
-      class: 'input-total-amount form-control',
-      style: 'float: left;',
-      data: { type: 'money' } %>
-    <label for="deal_amount"><%= t('deals.form.total_amount') %></label>
-  </span>
 </div>
-<div class="form-group input-group">
-  <span style="padding-right: 1em; display: table-cell; position: relative;">
-    <%= f.label :pre_valuation, t('deals.form.select_currency') %>
-    <%= f.select(:pre_valuation_currency, 
-      Deal::CURRENCIES.collect { |currency| [currency, currency] },
-      {  },
-      { class: 'select-currency', style: 'width: 100%; min-width: 70px;' }) %>
-  </span>
-  <span>
-    <%= f.label :pre_valuation, t('deals.form.pre_valuation') %>
+
+<div class="form-group">
+  <%= f.label :amount, t('deals.form.total_amount') %>
+  <%= f.text_field :amount, 
+    placeholder: t('deals.form.total_amount'),
+    class: 'input-total-amount form-control',
+    style: 'float: left;',
+    data: { type: 'money' } %>
+</div>
+<div class="form-group">
+  <%= f.label :pre_valuation, t('deals.form.pre_valuation') %>
     <%= f.text_field :pre_valuation,
       placeholder: t('deals.form.pre_valuation'),
       style: 'float: left;',
       class: 'input-money form-control',
       data: { type: 'money' } %>
-  </span>
 </div>
+
 <div class="form-group">
   <%= f.label :source_url, t('deals.form.source_url') %>
   <%= f.text_field :source_url, 

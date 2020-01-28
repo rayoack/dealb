@@ -80,7 +80,7 @@
                     <td><%= investors_link(deal) %></td>
                     <!--<td style="text-align: center;"><%= format_amount(deal.amount, deal.amount_currency) %><br><small style="font-size: 75%;"><%= format_amount(deal.amount_dolar, 'USD') %></small></td>-->
                     <td style="text-align: center;"><%= format_amount(deal.amount_dolar, 'USD') %></td>
-                    <!--<td style="text-align: center;"><%= format_amount(deal.pre_valuation, deal.pre_valuation_currency) %><br><small style="font-size: 75%;"><%= format_amount(deal.pre_valuation_dolar, 'USD') %></small></td>-->
+                    <!--<td style="text-align: center;"><%= format_amount(deal.pre_valuation, deal.amount_currency) %><br><small style="font-size: 75%;"><%= format_amount(deal.pre_valuation_dolar, 'USD') %></small></td>-->
                     <td style="text-align: center;"><%= format_amount(deal.pre_valuation_dolar, 'USD') %></td>
                     <td>
                       <a href="/deals/<%= deal.id %>">

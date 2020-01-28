@@ -8,7 +8,8 @@ class LanguageService
   end
 
   def set_language
-    language = params[:language] || cache['language'] || browser_language
+    # language = params[:language] || cache['language'] || browser_language
+    language = 'en' || params[:language] || cache['language'] || browser_language
 
     I18n.locale = language
     cache['language'] = language

@@ -40,7 +40,7 @@ class ImportOldDatabaseService
                        amount_currency: currency(deal),
                        amount_cents: amount_cents(deal),
                        # pre_valuation_currency: ::Deal::USD,
-                       pre_valuation_currency: currency(deal),
+                       # pre_valuation_currency: currency(deal),
                        pre_valuation_cents: pre_valuation_cents(deal),
                        source_url: source_url(deal))
       end
@@ -72,7 +72,7 @@ class ImportOldDatabaseService
             new_deal.category = category
             new_deal.round = round
             new_deal.amount_currency = currency
-            new_deal.pre_valuation_currency = currency
+            # new_deal.pre_valuation_currency = currency
             new_deal.amount = amount
             new_deal.pre_valuation = pre_valuation
             new_deal.save!
@@ -85,7 +85,7 @@ class ImportOldDatabaseService
             category: category,
             round: round,
             amount_currency: currency,
-            pre_valuation_currency: currency,
+            # pre_valuation_currency: currency,
             amount: amount,
             pre_valuation: pre_valuation,
             source_url: source_url

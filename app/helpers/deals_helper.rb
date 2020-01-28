@@ -32,9 +32,9 @@ module DealsHelper
       rates = exchange_rates(deal.close_date)
       deal.exchange_rates = rates
       deal.save
-      if deal.pre_valuation_currency.present? && deal.pre_valuation.present?
+      if deal.amount_currency.present? && deal.pre_valuation.present?
         deal.pre_valuation_dolar =
-          if deal.pre_valuation_currency.strip != 'USD'
+          if deal.amount_currency.strip != 'USD'
             deal.pre_valuation * (1 / rates)
           else
             deal.pre_valuation
