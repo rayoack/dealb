@@ -47,6 +47,14 @@ class ImportOldDatabaseService
       andre-gomes marc-lemann arminio-fraga david-feffer luiz-fernando-figueiredo
       wolff-klabin daniel-goldberg julio-vasconcellos bruno-nardon max-levchin
       eric-wu david-velez hugo-barra sergio-furio
+      -separador-
+      ed-baker michael-meirelles carlos-eduardo-norbert kimball-thomas
+      ricardo-loureiro philipp-povel roger-ingold sandro-reiss jaime-de-paula
+      cesar-bertini wilson-amaral diego-stark julio-sergio-cardozo oscar-salazar
+      jander-martins michelli-maldonado christian-pensa gabriel-gomes joao-daniel-almeida
+      carlos-barreiros daniel-orlean andre-barros mike-krieger marc-lemann
+      david-feffer luiz-fernando-figueiredo julio-vasconcellos bruno-nardon
+      max-levchin eric-wu david-velez hugo-barra sergio-furio
     ].freeze
 
     # rubocop:disable Metrics/MethodLength
