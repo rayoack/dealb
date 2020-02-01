@@ -1,0 +1,2 @@
+class InvestorStage < ApplicationRecord
+end

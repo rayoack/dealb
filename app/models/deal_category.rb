@@ -1,0 +1,2 @@
+class DealCategory < ApplicationRecord
+end

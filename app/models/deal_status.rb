@@ -1,0 +1,2 @@
+class DealStatus < ApplicationRecord
+end
