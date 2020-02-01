@@ -62,6 +62,15 @@ namespace :db_import do
     ImportOldDatabaseService::ImportDeal.new.update
   end
 
+  desc 'import old db location link'
+  task location_link: :environment do
+    Rails.logger.info('IMPORT - update db with old data')
+    company_location = ImportOldDatabaseService::ImportCompanyLocation.new.update
+    company_location.present?
+    investor_location = ImportOldDatabaseService::ImportInvestorLocation.new.update
+    Rails.logger.info('END IMPORT')
+  end
+
   desc 'import old db all'
   task all: :environment do
     Rails.logger.info('IMPORT - update db with old data')

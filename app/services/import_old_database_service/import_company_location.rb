@@ -16,7 +16,7 @@ class ImportOldDatabaseService
           country: old_location.country, city: old_location.city
         )
         new_company = ::Company.find_by!(name: old_company.name)
-        ::Localizable.create!(location: new_location, localizable: new_company)
+        ::CompanyLocation.create!(location: new_location, company: new_company)
       end
       Rails.logger.info("-- imported #{::Localizable.count} companies locations")
     end
@@ -31,11 +31,11 @@ class ImportOldDatabaseService
           company_location.company_id
         )
         new_location = ::Location.find_by!(
-          country: old_location.country, city: old_location.city
+          country: old_location.country, city: old_location.city, region: old_location.region
         )
         new_company = ::Company.find_by!(name: old_company.name)
-        if !::Localizable.exists?(location: new_location, localizable: new_company)
-          ::Localizable.create!(location: new_location, localizable: new_company)
+        if !::CompanyLocation.exists?(location: new_location, company: new_company)
+          ::CompanyLocation.create!(location: new_location, company: new_company)
         end
       end
       Rails.logger.info('-- end update company location')

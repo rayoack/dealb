@@ -51,15 +51,25 @@ class ImportOldDatabaseService
         @location = ::Location.find_by!(
           city: @old_location.city, country: @old_location.country
         )
-        @localizable = ::Localizable.find_by(
-          localizable: @person.present? ? @person : @company,
-          location: @location,
-        )
-        @localizable ||= ::Localizable.create!(
-          localizable: @person.present? ? @person : @company,
-          location: @location,
-          localizable_type: @person.present? ? 'Person' : 'Company'
-        )
+
+        @company.present? 
+          if !::CompanyLocation.exists?(location: new_location, company: new_company)
+            ::CompanyLocation.create!(location: new_location, company: new_company)
+          end
+        else
+          if !::PersonLocation.exists?(location: new_location, person: new_company)
+            ::PersonLocation.create!(location: new_location, person: new_company)
+          end
+        end
+        # @localizable = ::Localizable.find_by(
+        #   localizable: @person.present? ? @person : @company,
+        #   location: @location,
+        # )
+        # @localizable ||= ::Localizable.create!(
+        #   localizable: @person.present? ? @person : @company,
+        #   location: @location,
+        #   localizable_type: @person.present? ? 'Person' : 'Company'
+        # )
       end
       Rails.logger.info('-- end update investor location')
     end
