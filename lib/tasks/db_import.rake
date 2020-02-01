@@ -38,8 +38,8 @@ namespace :db_import do
   task investor: :environment do
     investor = ImportOldDatabaseService::ImportInvestor.new.update
     investor.present?
-    investor_location = ImportOldDatabaseService::ImportInvestorLocation.new.update
-    investor_location.present?
+    # investor_location = ImportOldDatabaseService::ImportInvestorLocation.new.update
+    # investor_location.present?
     investor_market = ImportOldDatabaseService::ImportInvestorMarket.new.update
     investor_market.present?
     ImportOldDatabaseService::ImportDealing.new.update
@@ -75,14 +75,14 @@ namespace :db_import do
     company_market.present?
     location = ImportOldDatabaseService::ImportLocation.new.update
     location.present?
-    company_location = ImportOldDatabaseService::ImportCompanyLocation.new.update
-    company_location.present?
+    # company_location = ImportOldDatabaseService::ImportCompanyLocation.new.update
+    # company_location.present?
     deal = ImportOldDatabaseService::ImportDeal.new.update
     deal.present?
     investor = ImportOldDatabaseService::ImportInvestor.new.update
     investor.present?
-    investor_location = ImportOldDatabaseService::ImportInvestorLocation.new.update
-    investor_location.present?
+    # investor_location = ImportOldDatabaseService::ImportInvestorLocation.new.update
+    # investor_location.present?
     investor_market = ImportOldDatabaseService::ImportInvestorMarket.new.update
     investor_market.present?
     ImportOldDatabaseService::ImportDealing.new.update
