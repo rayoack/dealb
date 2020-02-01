@@ -8,6 +8,6 @@ class Location < ApplicationRecord
   # Methods
   def full
     return "" if !self.city.present? && !self.country.present?
-    "#{self.city}, #{self.country}"
+    "#{self.city}, #{self.region}, #{self.country}"
   end
 end
