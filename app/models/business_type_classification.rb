@@ -1,0 +1,2 @@
+class BusinessTypeClassification < ApplicationRecord
+end

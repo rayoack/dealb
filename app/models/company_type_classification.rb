@@ -1,0 +1,2 @@
+class CompanyTypeClassification < ApplicationRecord
+end

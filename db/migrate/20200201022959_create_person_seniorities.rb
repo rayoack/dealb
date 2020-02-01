@@ -1,4 +1,4 @@
-class CreatePersonSeniority < ActiveRecord::Migration[5.1]
+class CreatePersonSeniorities < ActiveRecord::Migration[5.1]
   def change
     create_table :person_seniorities do |t|
       t.string :name, null: false, index: true

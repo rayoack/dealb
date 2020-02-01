@@ -1,0 +1,2 @@
+class CompanyEntitySize < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class PersonSeniority < ApplicationRecord
+end

@@ -1,4 +1,4 @@
-class CreateBusinessTypeClassification < ActiveRecord::Migration[5.1]
+class CreateBusinessTypeClassifications < ActiveRecord::Migration[5.1]
   def change
     create_table :business_type_classifications do |t|
       t.string :name, null: false, index: true

@@ -1,4 +1,4 @@
-class CreateCompanyEntitySize < ActiveRecord::Migration[5.1]
+class CreateCompanyEntitySizes < ActiveRecord::Migration[5.1]
   def change
     create_table :company_entity_sizes do |t|
       t.string :name, null: false, index: true
