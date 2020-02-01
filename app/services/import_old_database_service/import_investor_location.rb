@@ -46,21 +46,23 @@ class ImportOldDatabaseService
         @old_investor = Entities::Investor.find(investor_location.investor_id)
         @person = ::Person.find_by(permalink: @old_investor.slug.strip.parameterize.presence)
         @company = ::Company.find_by(permalink: @old_investor.slug.strip.parameterize.presence)
-        @investable = (@person || @company)
+        
         
         @location = ::Location.find_by!(
-          city: @old_location.city, country: @old_location.country
+          city: @old_location.city, country: @old_location.country, region: @old_location.region
         )
 
         @company.present? 
           if !::CompanyLocation.exists?(location: @location, company: @company)
             ::CompanyLocation.create!(location: @location, company: @company)
           end
-        else
+        end
+        @person.present?
           if !::PersonLocation.exists?(location: @location, person: @person)
             ::PersonLocation.create!(location: @location, person: @person)
           end
         end
+        # @investable = (@person || @company)
         # @localizable = ::Localizable.find_by(
         #   localizable: @person.present? ? @person : @company,
         #   location: @location,
