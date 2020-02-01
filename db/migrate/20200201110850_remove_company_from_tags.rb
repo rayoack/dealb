@@ -1,6 +1,6 @@
 class RemoveCompanyFromTags < ActiveRecord::Migration[5.1]
   def change
-    remove_column :tags, :company
+    # remove_column :tags, :company
 
     Tag.create :name => "3D Printing"
     Tag.create :name => "Accounting"
