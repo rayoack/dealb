@@ -53,12 +53,12 @@ class ImportOldDatabaseService
         )
 
         @company.present? 
-          if !::CompanyLocation.exists?(location: new_location, company: new_company)
-            ::CompanyLocation.create!(location: new_location, company: new_company)
+          if !::CompanyLocation.exists?(location: new_location, company: @company)
+            ::CompanyLocation.create!(location: new_location, company: @company)
           end
         else
-          if !::PersonLocation.exists?(location: new_location, person: new_company)
-            ::PersonLocation.create!(location: new_location, person: new_company)
+          if !::PersonLocation.exists?(location: new_location, person: @person)
+            ::PersonLocation.create!(location: new_location, person: @person)
           end
         end
         # @localizable = ::Localizable.find_by(
