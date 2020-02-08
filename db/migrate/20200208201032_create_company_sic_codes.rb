@@ -7,11 +7,11 @@ class CreateCompanySicCodes < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
-    CompanySicCode.create :code => 01, :description => "Agricultural Production – Crops"
-    CompanySicCode.create :code => 02, :description => "Agricultural Production – Livestock"
-    CompanySicCode.create :code => 07, :description => "Agricultural Services"
-    CompanySicCode.create :code => 08, :description => "Forestry"
-    CompanySicCode.create :code => 09, :description => "Fishing, Hunting, & Trapping"
+    CompanySicCode.create :code => 1, :description => "Agricultural Production – Crops"
+    CompanySicCode.create :code => 2, :description => "Agricultural Production – Livestock"
+    CompanySicCode.create :code => 7, :description => "Agricultural Services"
+    CompanySicCode.create :code => 8, :description => "Forestry"
+    CompanySicCode.create :code => 9, :description => "Fishing, Hunting, & Trapping"
     CompanySicCode.create :code => 10, :description => "Metal, Mining"
     CompanySicCode.create :code => 12, :description => "Coal Mining"
     CompanySicCode.create :code => 13, :description => "Oil & Gas Extraction"
