@@ -1,0 +1,2 @@
+class InvestorStatus < ApplicationRecord
+end

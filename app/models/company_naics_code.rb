@@ -1,0 +1,2 @@
+class CompanyNaicsCode < ApplicationRecord
+end
