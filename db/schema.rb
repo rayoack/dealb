@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200212024723) do
+ActiveRecord::Schema.define(version: 20200212032120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -165,6 +165,24 @@ ActiveRecord::Schema.define(version: 20200212024723) do
     t.index ["user_id"], name: "index_deals_on_user_id"
   end
 
+  create_table "industries", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "industry_group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["industry_group_id"], name: "index_industries_on_industry_group_id"
+    t.index ["name"], name: "index_industries_on_name"
+  end
+
+  create_table "industry_groups", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "sector_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_industry_groups_on_name"
+    t.index ["sector_id"], name: "index_industry_groups_on_sector_id"
+  end
+
   create_table "investor_stages", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -283,6 +301,22 @@ ActiveRecord::Schema.define(version: 20200212024723) do
     t.index ["name"], name: "index_roles_on_name"
   end
 
+  create_table "sectors", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_sectors_on_name"
+  end
+
+  create_table "sub_industries", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "industry_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["industry_id"], name: "index_sub_industries_on_industry_id"
+    t.index ["name"], name: "index_sub_industries_on_name"
+  end
+
   create_table "sub_roles", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "role_id"
@@ -333,6 +367,9 @@ ActiveRecord::Schema.define(version: 20200212024723) do
   end
 
   add_foreign_key "deals", "users"
+  add_foreign_key "industries", "industry_groups"
+  add_foreign_key "industry_groups", "sectors"
+  add_foreign_key "sub_industries", "industries"
   add_foreign_key "sub_roles", "roles"
   add_foreign_key "users", "people"
 end
