@@ -10,11 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200201000747) do
+ActiveRecord::Schema.define(version: 20200209110547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "unaccent"
+
+  create_table "business_type_classifications", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_business_type_classifications_on_name"
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string "name", null: false
@@ -46,6 +52,13 @@ ActiveRecord::Schema.define(version: 20200201000747) do
     t.index ["status"], name: "index_companies_on_status"
   end
 
+  create_table "company_entity_sizes", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_company_entity_sizes_on_name"
+  end
+
   create_table "company_locations", id: :serial, force: :cascade do |t|
     t.bigint "company_id", null: false
     t.bigint "location_id", null: false
@@ -62,11 +75,46 @@ ActiveRecord::Schema.define(version: 20200201000747) do
     t.index ["market_id"], name: "index_company_markets_on_market_id"
   end
 
-  create_table "country", id: false, force: :cascade do |t|
-    t.string "cc_fips", limit: 2
-    t.string "cc_iso", limit: 2
-    t.string "tld", limit: 3
-    t.string "country_name", limit: 100
+  create_table "company_naics_codes", id: false, force: :cascade do |t|
+    t.integer "code", null: false
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_company_naics_codes_on_code"
+  end
+
+  create_table "company_sic_codes", id: false, force: :cascade do |t|
+    t.integer "code", null: false
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_company_sic_codes_on_code"
+  end
+
+  create_table "company_statuses", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "company_type_classifications", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_company_type_classifications_on_name"
+  end
+
+  create_table "currencies", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "deal_categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_deal_categories_on_name"
   end
 
   create_table "deal_investors", force: :cascade do |t|
@@ -76,6 +124,18 @@ ActiveRecord::Schema.define(version: 20200201000747) do
     t.datetime "updated_at", null: false
     t.index ["deal_id"], name: "index_deal_investors_on_deal_id"
     t.index ["investor_id"], name: "index_deal_investors_on_investor_id"
+  end
+
+  create_table "deal_rounds", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "deal_statuses", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "deals", force: :cascade do |t|
@@ -105,6 +165,24 @@ ActiveRecord::Schema.define(version: 20200201000747) do
     t.index ["user_id"], name: "index_deals_on_user_id"
   end
 
+  create_table "investor_stages", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "investor_statuses", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "investor_tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "investors", force: :cascade do |t|
     t.string "investable_type", null: false
     t.bigint "investable_id", null: false
@@ -131,7 +209,7 @@ ActiveRecord::Schema.define(version: 20200201000747) do
   create_table "locations", force: :cascade do |t|
     t.string "country", null: false
     t.string "city", null: false
-    t.datetime "created_at", default: -> { "now()" }, null: false
+    t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "region"
     t.index ["city"], name: "index_locations_on_city"
@@ -175,13 +253,12 @@ ActiveRecord::Schema.define(version: 20200201000747) do
   create_table "person_companies", force: :cascade do |t|
     t.bigint "person_id", null: false
     t.bigint "company_id", null: false
-    t.string "job_title"
     t.date "started_at"
     t.date "ended_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "job_title"
     t.index ["company_id"], name: "index_person_companies_on_company_id"
-    t.index ["job_title"], name: "index_person_companies_on_job_title"
     t.index ["person_id"], name: "index_person_companies_on_person_id"
   end
 
@@ -190,6 +267,13 @@ ActiveRecord::Schema.define(version: 20200201000747) do
     t.bigint "location_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "person_seniorities", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_person_seniorities_on_name"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -217,11 +301,11 @@ ActiveRecord::Schema.define(version: 20200201000747) do
     t.string "status", default: "active", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "person_id"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.bigint "person_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["person_id"], name: "index_users_on_person_id"
@@ -230,12 +314,6 @@ ActiveRecord::Schema.define(version: 20200201000747) do
     t.index ["role"], name: "index_users_on_role"
     t.index ["status"], name: "index_users_on_status"
     t.index ["uid"], name: "index_users_on_uid"
-  end
-
-  create_table "world_cities_free", id: false, force: :cascade do |t|
-    t.string "cc_fips", limit: 2
-    t.string "cc_iso", limit: 2
-    t.string "full_name_nd", limit: 200
   end
 
   add_foreign_key "deals", "users"

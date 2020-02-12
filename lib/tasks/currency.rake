@@ -13,7 +13,7 @@ namespace :currency do
     # update deals set pre_valuation_dolar = pre_valuation where pre_valuation_currency = 'USD' and pre_valuation is not null;
     Deal.where("amount_currency = 'USD' and pre_valuation is not null").update_all('pre_valuation_dolar = pre_valuation')
     # update all Deals where currency is BRL and value is not null
-    Deal.where("(amount_currency = 'BRL' and (pre_valuation is not null or amount is not null)").find_each do |deal|
+    Deal.where("(amount_currency = 'BRL' and (pre_valuation is not null or amount is not null))").find_each do |deal|
       printf('.')
       convert_to_dolar(deal)
     end
