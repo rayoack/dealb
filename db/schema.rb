@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200209110547) do
+ActiveRecord::Schema.define(version: 20200212024723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -276,6 +276,22 @@ ActiveRecord::Schema.define(version: 20200209110547) do
     t.index ["name"], name: "index_person_seniorities_on_name"
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_roles_on_name"
+  end
+
+  create_table "sub_roles", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "role_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_sub_roles_on_name"
+    t.index ["role_id"], name: "index_sub_roles_on_role_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.bigint "company_id"
@@ -317,5 +333,6 @@ ActiveRecord::Schema.define(version: 20200209110547) do
   end
 
   add_foreign_key "deals", "users"
+  add_foreign_key "sub_roles", "roles"
   add_foreign_key "users", "people"
 end
