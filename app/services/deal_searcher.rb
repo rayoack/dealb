@@ -34,7 +34,7 @@ class DealSearcher < BaseSearcher
   end
 
   def filter_by_amount(_name, operator, value)
-    filter_by_number(:amount, operator, value.to_f)
+    filter_by_number(:amount_dolar, operator, value.to_f)
   end
 
   def filter_by_funding_type(_name, operator, value)

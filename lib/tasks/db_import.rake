@@ -94,7 +94,9 @@ namespace :db_import do
     # investor_location.present?
     investor_market = ImportOldDatabaseService::ImportInvestorMarket.new.update
     investor_market.present?
-    ImportOldDatabaseService::ImportDealing.new.update
+    dealing = ImportOldDatabaseService::ImportDealing.new.update
+    dealing.present?
+    results = ActiveRecord::Base.connection.execute("update investors set investable_type = 'Person' where investable_type = 'MyPerson'; update investors set investable_type = 'Company' where investable_type = 'MyCompany';");
     Rails.logger.info('END IMPORT')
 
     # Rails.logger.debug('-- debug')

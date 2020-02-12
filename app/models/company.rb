@@ -58,7 +58,6 @@ class Company < ApplicationRecord
   end
 
   def get_host_without_www(url)
-    puts 'FODA_SE ' + url
     uri = URI.parse(url)
     uri = URI.parse("http://#{url}") if uri.scheme.nil?
     host = uri.host.downcase
