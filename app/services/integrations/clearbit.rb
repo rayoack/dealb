@@ -41,6 +41,7 @@ module Integrations
     def enrich_person
       return unless resource.is_a?(Person)
       return if resource.clearbit_synchronized_at.present?
+      return if !resource.email.present?
 
       data = person_data(email: resource.email)
       resource.update_from_clearbit(data) if data.present?

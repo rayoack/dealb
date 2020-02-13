@@ -101,6 +101,7 @@ class PeopleController < ApplicationController
   end
 
   def delete_investor(person)
+    return if !person.investor.present?
     person.try(:investor).delete
   end
 
