@@ -3,7 +3,7 @@ dist: trusty
 
 # Current .ruby-version
 rvm:
-- 2.5.0p0
+- 2.5.0
 
 bundler_args: --jobs=2
 
