@@ -18,17 +18,17 @@
         <% @person.person_companies.each do |person_company| %>
           <tr>
             <td>
-              <img src="<%= person_company.company.get_profile_avatar %>" onerror="this.src='/img/companies.svg'"  />
+              <img src="<%= !person_company.company.blank? ? person_company.company.get_profile_avatar : '' %>" onerror="this.src='/img/companies.svg'"  />
             </td>
             <td>
-              <strong> <%= person_company.company.name %></strong>
+              <strong> <%= !person_company.company.blank? ? person_company.company.name : t("empty_state") %></strong>
             </td>
             <!--<td class="status-active"><span class="circle"></span> <%= person_company.company.status %></td>-->
             <td><%= person_company.job_title %></td>
-            <td><%= person_company.company.locations_plain %></td>
+            <td><%= !person_company.company.blank? ? person_company.company.locations_plain : t("empty_state") %></td>
             <!--<td><%= t('people.show.companies.location') %></td>-->
             <td>
-              <a href="/companies/<%= person_company.company.permalink %>">
+              <a href="/companies/<%= !person_company.company.blank? ? person_company.company.permalink : t("empty_state") %>">
                 <i class="fas fa-arrow-right"></i>
               </a>
             </td>
