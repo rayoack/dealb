@@ -4,9 +4,9 @@ FactoryBot.define do
   factory :investor do
     investable { create(:person) }
 
-    status Investor::ACTIVE
-    tag Investor::ANGEL
-    stage Investor::SEED
+    status {Investor::ACTIVE}
+    tag {Investor::ANGEL}
+    stage {Investor::SEED}
 
     trait :company do
       investable { create(:company) }

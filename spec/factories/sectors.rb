@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :sector do
-    name "MyString"
+    name {"MyString"}
   end
 end

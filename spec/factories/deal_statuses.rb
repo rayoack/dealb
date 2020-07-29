@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :deal_status do
-    name "MyString"
+    name {"MyString"}
   end
 end

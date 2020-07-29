@@ -7,6 +7,6 @@ FactoryBot.define do
     password_confirmation { 'test1020' }
     confirmed_at { Time.zone.now }
 
-    person nil
+    person {nil}
   end
 end
