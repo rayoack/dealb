@@ -8,10 +8,14 @@ workbook.add_worksheet(name: "deals") do |sheet|
                  I18n.t('deals.index.column_amount')])
 
   @deals.each do |deal|
-    sheet.add_row([deal.company.name,
+    company_name = !deal.company.blank? ? deal.company.name : '-'
+    
+    investors    = deal.deal_investors.map(&:investor).compact
+    
+    sheet.add_row([ company_name,
                    deal.close_date,
                    deal.category,
-                   deal.deal_investors.map(&:investor).map(&:name).join(', '),
+                   investors.map(&:name).join(", "),
                    format_amount(deal.amount, deal.amount_currency)])
   end
 end
