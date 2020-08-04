@@ -19,7 +19,7 @@
 
 .byebug_history
 .env.local
-
+.env.prod
 /vendor/bundle
 
 # Ignore application configuration
