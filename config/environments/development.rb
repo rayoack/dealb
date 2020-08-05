@@ -30,7 +30,7 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -55,7 +55,11 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: ENV.fetch('DEALBOOK_MAILGUN_API_KEY'),
+    domain: ENV.fetch('DEALBOOK_MAILGUN_DOMAIN')
+  }
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000  }
+  config.action_mailer.default_url_options = { host: ENV.fetch('DEALBOOK_DOMAIN') }
 end
