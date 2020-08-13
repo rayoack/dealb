@@ -70,4 +70,6 @@ Rails.application.routes.draw do
   get :embassador, to: 'embassador#index'
   get :faq, to: 'faq#index'
   get :about, to: 'about#index'
+
+  #get :sitemap, to: 'sitemap#index'
 end

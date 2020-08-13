@@ -10,6 +10,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'sentry-raven'
+gem 'sitemap_generator'
 
 gem 'activevalidators', '~> 4.1'
 gem 'clearbit', '~> 0.3'
