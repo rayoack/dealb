@@ -16,6 +16,8 @@ gem 'aws-sdk-core'
 gem 'aws-sdk-s3'
 gem 'fog-aws'
 
+gem 'sendgrid-ruby'
+
 gem 'activevalidators', '~> 4.1'
 gem 'clearbit', '~> 0.3'
 gem 'jbuilder', '~> 2.5'
