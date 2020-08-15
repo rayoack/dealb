@@ -12,6 +12,10 @@ end
 gem 'sentry-raven'
 gem 'sitemap_generator'
 
+gem 'aws-sdk-core'
+gem 'aws-sdk-s3'
+gem 'fog-aws'
+
 gem 'activevalidators', '~> 4.1'
 gem 'clearbit', '~> 0.3'
 gem 'jbuilder', '~> 2.5'

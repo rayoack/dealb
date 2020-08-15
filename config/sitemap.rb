@@ -1,6 +1,21 @@
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.default_host = ENV.fetch('DEALBOOK_DOMAIN_N') { 'https://dealbook.co' }
+# SitemapGenerator::Sitemap.adapter = SitemapGenerator::AwsSdkAdapter.new(
+#   aws_access_key_id: 'AKIA37SVVXBHYQC3NTVA',
+#   fog_directory: 'cloud-cube',
+#   region: 'us-east-1',
+#   aws_secret_access_key: 'n8A0IO5horTk2WMZCJQ/mOSKcLXXYwDpvdmDUQX9',
+#   aws_region: 'us-east-1'
+# );
 
+SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(fog_provider: 'AWS',
+  aws_access_key_id: 'AKIA37SVVXBHYQC3NTVA',
+  aws_secret_access_key: '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',
+  fog_directory: 'cloud-cube',
+  fog_region: 'us-east-1')
+
+SitemapGenerator::Sitemap.public_path = 'tmp/'
+SitemapGenerator::Sitemap.sitemaps_path = 'y97vpchuzi86/public'
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
   #

@@ -71,5 +71,5 @@ Rails.application.routes.draw do
   get :faq, to: 'faq#index'
   get :about, to: 'about#index'
 
-  #get :sitemap, to: 'sitemap#index'
+  get :sitemap, to: 'sitemap#index'
 end
