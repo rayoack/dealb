@@ -32,7 +32,7 @@
 <div class="form-group">
   <%= f.label :investor_ids, t('deals.form.select_investor') %>
   <%= f.select( :investor_ids, 
-                @investors.collect { |c| [c.investable&.name, c.id] },
+                @allInvestors,
                 { },
                 class: 'select2',
                 data: { label: t('deals.form.select_investor') },

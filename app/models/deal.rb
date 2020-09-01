@@ -65,6 +65,10 @@ class Deal < ApplicationRecord
   )
   validates :source_url, url: true, allow_nil: true
 
+  validates_each :investors do | record, attr, value |
+    record.errors.add( :investors, 'failed to validate investors')
+  end
+
   # Relations
   belongs_to :company
   belongs_to :user
@@ -74,6 +78,7 @@ class Deal < ApplicationRecord
   # Nested
   accepts_nested_attributes_for :deal_investors
 
+  
   # Scopes
   scope :top_contributors, lambda { |amount|
     joins(:user).select('users.id as user_id', 'COUNT(*) as number_of_deals')
@@ -81,4 +86,5 @@ class Deal < ApplicationRecord
                 .order('number_of_deals desc')
                 .limit(amount)
   }
+
 end

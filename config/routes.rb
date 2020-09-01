@@ -34,7 +34,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :deals, only: %i[index new create show edit update destroy]
+  resources :deals, only: %i[index new create show edit update destroy] do
+    post 'index', action: 'create'
+  end
 
   resources :people, only: %i[index new create show edit update destroy]
 

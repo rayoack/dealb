@@ -6,6 +6,7 @@ class DealsController < ApplicationController
   before_action :only_admin_or_moderator!, only: %i[edit update destroy]
 
   before_action :load_companies, only: %i[new create edit update]
+  before_action :load_person, only: %i[new create edi update]
   before_action :load_investors, only: %i[new create edit update]
   before_action :load_deal, only: %i[edit show update destroy]
 
@@ -16,6 +17,7 @@ class DealsController < ApplicationController
 
   def new
     @deal = Deal.new
+
   end
 
   def create
@@ -102,8 +104,16 @@ class DealsController < ApplicationController
     @companies = Company.select(:id, :name).where(domain_country_context: domain_country_context).order(:name)
   end
 
+  def load_person
+    @persons = Person.select(:id, :first_name, :last_name).where(domain_country_context: domain_country_context).order(:first_name, :last_name)
+  end
   def load_investors
     @investors = Investor.where(domain_country_context: domain_country_context).preload(:investable)
+
+
+    @allInvestors = (@companies.all + @investors.all).sort_by { |s| s.name}.collect { |c| 
+      [c.name, "#{c.id}"] 
+    }
   end
 
   def load_deal
