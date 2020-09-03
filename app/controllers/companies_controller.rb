@@ -14,6 +14,12 @@ class CompaniesController < ApplicationController
 
   def show
     @investors = @company.deals.flat_map(&:investors).uniq
+    @last_deal = @company.deals.last
+
+    @isAcquired = false
+    if @last_deal && @last_deal.category == Deal::WAS_ACQUIRED_BY
+      @company.status = Company::ACQUIRED
+    end
   end
 
   def new

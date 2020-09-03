@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class DealsController < ApplicationController
-  include DealsHelper
+  include DealsHelper, InvestorsHelper
   before_action :authenticate_user!, only: %i[edit update destroy]
   before_action :only_admin_or_moderator!, only: %i[edit update destroy]
 
@@ -89,8 +89,41 @@ class DealsController < ApplicationController
 
   def allowed_deal
     DEAL_PARAMS.inject({}) do |acc, param|
-      acc.merge(param => alloweds[param].presence)
+      print "PARAM =>", param, alloweds[param].presence, "\n"
+
+      if param == :investor_ids 
+        acc.merge(param => ensure_investor(alloweds[param].presence)) 
+      else
+        acc.merge(param => alloweds[param].presence)
+      end
     end
+  end
+
+  def ensure_investor( ids )
+    check_id = ->(id) {
+      id.gsub("Investor_", "") if id.include? "Investor_"
+      
+      curr_id = id.gsub("Company_", "")
+
+      if( curr_id == "" ) 
+        return ""
+      end
+
+      curr_investor = Investor.select(:id).where(investable_type: :Company, investable_id: curr_id ).first
+
+
+      if curr_investor != nil
+        return curr_investor.id 
+      end
+
+      investor = Investor.create!(
+        investable: Company.find(curr_id), tag: Investor::ANGEL, stage: Investor::SEED
+      )
+
+      return investor.id
+    }
+    ids = ids.collect(&check_id)
+    ids
   end
 
   def only_admin_or_moderator!
@@ -108,11 +141,11 @@ class DealsController < ApplicationController
     @persons = Person.select(:id, :first_name, :last_name).where(domain_country_context: domain_country_context).order(:first_name, :last_name)
   end
   def load_investors
-    @investors = Investor.where(domain_country_context: domain_country_context).preload(:investable)
+    @investors = all_investable_entities( domain_country_context )
 
-
-    @allInvestors = (@companies.all + @investors.all).sort_by { |s| s.name}.collect { |c| 
-      [c.name, "#{c.id}"] 
+    
+    @allInvestors = @investors.collect { |c| 
+      [c["name"], "#{c["type"]}_#{c["id"]}"] 
     }
   end
 

@@ -65,10 +65,6 @@ class Deal < ApplicationRecord
   )
   validates :source_url, url: true, allow_nil: true
 
-  validates_each :investors do | record, attr, value |
-    record.errors.add( :investors, 'failed to validate investors')
-  end
-
   # Relations
   belongs_to :company
   belongs_to :user
@@ -80,11 +76,13 @@ class Deal < ApplicationRecord
 
   
   # Scopes
+  scope :investors, lambda { |investors| 
+    print "ll", investors
+  }
   scope :top_contributors, lambda { |amount|
     joins(:user).select('users.id as user_id', 'COUNT(*) as number_of_deals')
                 .group('users.id')
                 .order('number_of_deals desc')
                 .limit(amount)
   }
-
 end
