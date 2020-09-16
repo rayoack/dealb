@@ -1,9 +1,12 @@
 <div style="border-radius: 3px; padding: 10px; display: flow-root; box-shadow: 1px 4px 10px lightgrey; margin: 10px 0; margin-bottom: 20px;">
   <div class="form-group">
+    <%
+    t = f.object.location_id ? Location.find([f.object.location_id]) : false
+    %>
     <%= f.select( :location_id, 
-                  Location.all.collect { |c| [c.full, c.id] }, 
+                  t ? t.collect { |c| [c.full, c.id] } : [''], 
                   { prompt: ' ' }, 
-                  class: 'select2', 
+                  class: 'select2 address-autocomplete', 
                   data: { label: 'Select Location' }, 
                   multiple: false )%>
   </div>

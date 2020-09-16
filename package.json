@@ -1,5 +1,14 @@
 {
   "name": "dealbook",
-  "private": true,
-  "dependencies": {}
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/BossaBox/dealbook",
+  "author": "Joao Neto <joao.gsneto@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "NODE_ENV=development parcel app/assets/javascripts/application.js --out-dir public/js/ "
+  },
+  "dependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
 }

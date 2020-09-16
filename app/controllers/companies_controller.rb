@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'json'
 
 class CompaniesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[names]
@@ -33,6 +34,7 @@ class CompaniesController < ApplicationController
 
     @company = Company.new(company_params)
 
+    #return render( json: @company_params )
     if @company.save
       # create_company_markets
       create_investor(@company) if investor?
@@ -145,12 +147,54 @@ class CompaniesController < ApplicationController
 
   def company_params
     @company_params ||= allowed_company
-      .merge(params.require(:company).permit(company_locations_attributes: [:id, :location_id, :_destroy]))
+      .merge(
+        ensure_location(params.require(:company).permit(company_locations_attributes: [:id, :location_id, :_destroy])))
+  end
+
+  def ensure_location( location )
+    check_id = ->(key, value ) {
+      location_id = value["location_id"]
+
+      t = JSON.parse(location['company_locations_attributes'][key]["location_id"]);
+
+      if t.is_a?(Fixnum) 
+        location['company_locations_attributes'][key]["location_id"] = t
+        return
+      end
+      if t
+        t = t["terms"].reverse
+        country = t[0]["value"]
+        state   = t[1]["value"]
+        city    = t[2]["value"]
+
+        loc = Location.where( country: country, city: city ).first
+
+        if loc 
+          location['company_locations_attributes'][key]["location_id"] = loc.id
+        else
+          loc = Location.new( country: country, city: city, region: state )
+          loc.save
+          location['company_locations_attributes'][key]["location_id"] = loc.id
+        end
+      else
+        location['company_locations_attributes'][key]["location_id"] = 0
+      end
+
+      value
+    }
+
+    ids = location['company_locations_attributes'].each(&check_id)
+    location
   end
 
   def allowed_company
     COMPANY_PARAMS.inject({}) do |acc, param|
-      acc.merge(param => alloweds[param].presence)
+      print " => ", param, "\n"
+      if param == :company_locations_attributes 
+        acc.merge(param => ensure_location(alloweds[param].presence)) 
+      else
+        acc.merge(param => alloweds[param].presence)
+      end
     end
   end
 

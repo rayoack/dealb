@@ -209,11 +209,13 @@ $(".add_fields").click(function(event) {
   $(this).before($(this).data('fields').replace(regexp, time))
 
   $(this).before( () => {
-    $('.select2').each(function( index ) {
+    $('.select2' ).each(function( index ) {
       $( this ).select2({
         placeholder: ($( this ).data() && $( this ).data().label),
         allowClear: true,
       });
+
+      autocompleteAddress('.address-autocomplete');
     });
     $(".remove_fields").click(function(event) {
       event.preventDefault()
@@ -233,4 +235,5 @@ $(".remove_fields").click(function(event) {
   event.preventDefault()
   $(this).prev('input[type=hidden]').val('1')
   $(this).closest('div').hide()
-})
+});
+
