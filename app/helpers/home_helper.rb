@@ -8,7 +8,7 @@ module HomeHelper
       if deal.amount
         amount = "#{format_amount(deal.amount, deal.amount_currency)} "
       else
-        amount = " founds "
+        amount = "money "
       end
       
       description = "#{deal&.company_name} raised " \

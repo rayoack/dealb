@@ -8,7 +8,7 @@ class SendgridMailerService
                 .left_outer_joins(:company)
                 .distinct
                 .select('deals.*, companies.name AS company_name')
-                .where(created_at: 30.days.ago..Time.zone.now)
+                .where(created_at: 7.days.ago..Time.zone.now)
                 .order(close_date: :asc)
         newsHtml = [];
 
