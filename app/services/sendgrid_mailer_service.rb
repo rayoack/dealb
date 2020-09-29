@@ -38,7 +38,7 @@ class SendgridMailerService
         p = 0
         loop do
             users = User.order(id: :asc).limit( 50 ).offset( 50 * p )
-                .where( id: 2075 )
+                .where( id: 2178 )
             p = p + 1
 
             if users.empty?
@@ -48,7 +48,7 @@ class SendgridMailerService
             puts "send to users ", users.first.id, users.last.id, "\n"
             sendNewsToUsers( users, newsHtml )
         end
-        
+
     end
     def sendNewsToUsers( users, newsHtml )
         mail = Mail.new
