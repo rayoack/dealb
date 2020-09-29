@@ -1,3 +1,5 @@
+<% @page_title = "Dealbook - Organizations"%>
+
 <section class="s-title-page">
   <div class="container">
     <div class="row">
@@ -35,6 +37,9 @@
         <%= render partial: 'shared/flash_messages' %>
 
         <div class="table-responsive">
+        <% if user_admin? || user_moderator? %>  
+          <a href="/companies/new"><%= t('companies.index.import') %></a>
+        <% end %>
           <table class="table table-hover">
             <thead>
               <tr>

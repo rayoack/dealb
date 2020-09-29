@@ -1,3 +1,4 @@
+<% @page_title = "DealBook - Deal - #{!@deal.company.blank? ? @deal.company.name : t('empty_state')} raised #{format_amount(@deal.amount, @deal.amount_currency)} from #{@deal.investors.map(&:name).join(', ')}" %>
 <section class="top-section-detail-investor">
   <div class="container">
     <div class="row">

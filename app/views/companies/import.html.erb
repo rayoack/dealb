@@ -1,28 +1,32 @@
-<% @page_title = "Dealbook - New Organization"%>
+<% @page_title = "Dealbook - Import CSV"%>
 
 <section class="form-create">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12">
-        <a href="<%= url_for(:back) %>" class="btn-back"><i class="fas fa-arrow-left"></i> <%= t('companies.form.back') %></a>
+        <a href="<%= url_for(:back) %>" class="btn-back"><i class="fas fa-arrow-left"></i> <%= t('companies.show.back') %></a>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12">
-        <h1 class="title"><%= t('companies.form.create_company') %></h1>
+        <h1 class="title">Import companies from CSV</h1>
       </div>
     </div>
 
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-5">
-        <%= form_for @company do |f| %>
-          <%= render partial: 'form', locals: { f: f } %>
+        <%= form_with url: '/companies/csvimport', multipart: true do %>
+            <div class="form-group">
+                <%= label :csv, "Upload CSV File" %>
+                <%= file_field(:csv, 'File') %>
+            </div>
+            <%= button_to("Upload csv") %>
         <% end %>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-7">
         <div class="text-featured">
-          <h1><%= t('companies.form.featured_title') %></h1>
-          <p><%= t('companies.form.featured_subtitle') %></p>
+          <h1></h1>
+          <p></p>
           <img src="/img/img-featured-company.png" alt="">
         </div>
       </div>

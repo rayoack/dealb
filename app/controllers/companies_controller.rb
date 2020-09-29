@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require 'json'
+require 'aws-sdk-s3'
 
 class CompaniesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[names]
@@ -75,6 +76,40 @@ class CompaniesController < ApplicationController
 
   def names
     render(json: autocomplete(:name) || [params[:term]], status: :ok)
+  end
+
+  def import
+    @company = Company.new
+
+    render :import
+  end
+
+  def csvimport(  )
+    file = params["csv"]["File"]
+
+    s3 = Aws::S3::Client.new( 
+      access_key_id: 'AKIA37SVVXBHYQC3NTVA', 
+      region: 'us-east-1',
+      secret_access_key: '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' )
+    
+    
+    name = "y97vpchuzi86/public/#{Time.now}-#{file.original_filename}"
+
+    res = s3.put_object( 
+      bucket: 'cloud-cube', 
+      key: name, 
+      acl: 'public-read',
+      body: file.tempfile)
+    
+    res = s3.put_object_acl( 
+        grant_read: "uri=http://acs.amazonaws.com/groups/global/AllUsers",
+        bucket: 'cloud-cube', 
+        key: name)
+    
+    csv = ImportCsv.new( filename: "#{name}", status: 'pending' )
+    csv.save
+
+    render json: 'ok, wait for rake task to process this file'
   end
 
   def widget

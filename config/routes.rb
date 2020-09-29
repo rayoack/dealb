@@ -27,6 +27,9 @@ Rails.application.routes.draw do
     collection do
       get :names, action: :names
       get :locations, action: :locations
+
+      get 'import', action: :import
+      post 'csvimport', action: :csvimport
     end
 
     member do

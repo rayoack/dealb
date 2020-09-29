@@ -87,6 +87,7 @@ en:
       companies: 'Organizations'
       company: 'Organization'
       new: 'Create new'
+      import: 'Import from CSV'
       filter: 'Filter organizations'
       apply_filter: 'Apply filter'
       add_filter: 'Add filter'

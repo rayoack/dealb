@@ -11,7 +11,7 @@ class HomeController < ApplicationController
                 .left_outer_joins(:company)
                 .distinct
                 .select('deals.*, companies.name AS company_name')
-                .where(close_date: 1.year.ago..Time.zone.now)
+                .where(created_at: 7.days.ago..Time.zone.now)
                 .order(close_date: :asc)
                 .last(7)
   end
