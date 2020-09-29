@@ -5,8 +5,11 @@ module HomeHelper
 
   def formatted_updates(deals)
     deals.map do |deal|
-      amount = "#{format_amount(deal.amount, deal.amount_currency)} " if deal.amount != nil
-      amount = " founds " if deal.amount == 0
+      if deal.amount
+        amount = "#{format_amount(deal.amount, deal.amount_currency)} "
+      else
+        amount = " founds "
+      end
       
       description = "#{deal&.company_name} raised " \
         "#{amount}" \
