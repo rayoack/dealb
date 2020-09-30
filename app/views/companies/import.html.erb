@@ -9,7 +9,7 @@
     </div>
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12">
-        <h1 class="title">Import companies from CSV</h1>
+        <h1 class="title">Import data from CSV</h1>
       </div>
     </div>
 
@@ -20,6 +20,15 @@
                 <%= label :csv, "Upload CSV File" %>
                 <%= file_field(:csv, 'File') %>
             </div>
+
+            <div class="form-group">
+                <%= label :import_type, "Import type" %>
+                <%= select( :import, :import_type,
+                    [['Company','company'],['Investors','investor'],['Deals','deal']],
+                    { 
+                      title: t('Import type') }) %>
+            </div>
+            
             <%= button_to("Upload csv") %>
         <% end %>
       </div>

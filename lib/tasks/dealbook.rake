@@ -1,3 +1,6 @@
+require 'open-uri'
+require 'csv'
+
 namespace :dealbook do
   desc "Dealbook tasks"
 
@@ -37,6 +40,39 @@ namespace :dealbook do
           
     end
     print dupes
+  end
+
+
+  task importcompany: :environment do
+
+    s3 = Aws::S3::Client.new( 
+      access_key_id: 'AKIA37SVVXBHYQC3NTVA', 
+      region: 'us-east-1',
+      secret_access_key: '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' )
+
+    ImportCsv.where( status: :pending, import_type: :company ).all.each do |csv|
+      key = csv.filename.sub 'https://cloud-cube.s3.amazonaws.com/', ''
+      
+      begin
+        file = s3.get_object( bucket: 'cloud-cube', key: key ).body.read
+      rescue
+        puts "No key found ", key
+        next
+      end
+
+      CSV.parse( file, headers: true ) do |line|
+        company_hash = line.to_h
+
+
+        next if Company.where( name: company_hash["name"]).present?
+
+        company = Company.new( company_hash )
+        company.save
+      end
+
+      csv.status = 'completed'
+      csv.save
+    end
   end
 
 end

@@ -95,7 +95,7 @@ class CompaniesController < ApplicationController
     
     name = "y97vpchuzi86/public/#{Time.now}-#{file.original_filename}"
 
-    res = s3.put_object( 
+    res = s3.put_object(
       bucket: 'cloud-cube', 
       key: name, 
       acl: 'public-read',
@@ -106,7 +106,7 @@ class CompaniesController < ApplicationController
         bucket: 'cloud-cube', 
         key: name)
     
-    csv = ImportCsv.new( filename: "#{name}", status: 'pending' )
+    csv = ImportCsv.new( filename: "#{name}", status: 'pending', import_type: params["import"]["import_type"] )
     csv.save
 
     render json: 'ok, wait for rake task to process this file'
