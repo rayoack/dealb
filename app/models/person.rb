@@ -28,6 +28,8 @@ class Person < ApplicationRecord
   has_many :users, dependent: :nullify
   has_one :investor, as: :investable, dependent: :destroy
 
+  has_many :localizables, dependent: :destroy
+
   # Nested
   accepts_nested_attributes_for :person_companies, allow_destroy: true
   accepts_nested_attributes_for :person_locations, allow_destroy: true

@@ -13,9 +13,9 @@ FactoryBot.define do
     phone_number { Faker::PhoneNumber.cell_phone }
     contact_email { Faker::Internet.email }
     homepage_url { Faker::Internet.url }
-    linkedin_url { Faker::Internet.url('linkedin.com') }
-    facebook_url { Faker::Internet.url('facebook.com') }
-    google_plus_url { Faker::Internet.url('googleplus.com') }
+    linkedin_url { Faker::Internet.url(host: 'linkedin.com') }
+    facebook_url { Faker::Internet.url(host: 'facebook.com') }
+    google_plus_url { Faker::Internet.url(host: 'googleplus.com') }
     twitter_url { 'https://twitter.com/whatever' }
     profile_image_url { 'https://logo.clearbit.com/google.com' }
   end

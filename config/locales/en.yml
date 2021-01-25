@@ -1,4 +1,7 @@
 en:
+  faker:
+    name:
+      title: ''
   empty_state: 'Uninformed'
   filter: 'Filter the results'
   filter_selected: 'Selected filters'

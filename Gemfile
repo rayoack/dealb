@@ -30,7 +30,7 @@ gem 'rails', '~> 5.1.6'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
-gem 'devise', '~> 4.4'
+gem 'devise', :git => "https://github.com/heartcombo/devise.git", ref: '8bb358cf80a632d3232c3f548ce7b95fd94b6eb2'
 gem 'omniauth'
 gem 'omniauth-linkedin-oauth2'
 

@@ -38,6 +38,8 @@ class Company < ApplicationRecord
 
   has_many :company_markets, dependent: :destroy
   has_many :markets, through: :company_markets
+
+  has_many :localizables, dependent: :destroy
   
   # Nested
   accepts_nested_attributes_for :company_locations, allow_destroy: true
