@@ -199,12 +199,12 @@ class CompaniesController < ApplicationController
       if t
         t = t["terms"].reverse
         country = t[0]["value"]
-        state   = t[1]["value"]
-        city    = t[2]["value"]
-
+        state   = t.length() > 2  ? t[1]["value"] : nil
+        city    = t.length() > 2  ? t[2]["value"] : t[1]["value"]
+        
         loc = Location.where( country: country, city: city ).first
 
-        if loc 
+        unless loc.nil?
           location['company_locations_attributes'][key]["location_id"] = loc.id
         else
           loc = Location.new( country: country, city: city, region: state )
