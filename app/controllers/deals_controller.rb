@@ -103,27 +103,40 @@ class DealsController < ApplicationController
     check_id = ->(id) {
       id.gsub("Investor_", "") if id.include? "Investor_"
       
-      curr_id = id.gsub("Company_", "")
+      curr_id = id.gsub(/[A-Za-z_]/, "")
+      investor_type = id.gsub(/[0-9_]/, "")
 
       if( curr_id == "" ) 
         return ""
       end
 
-      curr_investor = Investor.select(:id).where(investable_type: :Company, investable_id: curr_id ).first
-
+      curr_investor = Investor.select(:id).where(investable_type: investor_type, investable_id: curr_id ).first
 
       if curr_investor != nil
         return curr_investor.id 
       end
 
+      investable_to_create = find_investable(curr_id, investor_type)
+      if( investable_to_create == "" || investable_to_create.nil? ) 
+        return ""
+      end
+
       investor = Investor.create!(
-        investable: Company.find(curr_id), tag: Investor::ANGEL, stage: Investor::SEED
+        investable: investable_to_create, tag: Investor::ANGEL, stage: Investor::SEED
       )
 
       return investor.id
     }
     ids = ids.collect(&check_id)
     ids
+  end
+
+  def find_investable(id, investor_type)
+    if investor_type == 'Company'
+      Company.find(id)
+    elsif investor_type == 'Person'
+      Person.find(id)
+    end
   end
 
   def only_admin_or_moderator!
