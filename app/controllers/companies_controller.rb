@@ -181,9 +181,12 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    @company_params ||= allowed_company
+    if params['company']['company_locations_attributes']
+      return @company_params ||= allowed_company
       .merge(
         ensure_location(params.require(:company).permit(company_locations_attributes: [:id, :location_id, :_destroy])))
+    end
+      return @company_params ||= allowed_company
   end
 
   def ensure_location( location )
