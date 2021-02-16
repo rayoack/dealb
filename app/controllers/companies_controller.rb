@@ -11,7 +11,17 @@ class CompaniesController < ApplicationController
     @markets = Market.all
     @companies = Companies::Searcher.new(filter_params,
                                          domain_country_context).call
+    
     @companies_paginated = @companies.page(params[:page])
+
+    @companies_paginated.map { |company|
+      @last_deal = company.deals.last
+    
+      @isAcquired = false
+      if @last_deal && @last_deal.category == Deal::WAS_ACQUIRED_BY
+        company.status = Company::ACQUIRED
+      end
+    }
   end
 
   def show
