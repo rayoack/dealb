@@ -22,6 +22,16 @@ class GlobalSearcher
   #
   def call!
     companies = Company.where('lower_unaccent(name) ILIKE ?', "%#{search}%")
+        
+    companies.map { |company|
+      @last_deal = company.deals.last
+    
+      @isAcquired = false
+      if @last_deal && @last_deal.category == Deal::WAS_ACQUIRED_BY
+        company.status = Company::ACQUIRED
+      end
+    }
+
     people_by_first_name = Person.where('lower_unaccent(first_name) ILIKE ?', "%#{search}%")
     people_by_last_name = Person.where('lower_unaccent(last_name) ILIKE ?', "%#{search}%")
     #investor_by_company = Investor.company(companies.select(:id))
