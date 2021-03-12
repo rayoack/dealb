@@ -34,6 +34,7 @@ class GlobalSearcher
 
     people_by_first_name = Person.where('lower_unaccent(first_name) ILIKE ?', "%#{search}%")
     people_by_last_name = Person.where('lower_unaccent(last_name) ILIKE ?', "%#{search}%")
+    people_by_full_name = Person.where("lower_unaccent(first_name || ' ' || last_name) ILIKE ?", "%#{search}%")
     #investor_by_company = Investor.company(companies.select(:id))
     #investor_by_person = Investor.people(people_by_first_name.pluck(:id) + people_by_last_name.pluck(:id))
     #investor_by_tag = Investor.where('tag ILIKE ?', "%#{search}%")
@@ -41,6 +42,7 @@ class GlobalSearcher
 
     Array(people_by_first_name.to_a +
           people_by_last_name.to_a +
+          people_by_full_name.to_a +
           companies.to_a +
           #investor_by_company.to_a +
           #investor_by_person.to_a +
