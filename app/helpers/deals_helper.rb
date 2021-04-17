@@ -19,10 +19,11 @@ module DealsHelper
     raise 'There is no data for date older then 1999-01-04' if date < Date.parse('1999-01-04')
     date = date.strftime('%Y-%m-%d')
     JSON.parse(
-      # https://api.exchangeratesapi.io/2016-04-09?&base=USD&symbols=BRL
-      Faraday.get("https://api.exchangeratesapi.io/#{date}", base: 'USD', symbols: 'BRL').body
-    ).fetch('rates')
-    .fetch('BRL')
+      # https://api.exchangeratesapi.io/2016-04-09?&base=USD&symbols=BRL(OLD it is no longer free)
+      # http://apilayer.net/api/historical?access_key=****&currencies=BRL&source=USD&format=1&date=2016-04-09
+      Faraday.get("http://apilayer.net/api/historical?access_key=#{ENV.fetch('EXCHANGE_ACCESS_KEY')", source: 'USD', currencies: 'BRL', date: date).body
+    ).fetch('quotes')
+    .fetch('USDBRL')
   end
 
   def convert_to_dolar(deal)

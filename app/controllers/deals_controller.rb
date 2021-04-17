@@ -13,6 +13,12 @@ class DealsController < ApplicationController
   def index
     @deals = DealSearcher.new(filter_params, domain_country_context).call
     @deals_paginated = @deals.page(params[:page])
+    
+    @deals_paginated.map { |deal|
+      if deal.amount_dolar.nil?
+        convert_to_dolar(deal)
+      end
+    }
   end
 
   def new
