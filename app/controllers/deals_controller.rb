@@ -38,7 +38,11 @@ class DealsController < ApplicationController
 
   def edit; end
 
-  def show; end
+  def show
+    if @deal.amount_dolar.nil?
+      convert_to_dolar(@deal)
+    end
+  end
 
   def update
     if @deal.update(deal_params)
