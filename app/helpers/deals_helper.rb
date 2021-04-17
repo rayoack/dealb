@@ -21,7 +21,7 @@ module DealsHelper
     JSON.parse(
       # https://api.exchangeratesapi.io/2016-04-09?&base=USD&symbols=BRL(OLD it is no longer free)
       # http://apilayer.net/api/historical?access_key=****&currencies=BRL&source=USD&format=1&date=2016-04-09
-      Faraday.get("http://apilayer.net/api/historical?access_key=#{ENV.fetch('EXCHANGE_ACCESS_KEY')", source: 'USD', currencies: 'BRL', date: date).body
+      Faraday.get("http://apilayer.net/api/historical?access_key=#{ENV.fetch('EXCHANGE_ACCESS_KEY')}", source: 'USD', currencies: 'BRL', date: date).body
     ).fetch('quotes')
     .fetch('USDBRL')
   end
