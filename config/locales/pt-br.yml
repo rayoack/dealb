@@ -109,6 +109,10 @@ pt-br:
       profile: 'Visualizar perfil'
       widget: 'Widget'
       copy_code: 'Copiar Código'
+      delete: 'Deletar'
+      delete_company_modal: "Tem certeza que deseja remover esta organização?"
+      cancel: 'Cancelar'
+      remove: 'Remover'
       status:
         active: 'Ativa'
         inactive: 'Inativa'
@@ -184,6 +188,10 @@ pt-br:
       status:
         verified: 'Verificado'
         unverified: 'Não verificado'
+      delete: 'Deletar'
+      delete_deal_modal: "Tem certeza que deseja remover este negócio?"
+      cancel: 'Cancelar'
+      remove: 'Remover'
     form:
       new: 'Criar novo negócio'
       back: 'voltar'

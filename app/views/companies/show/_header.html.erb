@@ -6,7 +6,7 @@
           <i class="fas fa-arrow-left"></i>  <%= t('companies.show.back') %>
         </a>
         <div class="company">
-          <div class="name-company">
+          <div class="name-company" style="width: 100%">
             <div class="logo">
               <img
                 src="<%= @company.get_profile_avatar %>"
@@ -20,6 +20,26 @@
               <h1><%= @company.name %></h1>
               <span><%= t("companies.show.status.#{@company.status}") %></span>
             </div>
+            <% if user_admin? || user_moderator? %>  
+              <div
+                data-toggle="modal"
+                data-target="#deleteModal"
+                data-type="text"
+                style="width: 152px;
+                  margin-top:10px;
+                  background: #00DACE;
+                  float: right;
+                  text-align: center;
+                  border-radius: 5px;
+                  font-size: 16px;
+                  font-weight: bold;
+                  cursor: pointer;
+                  color: #2C4792;
+                  line-height: 47px;
+                  transform: scale(1);">
+                <%= t('companies.show.delete') %>
+              </div>
+            <% end %>
           </div>
           <% if user_admin? || user_moderator? %>
             <a href="/companies/<%= @company.permalink %>/edit" class="btn-edit"><img src="/img/edit.svg" alt="">
@@ -90,4 +110,25 @@
     </div>
   </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="companyModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title" id="companyModalLabel"><%= t('companies.show.delete') %></h3>
+      </div>
+      <div class="modal-body">
+        <span><%= t('companies.show.delete_company_modal') %></span>
+      </div>
+      <div class="modal-footer" style="text-align: left;">
+        <button id="deleteModalCancelButton" type="button" class="btn btn-default acta" data-dismiss="modal"><%= t('companies.show.cancel') %></button>
+        <button id="deleteModalRemoveButton" type="button" class="btn btn-primary cta">
+          <%= link_to 'Delete', company_path(@company.permalink), method: :delete %>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 <% end %>

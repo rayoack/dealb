@@ -109,6 +109,10 @@ es:
       profile: 'Perfil'
       widget: 'Widget'
       copy_code: 'Copiar Código'
+      delete: 'Borrar'
+      delete_company_modal: "¿Está seguro de que desea eliminar esta organización?"
+      cancel: 'Cancelar'
+      remove: 'Eliminar'
       status:
         active: 'Activa'
         inactive: 'Inactiva'
@@ -184,6 +188,10 @@ es:
       status:
         verified: 'Verificado'
         unverified: 'Inconfirmado'
+      delete: 'Borrar'
+      delete_deal_modal: "¿Está seguro de que desea eliminar esta transacción?"
+      cancel: 'Cancelar'
+      remove: 'Eliminar'
     form:
       new: 'Crear nueva Transaccion'
       back: 'atrás'

@@ -113,6 +113,10 @@ en:
       profile: 'View Profile'
       widget: 'Widget'
       copy_code: 'Copy Code'
+      delete: 'Delete'
+      delete_company_modal: "Are you sure you want to remove this organization?"
+      cancel: 'Cancel'
+      remove: 'Delete'
       status:
         active: 'Active'
         inactive: 'Inactive'
@@ -188,6 +192,10 @@ en:
       status:
         verified: 'Verified'
         unverified: 'Unverified'
+      delete: 'Delete'
+      delete_deal_modal: "Are you sure you want to remove this deal?"
+      cancel: 'Cancel'
+      remove: 'Delete'
     form:
       new: 'Create new deal'
       back: 'back'

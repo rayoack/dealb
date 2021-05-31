@@ -77,6 +77,7 @@ class CompaniesController < ApplicationController
 
   def destroy
     delete_investor(@company)
+    delete_deals(@company)
     if @company.delete
       redirect_to companies_path, notice: 'Successfully deleted.'
     else
@@ -259,6 +260,16 @@ class CompaniesController < ApplicationController
 
   def delete_investor(company)
     company.investor.delete if company.investor.present?
+  end
+
+  def delete_deals(company)
+    deals = company.deals
+
+    if deals.any?
+      deals.map { |deal|
+        deal.delete
+      }
+    end
   end
 
   def only_admin_or_moderator!
