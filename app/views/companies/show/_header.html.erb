@@ -25,6 +25,7 @@
                 data-toggle="modal"
                 data-target="#deleteModal"
                 data-type="text"
+                class="col-xs-12 col-sm-6 col-md-5"
                 style="width: 152px;
                   margin-top:10px;
                   background: #00DACE;
@@ -39,6 +40,26 @@
                   transform: scale(1);">
                 <%= t('companies.show.delete') %>
               </div>
+
+              <a
+                data-method="get"
+                href="<%= join_path(@company.permalink) %>"
+                style="width: 152px;
+                margin-top:10px;
+                margin-right:10px;
+                background: #00DACE;
+                float: right;
+                text-align: center;
+                border-radius: 5px;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+                color: #2C4792;
+                line-height: 47px;
+                transform: scale(1);"
+              >
+                <%= t('companies.join.transfer_button') %>
+              </a>
             <% end %>
           </div>
           <% if user_admin? || user_moderator? %>

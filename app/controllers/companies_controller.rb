@@ -5,7 +5,8 @@ require 'aws-sdk-s3'
 class CompaniesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[names]
 
-  before_action :load_company, only: %i[show edit update widget destroy]
+  before_action :load_company, only: %i[show edit update widget destroy join join_companies]
+  before_action :load_companies, only: %i[join]
 
   def index
     @markets = Market.all
@@ -31,6 +32,10 @@ class CompaniesController < ApplicationController
     @isAcquired = false
     if @last_deal && @last_deal.category == Deal::WAS_ACQUIRED_BY
       @company.status = Company::ACQUIRED
+    end
+
+    if [User::ADMIN, User::MODERATOR].include?(current_user&.role)
+      load_companies
     end
   end
 
@@ -145,6 +150,47 @@ class CompaniesController < ApplicationController
     # rubocop:enable Rails/OutputSafety
   end
 
+  def join
+    render :join
+  end
+
+  def join_companies(  )
+    select_company = Company.find(params[:company][:id])
+
+    if select_company.deals.any?
+      select_company.deals.map { |deal|
+        deal.company_id = @company.id
+        deal.save
+      }
+    end
+
+    if select_company.investor.present?
+      investor = select_company.try(:investor)
+      investor.investable_id = @company.id
+      investor.save
+    end
+
+    if select_company.person_companies.any?
+      select_company.person_companies.map { |person|
+        person.company_id = @company.id
+        person.save
+      }
+    end
+
+    if select_company.company_markets.any?
+      select_company.company_markets.map { |market|
+        market.company_id = @company.id
+        market.save
+      }
+    end
+
+    select_company.delete
+
+    respond_to do |format|
+      format.js {render inline: "location.reload();" }
+    end
+  end
+
   private
 
   COMPANY_PARAMS = %i[
@@ -156,6 +202,10 @@ class CompaniesController < ApplicationController
 
   def load_company
     @company = Company.find_by!(permalink: params[:id])
+  end
+
+  def load_companies
+    @companies = Company.select(:id, :name).where(domain_country_context: domain_country_context).where.not(id: @company.id).order(:name)
   end
 
   def autocomplete(key)

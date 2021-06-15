@@ -99,6 +99,11 @@ en:
       column_status: 'Status'
       column_location: 'Location'
       column_deals: 'Deals'
+    join:
+      transfer: 'Transfer data'
+      transfer_button: 'Transfer'
+      description: 'Do you want to transfer data from another organization to this one?'
+      note: 'The company you select will be deleted, and will have all its data transferred to the company'
     show:
       back: 'Back'
       edit: 'Edit'

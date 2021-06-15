@@ -30,12 +30,16 @@ Rails.application.routes.draw do
 
       get 'import', action: :import
       post 'csvimport', action: :csvimport
+
+      post 'join_companies', action: :join_companies
     end
 
     member do
       get :widget
     end
   end
+
+  get 'join/:id', to: 'companies#join', as: :join
 
   resources :deals, only: %i[index new create show edit update destroy] do
     post 'index', action: 'create'

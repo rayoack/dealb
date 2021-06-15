@@ -95,6 +95,11 @@ es:
       column_status: 'Estado'
       column_location: 'Ubicación'
       column_deals: 'Transacciones'
+    join:
+      transfer: 'Transferir datos'
+      transfer_button: 'Transferir'
+      description: '¿Quieres transferir datos de otra organización a esta?'
+      description: 'La empresa que seleccione se eliminará y todos sus datos se transferirán a la empresa'
     show:
       back: 'Volver'
       edit: 'Editar'

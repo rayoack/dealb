@@ -95,6 +95,11 @@ pt-br:
       column_status: 'Status'
       column_location: 'Localização'
       column_deals: 'Negócios'
+    join:
+      transfer: 'Transferir dados'
+      transfer_button: 'Transferir'
+      description: 'Deseja transferir dados de outra organização para esta?'
+      description: 'A empresa que você selecionar será excluída, e terá todos os seus dados tranferidos para a empresa'
     show:
       back: 'Voltar'
       edit: 'Editar'

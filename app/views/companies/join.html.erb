@@ -1,0 +1,50 @@
+<section class="form-create">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <a href="<%= url_for(:back) %>" class="btn-back"><i class="fas fa-arrow-left"></i> <%= t('deals.form.back') %></a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <h1 class="title"><%= t('companies.join.transfer') %></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-5">
+        <%= render partial: 'shared/flash_messages' %>
+
+        <% if @companies %>
+          <h4 style="color: #2C4792; font-weight: bold;"><%= t('companies.join.description') %></h4>
+          
+          <%= form_for(@company, url: '/companies/join_companies', method: :post, :remote => true) do |f| %>
+
+            <p><span style="font-weight: bold;">Obs:</span><%= t('companies.join.note') %> <span style="font-weight: bold;"><%= @company.name %></span>.</p>
+
+            <div class="form-group" style="display: flex; flex-direction: column;" >
+              <%= f.label :id, t('deals.form.select_company') %>
+              <%= f.select(:id, @companies.collect { |c| [c.name, c.id] },
+                { prompt: t('deals.form.select_company') },
+                class: 'select2',
+                data: { label: t('deals.form.select_company') },
+                multiple: false ) %>
+            </div>
+
+            <%= hidden_field_tag "id", "#{@company.permalink}" %>
+
+            <div class="form-group">
+              <%= f.submit t('companies.form.send') %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-7">
+        <div class="text-featured">
+          <h1><%= t('deals.form.featured_title') %></h1>
+          <p><%= t('deals.form.featured_subtitle') %></p>
+          <img src="/img/img-featured-company.png" class="img-featured-company" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
